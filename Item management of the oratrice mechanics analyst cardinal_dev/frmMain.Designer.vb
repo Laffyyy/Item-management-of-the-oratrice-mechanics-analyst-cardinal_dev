@@ -22,60 +22,74 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        pnlMainPanel = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
-        PictureBox1 = New PictureBox()
+        imgLogo = New PictureBox()
         btnStockAdjustment = New Guna.UI2.WinForms.Guna2GradientButton()
         btnOrderMannage = New Guna.UI2.WinForms.Guna2GradientButton()
         btnProductEntry = New Guna.UI2.WinForms.Guna2GradientButton()
-        Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
+        pnlHeader = New Guna.UI2.WinForms.Guna2GradientPanel()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2CustomGradientPanel1.SuspendLayout()
+        pnlDesktop = New Panel()
+        imgLogomain = New PictureBox()
+        pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        BtnExit = New Guna.UI2.WinForms.Guna2Button()
+        btnLogin = New Guna.UI2.WinForms.Guna2Button()
+        pnlMainPanel.SuspendLayout()
         Guna2CustomGradientPanel2.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        Guna2GradientPanel1.SuspendLayout()
+        CType(imgLogo, ComponentModel.ISupportInitialize).BeginInit()
+        pnlHeader.SuspendLayout()
+        pnlDesktop.SuspendLayout()
+        CType(imgLogomain, ComponentModel.ISupportInitialize).BeginInit()
+        pnlLogin.SuspendLayout()
         SuspendLayout()
         ' 
-        ' Guna2CustomGradientPanel1
+        ' pnlMainPanel
         ' 
-        Guna2CustomGradientPanel1.Controls.Add(Guna2CustomGradientPanel2)
-        Guna2CustomGradientPanel1.Controls.Add(btnStockAdjustment)
-        Guna2CustomGradientPanel1.Controls.Add(btnOrderMannage)
-        Guna2CustomGradientPanel1.Controls.Add(btnProductEntry)
-        CustomizableEdges21.BottomLeft = False
-        CustomizableEdges21.BottomRight = False
-        CustomizableEdges21.TopLeft = False
-        CustomizableEdges21.TopRight = False
-        Guna2CustomGradientPanel1.CustomizableEdges = CustomizableEdges21
-        Guna2CustomGradientPanel1.Dock = DockStyle.Left
-        Guna2CustomGradientPanel1.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
-        Guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(CByte(58), CByte(72), CByte(131))
-        Guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(CByte(58), CByte(72), CByte(131))
-        Guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(CByte(24), CByte(32), CByte(55))
-        Guna2CustomGradientPanel1.Location = New Point(0, 0)
-        Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
-        Guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = CustomizableEdges22
-        Guna2CustomGradientPanel1.Size = New Size(135, 457)
-        Guna2CustomGradientPanel1.TabIndex = 0
+        pnlMainPanel.Controls.Add(Guna2CustomGradientPanel2)
+        pnlMainPanel.Controls.Add(btnStockAdjustment)
+        pnlMainPanel.Controls.Add(btnOrderMannage)
+        pnlMainPanel.Controls.Add(btnProductEntry)
+        CustomizableEdges9.BottomLeft = False
+        CustomizableEdges9.BottomRight = False
+        CustomizableEdges9.TopLeft = False
+        CustomizableEdges9.TopRight = False
+        pnlMainPanel.CustomizableEdges = CustomizableEdges9
+        pnlMainPanel.Dock = DockStyle.Left
+        pnlMainPanel.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
+        pnlMainPanel.FillColor2 = Color.FromArgb(CByte(58), CByte(72), CByte(131))
+        pnlMainPanel.FillColor3 = Color.FromArgb(CByte(58), CByte(72), CByte(131))
+        pnlMainPanel.FillColor4 = Color.FromArgb(CByte(24), CByte(32), CByte(55))
+        pnlMainPanel.Location = New Point(0, 0)
+        pnlMainPanel.Name = "pnlMainPanel"
+        pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        pnlMainPanel.Size = New Size(135, 487)
+        pnlMainPanel.TabIndex = 0
         ' 
         ' Guna2CustomGradientPanel2
         ' 
         Guna2CustomGradientPanel2.BackColor = Color.Transparent
-        Guna2CustomGradientPanel2.Controls.Add(PictureBox1)
-        Guna2CustomGradientPanel2.CustomizableEdges = CustomizableEdges13
+        Guna2CustomGradientPanel2.Controls.Add(imgLogo)
+        Guna2CustomGradientPanel2.CustomizableEdges = CustomizableEdges1
         Guna2CustomGradientPanel2.Dock = DockStyle.Top
         Guna2CustomGradientPanel2.FillColor = Color.Transparent
         Guna2CustomGradientPanel2.FillColor2 = Color.Transparent
@@ -83,26 +97,26 @@ Partial Class frmMain
         Guna2CustomGradientPanel2.FillColor4 = Color.Black
         Guna2CustomGradientPanel2.Location = New Point(0, 0)
         Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        Guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2CustomGradientPanel2.Size = New Size(135, 103)
         Guna2CustomGradientPanel2.TabIndex = 3
         ' 
-        ' PictureBox1
+        ' imgLogo
         ' 
-        PictureBox1.BackColor = Color.Transparent
-        PictureBox1.Dock = DockStyle.Fill
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(0, 0)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(135, 103)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
+        imgLogo.BackColor = Color.Transparent
+        imgLogo.Dock = DockStyle.Fill
+        imgLogo.Image = CType(resources.GetObject("imgLogo.Image"), Image)
+        imgLogo.Location = New Point(0, 0)
+        imgLogo.Name = "imgLogo"
+        imgLogo.Size = New Size(135, 103)
+        imgLogo.SizeMode = PictureBoxSizeMode.Zoom
+        imgLogo.TabIndex = 0
+        imgLogo.TabStop = False
         ' 
         ' btnStockAdjustment
         ' 
         btnStockAdjustment.BackColor = Color.Transparent
-        btnStockAdjustment.CustomizableEdges = CustomizableEdges15
+        btnStockAdjustment.CustomizableEdges = CustomizableEdges3
         btnStockAdjustment.DisabledState.BorderColor = Color.DarkGray
         btnStockAdjustment.DisabledState.CustomBorderColor = Color.DarkGray
         btnStockAdjustment.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -115,7 +129,7 @@ Partial Class frmMain
         btnStockAdjustment.ForeColor = SystemColors.ActiveCaption
         btnStockAdjustment.Location = New Point(0, 211)
         btnStockAdjustment.Name = "btnStockAdjustment"
-        btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btnStockAdjustment.Size = New Size(135, 45)
         btnStockAdjustment.TabIndex = 2
         btnStockAdjustment.Text = "StockAdjustment"
@@ -123,7 +137,7 @@ Partial Class frmMain
         ' btnOrderMannage
         ' 
         btnOrderMannage.BackColor = Color.Transparent
-        btnOrderMannage.CustomizableEdges = CustomizableEdges17
+        btnOrderMannage.CustomizableEdges = CustomizableEdges5
         btnOrderMannage.DisabledState.BorderColor = Color.DarkGray
         btnOrderMannage.DisabledState.CustomBorderColor = Color.DarkGray
         btnOrderMannage.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -136,7 +150,7 @@ Partial Class frmMain
         btnOrderMannage.ForeColor = SystemColors.ActiveCaption
         btnOrderMannage.Location = New Point(0, 160)
         btnOrderMannage.Name = "btnOrderMannage"
-        btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
         btnOrderMannage.Text = "Order Mannage"
@@ -144,7 +158,8 @@ Partial Class frmMain
         ' btnProductEntry
         ' 
         btnProductEntry.BackColor = Color.Transparent
-        btnProductEntry.CustomizableEdges = CustomizableEdges19
+        btnProductEntry.BorderColor = Color.Transparent
+        btnProductEntry.CustomizableEdges = CustomizableEdges7
         btnProductEntry.DisabledState.BorderColor = Color.DarkGray
         btnProductEntry.DisabledState.CustomBorderColor = Color.DarkGray
         btnProductEntry.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -157,23 +172,23 @@ Partial Class frmMain
         btnProductEntry.ForeColor = SystemColors.ActiveCaption
         btnProductEntry.Location = New Point(0, 109)
         btnProductEntry.Name = "btnProductEntry"
-        btnProductEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        btnProductEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         btnProductEntry.Size = New Size(135, 45)
         btnProductEntry.TabIndex = 2
         btnProductEntry.Text = "Product Entry"
         ' 
-        ' Guna2GradientPanel1
+        ' pnlHeader
         ' 
-        Guna2GradientPanel1.Controls.Add(lblHeader)
-        Guna2GradientPanel1.CustomizableEdges = CustomizableEdges23
-        Guna2GradientPanel1.Dock = DockStyle.Top
-        Guna2GradientPanel1.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
-        Guna2GradientPanel1.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        Guna2GradientPanel1.Location = New Point(135, 0)
-        Guna2GradientPanel1.Name = "Guna2GradientPanel1"
-        Guna2GradientPanel1.ShadowDecoration.CustomizableEdges = CustomizableEdges24
-        Guna2GradientPanel1.Size = New Size(657, 66)
-        Guna2GradientPanel1.TabIndex = 1
+        pnlHeader.Controls.Add(lblHeader)
+        pnlHeader.CustomizableEdges = CustomizableEdges11
+        pnlHeader.Dock = DockStyle.Top
+        pnlHeader.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
+        pnlHeader.GradientMode = Drawing2D.LinearGradientMode.Vertical
+        pnlHeader.Location = New Point(135, 0)
+        pnlHeader.Name = "pnlHeader"
+        pnlHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        pnlHeader.Size = New Size(672, 66)
+        pnlHeader.TabIndex = 1
         ' 
         ' lblHeader
         ' 
@@ -186,33 +201,117 @@ Partial Class frmMain
         lblHeader.TabIndex = 0
         lblHeader.Text = "Home"
         ' 
+        ' pnlDesktop
+        ' 
+        pnlDesktop.Controls.Add(imgLogomain)
+        pnlDesktop.Controls.Add(pnlLogin)
+        pnlDesktop.Dock = DockStyle.Fill
+        pnlDesktop.Location = New Point(135, 66)
+        pnlDesktop.Name = "pnlDesktop"
+        pnlDesktop.Size = New Size(672, 421)
+        pnlDesktop.TabIndex = 2
+        ' 
+        ' imgLogomain
+        ' 
+        imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
+        imgLogomain.Location = New Point(51, 94)
+        imgLogomain.Name = "imgLogomain"
+        imgLogomain.Size = New Size(213, 199)
+        imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
+        imgLogomain.TabIndex = 2
+        imgLogomain.TabStop = False
+        ' 
+        ' pnlLogin
+        ' 
+        pnlLogin.Anchor = AnchorStyles.Right
+        pnlLogin.BackColor = Color.Transparent
+        pnlLogin.BorderColor = Color.FromArgb(CByte(29), CByte(34), CByte(54))
+        pnlLogin.BorderRadius = 25
+        pnlLogin.BorderThickness = 2
+        pnlLogin.Controls.Add(BtnExit)
+        pnlLogin.Controls.Add(btnLogin)
+        pnlLogin.CustomizableEdges = CustomizableEdges17
+        pnlLogin.FillColor = Color.Transparent
+        pnlLogin.FillColor2 = Color.Transparent
+        pnlLogin.FillColor3 = Color.FromArgb(CByte(29), CByte(34), CByte(54))
+        pnlLogin.FillColor4 = Color.FromArgb(CByte(29), CByte(34), CByte(54))
+        pnlLogin.Location = New Point(270, 21)
+        pnlLogin.Name = "pnlLogin"
+        pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        pnlLogin.Size = New Size(373, 388)
+        pnlLogin.TabIndex = 1
+        ' 
+        ' BtnExit
+        ' 
+        BtnExit.CustomizableEdges = CustomizableEdges13
+        BtnExit.DisabledState.BorderColor = Color.DarkGray
+        BtnExit.DisabledState.CustomBorderColor = Color.DarkGray
+        BtnExit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        BtnExit.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        BtnExit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        BtnExit.ForeColor = Color.White
+        BtnExit.Location = New Point(211, 325)
+        BtnExit.Name = "BtnExit"
+        BtnExit.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        BtnExit.Size = New Size(136, 38)
+        BtnExit.TabIndex = 1
+        BtnExit.Text = "Exit"
+        ' 
+        ' btnLogin
+        ' 
+        btnLogin.Checked = True
+        btnLogin.CustomizableEdges = CustomizableEdges15
+        btnLogin.DisabledState.BorderColor = Color.DarkGray
+        btnLogin.DisabledState.CustomBorderColor = Color.DarkGray
+        btnLogin.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnLogin.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnLogin.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnLogin.ForeColor = Color.White
+        btnLogin.ImeMode = ImeMode.Disable
+        btnLogin.Location = New Point(43, 325)
+        btnLogin.Name = "btnLogin"
+        btnLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btnLogin.Size = New Size(136, 38)
+        btnLogin.TabIndex = 0
+        btnLogin.Text = "Login"
+        ' 
         ' frmMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        AutoSize = True
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
-        ClientSize = New Size(792, 457)
-        ControlBox = False
-        Controls.Add(Guna2GradientPanel1)
-        Controls.Add(Guna2CustomGradientPanel1)
-        FormBorderStyle = FormBorderStyle.FixedSingle
+        ClientSize = New Size(807, 487)
+        Controls.Add(pnlDesktop)
+        Controls.Add(pnlHeader)
+        Controls.Add(pnlMainPanel)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
-        Guna2CustomGradientPanel1.ResumeLayout(False)
+        pnlMainPanel.ResumeLayout(False)
         Guna2CustomGradientPanel2.ResumeLayout(False)
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        Guna2GradientPanel1.ResumeLayout(False)
-        Guna2GradientPanel1.PerformLayout()
+        CType(imgLogo, ComponentModel.ISupportInitialize).EndInit()
+        pnlHeader.ResumeLayout(False)
+        pnlHeader.PerformLayout()
+        pnlDesktop.ResumeLayout(False)
+        CType(imgLogomain, ComponentModel.ISupportInitialize).EndInit()
+        pnlLogin.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents pnlMainPanel As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents btnProductEntry As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents pnlLogo As Panel
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents imgLogo As PictureBox
     Friend WithEvents btnOrderMannage As Guna.UI2.WinForms.Guna2GradientButton
-    Friend WithEvents Guna2GradientPanel1 As Guna.UI2.WinForms.Guna2GradientPanel
+    Friend WithEvents pnlHeader As Guna.UI2.WinForms.Guna2GradientPanel
     Friend WithEvents lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2CustomGradientPanel2 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents btnStockAdjustment As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents pnlDesktop As Panel
+    Friend WithEvents pnl As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents imgLogomain As PictureBox
+    Public WithEvents pnlLogin As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents BtnExit As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents btnLogin As Guna.UI2.WinForms.Guna2Button
 End Class
