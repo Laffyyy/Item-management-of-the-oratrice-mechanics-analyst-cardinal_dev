@@ -21,8 +21,7 @@ Public Class frmMain
         Me.ControlBox = False
         Me.DoubleBuffered = True
 
-        pnlMainPanel.Hide()
-        pnlHeader.Hide()
+
 
 
     End Sub
@@ -79,6 +78,7 @@ Public Class frmMain
     Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer)
     End Sub
 
+
     Private Sub Reset()
         DisableButton()
         leftBorderbtn.Visible = False
@@ -86,12 +86,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub Logined()
-        pnlMainPanel.Show()
-        pnlHeader.Show()
-        imgLogomain.Anchor = AnchorStyles.Left And AnchorStyles.Top And AnchorStyles.Right And AnchorStyles.Bottom
-        pnlLogin.Hide()
-    End Sub
+
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
         Activebutton(sender)
@@ -116,9 +111,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub pnl_Paint(sender As Object, e As PaintEventArgs) Handles pnl.Paint, pnlLogin.Paint
 
-    End Sub
 
     Private Sub pnlHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles pnlHeader.MouseDown
         ReleaseCapture()
@@ -134,9 +127,20 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        pnlMainPanel.Show()
-        pnlHeader.Show()
-        Logined()
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub btnMaximize_Click(sender As Object, e As EventArgs) Handles btnMaximize.Click
+        If WindowState = FormWindowState.Normal Then
+            WindowState = FormWindowState.Maximized
+        Else
+            WindowState = FormWindowState.Normal
+        End If
+    End Sub
+
+    Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
+        WindowState = FormWindowState.Minimized
+
     End Sub
 End Class
