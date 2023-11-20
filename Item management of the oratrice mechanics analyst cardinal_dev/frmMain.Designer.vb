@@ -81,7 +81,7 @@ Partial Class frmMain
         pnlMainPanel.Location = New Point(0, 0)
         pnlMainPanel.Name = "pnlMainPanel"
         pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        pnlMainPanel.Size = New Size(135, 487)
+        pnlMainPanel.Size = New Size(135, 493)
         pnlMainPanel.TabIndex = 0
         ' 
         ' Guna2CustomGradientPanel2
@@ -114,7 +114,9 @@ Partial Class frmMain
         ' 
         ' btnStockAdjustment
         ' 
+        btnStockAdjustment.Animated = True
         btnStockAdjustment.BackColor = Color.Transparent
+        btnStockAdjustment.Cursor = Cursors.Hand
         btnStockAdjustment.CustomizableEdges = CustomizableEdges3
         btnStockAdjustment.DisabledState.BorderColor = Color.DarkGray
         btnStockAdjustment.DisabledState.CustomBorderColor = Color.DarkGray
@@ -132,10 +134,13 @@ Partial Class frmMain
         btnStockAdjustment.Size = New Size(135, 45)
         btnStockAdjustment.TabIndex = 2
         btnStockAdjustment.Text = "StockAdjustment"
+        btnStockAdjustment.UseTransparentBackground = True
         ' 
         ' btnOrderMannage
         ' 
+        btnOrderMannage.Animated = True
         btnOrderMannage.BackColor = Color.Transparent
+        btnOrderMannage.Cursor = Cursors.Hand
         btnOrderMannage.CustomizableEdges = CustomizableEdges5
         btnOrderMannage.DisabledState.BorderColor = Color.DarkGray
         btnOrderMannage.DisabledState.CustomBorderColor = Color.DarkGray
@@ -153,11 +158,14 @@ Partial Class frmMain
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
         btnOrderMannage.Text = "Order Mannage"
+        btnOrderMannage.UseTransparentBackground = True
         ' 
         ' btnProductEntry
         ' 
+        btnProductEntry.Animated = True
         btnProductEntry.BackColor = Color.Transparent
         btnProductEntry.BorderColor = Color.Transparent
+        btnProductEntry.Cursor = Cursors.Hand
         btnProductEntry.CustomizableEdges = CustomizableEdges7
         btnProductEntry.DisabledState.BorderColor = Color.DarkGray
         btnProductEntry.DisabledState.CustomBorderColor = Color.DarkGray
@@ -175,6 +183,7 @@ Partial Class frmMain
         btnProductEntry.Size = New Size(135, 45)
         btnProductEntry.TabIndex = 2
         btnProductEntry.Text = "Product Entry"
+        btnProductEntry.UseTransparentBackground = True
         ' 
         ' pnlHeader
         ' 
@@ -189,7 +198,7 @@ Partial Class frmMain
         pnlHeader.Location = New Point(135, 0)
         pnlHeader.Name = "pnlHeader"
         pnlHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges18
-        pnlHeader.Size = New Size(672, 66)
+        pnlHeader.Size = New Size(829, 66)
         pnlHeader.TabIndex = 1
         ' 
         ' btnMinimize
@@ -203,7 +212,7 @@ Partial Class frmMain
         btnMinimize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         btnMinimize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMinimize.ForeColor = Color.White
-        btnMinimize.Location = New Point(480, 0)
+        btnMinimize.Location = New Point(637, 0)
         btnMinimize.Name = "btnMinimize"
         btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         btnMinimize.Size = New Size(60, 36)
@@ -221,7 +230,7 @@ Partial Class frmMain
         btnMaximize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         btnMaximize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMaximize.ForeColor = Color.White
-        btnMaximize.Location = New Point(546, 0)
+        btnMaximize.Location = New Point(703, 0)
         btnMaximize.Name = "btnMaximize"
         btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         btnMaximize.Size = New Size(60, 36)
@@ -239,7 +248,7 @@ Partial Class frmMain
         btnClose.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         btnClose.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnClose.ForeColor = Color.White
-        btnClose.Location = New Point(612, 0)
+        btnClose.Location = New Point(769, 0)
         btnClose.Name = "btnClose"
         btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         btnClose.Size = New Size(60, 36)
@@ -263,16 +272,16 @@ Partial Class frmMain
         pnlDesktop.Dock = DockStyle.Fill
         pnlDesktop.Location = New Point(135, 66)
         pnlDesktop.Name = "pnlDesktop"
-        pnlDesktop.Size = New Size(672, 421)
+        pnlDesktop.Size = New Size(829, 427)
         pnlDesktop.TabIndex = 2
         ' 
         ' imgLogomain
         ' 
         imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
-        imgLogomain.Location = New Point(217, 94)
+        imgLogomain.Location = New Point(304, 94)
         imgLogomain.Name = "imgLogomain"
-        imgLogomain.Size = New Size(213, 199)
+        imgLogomain.Size = New Size(213, 205)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
@@ -283,10 +292,11 @@ Partial Class frmMain
         AutoScaleMode = AutoScaleMode.Font
         AutoSize = True
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
-        ClientSize = New Size(807, 487)
+        ClientSize = New Size(964, 493)
         Controls.Add(pnlDesktop)
         Controls.Add(pnlHeader)
         Controls.Add(pnlMainPanel)
+        MinimumSize = New Size(980, 532)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         pnlMainPanel.ResumeLayout(False)

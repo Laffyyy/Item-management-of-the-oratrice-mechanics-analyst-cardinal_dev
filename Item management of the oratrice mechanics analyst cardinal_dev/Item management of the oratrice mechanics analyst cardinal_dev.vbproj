@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Item_management_of_the_oratrice_mechanics_analyst_cardinal_dev</RootNamespace>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>Item_management_of_the_oratrice_mechanics_analyst_cardinal_dev.frmLogin</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
   </PropertyGroup>

@@ -68,6 +68,7 @@ Public Class frmMain
         childform.Show()
         lblHeader.Text = childform.Text
         childform.BackColor = Color.FromArgb(34, 44, 79)
+        'default setting for child form settings 
     End Sub
 
     'form draggy
@@ -141,6 +142,10 @@ Public Class frmMain
 
     Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
         WindowState = FormWindowState.Minimized
+
+    End Sub
+
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class
