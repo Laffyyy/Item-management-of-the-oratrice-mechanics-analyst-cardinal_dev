@@ -36,6 +36,7 @@ Partial Class frm0rderMannage
         Quantity = New DataGridViewTextBoxColumn()
         btnNeworders = New Guna.UI2.WinForms.Guna2GradientButton()
         btnMore = New Guna.UI2.WinForms.Guna2GradientButton()
+        Label1 = New Label()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -43,6 +44,7 @@ Partial Class frm0rderMannage
         ' 
         DataGridViewCellStyle1.BackColor = Color.White
         Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Guna2DataGridView1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -51,7 +53,8 @@ Partial Class frm0rderMannage
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Guna2DataGridView1.ColumnHeadersHeight = 17
+        Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {ProductID, ProductName, Price, Quantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
@@ -79,7 +82,7 @@ Partial Class frm0rderMannage
         Guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
         Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 17
         Guna2DataGridView1.ThemeStyle.ReadOnly = False
         Guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White
@@ -112,12 +115,15 @@ Partial Class frm0rderMannage
         ' 
         ' btnNeworders
         ' 
+        btnNeworders.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnNeworders.CustomizableEdges = CustomizableEdges1
         btnNeworders.DisabledState.BorderColor = Color.DarkGray
         btnNeworders.DisabledState.CustomBorderColor = Color.DarkGray
         btnNeworders.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnNeworders.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnNeworders.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnNeworders.FillColor = Color.Transparent
+        btnNeworders.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnNeworders.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnNeworders.ForeColor = Color.White
         btnNeworders.Location = New Point(552, 32)
@@ -129,12 +135,15 @@ Partial Class frm0rderMannage
         ' 
         ' btnMore
         ' 
+        btnMore.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnMore.CustomizableEdges = CustomizableEdges3
         btnMore.DisabledState.BorderColor = Color.DarkGray
         btnMore.DisabledState.CustomBorderColor = Color.DarkGray
         btnMore.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMore.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMore.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnMore.FillColor = Color.Transparent
+        btnMore.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnMore.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMore.ForeColor = Color.White
         btnMore.Location = New Point(597, 370)
@@ -144,11 +153,22 @@ Partial Class frm0rderMannage
         btnMore.TabIndex = 2
         btnMore.Text = "..."
         ' 
+        ' Label1
+        ' 
+        Label1.Anchor = AnchorStyles.Bottom
+        Label1.AutoSize = True
+        Label1.Location = New Point(170, 426)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(467, 15)
+        Label1.TabIndex = 3
+        Label1.Text = "probably ill just make new form for the new order buuttt how would the menu bar acts "
+        ' 
         ' frm0rderMannage
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(Label1)
         Controls.Add(btnMore)
         Controls.Add(btnNeworders)
         Controls.Add(Guna2DataGridView1)
@@ -156,6 +176,7 @@ Partial Class frm0rderMannage
         Text = "Order Mannage"
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
@@ -165,4 +186,5 @@ Partial Class frm0rderMannage
     Friend WithEvents Quantity As DataGridViewTextBoxColumn
     Friend WithEvents btnNeworders As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnMore As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents Label1 As Label
 End Class

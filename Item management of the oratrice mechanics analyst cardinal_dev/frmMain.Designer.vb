@@ -210,14 +210,16 @@ Partial Class frmMain
         btnMinimize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMinimize.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMinimize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnMinimize.FillColor2 = Color.Transparent
         btnMinimize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMinimize.ForeColor = Color.White
+        btnMinimize.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnMinimize.Location = New Point(637, 0)
         btnMinimize.Name = "btnMinimize"
         btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         btnMinimize.Size = New Size(60, 36)
         btnMinimize.TabIndex = 1
-        btnMinimize.Text = "Guna2GradientButton1"
+        btnMinimize.Text = "min"
         ' 
         ' btnMaximize
         ' 
@@ -228,32 +230,37 @@ Partial Class frmMain
         btnMaximize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMaximize.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMaximize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnMaximize.FillColor2 = Color.Transparent
         btnMaximize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMaximize.ForeColor = Color.White
+        btnMaximize.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnMaximize.Location = New Point(703, 0)
         btnMaximize.Name = "btnMaximize"
         btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         btnMaximize.Size = New Size(60, 36)
         btnMaximize.TabIndex = 1
-        btnMaximize.Text = "Guna2GradientButton1"
+        btnMaximize.Text = "max"
         ' 
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Right
+        btnClose.BorderColor = Color.Transparent
         btnClose.CustomizableEdges = CustomizableEdges15
         btnClose.DisabledState.BorderColor = Color.DarkGray
         btnClose.DisabledState.CustomBorderColor = Color.DarkGray
         btnClose.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnClose.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnClose.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnClose.FillColor2 = Color.Transparent
         btnClose.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnClose.ForeColor = Color.White
+        btnClose.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnClose.Location = New Point(769, 0)
         btnClose.Name = "btnClose"
         btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         btnClose.Size = New Size(60, 36)
         btnClose.TabIndex = 1
-        btnClose.Text = "Guna2GradientButton1"
+        btnClose.Text = "Close"
         ' 
         ' lblHeader
         ' 
@@ -277,7 +284,7 @@ Partial Class frmMain
         ' 
         ' imgLogomain
         ' 
-        imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
         imgLogomain.Location = New Point(304, 94)
         imgLogomain.Name = "imgLogomain"
