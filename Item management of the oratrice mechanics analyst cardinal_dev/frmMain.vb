@@ -53,7 +53,7 @@ Public Class frmMain
     '153,180,209 active cap
 
 
-    Private Sub OpenChildrenform(childform As Form)
+    Public Sub OpenChildrenform(childform As Form)
         'open 1 only form
         If currentChildform IsNot Nothing Then
             currentChildform.Close()
@@ -87,6 +87,11 @@ Public Class frmMain
 
     End Sub
 
+    Public Sub pubreset()
+        DisableButton()
+        leftBorderbtn.Visible = False
+    End Sub
+
 
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
@@ -103,6 +108,7 @@ Public Class frmMain
         Activebutton(sender)
         OpenChildrenform(New frmStockAdjustment)
     End Sub
+
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
         If currentChildform IsNot Nothing Then
