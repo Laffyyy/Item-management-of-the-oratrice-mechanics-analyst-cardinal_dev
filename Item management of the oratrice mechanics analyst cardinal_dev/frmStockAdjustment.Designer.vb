@@ -158,6 +158,7 @@ Partial Class frmStockAdjustment
         ' 
         ' cbProductName
         ' 
+        cbProductName.Anchor = AnchorStyles.Right
         cbProductName.BackColor = Color.Transparent
         cbProductName.CustomizableEdges = CustomizableEdges7
         cbProductName.DrawMode = DrawMode.OwnerDrawFixed

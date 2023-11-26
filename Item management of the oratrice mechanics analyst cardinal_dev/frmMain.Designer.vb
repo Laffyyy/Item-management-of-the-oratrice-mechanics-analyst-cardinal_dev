@@ -157,7 +157,7 @@ Partial Class frmMain
         btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
-        btnOrderMannage.Text = "Order Mannage"
+        btnOrderMannage.Text = "Order Mannagent"
         btnOrderMannage.UseTransparentBackground = True
         ' 
         ' btnProductEntry
