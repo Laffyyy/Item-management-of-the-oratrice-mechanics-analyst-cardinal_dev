@@ -96,7 +96,7 @@ Public Class frmMain
 
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
 
 
             Activebutton(sender)
@@ -109,9 +109,9 @@ Public Class frmMain
     End Sub
 
     Private Sub btnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
             Activebutton(sender)
-            OpenChildrenform(New frm0rderMannage)
+            OpenChildrenform(New frmOrderManagement)
 
         Else
 
@@ -121,7 +121,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
 
 
             Activebutton(sender)
@@ -136,7 +136,7 @@ Public Class frmMain
 
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
 
             If currentChildform IsNot Nothing Then
                 currentChildform.Close()
@@ -167,7 +167,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
 
 
             Application.Exit()
