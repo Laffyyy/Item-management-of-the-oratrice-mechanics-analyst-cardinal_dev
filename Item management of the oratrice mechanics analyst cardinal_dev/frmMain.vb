@@ -7,6 +7,7 @@ Public Class frmMain
     Private leftBorderbtn As Panel
     Private currentChildform As Form
 
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -95,26 +96,57 @@ Public Class frmMain
 
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
-        Activebutton(sender)
-        OpenChildrenform(New frmProductEntry)
+        If Not frm0rderMannage.stateEdit Then
+
+
+            Activebutton(sender)
+            OpenChildrenform(New frmProductEntry)
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
+        End If
     End Sub
 
     Private Sub btnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
-        Activebutton(sender)
-        OpenChildrenform(New frm0rderMannage)
+        If Not frm0rderMannage.stateEdit Then
+            Activebutton(sender)
+            OpenChildrenform(New frm0rderMannage)
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
+        End If
+
     End Sub
 
     Private Sub btnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
-        Activebutton(sender)
-        OpenChildrenform(New frmStockAdjustment)
+        If Not frm0rderMannage.stateEdit Then
+
+
+            Activebutton(sender)
+            OpenChildrenform(New frmStockAdjustment)
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
+        End If
+
     End Sub
 
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
-        If currentChildform IsNot Nothing Then
-            currentChildform.Close()
+        If Not frm0rderMannage.stateEdit Then
+
+            If currentChildform IsNot Nothing Then
+                currentChildform.Close()
+            End If
+            Reset()
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
         End If
-        Reset()
 
     End Sub
 
@@ -135,7 +167,16 @@ Public Class frmMain
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        Application.Exit()
+        If Not frm0rderMannage.stateEdit Then
+
+
+            Application.Exit()
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
+        End If
+
     End Sub
 
     Private Sub btnMaximize_Click(sender As Object, e As EventArgs) Handles btnMaximize.Click

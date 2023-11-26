@@ -1,41 +1,59 @@
 ﻿Public Class frm0rderMannage
-    Private stateEdit As Boolean = False
 
-    Private Sub formresize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        UpdateSizeINF()
-    End Sub
+    Public Shared Property stateEdit As Boolean = False
 
-    Private Sub UpdateSizeINF()
-        Dim withsize As Double = Me.Width
-    End Sub
+
+
 
 
     Private Sub Onedit()
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
         btnEdit.FillColor = Color.FromArgb(153, 180, 209)
         'remove left
-        dgvOrderMannage.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        btnEdit.Text = "EDIT MODE"
+        dgvOrderMannage.DefaultCellStyle.BackColor = Color.FromArgb(153, 180, 209)
+        btnDelete.Hide()
+        'if on edit mode its ok to go to other form but not log out and close program
+        stateEdit = True
     End Sub
 
     Private Sub NotEdit()
         btnEdit.ForeColor = Color.White
         btnEdit.FillColor = Color.FromArgb(94, 148, 255)
+        dgvOrderMannage.DefaultCellStyle.BackColor = Color.FromArgb(90, 163, 216)
+        btnEdit.Text = "Edit Order"
+        btnDelete.Show()
+        stateEdit = False
 
-        dgvOrderMannage.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right Or AnchorStyles.Left
     End Sub
-    Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
-        frmMain.OpenChildrenform(New frmNewOrders)
-        frmMain.pubreset()
-    End Sub
-
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If stateEdit Then
+        If Not stateEdit Then
             Onedit()
+
+
         Else
             NotEdit()
+
+
         End If
 
-        stateEdit = Not stateEdit
+
+
+    End Sub
+
+
+    Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
+        If Not frm0rderMannage.stateEdit Then
+
+
+            frmMain.OpenChildrenform(New frmNewOrders)
+            frmMain.pubreset()
+
+        Else
+
+            MessageBox.Show("Exit edit mode on OderMannagement")
+        End If
+
     End Sub
 
 
