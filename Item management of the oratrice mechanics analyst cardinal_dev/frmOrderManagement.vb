@@ -1,4 +1,4 @@
-﻿Public Class frm0rderMannage
+﻿Public Class frmOrderManagement
 
     Public Shared Property stateEdit As Boolean = False
 
@@ -43,7 +43,7 @@
 
 
     Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
-        If Not frm0rderMannage.stateEdit Then
+        If Not frmOrderManagement.stateEdit Then
 
 
             frmMain.OpenChildrenform(New frmNewOrders)

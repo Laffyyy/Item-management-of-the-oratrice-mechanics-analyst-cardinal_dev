@@ -26,83 +26,62 @@ Partial Class frmStockAdjustment
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
-        Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
+        tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
+        tbProductQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
-        ProductName = New DataGridViewTextBoxColumn()
-        DateofRestock = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
+        cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Guna2ComboBox1
+        ' tbProductID
         ' 
-        Guna2ComboBox1.Anchor = AnchorStyles.Right
-        Guna2ComboBox1.BackColor = Color.Transparent
-        Guna2ComboBox1.CustomizableEdges = CustomizableEdges1
-        Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
-        Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox1.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox1.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2ComboBox1.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        Guna2ComboBox1.ItemHeight = 30
-        Guna2ComboBox1.Location = New Point(411, 65)
-        Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Guna2ComboBox1.Size = New Size(305, 36)
-        Guna2ComboBox1.TabIndex = 0
+        tbProductID.Anchor = AnchorStyles.Right
+        tbProductID.CustomizableEdges = CustomizableEdges1
+        tbProductID.DefaultText = ""
+        tbProductID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbProductID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbProductID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductID.Location = New Point(472, 148)
+        tbProductID.Name = "tbProductID"
+        tbProductID.PasswordChar = ChrW(0)
+        tbProductID.PlaceholderText = ""
+        tbProductID.SelectedText = ""
+        tbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        tbProductID.Size = New Size(200, 36)
+        tbProductID.TabIndex = 1
         ' 
-        ' Guna2TextBox1
+        ' tbProductQuantity
         ' 
-        Guna2TextBox1.Anchor = AnchorStyles.Right
-        Guna2TextBox1.CustomizableEdges = CustomizableEdges3
-        Guna2TextBox1.DefaultText = ""
-        Guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Location = New Point(472, 148)
-        Guna2TextBox1.Name = "Guna2TextBox1"
-        Guna2TextBox1.PasswordChar = ChrW(0)
-        Guna2TextBox1.PlaceholderText = ""
-        Guna2TextBox1.SelectedText = ""
-        Guna2TextBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2TextBox1.Size = New Size(200, 36)
-        Guna2TextBox1.TabIndex = 1
-        ' 
-        ' Guna2TextBox2
-        ' 
-        Guna2TextBox2.Anchor = AnchorStyles.Right
-        Guna2TextBox2.CustomizableEdges = CustomizableEdges5
-        Guna2TextBox2.DefaultText = ""
-        Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Location = New Point(472, 228)
-        Guna2TextBox2.Name = "Guna2TextBox2"
-        Guna2TextBox2.PasswordChar = ChrW(0)
-        Guna2TextBox2.PlaceholderText = ""
-        Guna2TextBox2.SelectedText = ""
-        Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        Guna2TextBox2.Size = New Size(200, 36)
-        Guna2TextBox2.TabIndex = 1
+        tbProductQuantity.Anchor = AnchorStyles.Right
+        tbProductQuantity.CustomizableEdges = CustomizableEdges3
+        tbProductQuantity.DefaultText = ""
+        tbProductQuantity.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbProductQuantity.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbProductQuantity.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductQuantity.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductQuantity.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductQuantity.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbProductQuantity.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductQuantity.Location = New Point(472, 228)
+        tbProductQuantity.Name = "tbProductQuantity"
+        tbProductQuantity.PasswordChar = ChrW(0)
+        tbProductQuantity.PlaceholderText = ""
+        tbProductQuantity.SelectedText = ""
+        tbProductQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        tbProductQuantity.Size = New Size(200, 36)
+        tbProductQuantity.TabIndex = 1
         ' 
         ' dgvstockad
         ' 
@@ -119,7 +98,6 @@ Partial Class frmStockAdjustment
         dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvstockad.ColumnHeadersHeight = 17
         dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvstockad.Columns.AddRange(New DataGridViewColumn() {ProductName, DateofRestock, Quantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -157,25 +135,10 @@ Partial Class frmStockAdjustment
         dgvstockad.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvstockad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
-        ' ProductName
-        ' 
-        ProductName.HeaderText = "Product Name"
-        ProductName.Name = "ProductName"
-        ' 
-        ' DateofRestock
-        ' 
-        DateofRestock.HeaderText = "Date of Restock"
-        DateofRestock.Name = "DateofRestock"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
         ' Guna2GradientButton1
         ' 
         Guna2GradientButton1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Guna2GradientButton1.CustomizableEdges = CustomizableEdges7
+        Guna2GradientButton1.CustomizableEdges = CustomizableEdges5
         Guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray
         Guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -188,21 +151,38 @@ Partial Class frmStockAdjustment
         Guna2GradientButton1.GradientMode = Drawing2D.LinearGradientMode.Vertical
         Guna2GradientButton1.Location = New Point(482, 310)
         Guna2GradientButton1.Name = "Guna2GradientButton1"
-        Guna2GradientButton1.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2GradientButton1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         Guna2GradientButton1.Size = New Size(180, 45)
         Guna2GradientButton1.TabIndex = 3
-        Guna2GradientButton1.Text = "Guna2GradientButton1"
+        Guna2GradientButton1.Text = "Save"
+        ' 
+        ' cbProductName
+        ' 
+        cbProductName.BackColor = Color.Transparent
+        cbProductName.CustomizableEdges = CustomizableEdges7
+        cbProductName.DrawMode = DrawMode.OwnerDrawFixed
+        cbProductName.DropDownStyle = ComboBoxStyle.DropDownList
+        cbProductName.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbProductName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbProductName.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cbProductName.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cbProductName.ItemHeight = 30
+        cbProductName.Location = New Point(472, 65)
+        cbProductName.Name = "cbProductName"
+        cbProductName.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        cbProductName.Size = New Size(200, 36)
+        cbProductName.TabIndex = 4
         ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(cbProductName)
         Controls.Add(Guna2GradientButton1)
         Controls.Add(dgvstockad)
-        Controls.Add(Guna2TextBox2)
-        Controls.Add(Guna2TextBox1)
-        Controls.Add(Guna2ComboBox1)
+        Controls.Add(tbProductQuantity)
+        Controls.Add(tbProductID)
         Name = "frmStockAdjustment"
         Text = "Stock Adjustment"
         CType(dgvstockad, ComponentModel.ISupportInitialize).EndInit()
@@ -217,4 +197,7 @@ Partial Class frmStockAdjustment
     Friend WithEvents DateofRestock As DataGridViewTextBoxColumn
     Friend WithEvents Quantity As DataGridViewTextBoxColumn
     Friend WithEvents Guna2GradientButton1 As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbProductQuantity As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents cbProductName As Guna.UI2.WinForms.Guna2ComboBox
 End Class
