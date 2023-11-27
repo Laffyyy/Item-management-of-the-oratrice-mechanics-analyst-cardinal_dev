@@ -1,5 +1,27 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmStockAdjustment
+    Private Function IsStockIdUnique(stockId As String) As Boolean
+        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+        Dim isUnique As Boolean = True
+
+        Try
+            myConnection.Open()
+
+            Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblStock WHERE dstockid = @stockId", myConnection)
+            checkCommand.Parameters.AddWithValue("@stockId", stockId)
+
+            Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
+            isUnique = (count = 0)
+
+        Catch ex As Exception
+            MsgBox(Err.Description)
+        Finally
+            myConnection.Close()
+        End Try
+
+        Return isUnique
+    End Function
+
     Private Sub SaveStock()
         Dim myConnection1 As MySqlConnection
         Dim myCommand1 As MySqlCommand
@@ -12,7 +34,12 @@ Public Class frmStockAdjustment
             myConnection1.Open()
 
             ' Generate a random stock ID with a maximum length of 15 characters (uppercase letters)
-            Dim stockId As String = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
+            Dim stockId As String
+
+            ' Ensure that the generated stockId is unique
+            Do
+                stockId = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
+            Loop While Not IsStockIdUnique(stockId)
 
             ' Get values from textboxes
             Dim productId As String = tbProductID.Text
@@ -38,6 +65,7 @@ Public Class frmStockAdjustment
             myConnection1.Close()
         End Try
     End Sub
+
 
 
     Private Sub DisplayStock()

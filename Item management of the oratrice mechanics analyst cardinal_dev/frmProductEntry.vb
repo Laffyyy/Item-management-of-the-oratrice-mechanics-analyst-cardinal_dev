@@ -1,6 +1,28 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmProductEntry
 
+    Private Function IsProductIdUnique(productId As String) As Boolean
+        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+        Dim isUnique As Boolean = True
+
+        Try
+            myConnection.Open()
+
+            Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblProducts WHERE dproductid = @productId", myConnection)
+            checkCommand.Parameters.AddWithValue("@productId", productId)
+
+            Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
+            isUnique = (count = 0)
+
+        Catch ex As Exception
+            MsgBox(Err.Description)
+        Finally
+            myConnection.Close()
+        End Try
+
+        Return isUnique
+    End Function
+
     Private Sub SaveProductEntry()
         Dim myConnection1 As MySqlConnection
         Dim myCommand1 As MySqlCommand
@@ -12,8 +34,13 @@ Public Class frmProductEntry
         Try
             myConnection1.Open()
 
-            ' Generate a random product ID with a maximum length of 15 characters (uppercase letters)
-            Dim productId As String = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
+            ' Generate a random product ID with a maximum length of 10 characters (uppercase letters)
+            Dim productId As String
+
+            ' Ensure that the generated productId is unique
+            Do
+                productId = Guid.NewGuid().ToString().Substring(0, 10).ToUpper()
+            Loop While Not IsProductIdUnique(productId)
 
             ' Get values from textboxes
             Dim productName As String = tbProductNameEntry.Text
@@ -38,6 +65,7 @@ Public Class frmProductEntry
             MessageBox.Show("Success")
         End Try
     End Sub
+
 
     Private Sub Guna2GradientButton2_Click(sender As Object, e As EventArgs)
 
