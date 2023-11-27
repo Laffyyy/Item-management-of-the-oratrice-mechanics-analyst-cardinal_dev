@@ -133,7 +133,7 @@ Partial Class frmMain
         btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btnStockAdjustment.Size = New Size(135, 45)
         btnStockAdjustment.TabIndex = 2
-        btnStockAdjustment.Text = "StockAdjustment"
+        btnStockAdjustment.Text = "Stock Adjustment"
         btnStockAdjustment.UseTransparentBackground = True
         ' 
         ' btnOrderMannage
@@ -157,7 +157,7 @@ Partial Class frmMain
         btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
-        btnOrderMannage.Text = "Order Mannagent"
+        btnOrderMannage.Text = "Order Management"
         btnOrderMannage.UseTransparentBackground = True
         ' 
         ' btnProductEntry
@@ -219,7 +219,7 @@ Partial Class frmMain
         btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         btnMinimize.Size = New Size(60, 36)
         btnMinimize.TabIndex = 1
-        btnMinimize.Text = "min"
+        btnMinimize.Text = "Min"
         ' 
         ' btnMaximize
         ' 
@@ -239,7 +239,7 @@ Partial Class frmMain
         btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         btnMaximize.Size = New Size(60, 36)
         btnMaximize.TabIndex = 1
-        btnMaximize.Text = "max"
+        btnMaximize.Text = "Max"
         ' 
         ' btnClose
         ' 
