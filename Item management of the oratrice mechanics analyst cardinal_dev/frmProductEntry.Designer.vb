@@ -136,6 +136,7 @@ Partial Class frmProductEntry
         tbProductDescriptionEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductDescriptionEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductDescriptionEntry.Location = New Point(234, 255)
+        tbProductDescriptionEntry.Multiline = True
         tbProductDescriptionEntry.Name = "tbProductDescriptionEntry"
         tbProductDescriptionEntry.PasswordChar = ChrW(0)
         tbProductDescriptionEntry.PlaceholderText = ""
