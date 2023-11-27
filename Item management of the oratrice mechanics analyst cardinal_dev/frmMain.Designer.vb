@@ -26,7 +26,7 @@ Partial Class frmMain
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -133,7 +133,7 @@ Partial Class frmMain
         btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btnStockAdjustment.Size = New Size(135, 45)
         btnStockAdjustment.TabIndex = 2
-        btnStockAdjustment.Text = "StockAdjustment"
+        btnStockAdjustment.Text = "Stock Adjustment"
         btnStockAdjustment.UseTransparentBackground = True
         ' 
         ' btnOrderMannage
@@ -157,7 +157,7 @@ Partial Class frmMain
         btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
-        btnOrderMannage.Text = "Order Mannage"
+        btnOrderMannage.Text = "Order Management"
         btnOrderMannage.UseTransparentBackground = True
         ' 
         ' btnProductEntry
