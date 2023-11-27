@@ -30,6 +30,11 @@ Partial Class frmProductEntry
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -38,6 +43,9 @@ Partial Class frmProductEntry
         tbProductPriceEntry = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductDescriptionEntry = New Guna.UI2.WinForms.Guna2TextBox()
         btnSave = New Guna.UI2.WinForms.Guna2GradientButton()
+        dgvProducts = New Guna.UI2.WinForms.Guna2DataGridView()
+        btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
+        CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' lbltestentry
@@ -93,13 +101,13 @@ Partial Class frmProductEntry
         tbProductNameEntry.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductNameEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductNameEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductNameEntry.Location = New Point(234, 75)
+        tbProductNameEntry.Location = New Point(168, 75)
         tbProductNameEntry.Name = "tbProductNameEntry"
         tbProductNameEntry.PasswordChar = ChrW(0)
         tbProductNameEntry.PlaceholderText = ""
         tbProductNameEntry.SelectedText = ""
         tbProductNameEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        tbProductNameEntry.Size = New Size(248, 27)
+        tbProductNameEntry.Size = New Size(267, 27)
         tbProductNameEntry.TabIndex = 2
         ' 
         ' tbProductPriceEntry
@@ -114,13 +122,13 @@ Partial Class frmProductEntry
         tbProductPriceEntry.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductPriceEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductPriceEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductPriceEntry.Location = New Point(234, 157)
+        tbProductPriceEntry.Location = New Point(168, 157)
         tbProductPriceEntry.Name = "tbProductPriceEntry"
         tbProductPriceEntry.PasswordChar = ChrW(0)
         tbProductPriceEntry.PlaceholderText = ""
         tbProductPriceEntry.SelectedText = ""
         tbProductPriceEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        tbProductPriceEntry.Size = New Size(248, 27)
+        tbProductPriceEntry.Size = New Size(267, 27)
         tbProductPriceEntry.TabIndex = 2
         ' 
         ' tbProductDescriptionEntry
@@ -135,14 +143,14 @@ Partial Class frmProductEntry
         tbProductDescriptionEntry.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductDescriptionEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductDescriptionEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductDescriptionEntry.Location = New Point(234, 255)
+        tbProductDescriptionEntry.Location = New Point(168, 255)
         tbProductDescriptionEntry.Multiline = True
         tbProductDescriptionEntry.Name = "tbProductDescriptionEntry"
         tbProductDescriptionEntry.PasswordChar = ChrW(0)
         tbProductDescriptionEntry.PlaceholderText = ""
         tbProductDescriptionEntry.SelectedText = ""
         tbProductDescriptionEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        tbProductDescriptionEntry.Size = New Size(248, 73)
+        tbProductDescriptionEntry.Size = New Size(267, 73)
         tbProductDescriptionEntry.TabIndex = 2
         ' 
         ' btnSave
@@ -165,11 +173,83 @@ Partial Class frmProductEntry
         btnSave.TabIndex = 3
         btnSave.Text = "Save"
         ' 
+        ' dgvProducts
+        ' 
+        DataGridViewCellStyle1.BackColor = Color.White
+        dgvProducts.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvProducts.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        dgvProducts.ColumnHeadersHeight = 4
+        dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.White
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        dgvProducts.DefaultCellStyle = DataGridViewCellStyle3
+        dgvProducts.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvProducts.Location = New Point(471, 75)
+        dgvProducts.Name = "dgvProducts"
+        dgvProducts.RowHeadersVisible = False
+        dgvProducts.RowTemplate.Height = 25
+        dgvProducts.Size = New Size(305, 253)
+        dgvProducts.TabIndex = 4
+        dgvProducts.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
+        dgvProducts.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        dgvProducts.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
+        dgvProducts.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
+        dgvProducts.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
+        dgvProducts.ThemeStyle.BackColor = Color.White
+        dgvProducts.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvProducts.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        dgvProducts.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
+        dgvProducts.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvProducts.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        dgvProducts.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvProducts.ThemeStyle.HeaderStyle.Height = 4
+        dgvProducts.ThemeStyle.ReadOnly = False
+        dgvProducts.ThemeStyle.RowsStyle.BackColor = Color.White
+        dgvProducts.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvProducts.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvProducts.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        dgvProducts.ThemeStyle.RowsStyle.Height = 25
+        dgvProducts.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvProducts.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        ' 
+        ' btnEdit
+        ' 
+        btnEdit.CustomizableEdges = CustomizableEdges9
+        btnEdit.DisabledState.BorderColor = Color.DarkGray
+        btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
+        btnEdit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnEdit.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnEdit.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnEdit.FillColor2 = Color.Transparent
+        btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnEdit.ForeColor = Color.White
+        btnEdit.Location = New Point(471, 29)
+        btnEdit.Name = "btnEdit"
+        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        btnEdit.Size = New Size(69, 34)
+        btnEdit.TabIndex = 5
+        btnEdit.Text = "Edit Product"
+        ' 
         ' frmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(btnEdit)
+        Controls.Add(dgvProducts)
         Controls.Add(btnSave)
         Controls.Add(tbProductDescriptionEntry)
         Controls.Add(tbProductPriceEntry)
@@ -180,6 +260,7 @@ Partial Class frmProductEntry
         Controls.Add(lbltestentry)
         Name = "frmProductEntry"
         Text = "Product Entry"
+        CType(dgvProducts, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -198,4 +279,6 @@ Partial Class frmProductEntry
     Friend WithEvents tbProductNameEntry As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbProductPriceEntry As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbProductDescriptionEntry As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents dgvProducts As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2GradientButton
 End Class

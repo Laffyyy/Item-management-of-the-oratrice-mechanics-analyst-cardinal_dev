@@ -38,6 +38,10 @@ Partial Class frmStockAdjustment
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
         cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
+        lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblAmount = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -82,6 +86,7 @@ Partial Class frmStockAdjustment
         tbProductQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         tbProductQuantity.Size = New Size(200, 36)
         tbProductQuantity.TabIndex = 1
+        Amountmodification.SetToolTip(tbProductQuantity, "adding amount use a possitive Value" & vbCrLf & "removing amount use a (-)Negative Value")
         ' 
         ' dgvstockad
         ' 
@@ -174,11 +179,55 @@ Partial Class frmStockAdjustment
         cbProductName.Size = New Size(200, 36)
         cbProductName.TabIndex = 4
         ' 
+        ' lblProductName
+        ' 
+        lblProductName.Anchor = AnchorStyles.Right
+        lblProductName.BackColor = Color.Transparent
+        lblProductName.ForeColor = SystemColors.ActiveCaption
+        lblProductName.Location = New Point(472, 44)
+        lblProductName.Name = "lblProductName"
+        lblProductName.Size = New Size(83, 17)
+        lblProductName.TabIndex = 5
+        lblProductName.Text = "Product Name:"
+        ' 
+        ' lblProductID
+        ' 
+        lblProductID.Anchor = AnchorStyles.Right
+        lblProductID.BackColor = Color.Transparent
+        lblProductID.ForeColor = SystemColors.ActiveCaption
+        lblProductID.Location = New Point(472, 125)
+        lblProductID.Name = "lblProductID"
+        lblProductID.Size = New Size(62, 17)
+        lblProductID.TabIndex = 5
+        lblProductID.Text = "Product ID:"
+        ' 
+        ' lblAmount
+        ' 
+        lblAmount.Anchor = AnchorStyles.Right
+        lblAmount.BackColor = Color.Transparent
+        lblAmount.ForeColor = SystemColors.ActiveCaption
+        lblAmount.Location = New Point(472, 205)
+        lblAmount.Name = "lblAmount"
+        lblAmount.Size = New Size(50, 17)
+        lblAmount.TabIndex = 5
+        lblAmount.Text = "Amount: "
+        ' 
+        ' Amountmodification
+        ' 
+        Amountmodification.AllowLinksHandling = True
+        Amountmodification.BackColor = SystemColors.ActiveCaption
+        Amountmodification.ForeColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
+        Amountmodification.MaximumSize = New Size(0, 0)
+        Amountmodification.ToolTipTitle = "adding or removing"
+        ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(lblAmount)
+        Controls.Add(lblProductID)
+        Controls.Add(lblProductName)
         Controls.Add(cbProductName)
         Controls.Add(Guna2GradientButton1)
         Controls.Add(dgvstockad)
@@ -188,6 +237,7 @@ Partial Class frmStockAdjustment
         Text = "Stock Adjustment"
         CType(dgvstockad, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
@@ -201,4 +251,8 @@ Partial Class frmStockAdjustment
     Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbProductQuantity As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents cbProductName As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents lblProductName As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblProductID As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblAmount As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Amountmodification As Guna.UI2.WinForms.Guna2HtmlToolTip
 End Class

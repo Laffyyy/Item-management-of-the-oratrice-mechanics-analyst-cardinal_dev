@@ -1,6 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmProductEntry
 
+
+
     Private Function IsProductIdUnique(productId As String) As Boolean
         Dim myConnection As MySqlConnection = Common.getDBConnectionX()
         Dim isUnique As Boolean = True
@@ -66,32 +68,36 @@ Public Class frmProductEntry
         End Try
     End Sub
 
+    Public Shared Property productentryEditmode As Boolean = False
 
-    Private Sub Guna2GradientButton2_Click(sender As Object, e As EventArgs)
+    Private Sub Onedit()
+        btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
+        btnEdit.FillColor = Color.FromArgb(153, 180, 209)
+        btnEdit.Text = "EDIT MODE"
 
+        productentryEditmode = True
     End Sub
 
-    Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles lblProductName.Click
-
+    Private Sub notOnedit()
+        btnEdit.ForeColor = Color.White
+        btnEdit.FillColor = Color.FromArgb(94, 148, 255)
+        btnEdit.Text = "Edit product"
+        productentryEditmode = False
     End Sub
 
-    Private Sub btnProductNameEntry_TextChanged(sender As Object, e As EventArgs) Handles btnProductNameEntry.TextChanged, tbProductNameEntry.TextChanged
-
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If Not productentryEditmode Then
+            Onedit()
+        Else
+            notOnedit()
+        End If
     End Sub
 
-    Private Sub btnProductPriceEntry_TextChanged(sender As Object, e As EventArgs) Handles btnProductPriceEntry.TextChanged, tbProductPriceEntry.TextChanged
 
-    End Sub
-
-    Private Sub btnProductDescriptionEntry_TextChanged(sender As Object, e As EventArgs) Handles btnProductDescriptionEntry.TextChanged, tbProductDescriptionEntry.TextChanged
-
-    End Sub
-
-    Private Sub frmProductEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         SaveProductEntry()
     End Sub
+
+
 End Class

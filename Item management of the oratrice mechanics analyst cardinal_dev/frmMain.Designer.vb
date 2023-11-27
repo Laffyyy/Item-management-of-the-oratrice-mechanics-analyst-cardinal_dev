@@ -26,7 +26,7 @@ Partial Class frmMain
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -204,46 +204,51 @@ Partial Class frmMain
         ' btnMinimize
         ' 
         btnMinimize.Anchor = AnchorStyles.Right
+        btnMinimize.BackColor = Color.Transparent
         btnMinimize.CustomizableEdges = CustomizableEdges11
         btnMinimize.DisabledState.BorderColor = Color.DarkGray
         btnMinimize.DisabledState.CustomBorderColor = Color.DarkGray
         btnMinimize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMinimize.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMinimize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnMinimize.FillColor = Color.Transparent
         btnMinimize.FillColor2 = Color.Transparent
         btnMinimize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMinimize.ForeColor = Color.White
         btnMinimize.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        btnMinimize.Location = New Point(637, 0)
+        btnMinimize.Image = CType(resources.GetObject("btnMinimize.Image"), Image)
+        btnMinimize.Location = New Point(707, 0)
         btnMinimize.Name = "btnMinimize"
         btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges12
-        btnMinimize.Size = New Size(60, 36)
+        btnMinimize.Size = New Size(33, 36)
         btnMinimize.TabIndex = 1
-        btnMinimize.Text = "Min"
         ' 
         ' btnMaximize
         ' 
         btnMaximize.Anchor = AnchorStyles.Right
+        btnMaximize.BackColor = Color.Transparent
         btnMaximize.CustomizableEdges = CustomizableEdges13
         btnMaximize.DisabledState.BorderColor = Color.DarkGray
         btnMaximize.DisabledState.CustomBorderColor = Color.DarkGray
         btnMaximize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMaximize.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnMaximize.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnMaximize.FillColor = Color.Transparent
         btnMaximize.FillColor2 = Color.Transparent
         btnMaximize.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMaximize.ForeColor = Color.White
         btnMaximize.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        btnMaximize.Location = New Point(703, 0)
+        btnMaximize.Image = CType(resources.GetObject("btnMaximize.Image"), Image)
+        btnMaximize.Location = New Point(746, 0)
         btnMaximize.Name = "btnMaximize"
         btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges14
-        btnMaximize.Size = New Size(60, 36)
+        btnMaximize.Size = New Size(39, 36)
         btnMaximize.TabIndex = 1
-        btnMaximize.Text = "Max"
         ' 
         ' btnClose
         ' 
         btnClose.Anchor = AnchorStyles.Right
+        btnClose.BackColor = Color.Transparent
         btnClose.BorderColor = Color.Transparent
         btnClose.CustomizableEdges = CustomizableEdges15
         btnClose.DisabledState.BorderColor = Color.DarkGray
@@ -251,16 +256,17 @@ Partial Class frmMain
         btnClose.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnClose.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnClose.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnClose.FillColor = Color.Transparent
         btnClose.FillColor2 = Color.Transparent
         btnClose.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnClose.ForeColor = Color.White
         btnClose.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        btnClose.Location = New Point(769, 0)
+        btnClose.Image = CType(resources.GetObject("btnClose.Image"), Image)
+        btnClose.Location = New Point(791, 0)
         btnClose.Name = "btnClose"
         btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        btnClose.Size = New Size(60, 36)
+        btnClose.Size = New Size(38, 36)
         btnClose.TabIndex = 1
-        btnClose.Text = "Close"
         ' 
         ' lblHeader
         ' 

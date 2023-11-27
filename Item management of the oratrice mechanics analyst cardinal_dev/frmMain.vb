@@ -96,7 +96,8 @@ Public Class frmMain
 
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+            Not frmProductEntry.productentryEditmode Then
 
 
             Activebutton(sender)
@@ -104,24 +105,26 @@ Public Class frmMain
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode")
         End If
     End Sub
 
     Private Sub btnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+            Not frmProductEntry.productentryEditmode Then
             Activebutton(sender)
             OpenChildrenform(New frmOrderManagement)
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode")
         End If
 
     End Sub
 
     Private Sub btnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+            Not frmProductEntry.productentryEditmode Then
 
 
             Activebutton(sender)
@@ -129,14 +132,15 @@ Public Class frmMain
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode")
         End If
 
     End Sub
 
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+            Not frmProductEntry.productentryEditmode Then
 
             If currentChildform IsNot Nothing Then
                 currentChildform.Close()
@@ -167,14 +171,15 @@ Public Class frmMain
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+            Not frmProductEntry.productentryEditmode Then
 
 
             Application.Exit()
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode")
         End If
 
     End Sub

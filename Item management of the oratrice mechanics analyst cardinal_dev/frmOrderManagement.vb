@@ -1,6 +1,6 @@
 ﻿Public Class frmOrderManagement
 
-    Public Shared Property stateEdit As Boolean = False
+    Public Shared Property odermanagementstateEdit As Boolean = False
 
 
 
@@ -14,7 +14,7 @@
         dgvOrderMannage.DefaultCellStyle.BackColor = Color.FromArgb(153, 180, 209)
         btnDelete.Hide()
         'if on edit mode its ok to go to other form but not log out and close program
-        stateEdit = True
+        odermanagementstateEdit = True
     End Sub
 
     Private Sub NotEdit()
@@ -23,11 +23,11 @@
         dgvOrderMannage.DefaultCellStyle.BackColor = Color.FromArgb(90, 163, 216)
         btnEdit.Text = "Edit Order"
         btnDelete.Show()
-        stateEdit = False
+        odermanagementstateEdit = False
 
     End Sub
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If Not stateEdit Then
+        If Not odermanagementstateEdit Then
             Onedit()
 
 
@@ -43,7 +43,7 @@
 
 
     Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
-        If Not frmOrderManagement.stateEdit Then
+        If Not frmOrderManagement.odermanagementstateEdit Then
 
 
             frmMain.OpenChildrenform(New frmNewOrders)
@@ -51,7 +51,7 @@
 
         Else
 
-            MessageBox.Show("Exit edit mode on Order Management")
+            MessageBox.Show("Exit edit mode")
         End If
 
     End Sub
