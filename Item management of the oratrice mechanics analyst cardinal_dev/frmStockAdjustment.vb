@@ -11,8 +11,8 @@ Public Class frmStockAdjustment
         Try
             myConnection1.Open()
 
-            ' Generate a random stock ID with a maximum length of 15 characters
-            Dim stockId As String = Guid.NewGuid().ToString().Substring(0, 15)
+            ' Generate a random stock ID with a maximum length of 15 characters (uppercase letters)
+            Dim stockId As String = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
 
             ' Get values from textboxes
             Dim productId As String = tbProductID.Text

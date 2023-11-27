@@ -51,7 +51,7 @@
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode on Order Management")
         End If
 
     End Sub
