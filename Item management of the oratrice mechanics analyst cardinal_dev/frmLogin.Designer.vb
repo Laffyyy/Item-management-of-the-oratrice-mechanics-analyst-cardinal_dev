@@ -32,7 +32,7 @@ Partial Class frmLogin
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -169,7 +169,7 @@ Partial Class frmLogin
         Controls.Add(pnldesignlogin)
         Controls.Add(pnlLogin)
         Name = "frmLogin"
-        Text = "frmLogin"
+        Text = "Login"
         pnlLogin.ResumeLayout(False)
         pnlLogin.PerformLayout()
         pnldesignlogin.ResumeLayout(False)

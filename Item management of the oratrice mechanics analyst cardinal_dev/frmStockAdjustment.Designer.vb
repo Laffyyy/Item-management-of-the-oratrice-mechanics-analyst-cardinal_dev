@@ -36,6 +36,9 @@ Partial Class frmStockAdjustment
         tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcDateofRestock = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
         cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +85,10 @@ Partial Class frmStockAdjustment
         tbProductQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         tbProductQuantity.Size = New Size(200, 36)
         tbProductQuantity.TabIndex = 1
+<<<<<<< Updated upstream
+=======
+        Amountmodification.SetToolTip(tbProductQuantity, "To add stock use a positive value || To " & vbCrLf & "remove stock use a (-) negative value")
+>>>>>>> Stashed changes
         ' 
         ' dgvstockad
         ' 
@@ -98,6 +105,7 @@ Partial Class frmStockAdjustment
         dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvstockad.ColumnHeadersHeight = 17
         dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateofRestock, dgvcQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -134,6 +142,21 @@ Partial Class frmStockAdjustment
         dgvstockad.ThemeStyle.RowsStyle.Height = 25
         dgvstockad.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvstockad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcDateofRestock
+        ' 
+        dgvcDateofRestock.HeaderText = "Date of Restock"
+        dgvcDateofRestock.Name = "dgvcDateofRestock"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.Name = "dgvcQuantity"
         ' 
         ' Guna2GradientButton1
         ' 
@@ -200,4 +223,14 @@ Partial Class frmStockAdjustment
     Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbProductQuantity As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents cbProductName As Guna.UI2.WinForms.Guna2ComboBox
+<<<<<<< Updated upstream
+=======
+    Friend WithEvents lblProductName As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblProductID As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblAmount As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Amountmodification As Guna.UI2.WinForms.Guna2HtmlToolTip
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDateofRestock As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
+>>>>>>> Stashed changes
 End Class

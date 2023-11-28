@@ -84,9 +84,10 @@ Public Class frmStockAdjustment
             myAdapter2.SelectCommand = myCommand1
             myAdapter2.Fill(myDataSet2, "myData")
 
-            myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
-            myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
-            myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
+            dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
+            dgvstockad.Columns("dgvcDateofRestock").DataPropertyName = "drestockeddate"
+            dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
+
 
             dgvstockad.DataSource = myDataSet2.Tables("myData")
 

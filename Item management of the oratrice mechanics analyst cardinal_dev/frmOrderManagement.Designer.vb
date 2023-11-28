@@ -22,31 +22,32 @@ Partial Class frmOrderManagement
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         btnNeworders = New Guna.UI2.WinForms.Guna2GradientButton()
         btnMore = New Guna.UI2.WinForms.Guna2GradientButton()
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
-        dgvOrderMannage = New DataGridView()
-        cProductName = New DataGridViewTextBoxColumn()
-        CType(dgvOrderMannage, ComponentModel.ISupportInitialize).BeginInit()
+        dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcDateofRestock = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnNeworders
         ' 
         btnNeworders.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnNeworders.CustomizableEdges = CustomizableEdges1
+        btnNeworders.CustomizableEdges = CustomizableEdges17
         btnNeworders.DisabledState.BorderColor = Color.DarkGray
         btnNeworders.DisabledState.CustomBorderColor = Color.DarkGray
         btnNeworders.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -58,7 +59,7 @@ Partial Class frmOrderManagement
         btnNeworders.ForeColor = Color.White
         btnNeworders.Location = New Point(671, 32)
         btnNeworders.Name = "btnNeworders"
-        btnNeworders.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        btnNeworders.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         btnNeworders.Size = New Size(85, 34)
         btnNeworders.TabIndex = 1
         btnNeworders.Text = "New order"
@@ -66,7 +67,7 @@ Partial Class frmOrderManagement
         ' btnMore
         ' 
         btnMore.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        btnMore.CustomizableEdges = CustomizableEdges3
+        btnMore.CustomizableEdges = CustomizableEdges19
         btnMore.DisabledState.BorderColor = Color.DarkGray
         btnMore.DisabledState.CustomBorderColor = Color.DarkGray
         btnMore.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -78,14 +79,14 @@ Partial Class frmOrderManagement
         btnMore.ForeColor = Color.White
         btnMore.Location = New Point(716, 370)
         btnMore.Name = "btnMore"
-        btnMore.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        btnMore.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         btnMore.Size = New Size(40, 30)
         btnMore.TabIndex = 2
         btnMore.Text = "..."
         ' 
         ' btnDelete
         ' 
-        btnDelete.CustomizableEdges = CustomizableEdges5
+        btnDelete.CustomizableEdges = CustomizableEdges21
         btnDelete.DisabledState.BorderColor = Color.DarkGray
         btnDelete.DisabledState.CustomBorderColor = Color.DarkGray
         btnDelete.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -97,14 +98,14 @@ Partial Class frmOrderManagement
         btnDelete.ForeColor = Color.White
         btnDelete.Location = New Point(150, 32)
         btnDelete.Name = "btnDelete"
-        btnDelete.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        btnDelete.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         btnDelete.Size = New Size(67, 34)
         btnDelete.TabIndex = 1
         btnDelete.Text = "Delete Order"
         ' 
         ' btnEdit
         ' 
-        btnEdit.CustomizableEdges = CustomizableEdges7
+        btnEdit.CustomizableEdges = CustomizableEdges23
         btnEdit.DisabledState.BorderColor = Color.DarkGray
         btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
         btnEdit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -115,80 +116,92 @@ Partial Class frmOrderManagement
         btnEdit.ForeColor = Color.White
         btnEdit.Location = New Point(64, 32)
         btnEdit.Name = "btnEdit"
-        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges24
         btnEdit.Size = New Size(69, 34)
         btnEdit.TabIndex = 1
         btnEdit.Text = "Edit Order"
         ' 
-        ' dgvOrderMannage
+        ' dgvstockad
         ' 
-        dgvOrderMannage.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = Color.White
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        dgvOrderMannage.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        dgvOrderMannage.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        dgvOrderMannage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvOrderMannage.BackgroundColor = SystemColors.AppWorkspace
-        dgvOrderMannage.BorderStyle = BorderStyle.None
-        dgvOrderMannage.CellBorderStyle = DataGridViewCellBorderStyle.None
-        dgvOrderMannage.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        dgvstockad.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvstockad.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Control
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(108), CByte(157), CByte(253))
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        dgvOrderMannage.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        dgvOrderMannage.ColumnHeadersHeight = 18
-        dgvOrderMannage.Columns.AddRange(New DataGridViewColumn() {cProductName})
+        dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        dgvstockad.ColumnHeadersHeight = 17
+        dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateofRestock, dgvcQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(90), CByte(163), CByte(216))
+        DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
-        dgvOrderMannage.DefaultCellStyle = DataGridViewCellStyle3
-        dgvOrderMannage.EnableHeadersVisualStyles = False
-        dgvOrderMannage.GridColor = SystemColors.ActiveCaption
-        dgvOrderMannage.Location = New Point(64, 72)
-        dgvOrderMannage.Name = "dgvOrderMannage"
-        dgvOrderMannage.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = SystemColors.Window
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Window
-        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        dgvOrderMannage.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        dgvOrderMannage.RowTemplate.Height = 25
-        dgvOrderMannage.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvOrderMannage.Size = New Size(692, 292)
-        dgvOrderMannage.TabIndex = 3
+        dgvstockad.DefaultCellStyle = DataGridViewCellStyle3
+        dgvstockad.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvstockad.Location = New Point(64, 72)
+        dgvstockad.Name = "dgvstockad"
+        dgvstockad.RowHeadersVisible = False
+        dgvstockad.RowTemplate.Height = 25
+        dgvstockad.Size = New Size(646, 311)
+        dgvstockad.TabIndex = 3
+        dgvstockad.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
+        dgvstockad.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        dgvstockad.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
+        dgvstockad.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
+        dgvstockad.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
+        dgvstockad.ThemeStyle.BackColor = Color.White
+        dgvstockad.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvstockad.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        dgvstockad.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
+        dgvstockad.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvstockad.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        dgvstockad.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvstockad.ThemeStyle.HeaderStyle.Height = 17
+        dgvstockad.ThemeStyle.ReadOnly = False
+        dgvstockad.ThemeStyle.RowsStyle.BackColor = Color.White
+        dgvstockad.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvstockad.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvstockad.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        dgvstockad.ThemeStyle.RowsStyle.Height = 25
+        dgvstockad.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvstockad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
-        ' cProductName
+        ' dgvcProductName
         ' 
-        cProductName.HeaderText = "Product Name"
-        cProductName.Name = "cProductName"
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
         ' 
-        ' frm0rderMannage
+        ' dgvcDateofRestock
+        ' 
+        dgvcDateofRestock.HeaderText = "Date of Restock"
+        dgvcDateofRestock.Name = "dgvcDateofRestock"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(dgvOrderMannage)
+        Controls.Add(dgvstockad)
         Controls.Add(btnMore)
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
         Controls.Add(btnNeworders)
-        Name = "frm0rderMannage"
-        Text = "Order Mannage"
-        CType(dgvOrderMannage, ComponentModel.ISupportInitialize).EndInit()
+        Name = "frmOrderManagement"
+        Text = "Order Management"
+        CType(dgvstockad, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents btnNeworders As Guna.UI2.WinForms.Guna2GradientButton
@@ -197,4 +210,8 @@ Partial Class frmOrderManagement
     Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents dgvOrderMannage As DataGridView
     Friend WithEvents cProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvstockad As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDateofRestock As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
 End Class
