@@ -1,6 +1,14 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmProductEntry
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+        Displayproduct()
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 
 
     Private Function IsProductIdUnique(productId As String) As Boolean
@@ -68,6 +76,10 @@ Public Class frmProductEntry
         End Try
     End Sub
 
+
+
+
+
     Public Shared Property productentryEditmode As Boolean = False
 
     Private Sub Onedit()
@@ -93,11 +105,46 @@ Public Class frmProductEntry
         End If
     End Sub
 
+    Private Sub Displayproduct()
+        Dim myConnection1 As MySqlConnection
+        Dim myCommand1 As MySqlCommand
+        Dim myAdapter2 As New MySqlDataAdapter
+        Dim myDataSet2 As New DataSet
+
+
+        myConnection1 = Common.getDBConnectionX()
+
+        Try
+            myConnection1.Open()
+
+            myCommand1 = New MySqlCommand("SELECT dproductname, dprice, dtxtdescription FROM tblproducts", myConnection1)
+
+            myAdapter2.SelectCommand = myCommand1
+            myAdapter2.Fill(myDataSet2, "myData")
+
+            ''myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
+            ''myDataSet2.Tables("myData").Columns("dprice").ColumnName = "Price"
+            dgvProducts.Columns("dgvcPrice").DataPropertyName = "dprice"
+            dgvProducts.Columns("dgvcProductName").DataPropertyName = "dproductname"
+            dgvProducts.Columns("dgvcdescription").DataPropertyName = "dtxtdescription"
+
+
+            dgvProducts.DataSource = myDataSet2.Tables("myData")
+
+        Catch ex As Exception
+            MsgBox(Err.Description)
+            Exit Sub
+        Finally
+            myConnection1.Close()
+        End Try
+    End Sub
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         SaveProductEntry()
     End Sub
 
+    Private Sub dgvProducts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellContentClick
 
+    End Sub
 End Class

@@ -4,7 +4,7 @@ Public Class Common
     Public Shared myDBConnection As MySqlConnection
 
     Public Shared Function getDBConnectionX() As MySqlConnection
-
+        '@Yasuo123
         myDBConnection = New MySqlConnection(
             "Database=omac;" &
             "Data Source=localhost;" &

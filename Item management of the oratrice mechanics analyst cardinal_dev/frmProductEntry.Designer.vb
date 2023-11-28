@@ -45,6 +45,9 @@ Partial Class frmProductEntry
         btnSave = New Guna.UI2.WinForms.Guna2GradientButton()
         dgvProducts = New Guna.UI2.WinForms.Guna2DataGridView()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcPrice = New DataGridViewTextBoxColumn()
+        dgvcdescription = New DataGridViewTextBoxColumn()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -186,8 +189,9 @@ Partial Class frmProductEntry
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        dgvProducts.ColumnHeadersHeight = 4
+        dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -215,7 +219,7 @@ Partial Class frmProductEntry
         dgvProducts.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         dgvProducts.ThemeStyle.HeaderStyle.ForeColor = Color.White
         dgvProducts.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.ThemeStyle.HeaderStyle.Height = 4
+        dgvProducts.ThemeStyle.HeaderStyle.Height = 20
         dgvProducts.ThemeStyle.ReadOnly = False
         dgvProducts.ThemeStyle.RowsStyle.BackColor = Color.White
         dgvProducts.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
@@ -242,6 +246,21 @@ Partial Class frmProductEntry
         btnEdit.Size = New Size(69, 34)
         btnEdit.TabIndex = 5
         btnEdit.Text = "Edit Product"
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcPrice
+        ' 
+        dgvcPrice.HeaderText = "Price"
+        dgvcPrice.Name = "dgvcPrice"
+        ' 
+        ' dgvcdescription
+        ' 
+        dgvcdescription.HeaderText = "Description"
+        dgvcdescription.Name = "dgvcdescription"
         ' 
         ' frmProductEntry
         ' 
@@ -281,4 +300,8 @@ Partial Class frmProductEntry
     Friend WithEvents tbProductDescriptionEntry As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgvProducts As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents dtxtdescription As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcPrice As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcdescription As DataGridViewTextBoxColumn
 End Class

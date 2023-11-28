@@ -93,7 +93,7 @@ Partial Class frmMain
         Guna2CustomGradientPanel2.FillColor = Color.Transparent
         Guna2CustomGradientPanel2.FillColor2 = Color.Transparent
         Guna2CustomGradientPanel2.FillColor3 = Color.Transparent
-        Guna2CustomGradientPanel2.FillColor4 = Color.Black
+        Guna2CustomGradientPanel2.FillColor4 = Color.Transparent
         Guna2CustomGradientPanel2.Location = New Point(0, 0)
         Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
         Guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
