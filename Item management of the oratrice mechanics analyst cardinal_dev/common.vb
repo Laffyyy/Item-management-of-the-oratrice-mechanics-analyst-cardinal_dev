@@ -9,7 +9,7 @@ Public Class Common
             "Database=omac;" &
             "Data Source=localhost;" &
             "User id=root;" &
-            "Password=@Yasuo123;" &
+            "Password=root;" &
             "Port=3306;Command Timeout=600;")
         Return myDBConnection
     End Function

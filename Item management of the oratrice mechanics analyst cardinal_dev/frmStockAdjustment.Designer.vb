@@ -42,6 +42,9 @@ Partial Class frmStockAdjustment
         lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblAmount = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcDateOfRestock = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -101,8 +104,9 @@ Partial Class frmStockAdjustment
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        dgvstockad.ColumnHeadersHeight = 17
+        dgvstockad.ColumnHeadersHeight = 20
         dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateOfRestock, dgvcQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -130,7 +134,7 @@ Partial Class frmStockAdjustment
         dgvstockad.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         dgvstockad.ThemeStyle.HeaderStyle.ForeColor = Color.White
         dgvstockad.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvstockad.ThemeStyle.HeaderStyle.Height = 17
+        dgvstockad.ThemeStyle.HeaderStyle.Height = 20
         dgvstockad.ThemeStyle.ReadOnly = False
         dgvstockad.ThemeStyle.RowsStyle.BackColor = Color.White
         dgvstockad.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
@@ -220,6 +224,21 @@ Partial Class frmStockAdjustment
         Amountmodification.MaximumSize = New Size(0, 0)
         Amountmodification.ToolTipTitle = "adding or removing"
         ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcDateOfRestock
+        ' 
+        dgvcDateOfRestock.HeaderText = "Date Of Restock"
+        dgvcDateOfRestock.Name = "dgvcDateOfRestock"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -255,4 +274,7 @@ Partial Class frmStockAdjustment
     Friend WithEvents lblProductID As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblAmount As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Amountmodification As Guna.UI2.WinForms.Guna2HtmlToolTip
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDateOfRestock As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
 End Class

@@ -137,6 +137,19 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub btnAccountAdj_Click(sender As Object, e As EventArgs) Handles btnAccountAdj.Click
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+           Not frmProductEntry.productentryEditmode Then
+
+
+            Activebutton(sender)
+            OpenChildrenform(New frmAccountAdjustment)
+
+        Else
+
+            MessageBox.Show("Exit edit mode")
+        End If
+    End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
         If Not frmOrderManagement.odermanagementstateEdit AndAlso
@@ -191,6 +204,10 @@ Public Class frmMain
             WindowState = FormWindowState.Normal
         End If
     End Sub
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Me.Hide()
+        frmLogin.Show()
+    End Sub
 
     Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
         WindowState = FormWindowState.Minimized
@@ -200,4 +217,6 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+
 End Class

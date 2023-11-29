@@ -1,5 +1,9 @@
 ﻿Public Class frmNewOrders
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub bttnOrder_Click(sender As Object, e As EventArgs) Handles bttnOrder.Click
+
+    End Sub
+
+    Private Sub Guna2TextBox2_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 End Class

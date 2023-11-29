@@ -22,8 +22,8 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmMain))
@@ -33,17 +33,23 @@ Partial Class frmMain
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         pnlMainPanel = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         imgLogo = New PictureBox()
+        btnLogout = New Guna.UI2.WinForms.Guna2GradientButton()
+        btnAccountAdj = New Guna.UI2.WinForms.Guna2GradientButton()
         btnStockAdjustment = New Guna.UI2.WinForms.Guna2GradientButton()
         btnOrderMannage = New Guna.UI2.WinForms.Guna2GradientButton()
         btnProductEntry = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -65,14 +71,16 @@ Partial Class frmMain
         ' pnlMainPanel
         ' 
         pnlMainPanel.Controls.Add(Guna2CustomGradientPanel2)
+        pnlMainPanel.Controls.Add(btnLogout)
+        pnlMainPanel.Controls.Add(btnAccountAdj)
         pnlMainPanel.Controls.Add(btnStockAdjustment)
         pnlMainPanel.Controls.Add(btnOrderMannage)
         pnlMainPanel.Controls.Add(btnProductEntry)
-        CustomizableEdges9.BottomLeft = False
-        CustomizableEdges9.BottomRight = False
-        CustomizableEdges9.TopLeft = False
-        CustomizableEdges9.TopRight = False
-        pnlMainPanel.CustomizableEdges = CustomizableEdges9
+        CustomizableEdges13.BottomLeft = False
+        CustomizableEdges13.BottomRight = False
+        CustomizableEdges13.TopLeft = False
+        CustomizableEdges13.TopRight = False
+        pnlMainPanel.CustomizableEdges = CustomizableEdges13
         pnlMainPanel.Dock = DockStyle.Left
         pnlMainPanel.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
         pnlMainPanel.FillColor2 = Color.FromArgb(CByte(58), CByte(72), CByte(131))
@@ -80,7 +88,7 @@ Partial Class frmMain
         pnlMainPanel.FillColor4 = Color.FromArgb(CByte(24), CByte(32), CByte(55))
         pnlMainPanel.Location = New Point(0, 0)
         pnlMainPanel.Name = "pnlMainPanel"
-        pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         pnlMainPanel.Size = New Size(135, 493)
         pnlMainPanel.TabIndex = 0
         ' 
@@ -112,12 +120,62 @@ Partial Class frmMain
         imgLogo.TabIndex = 0
         imgLogo.TabStop = False
         ' 
+        ' btnLogout
+        ' 
+        btnLogout.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnLogout.Animated = True
+        btnLogout.BackColor = Color.Transparent
+        btnLogout.Cursor = Cursors.Hand
+        btnLogout.CustomizableEdges = CustomizableEdges3
+        btnLogout.DisabledState.BorderColor = Color.DarkGray
+        btnLogout.DisabledState.CustomBorderColor = Color.DarkGray
+        btnLogout.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnLogout.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnLogout.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnLogout.FillColor = Color.Transparent
+        btnLogout.FillColor2 = Color.Transparent
+        btnLogout.FocusedColor = Color.Transparent
+        btnLogout.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
+        btnLogout.ForeColor = SystemColors.ActiveCaption
+        btnLogout.Location = New Point(0, 448)
+        btnLogout.Name = "btnLogout"
+        btnLogout.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        btnLogout.Size = New Size(73, 45)
+        btnLogout.TabIndex = 2
+        btnLogout.Text = "Logout"
+        btnLogout.UseTransparentBackground = True
+        ' 
+        ' btnAccountAdj
+        ' 
+        btnAccountAdj.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnAccountAdj.Animated = True
+        btnAccountAdj.BackColor = Color.Transparent
+        btnAccountAdj.Cursor = Cursors.Hand
+        btnAccountAdj.CustomizableEdges = CustomizableEdges5
+        btnAccountAdj.DisabledState.BorderColor = Color.DarkGray
+        btnAccountAdj.DisabledState.CustomBorderColor = Color.DarkGray
+        btnAccountAdj.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnAccountAdj.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnAccountAdj.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnAccountAdj.FillColor = Color.Transparent
+        btnAccountAdj.FillColor2 = Color.Transparent
+        btnAccountAdj.FocusedColor = Color.Transparent
+        btnAccountAdj.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
+        btnAccountAdj.ForeColor = SystemColors.ActiveCaption
+        btnAccountAdj.Location = New Point(0, 385)
+        btnAccountAdj.Name = "btnAccountAdj"
+        btnAccountAdj.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        btnAccountAdj.Size = New Size(135, 45)
+        btnAccountAdj.TabIndex = 2
+        btnAccountAdj.Text = "Account Adjustment"
+        btnAccountAdj.UseTransparentBackground = True
+        ' 
         ' btnStockAdjustment
         ' 
         btnStockAdjustment.Animated = True
         btnStockAdjustment.BackColor = Color.Transparent
         btnStockAdjustment.Cursor = Cursors.Hand
-        btnStockAdjustment.CustomizableEdges = CustomizableEdges3
+        btnStockAdjustment.CustomizableEdges = CustomizableEdges7
         btnStockAdjustment.DisabledState.BorderColor = Color.DarkGray
         btnStockAdjustment.DisabledState.CustomBorderColor = Color.DarkGray
         btnStockAdjustment.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -130,7 +188,7 @@ Partial Class frmMain
         btnStockAdjustment.ForeColor = SystemColors.ActiveCaption
         btnStockAdjustment.Location = New Point(0, 211)
         btnStockAdjustment.Name = "btnStockAdjustment"
-        btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        btnStockAdjustment.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         btnStockAdjustment.Size = New Size(135, 45)
         btnStockAdjustment.TabIndex = 2
         btnStockAdjustment.Text = "Stock Adjustment"
@@ -141,7 +199,7 @@ Partial Class frmMain
         btnOrderMannage.Animated = True
         btnOrderMannage.BackColor = Color.Transparent
         btnOrderMannage.Cursor = Cursors.Hand
-        btnOrderMannage.CustomizableEdges = CustomizableEdges5
+        btnOrderMannage.CustomizableEdges = CustomizableEdges9
         btnOrderMannage.DisabledState.BorderColor = Color.DarkGray
         btnOrderMannage.DisabledState.CustomBorderColor = Color.DarkGray
         btnOrderMannage.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -154,7 +212,7 @@ Partial Class frmMain
         btnOrderMannage.ForeColor = SystemColors.ActiveCaption
         btnOrderMannage.Location = New Point(0, 160)
         btnOrderMannage.Name = "btnOrderMannage"
-        btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        btnOrderMannage.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         btnOrderMannage.Size = New Size(135, 45)
         btnOrderMannage.TabIndex = 2
         btnOrderMannage.Text = "Order Management"
@@ -166,7 +224,7 @@ Partial Class frmMain
         btnProductEntry.BackColor = Color.Transparent
         btnProductEntry.BorderColor = Color.Transparent
         btnProductEntry.Cursor = Cursors.Hand
-        btnProductEntry.CustomizableEdges = CustomizableEdges7
+        btnProductEntry.CustomizableEdges = CustomizableEdges11
         btnProductEntry.DisabledState.BorderColor = Color.DarkGray
         btnProductEntry.DisabledState.CustomBorderColor = Color.DarkGray
         btnProductEntry.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -179,7 +237,7 @@ Partial Class frmMain
         btnProductEntry.ForeColor = SystemColors.ActiveCaption
         btnProductEntry.Location = New Point(0, 109)
         btnProductEntry.Name = "btnProductEntry"
-        btnProductEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        btnProductEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         btnProductEntry.Size = New Size(135, 45)
         btnProductEntry.TabIndex = 2
         btnProductEntry.Text = "Product Entry"
@@ -191,13 +249,13 @@ Partial Class frmMain
         pnlHeader.Controls.Add(btnMaximize)
         pnlHeader.Controls.Add(btnClose)
         pnlHeader.Controls.Add(lblHeader)
-        pnlHeader.CustomizableEdges = CustomizableEdges17
+        pnlHeader.CustomizableEdges = CustomizableEdges21
         pnlHeader.Dock = DockStyle.Top
         pnlHeader.FillColor = Color.FromArgb(CByte(58), CByte(72), CByte(131))
         pnlHeader.GradientMode = Drawing2D.LinearGradientMode.Vertical
         pnlHeader.Location = New Point(135, 0)
         pnlHeader.Name = "pnlHeader"
-        pnlHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        pnlHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         pnlHeader.Size = New Size(829, 66)
         pnlHeader.TabIndex = 1
         ' 
@@ -205,7 +263,7 @@ Partial Class frmMain
         ' 
         btnMinimize.Anchor = AnchorStyles.Right
         btnMinimize.BackColor = Color.Transparent
-        btnMinimize.CustomizableEdges = CustomizableEdges11
+        btnMinimize.CustomizableEdges = CustomizableEdges15
         btnMinimize.DisabledState.BorderColor = Color.DarkGray
         btnMinimize.DisabledState.CustomBorderColor = Color.DarkGray
         btnMinimize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -219,7 +277,7 @@ Partial Class frmMain
         btnMinimize.Image = CType(resources.GetObject("btnMinimize.Image"), Image)
         btnMinimize.Location = New Point(707, 0)
         btnMinimize.Name = "btnMinimize"
-        btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         btnMinimize.Size = New Size(33, 36)
         btnMinimize.TabIndex = 1
         ' 
@@ -227,7 +285,7 @@ Partial Class frmMain
         ' 
         btnMaximize.Anchor = AnchorStyles.Right
         btnMaximize.BackColor = Color.Transparent
-        btnMaximize.CustomizableEdges = CustomizableEdges13
+        btnMaximize.CustomizableEdges = CustomizableEdges17
         btnMaximize.DisabledState.BorderColor = Color.DarkGray
         btnMaximize.DisabledState.CustomBorderColor = Color.DarkGray
         btnMaximize.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -241,7 +299,7 @@ Partial Class frmMain
         btnMaximize.Image = CType(resources.GetObject("btnMaximize.Image"), Image)
         btnMaximize.Location = New Point(746, 0)
         btnMaximize.Name = "btnMaximize"
-        btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         btnMaximize.Size = New Size(39, 36)
         btnMaximize.TabIndex = 1
         ' 
@@ -250,7 +308,7 @@ Partial Class frmMain
         btnClose.Anchor = AnchorStyles.Right
         btnClose.BackColor = Color.Transparent
         btnClose.BorderColor = Color.Transparent
-        btnClose.CustomizableEdges = CustomizableEdges15
+        btnClose.CustomizableEdges = CustomizableEdges19
         btnClose.DisabledState.BorderColor = Color.DarkGray
         btnClose.DisabledState.CustomBorderColor = Color.DarkGray
         btnClose.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -264,7 +322,7 @@ Partial Class frmMain
         btnClose.Image = CType(resources.GetObject("btnClose.Image"), Image)
         btnClose.Location = New Point(791, 0)
         btnClose.Name = "btnClose"
-        btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         btnClose.Size = New Size(38, 36)
         btnClose.TabIndex = 1
         ' 
@@ -292,9 +350,9 @@ Partial Class frmMain
         ' 
         imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
-        imgLogomain.Location = New Point(304, 94)
+        imgLogomain.Location = New Point(319, 94)
         imgLogomain.Name = "imgLogomain"
-        imgLogomain.Size = New Size(213, 205)
+        imgLogomain.Size = New Size(199, 196)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
@@ -337,4 +395,6 @@ Partial Class frmMain
     Friend WithEvents btnMinimize As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnMaximize As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnClose As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents btnLogout As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents btnAccountAdj As Guna.UI2.WinForms.Guna2GradientButton
 End Class
