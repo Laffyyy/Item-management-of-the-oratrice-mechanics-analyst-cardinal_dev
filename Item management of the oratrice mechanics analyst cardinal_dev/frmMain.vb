@@ -151,6 +151,20 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub btnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
+        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+           Not frmProductEntry.productentryEditmode Then
+
+
+            Activebutton(sender)
+            OpenChildrenform(New frmCustomer)
+
+        Else
+
+            MessageBox.Show("Exit edit mode")
+        End If
+    End Sub
+
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
         If Not frmOrderManagement.odermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
@@ -162,10 +176,11 @@ Public Class frmMain
 
         Else
 
-            MessageBox.Show("Exit edit mode on OderMannagement")
+            MessageBox.Show("Exit edit mode")
         End If
 
     End Sub
+
 
 
 
