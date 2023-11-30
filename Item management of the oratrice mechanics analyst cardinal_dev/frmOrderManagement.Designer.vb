@@ -35,6 +35,8 @@ Partial Class frmOrderManagement
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnNeworders = New Guna.UI2.WinForms.Guna2GradientButton()
         btnMore = New Guna.UI2.WinForms.Guna2GradientButton()
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -44,6 +46,12 @@ Partial Class frmOrderManagement
         lblOrderID = New Label()
         lblShippingDate = New Label()
         DtpShipping = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        dgvcDateofOrdered = New DataGridViewTextBoxColumn()
+        dgvcShippingdate = New DataGridViewTextBoxColumn()
+        dgvcStatus = New DataGridViewTextBoxColumn()
+        Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -60,10 +68,11 @@ Partial Class frmOrderManagement
         btnNeworders.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnNeworders.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnNeworders.ForeColor = Color.White
-        btnNeworders.Location = New Point(671, 32)
+        btnNeworders.Location = New Point(767, 43)
+        btnNeworders.Margin = New Padding(3, 4, 3, 4)
         btnNeworders.Name = "btnNeworders"
         btnNeworders.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        btnNeworders.Size = New Size(85, 34)
+        btnNeworders.Size = New Size(97, 45)
         btnNeworders.TabIndex = 1
         btnNeworders.Text = "New order"
         ' 
@@ -80,10 +89,11 @@ Partial Class frmOrderManagement
         btnMore.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnMore.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnMore.ForeColor = Color.White
-        btnMore.Location = New Point(716, 370)
+        btnMore.Location = New Point(818, 493)
+        btnMore.Margin = New Padding(3, 4, 3, 4)
         btnMore.Name = "btnMore"
         btnMore.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        btnMore.Size = New Size(40, 30)
+        btnMore.Size = New Size(46, 40)
         btnMore.TabIndex = 2
         btnMore.Text = "..."
         ' 
@@ -99,10 +109,11 @@ Partial Class frmOrderManagement
         btnDelete.FillColor2 = Color.FromArgb(CByte(255), CByte(249), CByte(144))
         btnDelete.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnDelete.ForeColor = Color.White
-        btnDelete.Location = New Point(150, 32)
+        btnDelete.Location = New Point(399, 43)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
         btnDelete.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        btnDelete.Size = New Size(67, 34)
+        btnDelete.Size = New Size(77, 45)
         btnDelete.TabIndex = 1
         btnDelete.Text = "Delete Order"
         ' 
@@ -117,10 +128,11 @@ Partial Class frmOrderManagement
         btnEdit.FillColor2 = Color.Transparent
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
-        btnEdit.Location = New Point(64, 32)
+        btnEdit.Location = New Point(301, 43)
+        btnEdit.Margin = New Padding(3, 4, 3, 4)
         btnEdit.Name = "btnEdit"
         btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        btnEdit.Size = New Size(69, 34)
+        btnEdit.Size = New Size(79, 45)
         btnEdit.TabIndex = 1
         btnEdit.Text = "Edit Order"
         ' 
@@ -139,7 +151,7 @@ Partial Class frmOrderManagement
         dgvOrderMannagement.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvOrderMannagement.ColumnHeadersHeight = 20
         dgvOrderMannagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvOrderMannagement.Columns.AddRange(New DataGridViewColumn() {dgvcCustomerName})
+        dgvOrderMannagement.Columns.AddRange(New DataGridViewColumn() {dgvcCustomerName, dgvcProductName, dgvcQuantity, dgvcDateofOrdered, dgvcShippingdate, dgvcStatus})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -149,11 +161,13 @@ Partial Class frmOrderManagement
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvOrderMannagement.DefaultCellStyle = DataGridViewCellStyle3
         dgvOrderMannagement.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvOrderMannagement.Location = New Point(64, 70)
+        dgvOrderMannagement.Location = New Point(73, 93)
+        dgvOrderMannagement.Margin = New Padding(3, 4, 3, 4)
         dgvOrderMannagement.Name = "dgvOrderMannagement"
         dgvOrderMannagement.RowHeadersVisible = False
+        dgvOrderMannagement.RowHeadersWidth = 51
         dgvOrderMannagement.RowTemplate.Height = 25
-        dgvOrderMannagement.Size = New Size(692, 291)
+        dgvOrderMannagement.Size = New Size(791, 388)
         dgvOrderMannagement.TabIndex = 6
         dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -180,6 +194,7 @@ Partial Class frmOrderManagement
         ' dgvcCustomerName
         ' 
         dgvcCustomerName.HeaderText = "Customer Name"
+        dgvcCustomerName.MinimumWidth = 6
         dgvcCustomerName.Name = "dgvcCustomerName"
         ' 
         ' lblOrderID
@@ -187,9 +202,9 @@ Partial Class frmOrderManagement
         lblOrderID.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         lblOrderID.AutoSize = True
         lblOrderID.ForeColor = SystemColors.ActiveCaption
-        lblOrderID.Location = New Point(64, 370)
+        lblOrderID.Location = New Point(73, 493)
         lblOrderID.Name = "lblOrderID"
-        lblOrderID.Size = New Size(51, 15)
+        lblOrderID.Size = New Size(66, 20)
         lblOrderID.TabIndex = 7
         lblOrderID.Text = "Order ID"
         ' 
@@ -198,9 +213,9 @@ Partial Class frmOrderManagement
         lblShippingDate.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         lblShippingDate.AutoSize = True
         lblShippingDate.ForeColor = SystemColors.ActiveCaption
-        lblShippingDate.Location = New Point(214, 370)
+        lblShippingDate.Location = New Point(245, 493)
         lblShippingDate.Name = "lblShippingDate"
-        lblShippingDate.Size = New Size(78, 15)
+        lblShippingDate.Size = New Size(100, 20)
         lblShippingDate.TabIndex = 7
         lblShippingDate.Text = "ShippingDate"
         ' 
@@ -212,20 +227,73 @@ Partial Class frmOrderManagement
         DtpShipping.FillColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         DtpShipping.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DtpShipping.Format = DateTimePickerFormat.Long
-        DtpShipping.Location = New Point(308, 370)
+        DtpShipping.Location = New Point(352, 493)
+        DtpShipping.Margin = New Padding(3, 4, 3, 4)
         DtpShipping.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         DtpShipping.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         DtpShipping.Name = "DtpShipping"
         DtpShipping.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        DtpShipping.Size = New Size(200, 36)
+        DtpShipping.Size = New Size(229, 48)
         DtpShipping.TabIndex = 8
         DtpShipping.Value = New Date(2023, 11, 29, 18, 46, 23, 186)
         ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.MinimumWidth = 6
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.MinimumWidth = 6
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' dgvcDateofOrdered
+        ' 
+        dgvcDateofOrdered.HeaderText = "Date of Ordered"
+        dgvcDateofOrdered.MinimumWidth = 6
+        dgvcDateofOrdered.Name = "dgvcDateofOrdered"
+        ' 
+        ' dgvcShippingdate
+        ' 
+        dgvcShippingdate.HeaderText = "Shipping Date"
+        dgvcShippingdate.MinimumWidth = 6
+        dgvcShippingdate.Name = "dgvcShippingdate"
+        ' 
+        ' dgvcStatus
+        ' 
+        dgvcStatus.HeaderText = "Status"
+        dgvcStatus.MinimumWidth = 6
+        dgvcStatus.Name = "dgvcStatus"
+        ' 
+        ' Guna2TextBox1
+        ' 
+        Guna2TextBox1.Anchor = AnchorStyles.Left
+        Guna2TextBox1.CustomizableEdges = CustomizableEdges11
+        Guna2TextBox1.DefaultText = ""
+        Guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox1.Location = New Point(73, 43)
+        Guna2TextBox1.Name = "Guna2TextBox1"
+        Guna2TextBox1.PasswordChar = ChrW(0)
+        Guna2TextBox1.PlaceholderText = ""
+        Guna2TextBox1.SelectedText = ""
+        Guna2TextBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        Guna2TextBox1.Size = New Size(222, 45)
+        Guna2TextBox1.TabIndex = 9
+        ' 
         ' frmOrderManagement
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(914, 600)
+        Controls.Add(Guna2TextBox1)
         Controls.Add(DtpShipping)
         Controls.Add(lblShippingDate)
         Controls.Add(lblOrderID)
@@ -234,6 +302,7 @@ Partial Class frmOrderManagement
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
         Controls.Add(btnNeworders)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "frmOrderManagement"
         Text = "Order Mannage"
         CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).EndInit()
@@ -249,4 +318,10 @@ Partial Class frmOrderManagement
     Friend WithEvents lblOrderID As Label
     Friend WithEvents lblShippingDate As Label
     Friend WithEvents DtpShipping As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDateofOrdered As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcShippingdate As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
 End Class

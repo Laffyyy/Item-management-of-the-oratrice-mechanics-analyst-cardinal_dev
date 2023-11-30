@@ -48,7 +48,7 @@ Partial Class frmNewOrders
         lblCustomerName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProduct = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        cbProduct = New Guna.UI2.WinForms.Guna2ComboBox()
+        cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvNewOrders, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -63,14 +63,13 @@ Partial Class frmNewOrders
         bttnOrder.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         bttnOrder.FillColor = Color.Transparent
         bttnOrder.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        bttnOrder.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        bttnOrder.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         bttnOrder.ForeColor = Color.White
         bttnOrder.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        bttnOrder.Location = New Point(598, 313)
-        bttnOrder.Margin = New Padding(3, 2, 3, 2)
+        bttnOrder.Location = New Point(683, 417)
         bttnOrder.Name = "bttnOrder"
         bttnOrder.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        bttnOrder.Size = New Size(197, 42)
+        bttnOrder.Size = New Size(225, 56)
         bttnOrder.TabIndex = 4
         bttnOrder.Text = "Order"
         bttnOrder.TextFormatNoPrefix = True
@@ -82,7 +81,7 @@ Partial Class frmNewOrders
         dgvNewOrders.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = Color.White
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -93,18 +92,20 @@ Partial Class frmNewOrders
         dgvNewOrders.Columns.AddRange(New DataGridViewColumn() {dgvcCustomerName, dgvcProduct, dgvcQuantity, dgvcShippingDate})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvNewOrders.DefaultCellStyle = DataGridViewCellStyle3
         dgvNewOrders.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvNewOrders.Location = New Point(12, 12)
+        dgvNewOrders.Location = New Point(14, 16)
+        dgvNewOrders.Margin = New Padding(3, 4, 3, 4)
         dgvNewOrders.Name = "dgvNewOrders"
         dgvNewOrders.RowHeadersVisible = False
+        dgvNewOrders.RowHeadersWidth = 51
         dgvNewOrders.RowTemplate.Height = 25
-        dgvNewOrders.Size = New Size(537, 368)
+        dgvNewOrders.Size = New Size(614, 491)
         dgvNewOrders.TabIndex = 5
         dgvNewOrders.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvNewOrders.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -115,14 +116,14 @@ Partial Class frmNewOrders
         dgvNewOrders.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvNewOrders.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         dgvNewOrders.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
-        dgvNewOrders.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvNewOrders.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         dgvNewOrders.ThemeStyle.HeaderStyle.ForeColor = Color.White
         dgvNewOrders.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         dgvNewOrders.ThemeStyle.HeaderStyle.Height = 20
         dgvNewOrders.ThemeStyle.ReadOnly = False
         dgvNewOrders.ThemeStyle.RowsStyle.BackColor = Color.White
         dgvNewOrders.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
-        dgvNewOrders.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvNewOrders.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         dgvNewOrders.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         dgvNewOrders.ThemeStyle.RowsStyle.Height = 25
         dgvNewOrders.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
@@ -131,21 +132,25 @@ Partial Class frmNewOrders
         ' dgvcCustomerName
         ' 
         dgvcCustomerName.HeaderText = "Customer Name"
+        dgvcCustomerName.MinimumWidth = 6
         dgvcCustomerName.Name = "dgvcCustomerName"
         ' 
         ' dgvcProduct
         ' 
         dgvcProduct.HeaderText = "Product"
+        dgvcProduct.MinimumWidth = 6
         dgvcProduct.Name = "dgvcProduct"
         ' 
         ' dgvcQuantity
         ' 
         dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.MinimumWidth = 6
         dgvcQuantity.Name = "dgvcQuantity"
         ' 
         ' dgvcShippingDate
         ' 
         dgvcShippingDate.HeaderText = "Shipping Date"
+        dgvcShippingDate.MinimumWidth = 6
         dgvcShippingDate.Name = "dgvcShippingDate"
         ' 
         ' Guna2DateTimePicker1
@@ -154,20 +159,23 @@ Partial Class frmNewOrders
         Guna2DateTimePicker1.Checked = True
         Guna2DateTimePicker1.CustomizableEdges = CustomizableEdges3
         Guna2DateTimePicker1.FillColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2DateTimePicker1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Guna2DateTimePicker1.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         Guna2DateTimePicker1.Format = DateTimePickerFormat.Long
-        Guna2DateTimePicker1.Location = New Point(598, 258)
+        Guna2DateTimePicker1.Location = New Point(683, 344)
+        Guna2DateTimePicker1.Margin = New Padding(3, 4, 3, 4)
         Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
         Guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2DateTimePicker1.Size = New Size(200, 36)
+        Guna2DateTimePicker1.Size = New Size(229, 48)
         Guna2DateTimePicker1.TabIndex = 6
         Guna2DateTimePicker1.Value = New Date(2023, 11, 29, 19, 35, 1, 299)
         ' 
         ' tbCustomerName
         ' 
         tbCustomerName.Anchor = AnchorStyles.Right
+        tbCustomerName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        tbCustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource
         tbCustomerName.CustomizableEdges = CustomizableEdges5
         tbCustomerName.DefaultText = ""
         tbCustomerName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
@@ -175,16 +183,15 @@ Partial Class frmNewOrders
         tbCustomerName.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         tbCustomerName.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         tbCustomerName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbCustomerName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbCustomerName.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         tbCustomerName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbCustomerName.Location = New Point(598, 43)
-        tbCustomerName.Margin = New Padding(3, 2, 3, 2)
+        tbCustomerName.Location = New Point(683, 57)
         tbCustomerName.Name = "tbCustomerName"
         tbCustomerName.PasswordChar = ChrW(0)
         tbCustomerName.PlaceholderText = ""
         tbCustomerName.SelectedText = ""
         tbCustomerName.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        tbCustomerName.Size = New Size(200, 32)
+        tbCustomerName.Size = New Size(229, 43)
         tbCustomerName.TabIndex = 2
         ' 
         ' checkbunknow
@@ -196,9 +203,10 @@ Partial Class frmNewOrders
         checkbunknow.CheckedState.BorderThickness = 0
         checkbunknow.CheckedState.FillColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         checkbunknow.ForeColor = SystemColors.ActiveCaption
-        checkbunknow.Location = New Point(598, 233)
+        checkbunknow.Location = New Point(676, 311)
+        checkbunknow.Margin = New Padding(3, 4, 3, 4)
         checkbunknow.Name = "checkbunknow"
-        checkbunknow.Size = New Size(89, 19)
+        checkbunknow.Size = New Size(109, 24)
         checkbunknow.TabIndex = 7
         checkbunknow.Text = "i dont know"
         checkbunknow.UncheckedState.BorderColor = Color.FromArgb(CByte(125), CByte(137), CByte(149))
@@ -216,16 +224,15 @@ Partial Class frmNewOrders
         tbQuantity.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         tbQuantity.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         tbQuantity.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbQuantity.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbQuantity.Font = New Font("Segoe UI", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         tbQuantity.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbQuantity.Location = New Point(598, 163)
-        tbQuantity.Margin = New Padding(3, 2, 3, 2)
+        tbQuantity.Location = New Point(683, 217)
         tbQuantity.Name = "tbQuantity"
         tbQuantity.PasswordChar = ChrW(0)
         tbQuantity.PlaceholderText = ""
         tbQuantity.SelectedText = ""
         tbQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        tbQuantity.Size = New Size(200, 32)
+        tbQuantity.Size = New Size(229, 43)
         tbQuantity.TabIndex = 2
         ' 
         ' lblCustomerName
@@ -233,9 +240,10 @@ Partial Class frmNewOrders
         lblCustomerName.Anchor = AnchorStyles.Right
         lblCustomerName.BackColor = Color.Transparent
         lblCustomerName.ForeColor = SystemColors.ActiveCaption
-        lblCustomerName.Location = New Point(598, 21)
+        lblCustomerName.Location = New Point(683, 28)
+        lblCustomerName.Margin = New Padding(3, 4, 3, 4)
         lblCustomerName.Name = "lblCustomerName"
-        lblCustomerName.Size = New Size(90, 17)
+        lblCustomerName.Size = New Size(110, 22)
         lblCustomerName.TabIndex = 8
         lblCustomerName.Text = "Customer Name"
         ' 
@@ -244,9 +252,10 @@ Partial Class frmNewOrders
         lblProduct.Anchor = AnchorStyles.Right
         lblProduct.BackColor = Color.Transparent
         lblProduct.ForeColor = SystemColors.ActiveCaption
-        lblProduct.Location = New Point(598, 82)
+        lblProduct.Location = New Point(683, 109)
+        lblProduct.Margin = New Padding(3, 4, 3, 4)
         lblProduct.Name = "lblProduct"
-        lblProduct.Size = New Size(45, 17)
+        lblProduct.Size = New Size(54, 22)
         lblProduct.TabIndex = 8
         lblProduct.Text = "Product"
         ' 
@@ -255,36 +264,38 @@ Partial Class frmNewOrders
         lblQuantity.Anchor = AnchorStyles.Right
         lblQuantity.BackColor = Color.Transparent
         lblQuantity.ForeColor = SystemColors.ActiveCaption
-        lblQuantity.Location = New Point(595, 141)
+        lblQuantity.Location = New Point(680, 188)
+        lblQuantity.Margin = New Padding(3, 4, 3, 4)
         lblQuantity.Name = "lblQuantity"
-        lblQuantity.Size = New Size(49, 17)
+        lblQuantity.Size = New Size(59, 22)
         lblQuantity.TabIndex = 8
         lblQuantity.Text = "Quantity"
         ' 
-        ' cbProduct
+        ' cbProductName
         ' 
-        cbProduct.Anchor = AnchorStyles.Right
-        cbProduct.BackColor = Color.Transparent
-        cbProduct.CustomizableEdges = CustomizableEdges9
-        cbProduct.DrawMode = DrawMode.OwnerDrawFixed
-        cbProduct.DropDownStyle = ComboBoxStyle.DropDownList
-        cbProduct.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        cbProduct.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        cbProduct.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        cbProduct.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        cbProduct.ItemHeight = 30
-        cbProduct.Location = New Point(598, 105)
-        cbProduct.Name = "cbProduct"
-        cbProduct.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        cbProduct.Size = New Size(200, 36)
-        cbProduct.TabIndex = 9
+        cbProductName.Anchor = AnchorStyles.Right
+        cbProductName.BackColor = Color.Transparent
+        cbProductName.CustomizableEdges = CustomizableEdges9
+        cbProductName.DrawMode = DrawMode.OwnerDrawFixed
+        cbProductName.DropDownStyle = ComboBoxStyle.DropDownList
+        cbProductName.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbProductName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbProductName.Font = New Font("Segoe UI", 10.0F, FontStyle.Regular, GraphicsUnit.Point)
+        cbProductName.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cbProductName.ItemHeight = 30
+        cbProductName.Location = New Point(683, 140)
+        cbProductName.Margin = New Padding(3, 4, 3, 4)
+        cbProductName.Name = "cbProductName"
+        cbProductName.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        cbProductName.Size = New Size(228, 36)
+        cbProductName.TabIndex = 9
         ' 
         ' frmNewOrders
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(852, 392)
-        Controls.Add(cbProduct)
+        ClientSize = New Size(974, 523)
+        Controls.Add(cbProductName)
         Controls.Add(lblQuantity)
         Controls.Add(lblProduct)
         Controls.Add(lblCustomerName)
@@ -294,7 +305,6 @@ Partial Class frmNewOrders
         Controls.Add(bttnOrder)
         Controls.Add(tbQuantity)
         Controls.Add(tbCustomerName)
-        Margin = New Padding(3, 2, 3, 2)
         Name = "frmNewOrders"
         Text = "New Orders"
         CType(dgvNewOrders, ComponentModel.ISupportInitialize).EndInit()
@@ -314,5 +324,5 @@ Partial Class frmNewOrders
     Friend WithEvents lblCustomerName As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblProduct As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblQuantity As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents cbProduct As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents cbProductName As Guna.UI2.WinForms.Guna2ComboBox
 End Class
