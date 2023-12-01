@@ -33,24 +33,29 @@ Partial Class frmStockAdjustment
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcDateOfChange = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        dgvcChange = New DataGridViewTextBoxColumn()
+        dgvcFinalQuantity = New DataGridViewTextBoxColumn()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
         cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        lblAmount = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
-        dgvcProductName = New DataGridViewTextBoxColumn()
-        dgvcDateOfRestock = New DataGridViewTextBoxColumn()
-        dgvcQuantity = New DataGridViewTextBoxColumn()
+        btnReplenish = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' tbProductID
         ' 
-        tbProductID.Anchor = AnchorStyles.Right
+        tbProductID.Anchor = AnchorStyles.Left
         tbProductID.CustomizableEdges = CustomizableEdges1
         tbProductID.DefaultText = ""
         tbProductID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
@@ -60,7 +65,7 @@ Partial Class frmStockAdjustment
         tbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductID.Location = New Point(472, 148)
+        tbProductID.Location = New Point(32, 148)
         tbProductID.Name = "tbProductID"
         tbProductID.PasswordChar = ChrW(0)
         tbProductID.PlaceholderText = ""
@@ -71,7 +76,7 @@ Partial Class frmStockAdjustment
         ' 
         ' tbProductQuantity
         ' 
-        tbProductQuantity.Anchor = AnchorStyles.Right
+        tbProductQuantity.Anchor = AnchorStyles.Left
         tbProductQuantity.CustomizableEdges = CustomizableEdges3
         tbProductQuantity.DefaultText = ""
         tbProductQuantity.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
@@ -81,7 +86,7 @@ Partial Class frmStockAdjustment
         tbProductQuantity.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductQuantity.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductQuantity.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductQuantity.Location = New Point(472, 228)
+        tbProductQuantity.Location = New Point(31, 270)
         tbProductQuantity.Name = "tbProductQuantity"
         tbProductQuantity.PasswordChar = ChrW(0)
         tbProductQuantity.PlaceholderText = ""
@@ -106,7 +111,7 @@ Partial Class frmStockAdjustment
         dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvstockad.ColumnHeadersHeight = 20
         dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateOfRestock, dgvcQuantity})
+        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateOfChange, dgvcQuantity, dgvcChange, dgvcFinalQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -116,11 +121,11 @@ Partial Class frmStockAdjustment
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvstockad.DefaultCellStyle = DataGridViewCellStyle3
         dgvstockad.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvstockad.Location = New Point(42, 44)
+        dgvstockad.Location = New Point(274, 44)
         dgvstockad.Name = "dgvstockad"
         dgvstockad.RowHeadersVisible = False
         dgvstockad.RowTemplate.Height = 25
-        dgvstockad.Size = New Size(317, 311)
+        dgvstockad.Size = New Size(514, 311)
         dgvstockad.TabIndex = 2
         dgvstockad.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvstockad.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -144,9 +149,34 @@ Partial Class frmStockAdjustment
         dgvstockad.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvstockad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcDateOfChange
+        ' 
+        dgvcDateOfChange.HeaderText = "Date Of Change"
+        dgvcDateOfChange.Name = "dgvcDateOfChange"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' dgvcChange
+        ' 
+        dgvcChange.HeaderText = "Change"
+        dgvcChange.Name = "dgvcChange"
+        ' 
+        ' dgvcFinalQuantity
+        ' 
+        dgvcFinalQuantity.HeaderText = "Final Quantity"
+        dgvcFinalQuantity.Name = "dgvcFinalQuantity"
+        ' 
         ' Guna2GradientButton1
         ' 
-        Guna2GradientButton1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Guna2GradientButton1.Anchor = AnchorStyles.Left
         Guna2GradientButton1.CustomizableEdges = CustomizableEdges5
         Guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray
         Guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray
@@ -158,7 +188,7 @@ Partial Class frmStockAdjustment
         Guna2GradientButton1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Guna2GradientButton1.ForeColor = Color.White
         Guna2GradientButton1.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        Guna2GradientButton1.Location = New Point(482, 310)
+        Guna2GradientButton1.Location = New Point(41, 352)
         Guna2GradientButton1.Name = "Guna2GradientButton1"
         Guna2GradientButton1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         Guna2GradientButton1.Size = New Size(180, 45)
@@ -167,7 +197,7 @@ Partial Class frmStockAdjustment
         ' 
         ' cbProductName
         ' 
-        cbProductName.Anchor = AnchorStyles.Right
+        cbProductName.Anchor = AnchorStyles.Left
         cbProductName.BackColor = Color.Transparent
         cbProductName.CustomizableEdges = CustomizableEdges7
         cbProductName.DrawMode = DrawMode.OwnerDrawFixed
@@ -177,7 +207,7 @@ Partial Class frmStockAdjustment
         cbProductName.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
         cbProductName.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
         cbProductName.ItemHeight = 30
-        cbProductName.Location = New Point(472, 65)
+        cbProductName.Location = New Point(32, 65)
         cbProductName.Name = "cbProductName"
         cbProductName.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         cbProductName.Size = New Size(200, 36)
@@ -185,10 +215,10 @@ Partial Class frmStockAdjustment
         ' 
         ' lblProductName
         ' 
-        lblProductName.Anchor = AnchorStyles.Right
+        lblProductName.Anchor = AnchorStyles.Left
         lblProductName.BackColor = Color.Transparent
         lblProductName.ForeColor = SystemColors.ActiveCaption
-        lblProductName.Location = New Point(472, 44)
+        lblProductName.Location = New Point(32, 44)
         lblProductName.Name = "lblProductName"
         lblProductName.Size = New Size(83, 17)
         lblProductName.TabIndex = 5
@@ -196,25 +226,25 @@ Partial Class frmStockAdjustment
         ' 
         ' lblProductID
         ' 
-        lblProductID.Anchor = AnchorStyles.Right
+        lblProductID.Anchor = AnchorStyles.Left
         lblProductID.BackColor = Color.Transparent
         lblProductID.ForeColor = SystemColors.ActiveCaption
-        lblProductID.Location = New Point(472, 125)
+        lblProductID.Location = New Point(32, 125)
         lblProductID.Name = "lblProductID"
         lblProductID.Size = New Size(62, 17)
         lblProductID.TabIndex = 5
         lblProductID.Text = "Product ID:"
         ' 
-        ' lblAmount
+        ' lblQuantity
         ' 
-        lblAmount.Anchor = AnchorStyles.Right
-        lblAmount.BackColor = Color.Transparent
-        lblAmount.ForeColor = SystemColors.ActiveCaption
-        lblAmount.Location = New Point(472, 205)
-        lblAmount.Name = "lblAmount"
-        lblAmount.Size = New Size(50, 17)
-        lblAmount.TabIndex = 5
-        lblAmount.Text = "Amount: "
+        lblQuantity.Anchor = AnchorStyles.Left
+        lblQuantity.BackColor = Color.Transparent
+        lblQuantity.ForeColor = SystemColors.ActiveCaption
+        lblQuantity.Location = New Point(31, 247)
+        lblQuantity.Name = "lblQuantity"
+        lblQuantity.Size = New Size(52, 17)
+        lblQuantity.TabIndex = 5
+        lblQuantity.Text = "Quantity: "
         ' 
         ' Amountmodification
         ' 
@@ -224,27 +254,33 @@ Partial Class frmStockAdjustment
         Amountmodification.MaximumSize = New Size(0, 0)
         Amountmodification.ToolTipTitle = "adding or removing"
         ' 
-        ' dgvcProductName
+        ' btnReplenish
         ' 
-        dgvcProductName.HeaderText = "Product Name"
-        dgvcProductName.Name = "dgvcProductName"
-        ' 
-        ' dgvcDateOfRestock
-        ' 
-        dgvcDateOfRestock.HeaderText = "Date Of Restock"
-        dgvcDateOfRestock.Name = "dgvcDateOfRestock"
-        ' 
-        ' dgvcQuantity
-        ' 
-        dgvcQuantity.HeaderText = "Quantity"
-        dgvcQuantity.Name = "dgvcQuantity"
+        btnReplenish.Anchor = AnchorStyles.Left
+        btnReplenish.CustomizableEdges = CustomizableEdges9
+        btnReplenish.DisabledState.BorderColor = Color.DarkGray
+        btnReplenish.DisabledState.CustomBorderColor = Color.DarkGray
+        btnReplenish.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnReplenish.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnReplenish.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnReplenish.FillColor2 = Color.Transparent
+        btnReplenish.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnReplenish.ForeColor = Color.White
+        btnReplenish.GradientMode = Drawing2D.LinearGradientMode.Vertical
+        btnReplenish.Location = New Point(90, 247)
+        btnReplenish.Name = "btnReplenish"
+        btnReplenish.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        btnReplenish.Size = New Size(142, 17)
+        btnReplenish.TabIndex = 6
+        btnReplenish.Text = "Replenish"
         ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(lblAmount)
+        Controls.Add(btnReplenish)
+        Controls.Add(lblQuantity)
         Controls.Add(lblProductID)
         Controls.Add(lblProductName)
         Controls.Add(cbProductName)
@@ -272,9 +308,12 @@ Partial Class frmStockAdjustment
     Friend WithEvents cbProductName As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents lblProductName As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblProductID As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lblAmount As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblQuantity As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Amountmodification As Guna.UI2.WinForms.Guna2HtmlToolTip
     Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcDateOfRestock As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDateOfChange As DataGridViewTextBoxColumn
     Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcChange As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcFinalQuantity As DataGridViewTextBoxColumn
+    Friend WithEvents btnReplenish As Guna.UI2.WinForms.Guna2GradientButton
 End Class

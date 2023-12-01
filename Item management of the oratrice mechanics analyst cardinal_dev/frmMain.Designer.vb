@@ -31,6 +31,8 @@ Partial Class frmMain
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -45,13 +47,12 @@ Partial Class frmMain
         Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         pnlMainPanel = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         imgLogo = New PictureBox()
         btnLogout = New Guna.UI2.WinForms.Guna2GradientButton()
         btnAccountAdj = New Guna.UI2.WinForms.Guna2GradientButton()
+        btnCustomer = New Guna.UI2.WinForms.Guna2GradientButton()
         btnStockAdjustment = New Guna.UI2.WinForms.Guna2GradientButton()
         btnOrderMannage = New Guna.UI2.WinForms.Guna2GradientButton()
         btnProductEntry = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -62,7 +63,6 @@ Partial Class frmMain
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         pnlDesktop = New Panel()
         imgLogomain = New PictureBox()
-        btnCustomer = New Guna.UI2.WinForms.Guna2GradientButton()
         pnlMainPanel.SuspendLayout()
         Guna2CustomGradientPanel2.SuspendLayout()
         CType(imgLogo, ComponentModel.ISupportInitialize).BeginInit()
@@ -93,7 +93,7 @@ Partial Class frmMain
         pnlMainPanel.Location = New Point(0, 0)
         pnlMainPanel.Name = "pnlMainPanel"
         pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        pnlMainPanel.Size = New Size(135, 493)
+        pnlMainPanel.Size = New Size(135, 627)
         pnlMainPanel.TabIndex = 0
         ' 
         ' Guna2CustomGradientPanel2
@@ -141,7 +141,7 @@ Partial Class frmMain
         btnLogout.FocusedColor = Color.Transparent
         btnLogout.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
         btnLogout.ForeColor = SystemColors.ActiveCaption
-        btnLogout.Location = New Point(0, 448)
+        btnLogout.Location = New Point(0, 582)
         btnLogout.Name = "btnLogout"
         btnLogout.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btnLogout.Size = New Size(73, 45)
@@ -166,13 +166,37 @@ Partial Class frmMain
         btnAccountAdj.FocusedColor = Color.Transparent
         btnAccountAdj.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
         btnAccountAdj.ForeColor = SystemColors.ActiveCaption
-        btnAccountAdj.Location = New Point(0, 385)
+        btnAccountAdj.Location = New Point(0, 519)
         btnAccountAdj.Name = "btnAccountAdj"
         btnAccountAdj.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnAccountAdj.Size = New Size(135, 45)
         btnAccountAdj.TabIndex = 2
         btnAccountAdj.Text = "Account Adjustment"
         btnAccountAdj.UseTransparentBackground = True
+        ' 
+        ' btnCustomer
+        ' 
+        btnCustomer.Animated = True
+        btnCustomer.BackColor = Color.Transparent
+        btnCustomer.Cursor = Cursors.Hand
+        btnCustomer.CustomizableEdges = CustomizableEdges7
+        btnCustomer.DisabledState.BorderColor = Color.DarkGray
+        btnCustomer.DisabledState.CustomBorderColor = Color.DarkGray
+        btnCustomer.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnCustomer.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnCustomer.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnCustomer.FillColor = Color.Transparent
+        btnCustomer.FillColor2 = Color.Transparent
+        btnCustomer.FocusedColor = Color.Transparent
+        btnCustomer.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
+        btnCustomer.ForeColor = SystemColors.ActiveCaption
+        btnCustomer.Location = New Point(0, 262)
+        btnCustomer.Name = "btnCustomer"
+        btnCustomer.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        btnCustomer.Size = New Size(135, 45)
+        btnCustomer.TabIndex = 2
+        btnCustomer.Text = "Customer"
+        btnCustomer.UseTransparentBackground = True
         ' 
         ' btnStockAdjustment
         ' 
@@ -347,7 +371,7 @@ Partial Class frmMain
         pnlDesktop.Dock = DockStyle.Fill
         pnlDesktop.Location = New Point(135, 66)
         pnlDesktop.Name = "pnlDesktop"
-        pnlDesktop.Size = New Size(829, 427)
+        pnlDesktop.Size = New Size(829, 561)
         pnlDesktop.TabIndex = 2
         ' 
         ' imgLogomain
@@ -356,34 +380,10 @@ Partial Class frmMain
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
         imgLogomain.Location = New Point(319, 94)
         imgLogomain.Name = "imgLogomain"
-        imgLogomain.Size = New Size(199, 196)
+        imgLogomain.Size = New Size(199, 330)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
-        ' 
-        ' btnCustomer
-        ' 
-        btnCustomer.Animated = True
-        btnCustomer.BackColor = Color.Transparent
-        btnCustomer.Cursor = Cursors.Hand
-        btnCustomer.CustomizableEdges = CustomizableEdges7
-        btnCustomer.DisabledState.BorderColor = Color.DarkGray
-        btnCustomer.DisabledState.CustomBorderColor = Color.DarkGray
-        btnCustomer.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnCustomer.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnCustomer.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        btnCustomer.FillColor = Color.Transparent
-        btnCustomer.FillColor2 = Color.Transparent
-        btnCustomer.FocusedColor = Color.Transparent
-        btnCustomer.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
-        btnCustomer.ForeColor = SystemColors.ActiveCaption
-        btnCustomer.Location = New Point(0, 262)
-        btnCustomer.Name = "btnCustomer"
-        btnCustomer.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        btnCustomer.Size = New Size(135, 45)
-        btnCustomer.TabIndex = 2
-        btnCustomer.Text = "Customer"
-        btnCustomer.UseTransparentBackground = True
         ' 
         ' frmMain
         ' 
@@ -391,11 +391,11 @@ Partial Class frmMain
         AutoScaleMode = AutoScaleMode.Font
         AutoSize = True
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
-        ClientSize = New Size(964, 493)
+        ClientSize = New Size(964, 627)
         Controls.Add(pnlDesktop)
         Controls.Add(pnlHeader)
         Controls.Add(pnlMainPanel)
-        MinimumSize = New Size(980, 532)
+        MinimumSize = New Size(980, 666)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen
         pnlMainPanel.ResumeLayout(False)

@@ -88,13 +88,22 @@ Public Class frmProductEntry
         btnEdit.Text = "EDIT MODE"
 
         productentryEditmode = True
+
+        tbQuantity.Enabled = False
+
+        btnSave.Text = "Edit"
     End Sub
 
     Private Sub notOnedit()
         btnEdit.ForeColor = Color.White
         btnEdit.FillColor = Color.FromArgb(94, 148, 255)
         btnEdit.Text = "Edit product"
+
         productentryEditmode = False
+
+        tbQuantity.Enabled = True
+
+        btnSave.Text = "Save"
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -145,6 +154,25 @@ Public Class frmProductEntry
     End Sub
 
     Private Sub dgvProducts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellContentClick
+
+    End Sub
+
+    Private Sub frmProductEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub tbProductDescriptionEntry_TextChanged(sender As Object, e As EventArgs) Handles tbProductDescriptionEntry.TextChanged, Guna2TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub lnlPanel_Click(sender As Object, e As EventArgs) Handles lnlPanel.Click, lblDocumention.Click
+    End Sub
+
+    Private Sub lblProductName_Click(sender As Object, e As EventArgs) Handles lblProductName.Click
+
+    End Sub
+
+    Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles lblQuantity.Click
 
     End Sub
 End Class

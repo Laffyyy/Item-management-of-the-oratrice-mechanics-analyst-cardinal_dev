@@ -1,5 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmStockAdjustment
+
+    Public Shared Property replenishorexhauset As Boolean = False
+    'false = replenish
+    'true = exhaust
+
     Private Function IsStockIdUnique(stockId As String) As Boolean
         Dim myConnection As MySqlConnection = Common.getDBConnectionX()
         Dim isUnique As Boolean = True
@@ -88,9 +93,9 @@ Public Class frmStockAdjustment
             'myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
             'myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
 
-            dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
-            dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
-            dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
+            'dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
+            'dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
+            'dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
 
             dgvstockad.DataSource = myDataSet2.Tables("myData")
 
@@ -170,8 +175,23 @@ Public Class frmStockAdjustment
         End Try
     End Sub
 
+    Private Sub replenish()
+        replenishorexhauset = False
+        btnReplenish.Text = "Replenish"
+    End Sub
 
+    Private Sub exhaust()
+        replenishorexhauset = True
+        btnReplenish.Text = "Exhaust"
+    End Sub
 
+    Private Sub btnReplenish_Click(sender As Object, e As EventArgs) Handles btnReplenish.Click
+        If replenishorexhauset Then
+            replenish()
+        Else
+            exhaust()
+        End If
+    End Sub
 
     Private Sub dgvstockad_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvstockad.CellContentClick
 
@@ -193,4 +213,6 @@ Public Class frmStockAdjustment
     Private Sub cbProductName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductName.SelectedIndexChanged
         DisplayProductID()
     End Sub
+
+
 End Class
