@@ -5,6 +5,8 @@ Public Class frmStockAdjustment
     'false = replenish
     'true = exhaust
 
+
+
     Private Function IsStockIdUnique(stockId As String) As Boolean
         Dim myConnection As MySqlConnection = Common.getDBConnectionX()
         Dim isUnique As Boolean = True
@@ -204,6 +206,8 @@ Public Class frmStockAdjustment
     Private Sub frmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayStock()
         DisplayProductName()
+        replenish()
+
     End Sub
 
     Private Sub tbProductID_TextChanged(sender As Object, e As EventArgs) Handles tbProductID.TextChanged

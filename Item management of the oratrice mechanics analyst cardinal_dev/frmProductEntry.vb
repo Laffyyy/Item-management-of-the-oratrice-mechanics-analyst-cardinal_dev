@@ -161,12 +161,9 @@ Public Class frmProductEntry
 
     End Sub
 
-    Private Sub tbProductDescriptionEntry_TextChanged(sender As Object, e As EventArgs) Handles tbProductDescriptionEntry.TextChanged, Guna2TextBox1.TextChanged
 
-    End Sub
 
-    Private Sub lnlPanel_Click(sender As Object, e As EventArgs) Handles lnlPanel.Click, lblDocumention.Click
-    End Sub
+
 
     Private Sub lblProductName_Click(sender As Object, e As EventArgs) Handles lblProductName.Click
 

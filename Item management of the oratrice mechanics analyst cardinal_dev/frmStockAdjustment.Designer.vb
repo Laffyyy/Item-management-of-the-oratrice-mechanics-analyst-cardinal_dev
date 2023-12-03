@@ -38,11 +38,6 @@ Partial Class frmStockAdjustment
         tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
-        dgvcProductName = New DataGridViewTextBoxColumn()
-        dgvcDateOfChange = New DataGridViewTextBoxColumn()
-        dgvcQuantity = New DataGridViewTextBoxColumn()
-        dgvcChange = New DataGridViewTextBoxColumn()
-        dgvcFinalQuantity = New DataGridViewTextBoxColumn()
         Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
         cbProductName = New Guna.UI2.WinForms.Guna2ComboBox()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -50,6 +45,12 @@ Partial Class frmStockAdjustment
         lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         btnReplenish = New Guna.UI2.WinForms.Guna2GradientButton()
+        dgvcModification = New DataGridViewTextBoxColumn()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcDateOfChange = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        dgvcChange = New DataGridViewTextBoxColumn()
+        dgvcFinalQuantity = New DataGridViewTextBoxColumn()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -111,7 +112,7 @@ Partial Class frmStockAdjustment
         dgvstockad.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvstockad.ColumnHeadersHeight = 20
         dgvstockad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcDateOfChange, dgvcQuantity, dgvcChange, dgvcFinalQuantity})
+        dgvstockad.Columns.AddRange(New DataGridViewColumn() {dgvcModification, dgvcProductName, dgvcDateOfChange, dgvcQuantity, dgvcChange, dgvcFinalQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -148,31 +149,6 @@ Partial Class frmStockAdjustment
         dgvstockad.ThemeStyle.RowsStyle.Height = 25
         dgvstockad.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvstockad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        ' 
-        ' dgvcProductName
-        ' 
-        dgvcProductName.HeaderText = "Product Name"
-        dgvcProductName.Name = "dgvcProductName"
-        ' 
-        ' dgvcDateOfChange
-        ' 
-        dgvcDateOfChange.HeaderText = "Date Of Change"
-        dgvcDateOfChange.Name = "dgvcDateOfChange"
-        ' 
-        ' dgvcQuantity
-        ' 
-        dgvcQuantity.HeaderText = "Quantity"
-        dgvcQuantity.Name = "dgvcQuantity"
-        ' 
-        ' dgvcChange
-        ' 
-        dgvcChange.HeaderText = "Change"
-        dgvcChange.Name = "dgvcChange"
-        ' 
-        ' dgvcFinalQuantity
-        ' 
-        dgvcFinalQuantity.HeaderText = "Final Quantity"
-        dgvcFinalQuantity.Name = "dgvcFinalQuantity"
         ' 
         ' Guna2GradientButton1
         ' 
@@ -274,6 +250,36 @@ Partial Class frmStockAdjustment
         btnReplenish.TabIndex = 6
         btnReplenish.Text = "Replenish"
         ' 
+        ' dgvcModification
+        ' 
+        dgvcModification.HeaderText = "Modification"
+        dgvcModification.Name = "dgvcModification"
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcDateOfChange
+        ' 
+        dgvcDateOfChange.HeaderText = "Date Of Change"
+        dgvcDateOfChange.Name = "dgvcDateOfChange"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' dgvcChange
+        ' 
+        dgvcChange.HeaderText = "Change"
+        dgvcChange.Name = "dgvcChange"
+        ' 
+        ' dgvcFinalQuantity
+        ' 
+        dgvcFinalQuantity.HeaderText = "Final Quantity"
+        dgvcFinalQuantity.Name = "dgvcFinalQuantity"
+        ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -310,10 +316,11 @@ Partial Class frmStockAdjustment
     Friend WithEvents lblProductID As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblQuantity As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Amountmodification As Guna.UI2.WinForms.Guna2HtmlToolTip
+    Friend WithEvents btnReplenish As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents dgvcModification As DataGridViewTextBoxColumn
     Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
     Friend WithEvents dgvcDateOfChange As DataGridViewTextBoxColumn
     Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
     Friend WithEvents dgvcChange As DataGridViewTextBoxColumn
     Friend WithEvents dgvcFinalQuantity As DataGridViewTextBoxColumn
-    Friend WithEvents btnReplenish As Guna.UI2.WinForms.Guna2GradientButton
 End Class

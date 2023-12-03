@@ -395,6 +395,7 @@ Partial Class frmMain
         Controls.Add(pnlDesktop)
         Controls.Add(pnlHeader)
         Controls.Add(pnlMainPanel)
+        DoubleBuffered = True
         MinimumSize = New Size(980, 666)
         Name = "frmMain"
         StartPosition = FormStartPosition.CenterScreen

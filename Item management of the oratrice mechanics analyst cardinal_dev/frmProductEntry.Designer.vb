@@ -43,8 +43,6 @@ Partial Class frmProductEntry
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -57,16 +55,16 @@ Partial Class frmProductEntry
         dgvcProductName = New DataGridViewTextBoxColumn()
         dgvcPrice = New DataGridViewTextBoxColumn()
         dgvcdescription = New DataGridViewTextBoxColumn()
+        dgvcStatus = New DataGridViewTextBoxColumn()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         lblStatus = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
         btnProductIDGenerator = New Guna.UI2.WinForms.Guna2GradientButton()
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
-        lblDocumention = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbQuantity = New Guna.UI2.WinForms.Guna2TextBox()
+        dgvcTotalQuantity = New DataGridViewTextBoxColumn()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -106,11 +104,11 @@ Partial Class frmProductEntry
         lnlPanel.Anchor = AnchorStyles.Left
         lnlPanel.BackColor = Color.Transparent
         lnlPanel.ForeColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        lnlPanel.Location = New Point(24, 410)
+        lnlPanel.Location = New Point(24, 310)
         lnlPanel.Name = "lnlPanel"
-        lnlPanel.Size = New Size(108, 17)
+        lnlPanel.Size = New Size(114, 17)
         lnlPanel.TabIndex = 1
-        lnlPanel.Text = "Product Description"
+        lnlPanel.Text = "Product Description :"
         ' 
         ' tbProductNameEntry
         ' 
@@ -168,14 +166,14 @@ Partial Class frmProductEntry
         tbProductDescriptionEntry.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductDescriptionEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductDescriptionEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductDescriptionEntry.Location = New Point(24, 425)
+        tbProductDescriptionEntry.Location = New Point(24, 327)
         tbProductDescriptionEntry.Multiline = True
         tbProductDescriptionEntry.Name = "tbProductDescriptionEntry"
         tbProductDescriptionEntry.PasswordChar = ChrW(0)
         tbProductDescriptionEntry.PlaceholderText = ""
         tbProductDescriptionEntry.SelectedText = ""
         tbProductDescriptionEntry.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        tbProductDescriptionEntry.Size = New Size(243, 63)
+        tbProductDescriptionEntry.Size = New Size(243, 83)
         tbProductDescriptionEntry.TabIndex = 2
         ' 
         ' btnSave
@@ -213,7 +211,7 @@ Partial Class frmProductEntry
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription})
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -265,6 +263,11 @@ Partial Class frmProductEntry
         ' 
         dgvcdescription.HeaderText = "Description"
         dgvcdescription.Name = "dgvcdescription"
+        ' 
+        ' dgvcStatus
+        ' 
+        dgvcStatus.HeaderText = "Status"
+        dgvcStatus.Name = "dgvcStatus"
         ' 
         ' btnEdit
         ' 
@@ -365,39 +368,6 @@ Partial Class frmProductEntry
         Guna2ComboBox1.Size = New Size(157, 36)
         Guna2ComboBox1.TabIndex = 9
         ' 
-        ' lblDocumention
-        ' 
-        lblDocumention.Anchor = AnchorStyles.Left
-        lblDocumention.BackColor = Color.Transparent
-        lblDocumention.ForeColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        lblDocumention.Location = New Point(24, 318)
-        lblDocumention.Name = "lblDocumention"
-        lblDocumention.Size = New Size(76, 17)
-        lblDocumention.TabIndex = 1
-        lblDocumention.Text = "Documention"
-        ' 
-        ' Guna2TextBox1
-        ' 
-        Guna2TextBox1.Anchor = AnchorStyles.Left
-        Guna2TextBox1.CustomizableEdges = CustomizableEdges17
-        Guna2TextBox1.DefaultText = ""
-        Guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Location = New Point(24, 334)
-        Guna2TextBox1.Multiline = True
-        Guna2TextBox1.Name = "Guna2TextBox1"
-        Guna2TextBox1.PasswordChar = ChrW(0)
-        Guna2TextBox1.PlaceholderText = ""
-        Guna2TextBox1.SelectedText = ""
-        Guna2TextBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges18
-        Guna2TextBox1.Size = New Size(243, 63)
-        Guna2TextBox1.TabIndex = 2
-        ' 
         ' lblQuantity
         ' 
         lblQuantity.Anchor = AnchorStyles.Left
@@ -412,7 +382,7 @@ Partial Class frmProductEntry
         ' tbQuantity
         ' 
         tbQuantity.Anchor = AnchorStyles.Left
-        tbQuantity.CustomizableEdges = CustomizableEdges19
+        tbQuantity.CustomizableEdges = CustomizableEdges17
         tbQuantity.DefaultText = ""
         tbQuantity.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbQuantity.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -427,9 +397,14 @@ Partial Class frmProductEntry
         tbQuantity.PasswordChar = ChrW(0)
         tbQuantity.PlaceholderText = ""
         tbQuantity.SelectedText = ""
-        tbQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        tbQuantity.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         tbQuantity.Size = New Size(157, 27)
         tbQuantity.TabIndex = 2
+        ' 
+        ' dgvcTotalQuantity
+        ' 
+        dgvcTotalQuantity.HeaderText = "TotalQuantity"
+        dgvcTotalQuantity.Name = "dgvcTotalQuantity"
         ' 
         ' frmProductEntry
         ' 
@@ -442,13 +417,11 @@ Partial Class frmProductEntry
         Controls.Add(dgvProducts)
         Controls.Add(btnProductIDGenerator)
         Controls.Add(btnSave)
-        Controls.Add(Guna2TextBox1)
         Controls.Add(tbProductDescriptionEntry)
         Controls.Add(tbQuantity)
         Controls.Add(tbProductPriceEntry)
         Controls.Add(Guna2TextBox2)
         Controls.Add(tbProductNameEntry)
-        Controls.Add(lblDocumention)
         Controls.Add(lnlPanel)
         Controls.Add(lblQuantity)
         Controls.Add(lblProductID)
@@ -484,8 +457,8 @@ Partial Class frmProductEntry
     Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnProductIDGenerator As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents lblDocumention As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblQuantity As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents tbQuantity As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcTotalQuantity As DataGridViewTextBoxColumn
 End Class
