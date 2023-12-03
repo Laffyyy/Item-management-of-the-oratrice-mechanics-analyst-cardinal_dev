@@ -210,7 +210,7 @@ Public Class frmStockAdjustment
 
     End Sub
 
-    Private Sub tbProductID_TextChanged(sender As Object, e As EventArgs) Handles tbProductID.TextChanged
+    Private Sub tbProductID_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 

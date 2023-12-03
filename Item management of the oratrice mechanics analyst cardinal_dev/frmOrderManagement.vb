@@ -6,9 +6,9 @@
 
         ' This call is required by the designer.
         InitializeComponent()
-        DtpShipping.Hide()
-        lblShippingDate.Hide()
-        lblOrderID.Hide()
+
+
+
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -25,9 +25,8 @@
         btnDelete.Hide()
         'if on edit mode its ok to go to other form but not log out and close program
         odermanagementstateEdit = True
-        DtpShipping.Show()
-        lblShippingDate.Show()
-        lblOrderID.Show()
+
+
 
     End Sub
 
@@ -39,11 +38,11 @@
         btnDelete.Show()
         odermanagementstateEdit = False
 
-        DtpShipping.Hide()
-        lblShippingDate.Hide()
-        lblOrderID.Hide()
+
+
+
     End Sub
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click, btnGenerateID.Click, Guna2GradientButton1.Click
         If Not odermanagementstateEdit Then
             Onedit()
 
@@ -59,21 +58,25 @@
     End Sub
 
 
-    Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
-        If Not frmOrderManagement.odermanagementstateEdit Then
+    'Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
+    '    If Not frmOrderManagement.odermanagementstateEdit Then
 
 
-            frmMain.OpenChildrenform(New frmNewOrders)
-            frmMain.pubreset()
+    '        frmMain.OpenChildrenform(New frmNewOrders)
+    '        frmMain.pubreset()
 
-        Else
+    '    Else
 
-            MessageBox.Show("Exit edit mode")
-        End If
+    '        MessageBox.Show("Exit edit mode")
+    '    End If
+
+    'End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblCustomerName.Click, lblProduct.Click, lblQuantity.Click
 
     End Sub
 End Class

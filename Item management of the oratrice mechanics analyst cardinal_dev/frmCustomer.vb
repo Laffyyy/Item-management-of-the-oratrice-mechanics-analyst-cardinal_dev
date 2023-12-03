@@ -9,4 +9,8 @@
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
 
     End Sub
+
+    Private Sub lblFirstName_Click(sender As Object, e As EventArgs) Handles lblFirstName.Click, Guna2HtmlLabel1.Click, lblCompanyName.Click
+
+    End Sub
 End Class
