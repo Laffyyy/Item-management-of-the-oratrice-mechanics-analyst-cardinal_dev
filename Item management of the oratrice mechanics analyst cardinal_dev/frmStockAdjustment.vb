@@ -18,17 +18,20 @@ Public Class frmStockAdjustment
 
         ' Set the MySqlCommand's CommandText property to the given query
         myCommand.CommandText = "SELECT " &
-                        "dorigin, " &
-                        "dstockid, " &
-                        "dproductid, " &
-                        "dstockchangedate, " &
-                        "ABS(dquantitychanged) AS dquantity, " &
-                        "dquantitychanged, " &
-                        "SUM(dquantitychanged) OVER (PARTITION BY dproductid ORDER BY dstockchangedate) AS dfinalquantity " &
-                        "FROM " &
-                        "tblstock " &
-                        "ORDER BY " &
-                        "dstockchangedate"
+            "dorigin as 'Origin', " &
+            "dstockid as 'Stock ID', " &
+            "tp.dproductname as 'Product Name', " &
+            "tp.dproductid as 'Product ID', " &
+            "dstockchangedate as 'Stock Change Date', " &
+            "ABS(dquantitychanged) AS 'Quantity', " &
+            "dquantitychanged AS 'Change', " &
+            "SUM(dquantitychanged) OVER (PARTITION BY tp.dproductid ORDER BY dstockchangedate) AS 'Final Quantity' " &
+            "FROM " &
+            "tblstock ts " &
+            "JOIN tblproducts tp ON ts.dproductid = tp.dproductid " &
+            "ORDER BY " &
+            "dstockchangedate"
+
 
         ' Create a new MySqlDataAdapter object
         Dim myAdapter As New MySqlDataAdapter()
@@ -42,6 +45,9 @@ Public Class frmStockAdjustment
         ' Fill the DataSet object with the results of the query
         myAdapter.Fill(myDataSet, "myData")
 
+        ' Clear existing columns in the DataGridView
+        dgvstockad.Columns.Clear()
+
         ' Bind the DataSet object to the datagrid
         dgvstockad.DataSource = myDataSet.Tables("myData")
 
@@ -51,6 +57,20 @@ Public Class frmStockAdjustment
         myAdapter.Dispose()
         myDataSet.Dispose()
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -140,13 +160,13 @@ Public Class frmStockAdjustment
             myAdapter2.SelectCommand = myCommand1
             myAdapter2.Fill(myDataSet2, "myData")
 
-            'myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
-            'myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
-            'myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
+            myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
+            myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
+            myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
 
-            'dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
-            'dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
-            'dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
+            dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
+            dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
+            dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
 
             dgvstockad.DataSource = myDataSet2.Tables("myData")
 
