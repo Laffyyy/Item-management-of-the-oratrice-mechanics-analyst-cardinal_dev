@@ -6,6 +6,55 @@ Public Class frmStockAdjustment
     'true = exhaust
 
 
+    Private Sub DisplayStockAdjustment()
+        ' Create a new MySqlConnection object
+        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+
+        ' Create a new MySqlCommand object
+        Dim myCommand As New MySqlCommand()
+
+        ' Set the MySqlCommand's Connection property
+        myCommand.Connection = myConnection
+
+        ' Set the MySqlCommand's CommandText property to the given query
+        myCommand.CommandText = "SELECT " &
+                        "dorigin, " &
+                        "dstockid, " &
+                        "dproductid, " &
+                        "dstockchangedate, " &
+                        "ABS(dquantitychanged) AS dquantity, " &
+                        "dquantitychanged, " &
+                        "SUM(dquantitychanged) OVER (PARTITION BY dproductid ORDER BY dstockchangedate) AS dfinalquantity " &
+                        "FROM " &
+                        "tblstock " &
+                        "ORDER BY " &
+                        "dstockchangedate"
+
+        ' Create a new MySqlDataAdapter object
+        Dim myAdapter As New MySqlDataAdapter()
+
+        ' Set the MySqlDataAdapter's SelectCommand property
+        myAdapter.SelectCommand = myCommand
+
+        ' Create a new DataSet object
+        Dim myDataSet As New DataSet()
+
+        ' Fill the DataSet object with the results of the query
+        myAdapter.Fill(myDataSet, "myData")
+
+        ' Bind the DataSet object to the datagrid
+        dgvstockad.DataSource = myDataSet.Tables("myData")
+
+        ' Dispose of the MySqlConnection, MySqlCommand, MySqlDataAdapter, and DataSet objects
+        myConnection.Dispose()
+        myCommand.Dispose()
+        myAdapter.Dispose()
+        myDataSet.Dispose()
+    End Sub
+
+
+
+
 
     Private Function IsStockIdUnique(stockId As String) As Boolean
         Dim myConnection As MySqlConnection = Common.getDBConnectionX()
@@ -204,7 +253,7 @@ Public Class frmStockAdjustment
     End Sub
 
     Private Sub frmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DisplayStock()
+        DisplayStockAdjustment()
         DisplayProductName()
         replenish()
 
