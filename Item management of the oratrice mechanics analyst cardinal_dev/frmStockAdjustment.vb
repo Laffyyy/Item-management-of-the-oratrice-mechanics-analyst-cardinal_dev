@@ -6,6 +6,75 @@ Public Class frmStockAdjustment
     'true = exhaust
 
 
+    Private Sub DisplayStockAdjustment()
+        ' Create a new MySqlConnection object
+        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+
+        ' Create a new MySqlCommand object
+        Dim myCommand As New MySqlCommand()
+
+        ' Set the MySqlCommand's Connection property
+        myCommand.Connection = myConnection
+
+        ' Set the MySqlCommand's CommandText property to the given query
+        myCommand.CommandText = "SELECT " &
+            "dorigin as 'Origin', " &
+            "dstockid as 'Stock ID', " &
+            "tp.dproductname as 'Product Name', " &
+            "tp.dproductid as 'Product ID', " &
+            "dstockchangedate as 'Stock Change Date', " &
+            "ABS(dquantitychanged) AS 'Quantity', " &
+            "dquantitychanged AS 'Change', " &
+            "SUM(dquantitychanged) OVER (PARTITION BY tp.dproductid ORDER BY dstockchangedate) AS 'Final Quantity' " &
+            "FROM " &
+            "tblstock ts " &
+            "JOIN tblproducts tp ON ts.dproductid = tp.dproductid " &
+            "ORDER BY " &
+            "dstockchangedate"
+
+
+        ' Create a new MySqlDataAdapter object
+        Dim myAdapter As New MySqlDataAdapter()
+
+        ' Set the MySqlDataAdapter's SelectCommand property
+        myAdapter.SelectCommand = myCommand
+
+        ' Create a new DataSet object
+        Dim myDataSet As New DataSet()
+
+        ' Fill the DataSet object with the results of the query
+        myAdapter.Fill(myDataSet, "myData")
+
+        ' Clear existing columns in the DataGridView
+        dgvstockad.Columns.Clear()
+
+        ' Bind the DataSet object to the datagrid
+        dgvstockad.DataSource = myDataSet.Tables("myData")
+
+        ' Dispose of the MySqlConnection, MySqlCommand, MySqlDataAdapter, and DataSet objects
+        myConnection.Dispose()
+        myCommand.Dispose()
+        myAdapter.Dispose()
+        myDataSet.Dispose()
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Private Function IsStockIdUnique(stockId As String) As Boolean
         Dim myConnection As MySqlConnection = Common.getDBConnectionX()
@@ -91,13 +160,13 @@ Public Class frmStockAdjustment
             myAdapter2.SelectCommand = myCommand1
             myAdapter2.Fill(myDataSet2, "myData")
 
-            'myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
-            'myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
-            'myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
+            myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
+            myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
+            myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
 
-            'dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
-            'dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
-            'dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
+            dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
+            dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
+            dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
 
             dgvstockad.DataSource = myDataSet2.Tables("myData")
 
@@ -204,7 +273,7 @@ Public Class frmStockAdjustment
     End Sub
 
     Private Sub frmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DisplayStock()
+        DisplayStockAdjustment()
         DisplayProductName()
         replenish()
 
