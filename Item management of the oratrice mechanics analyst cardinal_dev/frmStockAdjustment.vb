@@ -7,69 +7,54 @@ Public Class frmStockAdjustment
 
 
     Private Sub DisplayStockAdjustment()
-        ' Create a new MySqlConnection object
-        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+        Try
+            ' Create a new MySqlConnection object using Using statement
+            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+                ' Create a new MySqlCommand object
+                Using myCommand As New MySqlCommand()
+                    ' Set the MySqlCommand's Connection property
+                    myCommand.Connection = myConnection
 
-        ' Create a new MySqlCommand object
-        Dim myCommand As New MySqlCommand()
+                    ' Set the MySqlCommand's CommandText property to the given query
+                    myCommand.CommandText = "SELECT " &
+                "dorigin as 'Origin', " &
+                "dstockid as 'Stock ID', " &
+                "tp.dproductname as 'Product Name', " &
+                "tp.dproductid as 'Product ID', " &
+                "dstockchangedate as 'Stock Change Date', " &
+                "ABS(dquantitychanged) AS 'Quantity', " &
+                "CONCAT(IF(dquantitychanged >= 0, '+', '-'), ABS(dquantitychanged)) AS 'Change', " &
+                "SUM(dquantitychanged) OVER (PARTITION BY tp.dproductid ORDER BY dstockchangedate) AS 'Final Quantity' " &
+                "FROM " &
+                "tblstock ts " &
+                "JOIN tblproducts tp ON ts.dproductid = tp.dproductid " &
+                "ORDER BY " &
+                "dstockchangedate"
 
-        ' Set the MySqlCommand's Connection property
-        myCommand.Connection = myConnection
+                    ' Create a new MySqlDataAdapter object
+                    Using myAdapter As New MySqlDataAdapter()
+                        ' Set the MySqlDataAdapter's SelectCommand property
+                        myAdapter.SelectCommand = myCommand
 
-        ' Set the MySqlCommand's CommandText property to the given query
-        myCommand.CommandText = "SELECT " &
-            "dorigin as 'Origin', " &
-            "dstockid as 'Stock ID', " &
-            "tp.dproductname as 'Product Name', " &
-            "tp.dproductid as 'Product ID', " &
-            "dstockchangedate as 'Stock Change Date', " &
-            "ABS(dquantitychanged) AS 'Quantity', " &
-            "dquantitychanged AS 'Change', " &
-            "SUM(dquantitychanged) OVER (PARTITION BY tp.dproductid ORDER BY dstockchangedate) AS 'Final Quantity' " &
-            "FROM " &
-            "tblstock ts " &
-            "JOIN tblproducts tp ON ts.dproductid = tp.dproductid " &
-            "ORDER BY " &
-            "dstockchangedate"
+                        ' Create a new DataSet object
+                        Using myDataSet As New DataSet()
+                            ' Fill the DataSet object with the results of the query
+                            myAdapter.Fill(myDataSet, "myData")
 
+                            ' Clear existing columns in the DataGridView
+                            dgvstockad.Columns.Clear()
 
-        ' Create a new MySqlDataAdapter object
-        Dim myAdapter As New MySqlDataAdapter()
-
-        ' Set the MySqlDataAdapter's SelectCommand property
-        myAdapter.SelectCommand = myCommand
-
-        ' Create a new DataSet object
-        Dim myDataSet As New DataSet()
-
-        ' Fill the DataSet object with the results of the query
-        myAdapter.Fill(myDataSet, "myData")
-
-        ' Clear existing columns in the DataGridView
-        dgvstockad.Columns.Clear()
-
-        ' Bind the DataSet object to the datagrid
-        dgvstockad.DataSource = myDataSet.Tables("myData")
-
-        ' Dispose of the MySqlConnection, MySqlCommand, MySqlDataAdapter, and DataSet objects
-        myConnection.Dispose()
-        myCommand.Dispose()
-        myAdapter.Dispose()
-        myDataSet.Dispose()
+                            ' Bind the DataSet object to the datagrid
+                            dgvstockad.DataSource = myDataSet.Tables("myData")
+                        End Using ' Dispose of DataSet
+                    End Using ' Dispose of DataAdapter
+                End Using ' Dispose of MySqlCommand
+            End Using ' Dispose of MySqlConnection
+        Catch ex As Exception
+            ' Handle the exception (e.g., display an error message)
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -119,20 +104,47 @@ Public Class frmStockAdjustment
 
             ' Get values from textboxes
             Dim productId As String = tbProductID.Text
-            Dim quantityStocked As Integer = Integer.Parse(tbProductQuantity.Text)
-            Dim restockedDate As DateTime = DateTime.Now
+            Dim quantityChanged As Integer = Integer.Parse(tbProductQuantity.Text)
+            Dim stockChangeDate As DateTime = DateTime.Now
+
+            ' Set origin based on the text of btnReplenish
+            Dim origin As String
+            If btnReplenish.Text.Contains("Replenish") Then
+                ' Only accept positive values for replenish
+                If quantityChanged < 0 Then
+                    MsgBox("Please enter a positive quantity for replenishing.")
+                    Exit Sub
+                End If
+                origin = "Stock Adjustment (Replenish)"
+            ElseIf btnReplenish.Text.Contains("Exhaust") Then
+                ' Check if the latest sum is less than 0
+                Dim latestSum As Integer = GetLatestSum(productId)
+
+                ' Ensure that exhaust accepts only non-positive values
+                If quantityChanged > 0 Then
+                    MsgBox("Exhaust quantity is not allowed. Please enter a non-positive quantity.")
+                    Exit Sub
+                End If
+
+                origin = "Stock Adjustment (Exhaust)"
+            Else
+                ' Handle other cases if needed
+                MsgBox("Invalid operation.")
+                Exit Sub
+            End If
 
             ' Insert data into tblStock
-            myCommand1 = New MySqlCommand("INSERT INTO tblStock (dstockid, dproductid, dquantitystocked, drestockeddate) VALUES (@stockId, @productId, @quantityStocked, @restockedDate)", myConnection1)
+            myCommand1 = New MySqlCommand("INSERT INTO tblStock (dorigin, dstockid, dproductid, dquantitychanged, dstockchangedate) VALUES (@origin, @stockId, @productId, @quantityChanged, @stockChangeDate)", myConnection1)
+            myCommand1.Parameters.AddWithValue("@origin", origin)
             myCommand1.Parameters.AddWithValue("@stockId", stockId)
             myCommand1.Parameters.AddWithValue("@productId", productId)
-            myCommand1.Parameters.AddWithValue("@quantityStocked", quantityStocked)
-            myCommand1.Parameters.AddWithValue("@restockedDate", restockedDate)
+            myCommand1.Parameters.AddWithValue("@quantityChanged", quantityChanged)
+            myCommand1.Parameters.AddWithValue("@stockChangeDate", stockChangeDate)
 
             ' Execute the SQL command
             myCommand1.ExecuteNonQuery()
 
-            DisplayStock()
+            DisplayStockAdjustment()
 
         Catch ex As Exception
             MsgBox(Err.Description)
@@ -142,41 +154,37 @@ Public Class frmStockAdjustment
         End Try
     End Sub
 
+    Private Function GetLatestSum(productId As String) As Integer
+        ' Query the database to get the latest sum of dquantitychanged
+        Dim query As String = "SELECT COALESCE(SUM(dquantitychanged), 0) AS latestSum FROM tblStock WHERE dproductid = @productId"
+
+        Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            myConnection.Open()
+
+            Using command As New MySqlCommand(query, myConnection)
+                command.Parameters.AddWithValue("@productId", productId)
+
+                Dim result As Object = command.ExecuteScalar()
+
+                If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                    Return Convert.ToInt32(result)
+                End If
+            End Using
+        End Using
+
+        Return 0
+    End Function
 
 
-    Private Sub DisplayStock()
-        Dim myConnection1 As MySqlConnection
-        Dim myCommand1 As MySqlCommand
-        Dim myAdapter2 As New MySqlDataAdapter
-        Dim myDataSet2 As New DataSet
 
-        myConnection1 = Common.getDBConnectionX()
 
-        Try
-            myConnection1.Open()
 
-            myCommand1 = New MySqlCommand("SELECT tp.dproductname, ts.drestockeddate, ts.dquantitystocked FROM tblproducts tp JOIN tblstock ts ON ts.dproductid = tp.dproductid", myConnection1)
 
-            myAdapter2.SelectCommand = myCommand1
-            myAdapter2.Fill(myDataSet2, "myData")
 
-            myDataSet2.Tables("myData").Columns("dproductname").ColumnName = "Product Name"
-            myDataSet2.Tables("myData").Columns("drestockeddate").ColumnName = "Date of Restock"
-            myDataSet2.Tables("myData").Columns("dquantitystocked").ColumnName = "Quantity"
 
-            dgvstockad.Columns("dgvcQuantity").DataPropertyName = "dquantitystocked"
-            dgvstockad.Columns("dgvcDateOfRestock").DataPropertyName = "drestockeddate"
-            dgvstockad.Columns("dgvcProductName").DataPropertyName = "dproductname"
 
-            dgvstockad.DataSource = myDataSet2.Tables("myData")
 
-        Catch ex As Exception
-            MsgBox(Err.Description)
-            Exit Sub
-        Finally
-            myConnection1.Close()
-        End Try
-    End Sub
+
 
     Private Sub DisplayProductName()
         Dim myConnection1 As MySqlConnection
