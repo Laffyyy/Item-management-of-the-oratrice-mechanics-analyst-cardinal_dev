@@ -23,26 +23,28 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
         pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        btVisibility = New Guna.UI2.WinForms.Guna2GradientButton()
         Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblUser = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
-        Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
-        tbLogin = New Guna.UI2.WinForms.Guna2TextBox()
+        btLogin = New Guna.UI2.WinForms.Guna2GradientButton()
+        tbPassword = New Guna.UI2.WinForms.Guna2TextBox()
+        tbEmployeeID = New Guna.UI2.WinForms.Guna2TextBox()
         pnldesignlogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         PictureBox1 = New PictureBox()
-        Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         pnlLogin.SuspendLayout()
         pnldesignlogin.SuspendLayout()
@@ -56,10 +58,9 @@ Partial Class frmLogin
         lblHeader.BackColor = Color.Transparent
         lblHeader.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
         lblHeader.ForeColor = Color.FromArgb(CByte(70), CByte(162), CByte(227))
-        lblHeader.Location = New Point(144, 65)
-        lblHeader.Margin = New Padding(3, 4, 3, 4)
+        lblHeader.Location = New Point(149, 12)
         lblHeader.Name = "lblHeader"
-        lblHeader.Size = New Size(103, 20)
+        lblHeader.Size = New Size(82, 17)
         lblHeader.TabIndex = 2
         lblHeader.Text = "Project OMAC"
         lblHeader.TextAlignment = ContentAlignment.MiddleCenter
@@ -68,34 +69,53 @@ Partial Class frmLogin
         ' pnlLogin
         ' 
         pnlLogin.BackgroundImageLayout = ImageLayout.None
-        pnlLogin.Controls.Add(Guna2HtmlLabel2)
+        pnlLogin.Controls.Add(btVisibility)
         pnlLogin.Controls.Add(lblHeader)
         pnlLogin.Controls.Add(Guna2HtmlLabel1)
         pnlLogin.Controls.Add(lblUser)
-        pnlLogin.Controls.Add(Guna2GradientButton1)
-        pnlLogin.Controls.Add(Guna2TextBox2)
-        pnlLogin.Controls.Add(tbLogin)
-        pnlLogin.CustomizableEdges = CustomizableEdges7
+        pnlLogin.Controls.Add(btLogin)
+        pnlLogin.Controls.Add(tbPassword)
+        pnlLogin.Controls.Add(tbEmployeeID)
+        pnlLogin.CustomizableEdges = CustomizableEdges21
         pnlLogin.Dock = DockStyle.Right
         pnlLogin.FillColor = Color.Transparent
         pnlLogin.FillColor2 = Color.Transparent
         pnlLogin.FillColor3 = Color.Transparent
         pnlLogin.FillColor4 = Color.FromArgb(CByte(106), CByte(148), CByte(245))
-        pnlLogin.Location = New Point(519, 0)
-        pnlLogin.Margin = New Padding(3, 4, 3, 4)
+        pnlLogin.Location = New Point(454, 0)
         pnlLogin.Name = "pnlLogin"
         pnlLogin.Quality = 2
-        pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        pnlLogin.Size = New Size(417, 613)
+        pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        pnlLogin.Size = New Size(365, 460)
         pnlLogin.TabIndex = 0
+        ' 
+        ' btVisibility
+        ' 
+        btVisibility.CustomizableEdges = CustomizableEdges13
+        btVisibility.DisabledState.BorderColor = Color.DarkGray
+        btVisibility.DisabledState.CustomBorderColor = Color.DarkGray
+        btVisibility.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btVisibility.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btVisibility.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btVisibility.FillColor = Color.Transparent
+        btVisibility.FillColor2 = Color.Transparent
+        btVisibility.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btVisibility.ForeColor = Color.Wheat
+        btVisibility.Image = My.Resources.Resources.hide
+        btVisibility.Location = New Point(285, 282)
+        btVisibility.Name = "btVisibility"
+        btVisibility.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        btVisibility.Size = New Size(37, 36)
+        btVisibility.TabIndex = 4
         ' 
         ' Guna2HtmlLabel1
         ' 
         Guna2HtmlLabel1.BackColor = Color.Transparent
         Guna2HtmlLabel1.ForeColor = Color.FromArgb(CByte(70), CByte(162), CByte(227))
-        Guna2HtmlLabel1.Location = New Point(102, 235)
+        Guna2HtmlLabel1.Location = New Point(79, 260)
+        Guna2HtmlLabel1.Margin = New Padding(3, 2, 3, 2)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(72, 22)
+        Guna2HtmlLabel1.Size = New Size(59, 17)
         Guna2HtmlLabel1.TabIndex = 3
         Guna2HtmlLabel1.Text = "Password :"
         Guna2HtmlLabel1.TextAlignment = ContentAlignment.MiddleCenter
@@ -104,88 +124,85 @@ Partial Class frmLogin
         ' 
         lblUser.BackColor = Color.Transparent
         lblUser.ForeColor = Color.FromArgb(CByte(70), CByte(162), CByte(227))
-        lblUser.Location = New Point(102, 136)
+        lblUser.Location = New Point(79, 186)
+        lblUser.Margin = New Padding(3, 2, 3, 2)
         lblUser.Name = "lblUser"
-        lblUser.Size = New Size(91, 22)
+        lblUser.Size = New Size(72, 17)
         lblUser.TabIndex = 3
         lblUser.Text = "Employee ID:"
         lblUser.TextAlignment = ContentAlignment.MiddleCenter
         ' 
-        ' Guna2GradientButton1
+        ' btLogin
         ' 
-        Guna2GradientButton1.CustomizableEdges = CustomizableEdges1
-        Guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray
-        Guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2GradientButton1.FillColor = Color.Transparent
-        Guna2GradientButton1.FillColor2 = Color.FromArgb(CByte(70), CByte(162), CByte(227))
-        Guna2GradientButton1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2GradientButton1.ForeColor = Color.White
-        Guna2GradientButton1.Location = New Point(127, 369)
-        Guna2GradientButton1.Margin = New Padding(3, 4, 3, 4)
-        Guna2GradientButton1.Name = "Guna2GradientButton1"
-        Guna2GradientButton1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Guna2GradientButton1.Size = New Size(171, 60)
-        Guna2GradientButton1.TabIndex = 1
-        Guna2GradientButton1.Text = "Login"
+        btLogin.CustomizableEdges = CustomizableEdges15
+        btLogin.DisabledState.BorderColor = Color.DarkGray
+        btLogin.DisabledState.CustomBorderColor = Color.DarkGray
+        btLogin.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btLogin.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btLogin.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btLogin.FillColor = Color.Transparent
+        btLogin.FillColor2 = Color.FromArgb(CByte(70), CByte(162), CByte(227))
+        btLogin.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btLogin.ForeColor = Color.White
+        btLogin.Location = New Point(101, 361)
+        btLogin.Name = "btLogin"
+        btLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btLogin.Size = New Size(150, 45)
+        btLogin.TabIndex = 1
+        btLogin.Text = "Login"
         ' 
-        ' Guna2TextBox2
+        ' tbPassword
         ' 
-        Guna2TextBox2.CustomizableEdges = CustomizableEdges3
-        Guna2TextBox2.DefaultText = ""
-        Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Location = New Point(102, 264)
-        Guna2TextBox2.Margin = New Padding(3, 4, 3, 4)
-        Guna2TextBox2.Name = "Guna2TextBox2"
-        Guna2TextBox2.PasswordChar = ChrW(0)
-        Guna2TextBox2.PlaceholderText = ""
-        Guna2TextBox2.SelectedText = ""
-        Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2TextBox2.Size = New Size(229, 48)
-        Guna2TextBox2.TabIndex = 0
+        tbPassword.CustomizableEdges = CustomizableEdges17
+        tbPassword.DefaultText = ""
+        tbPassword.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbPassword.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbPassword.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbPassword.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbPassword.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbPassword.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbPassword.Location = New Point(79, 282)
+        tbPassword.Name = "tbPassword"
+        tbPassword.PasswordChar = "*"c
+        tbPassword.PlaceholderText = ""
+        tbPassword.SelectedText = ""
+        tbPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        tbPassword.Size = New Size(200, 36)
+        tbPassword.TabIndex = 0
         ' 
-        ' tbLogin
+        ' tbEmployeeID
         ' 
-        tbLogin.CustomizableEdges = CustomizableEdges5
-        tbLogin.DefaultText = ""
-        tbLogin.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        tbLogin.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        tbLogin.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbLogin.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbLogin.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbLogin.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        tbLogin.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbLogin.Location = New Point(102, 165)
-        tbLogin.Margin = New Padding(3, 4, 3, 4)
-        tbLogin.Name = "tbLogin"
-        tbLogin.PasswordChar = ChrW(0)
-        tbLogin.PlaceholderText = ""
-        tbLogin.SelectedText = ""
-        tbLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        tbLogin.Size = New Size(229, 48)
-        tbLogin.TabIndex = 0
+        tbEmployeeID.CustomizableEdges = CustomizableEdges19
+        tbEmployeeID.DefaultText = ""
+        tbEmployeeID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbEmployeeID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbEmployeeID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbEmployeeID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbEmployeeID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbEmployeeID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbEmployeeID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbEmployeeID.Location = New Point(79, 208)
+        tbEmployeeID.Name = "tbEmployeeID"
+        tbEmployeeID.PasswordChar = ChrW(0)
+        tbEmployeeID.PlaceholderText = ""
+        tbEmployeeID.SelectedText = ""
+        tbEmployeeID.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        tbEmployeeID.Size = New Size(200, 36)
+        tbEmployeeID.TabIndex = 0
         ' 
         ' pnldesignlogin
         ' 
         pnldesignlogin.Controls.Add(PictureBox1)
-        pnldesignlogin.CustomizableEdges = CustomizableEdges9
+        pnldesignlogin.CustomizableEdges = CustomizableEdges23
         pnldesignlogin.Dock = DockStyle.Fill
         pnldesignlogin.FillColor2 = Color.Transparent
         pnldesignlogin.FillColor3 = Color.Transparent
         pnldesignlogin.FillColor4 = Color.Transparent
         pnldesignlogin.Location = New Point(0, 0)
-        pnldesignlogin.Margin = New Padding(3, 4, 3, 4)
         pnldesignlogin.Name = "pnldesignlogin"
-        pnldesignlogin.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        pnldesignlogin.Size = New Size(519, 613)
+        pnldesignlogin.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        pnldesignlogin.Size = New Size(454, 460)
         pnldesignlogin.TabIndex = 1
         ' 
         ' PictureBox1
@@ -194,31 +211,20 @@ Partial Class frmLogin
         PictureBox1.Dock = DockStyle.Fill
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(0, 0)
-        PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(519, 613)
+        PictureBox1.Size = New Size(454, 460)
         PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' Guna2HtmlLabel2
-        ' 
-        Guna2HtmlLabel2.BackColor = Color.Transparent
-        Guna2HtmlLabel2.Location = New Point(147, 106)
-        Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Guna2HtmlLabel2.Size = New Size(122, 22)
-        Guna2HtmlLabel2.TabIndex = 4
-        Guna2HtmlLabel2.Text = "Guna2HtmlLabel2"
-        ' 
         ' frmLogin
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
-        ClientSize = New Size(936, 613)
+        ClientSize = New Size(819, 460)
         Controls.Add(pnldesignlogin)
         Controls.Add(pnlLogin)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "frmLogin"
         StartPosition = FormStartPosition.CenterScreen
         Text = "frmLogin"
@@ -233,10 +239,10 @@ Partial Class frmLogin
     Friend WithEvents pnldesignlogin As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2GradientButton1 As Guna.UI2.WinForms.Guna2GradientButton
-    Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents tbLogin As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents btLogin As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents tbPassword As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbEmployeeID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblUser As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents btVisibility As Guna.UI2.WinForms.Guna2GradientButton
 End Class

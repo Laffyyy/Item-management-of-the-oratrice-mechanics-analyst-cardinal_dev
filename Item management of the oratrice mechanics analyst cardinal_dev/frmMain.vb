@@ -235,6 +235,8 @@ Public Class frmMain
 
         Me.Hide()
         frmLogin.Show()
+
+        frmLogin.UserIDusing = ""
     End Sub
 
     Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
