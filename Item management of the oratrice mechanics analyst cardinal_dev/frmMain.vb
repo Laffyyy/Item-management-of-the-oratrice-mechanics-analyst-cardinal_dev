@@ -235,7 +235,7 @@ Public Class frmMain
 
         Me.Hide()
         frmLogin.Show()
-
+        WindowState = FormWindowState.Normal
         frmLogin.UserIDusing = ""
     End Sub
 

@@ -66,6 +66,8 @@ Public Class frmLogin
             Me.Hide()
             UserIDusing = username
             ' Add code to open the main application form or perform other actions
+            tbEmployeeID.Text = ""
+            tbPassword.Text = ""
         Else
             ' Failed login
             MessageBox.Show("Invalid Username or Password")
@@ -78,8 +80,8 @@ Public Class frmLogin
             Using connection As MySqlConnection = Common.getDBConnectionX()
                 connection.Open()
 
-                ' SQL query to check if the username and password match
-                Dim query As String = "SELECT * FROM tblusers WHERE duid = @username AND dpassword = @password"
+                ' SQL query to retrieve user information
+                Dim query As String = "SELECT COUNT(*) FROM omac.tblusers WHERE BINARY duid = @username AND BINARY dpassword = @password"
                 Using command As New MySqlCommand(query, connection)
                     command.Parameters.AddWithValue("@username", username)
                     command.Parameters.AddWithValue("@password", password)
@@ -87,8 +89,8 @@ Public Class frmLogin
                     ' ExecuteScalar returns the number of matching rows
                     Dim count As Integer = Convert.ToInt32(command.ExecuteScalar())
 
-                    ' If count is 1, credentials are valid
-                    Return count = 1
+                    ' If count is 1 or more, credentials are valid
+                    Return count > 0
                 End Using
             End Using
         Catch ex As Exception
@@ -96,4 +98,5 @@ Public Class frmLogin
             Return False
         End Try
     End Function
+
 End Class

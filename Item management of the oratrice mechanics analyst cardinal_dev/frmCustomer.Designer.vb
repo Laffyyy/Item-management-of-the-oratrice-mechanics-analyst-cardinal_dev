@@ -40,13 +40,13 @@ Partial Class frmCustomer
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
-        Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvCustomers = New Guna.UI2.WinForms.Guna2DataGridView()
         dgvcID = New DataGridViewTextBoxColumn()
         dgvcCustomerFirstName = New DataGridViewTextBoxColumn()
         dgvcCustomerLastName = New DataGridViewTextBoxColumn()
         dgvcCompanyName = New DataGridViewTextBoxColumn()
         btnSearch = New Guna.UI2.WinForms.Guna2GradientButton()
-        bnSave = New Guna.UI2.WinForms.Guna2GradientButton()
+        bnAdd = New Guna.UI2.WinForms.Guna2GradientButton()
         Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblFirstName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -55,11 +55,12 @@ Partial Class frmCustomer
         tbLastName = New Guna.UI2.WinForms.Guna2TextBox()
         tbCompanyName = New Guna.UI2.WinForms.Guna2TextBox()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
-        CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvCustomers, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnEdit
         ' 
+        btnEdit.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnEdit.CustomizableEdges = CustomizableEdges1
         btnEdit.DisabledState.BorderColor = Color.DarkGray
         btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
@@ -77,10 +78,11 @@ Partial Class frmCustomer
         btnEdit.TabIndex = 3
         btnEdit.Text = "Edit"
         ' 
-        ' Guna2DataGridView1
+        ' dgvCustomers
         ' 
         DataGridViewCellStyle1.BackColor = Color.White
-        Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvCustomers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvCustomers.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -88,10 +90,10 @@ Partial Class frmCustomer
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Guna2DataGridView1.ColumnHeadersHeight = 17
-        Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcCustomerFirstName, dgvcCustomerLastName, dgvcCompanyName})
+        dgvCustomers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        dgvCustomers.ColumnHeadersHeight = 17
+        dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvCustomers.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcCustomerFirstName, dgvcCustomerLastName, dgvcCompanyName})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -99,35 +101,35 @@ Partial Class frmCustomer
         DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
-        Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
-        Guna2DataGridView1.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        Guna2DataGridView1.Location = New Point(319, 104)
-        Guna2DataGridView1.Name = "Guna2DataGridView1"
-        Guna2DataGridView1.RowHeadersVisible = False
-        Guna2DataGridView1.RowTemplate.Height = 25
-        Guna2DataGridView1.Size = New Size(451, 315)
-        Guna2DataGridView1.TabIndex = 4
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
-        Guna2DataGridView1.ThemeStyle.BackColor = Color.White
-        Guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 17
-        Guna2DataGridView1.ThemeStyle.ReadOnly = False
-        Guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White
-        Guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
-        Guna2DataGridView1.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        Guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25
-        Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        dgvCustomers.DefaultCellStyle = DataGridViewCellStyle3
+        dgvCustomers.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvCustomers.Location = New Point(319, 104)
+        dgvCustomers.Name = "dgvCustomers"
+        dgvCustomers.RowHeadersVisible = False
+        dgvCustomers.RowTemplate.Height = 25
+        dgvCustomers.Size = New Size(451, 315)
+        dgvCustomers.TabIndex = 4
+        dgvCustomers.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
+        dgvCustomers.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        dgvCustomers.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
+        dgvCustomers.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
+        dgvCustomers.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
+        dgvCustomers.ThemeStyle.BackColor = Color.White
+        dgvCustomers.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvCustomers.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        dgvCustomers.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
+        dgvCustomers.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvCustomers.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        dgvCustomers.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvCustomers.ThemeStyle.HeaderStyle.Height = 17
+        dgvCustomers.ThemeStyle.ReadOnly = False
+        dgvCustomers.ThemeStyle.RowsStyle.BackColor = Color.White
+        dgvCustomers.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvCustomers.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvCustomers.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        dgvCustomers.ThemeStyle.RowsStyle.Height = 25
+        dgvCustomers.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvCustomers.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
         ' dgvcID
         ' 
@@ -168,25 +170,26 @@ Partial Class frmCustomer
         btnSearch.TabIndex = 3
         btnSearch.Text = "Search"
         ' 
-        ' bnSave
+        ' bnAdd
         ' 
-        bnSave.CustomizableEdges = CustomizableEdges5
-        bnSave.DisabledState.BorderColor = Color.DarkGray
-        bnSave.DisabledState.CustomBorderColor = Color.DarkGray
-        bnSave.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        bnSave.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        bnSave.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        bnSave.FillColor = Color.Transparent
-        bnSave.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        bnSave.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        bnSave.ForeColor = Color.White
-        bnSave.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        bnSave.Location = New Point(61, 364)
-        bnSave.Name = "bnSave"
-        bnSave.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        bnSave.Size = New Size(180, 45)
-        bnSave.TabIndex = 7
-        bnSave.Text = "Save"
+        bnAdd.Anchor = AnchorStyles.Left
+        bnAdd.CustomizableEdges = CustomizableEdges5
+        bnAdd.DisabledState.BorderColor = Color.DarkGray
+        bnAdd.DisabledState.CustomBorderColor = Color.DarkGray
+        bnAdd.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        bnAdd.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        bnAdd.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        bnAdd.FillColor = Color.Transparent
+        bnAdd.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        bnAdd.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        bnAdd.ForeColor = Color.White
+        bnAdd.GradientMode = Drawing2D.LinearGradientMode.Vertical
+        bnAdd.Location = New Point(61, 364)
+        bnAdd.Name = "bnAdd"
+        bnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        bnAdd.Size = New Size(180, 45)
+        bnAdd.TabIndex = 7
+        bnAdd.Text = "Add"
         ' 
         ' Guna2HtmlLabel2
         ' 
@@ -304,7 +307,6 @@ Partial Class frmCustomer
         ' 
         ' tbSearch
         ' 
-        tbSearch.Anchor = AnchorStyles.Left
         tbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbSearch.AutoCompleteSource = AutoCompleteSource.CustomSource
         tbSearch.CustomizableEdges = CustomizableEdges13
@@ -339,20 +341,20 @@ Partial Class frmCustomer
         Controls.Add(Guna2HtmlLabel1)
         Controls.Add(lblFirstName)
         Controls.Add(Guna2HtmlLabel2)
-        Controls.Add(bnSave)
-        Controls.Add(Guna2DataGridView1)
+        Controls.Add(bnAdd)
+        Controls.Add(dgvCustomers)
         Controls.Add(btnSearch)
         Controls.Add(btnEdit)
         Name = "frmCustomer"
         Text = "frmCustomer"
-        CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvCustomers, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
     Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2GradientButton
-    Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents dgvCustomers As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents btnSearch As Guna.UI2.WinForms.Guna2GradientButton
-    Friend WithEvents bnSave As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents bnAdd As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents dgvcID As DataGridViewTextBoxColumn
     Friend WithEvents dgvcCustomerFirstName As DataGridViewTextBoxColumn
     Friend WithEvents dgvcCustomerLastName As DataGridViewTextBoxColumn

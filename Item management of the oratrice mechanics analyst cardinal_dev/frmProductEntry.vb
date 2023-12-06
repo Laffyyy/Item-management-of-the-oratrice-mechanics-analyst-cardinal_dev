@@ -153,9 +153,6 @@ Public Class frmProductEntry
         SaveProductEntry()
     End Sub
 
-    Private Sub dgvProducts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellContentClick
-
-    End Sub
 
     Private Sub frmProductEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

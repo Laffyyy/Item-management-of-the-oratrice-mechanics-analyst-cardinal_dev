@@ -2,15 +2,21 @@
 
     Public Shared Property frmcustomereditmode As Boolean = False
 
-    Private Sub frmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub OnEdit()
 
+        frmcustomereditmode = False
+    End Sub
+
+    Private Sub notOnEdit()
+
+        frmcustomereditmode = True
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-
-    End Sub
-
-    Private Sub lblFirstName_Click(sender As Object, e As EventArgs) Handles lblFirstName.Click, Guna2HtmlLabel1.Click, lblCompanyName.Click
-
+        If frmcustomereditmode Then
+            OnEdit()
+        Else
+            notOnEdit()
+        End If
     End Sub
 End Class

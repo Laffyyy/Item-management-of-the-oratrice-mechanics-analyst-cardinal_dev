@@ -63,12 +63,13 @@ Partial Class frmProductEntry
         tbQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         lblComments = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbComments = New Guna.UI2.WinForms.Guna2TextBox()
-        dgvcTotalQuantity = New DataGridViewTextBoxColumn()
-        dgvcStatus = New DataGridViewTextBoxColumn()
-        dgvcdescription = New DataGridViewTextBoxColumn()
-        dgvcPrice = New DataGridViewTextBoxColumn()
-        dgvcProductName = New DataGridViewTextBoxColumn()
         dgvProducts = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcPrice = New DataGridViewTextBoxColumn()
+        dgvcdescription = New DataGridViewTextBoxColumn()
+        dgvcStatus = New DataGridViewTextBoxColumn()
+        dgvcTotalQuantity = New DataGridViewTextBoxColumn()
+        dgvcDelete = New DataGridViewButtonColumn()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -160,7 +161,7 @@ Partial Class frmProductEntry
         ' 
         ' tbProductDescriptionEntry
         ' 
-        tbProductDescriptionEntry.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        tbProductDescriptionEntry.Anchor = AnchorStyles.Left
         tbProductDescriptionEntry.CustomizableEdges = CustomizableEdges5
         tbProductDescriptionEntry.DefaultText = ""
         tbProductDescriptionEntry.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
@@ -181,7 +182,7 @@ Partial Class frmProductEntry
         ' 
         ' btnSave
         ' 
-        btnSave.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnSave.Anchor = AnchorStyles.Left
         btnSave.CustomizableEdges = CustomizableEdges7
         btnSave.DisabledState.BorderColor = Color.DarkGray
         btnSave.DisabledState.CustomBorderColor = Color.DarkGray
@@ -344,7 +345,7 @@ Partial Class frmProductEntry
         ' 
         ' tbComments
         ' 
-        tbComments.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        tbComments.Anchor = AnchorStyles.Left
         tbComments.CustomizableEdges = CustomizableEdges19
         tbComments.DefaultText = ""
         tbComments.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
@@ -364,31 +365,6 @@ Partial Class frmProductEntry
         tbComments.Size = New Size(243, 67)
         tbComments.TabIndex = 2
         ' 
-        ' dgvcTotalQuantity
-        ' 
-        dgvcTotalQuantity.HeaderText = "TotalQuantity"
-        dgvcTotalQuantity.Name = "dgvcTotalQuantity"
-        ' 
-        ' dgvcStatus
-        ' 
-        dgvcStatus.HeaderText = "Status"
-        dgvcStatus.Name = "dgvcStatus"
-        ' 
-        ' dgvcdescription
-        ' 
-        dgvcdescription.HeaderText = "Description"
-        dgvcdescription.Name = "dgvcdescription"
-        ' 
-        ' dgvcPrice
-        ' 
-        dgvcPrice.HeaderText = "Price"
-        dgvcPrice.Name = "dgvcPrice"
-        ' 
-        ' dgvcProductName
-        ' 
-        dgvcProductName.HeaderText = "Product Name"
-        dgvcProductName.Name = "dgvcProductName"
-        ' 
         ' dgvProducts
         ' 
         DataGridViewCellStyle1.BackColor = Color.White
@@ -404,7 +380,7 @@ Partial Class frmProductEntry
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity})
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity, dgvcDelete})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -441,6 +417,36 @@ Partial Class frmProductEntry
         dgvProducts.ThemeStyle.RowsStyle.Height = 25
         dgvProducts.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvProducts.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcPrice
+        ' 
+        dgvcPrice.HeaderText = "Price"
+        dgvcPrice.Name = "dgvcPrice"
+        ' 
+        ' dgvcdescription
+        ' 
+        dgvcdescription.HeaderText = "Description"
+        dgvcdescription.Name = "dgvcdescription"
+        ' 
+        ' dgvcStatus
+        ' 
+        dgvcStatus.HeaderText = "Status"
+        dgvcStatus.Name = "dgvcStatus"
+        ' 
+        ' dgvcTotalQuantity
+        ' 
+        dgvcTotalQuantity.HeaderText = "TotalQuantity"
+        dgvcTotalQuantity.Name = "dgvcTotalQuantity"
+        ' 
+        ' dgvcDelete
+        ' 
+        dgvcDelete.HeaderText = "fuction"
+        dgvcDelete.Name = "dgvcDelete"
         ' 
         ' frmProductEntry
         ' 
@@ -495,10 +501,11 @@ Partial Class frmProductEntry
     Friend WithEvents tbQuantity As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblComments As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents tbComments As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents dgvcTotalQuantity As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcdescription As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcPrice As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
     Friend WithEvents dgvProducts As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcPrice As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcdescription As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcTotalQuantity As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcDelete As DataGridViewButtonColumn
 End Class
