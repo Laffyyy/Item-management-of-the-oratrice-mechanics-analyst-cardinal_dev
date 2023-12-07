@@ -22,23 +22,25 @@ Partial Class frmCustomer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges27 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges28 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges29 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges30 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges31 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges32 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         dgvCustomers = New Guna.UI2.WinForms.Guna2DataGridView()
         dgvcID = New DataGridViewTextBoxColumn()
@@ -55,13 +57,15 @@ Partial Class frmCustomer
         tbLastName = New Guna.UI2.WinForms.Guna2TextBox()
         tbCompanyName = New Guna.UI2.WinForms.Guna2TextBox()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
+        lblID = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        tbCustomerID = New Guna.UI2.WinForms.Guna2TextBox()
         CType(dgvCustomers, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnEdit
         ' 
         btnEdit.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnEdit.CustomizableEdges = CustomizableEdges1
+        btnEdit.CustomizableEdges = CustomizableEdges17
         btnEdit.DisabledState.BorderColor = Color.DarkGray
         btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
         btnEdit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -71,43 +75,46 @@ Partial Class frmCustomer
         btnEdit.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
-        btnEdit.Location = New Point(714, 72)
+        btnEdit.Location = New Point(774, 97)
+        btnEdit.Margin = New Padding(3, 4, 3, 4)
         btnEdit.Name = "btnEdit"
-        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        btnEdit.Size = New Size(56, 26)
+        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        btnEdit.Size = New Size(106, 35)
         btnEdit.TabIndex = 3
         btnEdit.Text = "Edit"
         ' 
         ' dgvCustomers
         ' 
-        DataGridViewCellStyle1.BackColor = Color.White
-        dgvCustomers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.BackColor = Color.White
+        dgvCustomers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         dgvCustomers.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = Color.White
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        dgvCustomers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = Color.White
+        DataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        dgvCustomers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         dgvCustomers.ColumnHeadersHeight = 17
         dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         dgvCustomers.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcCustomerFirstName, dgvcCustomerLastName, dgvcCompanyName})
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.White
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
-        dgvCustomers.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.White
+        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        DataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.False
+        dgvCustomers.DefaultCellStyle = DataGridViewCellStyle6
         dgvCustomers.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvCustomers.Location = New Point(319, 104)
+        dgvCustomers.Location = New Point(365, 139)
+        dgvCustomers.Margin = New Padding(3, 4, 3, 4)
         dgvCustomers.Name = "dgvCustomers"
         dgvCustomers.RowHeadersVisible = False
+        dgvCustomers.RowHeadersWidth = 51
         dgvCustomers.RowTemplate.Height = 25
-        dgvCustomers.Size = New Size(451, 315)
+        dgvCustomers.Size = New Size(515, 420)
         dgvCustomers.TabIndex = 4
         dgvCustomers.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvCustomers.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -135,26 +142,30 @@ Partial Class frmCustomer
         ' 
         dgvcID.FillWeight = 20F
         dgvcID.HeaderText = "ID"
+        dgvcID.MinimumWidth = 6
         dgvcID.Name = "dgvcID"
         ' 
         ' dgvcCustomerFirstName
         ' 
         dgvcCustomerFirstName.HeaderText = "First Name"
+        dgvcCustomerFirstName.MinimumWidth = 6
         dgvcCustomerFirstName.Name = "dgvcCustomerFirstName"
         ' 
         ' dgvcCustomerLastName
         ' 
         dgvcCustomerLastName.HeaderText = "Last Name"
+        dgvcCustomerLastName.MinimumWidth = 6
         dgvcCustomerLastName.Name = "dgvcCustomerLastName"
         ' 
         ' dgvcCompanyName
         ' 
         dgvcCompanyName.HeaderText = "Company Name"
+        dgvcCompanyName.MinimumWidth = 6
         dgvcCompanyName.Name = "dgvcCompanyName"
         ' 
         ' btnSearch
         ' 
-        btnSearch.CustomizableEdges = CustomizableEdges3
+        btnSearch.CustomizableEdges = CustomizableEdges19
         btnSearch.DisabledState.BorderColor = Color.DarkGray
         btnSearch.DisabledState.CustomBorderColor = Color.DarkGray
         btnSearch.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -163,17 +174,18 @@ Partial Class frmCustomer
         btnSearch.FillColor2 = Color.Transparent
         btnSearch.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnSearch.ForeColor = Color.White
-        btnSearch.Location = New Point(497, 72)
+        btnSearch.Location = New Point(568, 96)
+        btnSearch.Margin = New Padding(3, 4, 3, 4)
         btnSearch.Name = "btnSearch"
-        btnSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        btnSearch.Size = New Size(66, 26)
+        btnSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        btnSearch.Size = New Size(75, 35)
         btnSearch.TabIndex = 3
         btnSearch.Text = "Search"
         ' 
         ' bnAdd
         ' 
         bnAdd.Anchor = AnchorStyles.Left
-        bnAdd.CustomizableEdges = CustomizableEdges5
+        bnAdd.CustomizableEdges = CustomizableEdges21
         bnAdd.DisabledState.BorderColor = Color.DarkGray
         bnAdd.DisabledState.CustomBorderColor = Color.DarkGray
         bnAdd.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -184,17 +196,19 @@ Partial Class frmCustomer
         bnAdd.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         bnAdd.ForeColor = Color.White
         bnAdd.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        bnAdd.Location = New Point(61, 364)
+        bnAdd.Location = New Point(70, 485)
+        bnAdd.Margin = New Padding(3, 4, 3, 4)
         bnAdd.Name = "bnAdd"
-        bnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        bnAdd.Size = New Size(180, 45)
+        bnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        bnAdd.Size = New Size(206, 60)
         bnAdd.TabIndex = 7
         bnAdd.Text = "Add"
         ' 
         ' Guna2HtmlLabel2
         ' 
         Guna2HtmlLabel2.BackColor = Color.Transparent
-        Guna2HtmlLabel2.Location = New Point(50, 150)
+        Guna2HtmlLabel2.Location = New Point(57, 208)
+        Guna2HtmlLabel2.Margin = New Padding(3, 4, 3, 4)
         Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Guna2HtmlLabel2.Size = New Size(3, 2)
         Guna2HtmlLabel2.TabIndex = 9
@@ -205,20 +219,22 @@ Partial Class frmCustomer
         lblFirstName.Anchor = AnchorStyles.Left
         lblFirstName.BackColor = Color.Transparent
         lblFirstName.ForeColor = SystemColors.ActiveCaption
-        lblFirstName.Location = New Point(50, 91)
+        lblFirstName.Location = New Point(57, 147)
+        lblFirstName.Margin = New Padding(3, 4, 3, 4)
         lblFirstName.Name = "lblFirstName"
-        lblFirstName.Size = New Size(60, 17)
+        lblFirstName.Size = New Size(73, 22)
         lblFirstName.TabIndex = 10
-        lblFirstName.Text = "First Name"
+        lblFirstName.Text = "Last Name"
         ' 
         ' Guna2HtmlLabel1
         ' 
         Guna2HtmlLabel1.Anchor = AnchorStyles.Left
         Guna2HtmlLabel1.BackColor = Color.Transparent
         Guna2HtmlLabel1.ForeColor = SystemColors.ActiveCaption
-        Guna2HtmlLabel1.Location = New Point(50, 152)
+        Guna2HtmlLabel1.Location = New Point(57, 216)
+        Guna2HtmlLabel1.Margin = New Padding(3, 4, 3, 4)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(60, 17)
+        Guna2HtmlLabel1.Size = New Size(74, 22)
         Guna2HtmlLabel1.TabIndex = 10
         Guna2HtmlLabel1.Text = "First Name"
         ' 
@@ -227,9 +243,10 @@ Partial Class frmCustomer
         lblCompanyName.Anchor = AnchorStyles.Left
         lblCompanyName.BackColor = Color.Transparent
         lblCompanyName.ForeColor = SystemColors.ActiveCaption
-        lblCompanyName.Location = New Point(50, 233)
+        lblCompanyName.Location = New Point(57, 285)
+        lblCompanyName.Margin = New Padding(3, 4, 3, 4)
         lblCompanyName.Name = "lblCompanyName"
-        lblCompanyName.Size = New Size(90, 17)
+        lblCompanyName.Size = New Size(110, 22)
         lblCompanyName.TabIndex = 10
         lblCompanyName.Text = "Company Name"
         ' 
@@ -238,7 +255,7 @@ Partial Class frmCustomer
         tbFirstName.Anchor = AnchorStyles.Left
         tbFirstName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbFirstName.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbFirstName.CustomizableEdges = CustomizableEdges7
+        tbFirstName.CustomizableEdges = CustomizableEdges23
         tbFirstName.DefaultText = ""
         tbFirstName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbFirstName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -247,14 +264,13 @@ Partial Class frmCustomer
         tbFirstName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbFirstName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbFirstName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbFirstName.Location = New Point(50, 110)
-        tbFirstName.Margin = New Padding(3, 2, 3, 2)
+        tbFirstName.Location = New Point(57, 170)
         tbFirstName.Name = "tbFirstName"
         tbFirstName.PasswordChar = ChrW(0)
         tbFirstName.PlaceholderText = ""
         tbFirstName.SelectedText = ""
-        tbFirstName.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        tbFirstName.Size = New Size(200, 27)
+        tbFirstName.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        tbFirstName.Size = New Size(229, 36)
         tbFirstName.TabIndex = 12
         ' 
         ' tbLastName
@@ -262,7 +278,7 @@ Partial Class frmCustomer
         tbLastName.Anchor = AnchorStyles.Left
         tbLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbLastName.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbLastName.CustomizableEdges = CustomizableEdges9
+        tbLastName.CustomizableEdges = CustomizableEdges25
         tbLastName.DefaultText = ""
         tbLastName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbLastName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -271,14 +287,13 @@ Partial Class frmCustomer
         tbLastName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbLastName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbLastName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbLastName.Location = New Point(50, 174)
-        tbLastName.Margin = New Padding(3, 2, 3, 2)
+        tbLastName.Location = New Point(57, 240)
         tbLastName.Name = "tbLastName"
         tbLastName.PasswordChar = ChrW(0)
         tbLastName.PlaceholderText = ""
         tbLastName.SelectedText = ""
-        tbLastName.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        tbLastName.Size = New Size(200, 27)
+        tbLastName.ShadowDecoration.CustomizableEdges = CustomizableEdges26
+        tbLastName.Size = New Size(229, 36)
         tbLastName.TabIndex = 13
         ' 
         ' tbCompanyName
@@ -286,7 +301,7 @@ Partial Class frmCustomer
         tbCompanyName.Anchor = AnchorStyles.Left
         tbCompanyName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbCompanyName.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbCompanyName.CustomizableEdges = CustomizableEdges11
+        tbCompanyName.CustomizableEdges = CustomizableEdges27
         tbCompanyName.DefaultText = ""
         tbCompanyName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbCompanyName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -295,21 +310,20 @@ Partial Class frmCustomer
         tbCompanyName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbCompanyName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbCompanyName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbCompanyName.Location = New Point(50, 255)
-        tbCompanyName.Margin = New Padding(3, 2, 3, 2)
+        tbCompanyName.Location = New Point(57, 311)
         tbCompanyName.Name = "tbCompanyName"
         tbCompanyName.PasswordChar = ChrW(0)
         tbCompanyName.PlaceholderText = ""
         tbCompanyName.SelectedText = ""
-        tbCompanyName.ShadowDecoration.CustomizableEdges = CustomizableEdges12
-        tbCompanyName.Size = New Size(200, 27)
+        tbCompanyName.ShadowDecoration.CustomizableEdges = CustomizableEdges28
+        tbCompanyName.Size = New Size(229, 36)
         tbCompanyName.TabIndex = 14
         ' 
         ' tbSearch
         ' 
         tbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbSearch.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbSearch.CustomizableEdges = CustomizableEdges13
+        tbSearch.CustomizableEdges = CustomizableEdges29
         tbSearch.DefaultText = ""
         tbSearch.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbSearch.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -318,26 +332,62 @@ Partial Class frmCustomer
         tbSearch.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbSearch.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbSearch.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbSearch.Location = New Point(319, 72)
-        tbSearch.Margin = New Padding(3, 2, 3, 2)
+        tbSearch.Location = New Point(365, 96)
         tbSearch.Name = "tbSearch"
         tbSearch.PasswordChar = ChrW(0)
         tbSearch.PlaceholderText = ""
         tbSearch.SelectedText = ""
-        tbSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges14
-        tbSearch.Size = New Size(172, 27)
+        tbSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges30
+        tbSearch.Size = New Size(197, 36)
         tbSearch.TabIndex = 15
+        ' 
+        ' lblID
+        ' 
+        lblID.Anchor = AnchorStyles.Left
+        lblID.BackColor = Color.Transparent
+        lblID.ForeColor = SystemColors.ActiveCaption
+        lblID.Location = New Point(57, 52)
+        lblID.Margin = New Padding(3, 4, 3, 4)
+        lblID.Name = "lblID"
+        lblID.Size = New Size(21, 22)
+        lblID.TabIndex = 10
+        lblID.Text = "ID:"
+        ' 
+        ' tbCustomerID
+        ' 
+        tbCustomerID.Anchor = AnchorStyles.Left
+        tbCustomerID.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        tbCustomerID.AutoCompleteSource = AutoCompleteSource.CustomSource
+        tbCustomerID.CustomizableEdges = CustomizableEdges31
+        tbCustomerID.DefaultText = ""
+        tbCustomerID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbCustomerID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbCustomerID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbCustomerID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbCustomerID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbCustomerID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbCustomerID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbCustomerID.Location = New Point(57, 78)
+        tbCustomerID.Name = "tbCustomerID"
+        tbCustomerID.PasswordChar = ChrW(0)
+        tbCustomerID.PlaceholderText = ""
+        tbCustomerID.SelectedText = ""
+        tbCustomerID.ShadowDecoration.CustomizableEdges = CustomizableEdges32
+        tbCustomerID.Size = New Size(229, 36)
+        tbCustomerID.TabIndex = 12
         ' 
         ' frmCustomer
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(914, 600)
         Controls.Add(tbSearch)
         Controls.Add(tbCompanyName)
         Controls.Add(tbLastName)
+        Controls.Add(tbCustomerID)
         Controls.Add(tbFirstName)
         Controls.Add(lblCompanyName)
+        Controls.Add(lblID)
         Controls.Add(Guna2HtmlLabel1)
         Controls.Add(lblFirstName)
         Controls.Add(Guna2HtmlLabel2)
@@ -345,6 +395,7 @@ Partial Class frmCustomer
         Controls.Add(dgvCustomers)
         Controls.Add(btnSearch)
         Controls.Add(btnEdit)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "frmCustomer"
         Text = "frmCustomer"
         CType(dgvCustomers, ComponentModel.ISupportInitialize).EndInit()
@@ -367,4 +418,7 @@ Partial Class frmCustomer
     Friend WithEvents tbLastName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbCompanyName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbSearch As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents lblID As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbCustomerID As Guna.UI2.WinForms.Guna2TextBox
 End Class
