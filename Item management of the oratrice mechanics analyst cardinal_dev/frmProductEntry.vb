@@ -91,7 +91,14 @@ Public Class frmProductEntry
 
         tbQuantity.Enabled = False
 
-        btnSave.Text = "Edit"
+        btnAdd.Text = "Save"
+        lblProductName.ForeColor = Color.FromArgb(255, 249, 144)
+        lblProductID.ForeColor = Color.FromArgb(255, 249, 144)
+        lblProductPrice.ForeColor = Color.FromArgb(255, 249, 144)
+        btnProductIDGenerator.Enabled = False
+        lblStatus.ForeColor = Color.FromArgb(255, 249, 144)
+        lblprodes.ForeColor = Color.FromArgb(255, 249, 144)
+        lblComments.ForeColor = Color.FromArgb(255, 249, 144)
     End Sub
 
     Private Sub notOnedit()
@@ -103,7 +110,15 @@ Public Class frmProductEntry
 
         tbQuantity.Enabled = True
 
-        btnSave.Text = "Save"
+        btnAdd.Text = "Add"
+
+        lblProductName.ForeColor = Color.FromArgb(153, 180, 209)
+        lblProductID.ForeColor = Color.FromArgb(153, 180, 209)
+        lblProductPrice.ForeColor = Color.FromArgb(153, 180, 209)
+        btnProductIDGenerator.Enabled = True
+        lblStatus.ForeColor = Color.FromArgb(153, 180, 209)
+        lblprodes.ForeColor = Color.FromArgb(153, 180, 209)
+        lblComments.ForeColor = Color.FromArgb(153, 180, 209)
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -149,7 +164,7 @@ Public Class frmProductEntry
     End Sub
 
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         SaveProductEntry()
     End Sub
 

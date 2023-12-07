@@ -43,8 +43,6 @@ Partial Class frmOrderManagement
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         dgvOrderMannagement = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -65,8 +63,7 @@ Partial Class frmOrderManagement
         lblQuantity = New Label()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         bntSave = New Guna.UI2.WinForms.Guna2GradientButton()
-        ComboBox1 = New ComboBox()
-        Guna2GradientButton1 = New Guna.UI2.WinForms.Guna2GradientButton()
+        lblSearch = New Label()
         CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -206,9 +203,9 @@ Partial Class frmOrderManagement
         lblOrderID.ForeColor = SystemColors.ActiveCaption
         lblOrderID.Location = New Point(28, 57)
         lblOrderID.Name = "lblOrderID"
-        lblOrderID.Size = New Size(51, 15)
+        lblOrderID.Size = New Size(57, 15)
         lblOrderID.TabIndex = 7
-        lblOrderID.Text = "Order ID"
+        lblOrderID.Text = "Order ID :"
         ' 
         ' tbSearch
         ' 
@@ -228,7 +225,7 @@ Partial Class frmOrderManagement
         tbSearch.PlaceholderText = ""
         tbSearch.SelectedText = ""
         tbSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        tbSearch.Size = New Size(129, 23)
+        tbSearch.Size = New Size(144, 28)
         tbSearch.TabIndex = 9
         ' 
         ' tbCustomerName
@@ -306,9 +303,9 @@ Partial Class frmOrderManagement
         lblCustomerName.ForeColor = SystemColors.ActiveCaption
         lblCustomerName.Location = New Point(28, 112)
         lblCustomerName.Name = "lblCustomerName"
-        lblCustomerName.Size = New Size(94, 15)
+        lblCustomerName.Size = New Size(97, 15)
         lblCustomerName.TabIndex = 7
-        lblCustomerName.Text = "Customer Name"
+        lblCustomerName.Text = "Customer Name:"
         ' 
         ' Guna2TextBox2
         ' 
@@ -341,9 +338,9 @@ Partial Class frmOrderManagement
         lblProduct.ForeColor = SystemColors.ActiveCaption
         lblProduct.Location = New Point(28, 170)
         lblProduct.Name = "lblProduct"
-        lblProduct.Size = New Size(49, 15)
+        lblProduct.Size = New Size(52, 15)
         lblProduct.TabIndex = 7
-        lblProduct.Text = "Product"
+        lblProduct.Text = "Product:"
         ' 
         ' lblQuantity
         ' 
@@ -352,9 +349,9 @@ Partial Class frmOrderManagement
         lblQuantity.ForeColor = SystemColors.ActiveCaption
         lblQuantity.Location = New Point(28, 230)
         lblQuantity.Name = "lblQuantity"
-        lblQuantity.Size = New Size(53, 15)
+        lblQuantity.Size = New Size(56, 15)
         lblQuantity.TabIndex = 7
-        lblQuantity.Text = "Quantity"
+        lblQuantity.Text = "Quantity:"
         ' 
         ' Guna2TextBox3
         ' 
@@ -399,40 +396,23 @@ Partial Class frmOrderManagement
         bntSave.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         bntSave.Size = New Size(149, 45)
         bntSave.TabIndex = 11
-        bntSave.Text = "Save"
+        bntSave.Text = "Add"
         ' 
-        ' ComboBox1
+        ' lblSearch
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(411, 53)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(92, 23)
-        ComboBox1.TabIndex = 12
-        ' 
-        ' Guna2GradientButton1
-        ' 
-        Guna2GradientButton1.CustomizableEdges = CustomizableEdges19
-        Guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray
-        Guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2GradientButton1.FillColor2 = Color.Empty
-        Guna2GradientButton1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2GradientButton1.ForeColor = Color.White
-        Guna2GradientButton1.Location = New Point(509, 53)
-        Guna2GradientButton1.Name = "Guna2GradientButton1"
-        Guna2GradientButton1.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        Guna2GradientButton1.Size = New Size(80, 23)
-        Guna2GradientButton1.TabIndex = 1
-        Guna2GradientButton1.Text = "Search"
+        lblSearch.AutoSize = True
+        lblSearch.ForeColor = SystemColors.ActiveCaption
+        lblSearch.Location = New Point(276, 36)
+        lblSearch.Name = "lblSearch"
+        lblSearch.Size = New Size(45, 15)
+        lblSearch.TabIndex = 7
+        lblSearch.Text = "Search:"
         ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(ComboBox1)
         Controls.Add(bntSave)
         Controls.Add(Guna2TextBox3)
         Controls.Add(Guna2TextBox2)
@@ -442,14 +422,14 @@ Partial Class frmOrderManagement
         Controls.Add(lblQuantity)
         Controls.Add(lblProduct)
         Controls.Add(lblCustomerName)
+        Controls.Add(lblSearch)
         Controls.Add(lblOrderID)
         Controls.Add(dgvOrderMannagement)
-        Controls.Add(Guna2GradientButton1)
         Controls.Add(btnGenerateID)
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
         Name = "frmOrderManagement"
-        Text = "Order Mannage"
+        Text = "Order Management"
         CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -474,6 +454,5 @@ Partial Class frmOrderManagement
     Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
     Friend WithEvents dgvcDateofOrdered As DataGridViewTextBoxColumn
     Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Guna2GradientButton1 As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents lblSearch As Label
 End Class

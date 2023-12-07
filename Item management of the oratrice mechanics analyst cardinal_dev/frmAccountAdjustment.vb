@@ -13,6 +13,7 @@
         btnAdd.ForeColor = Color.FromArgb(255, 249, 144)
         btnAdd.FillColor2 = Color.FromArgb(153, 180, 209)
 
+        lblID.ForeColor = Color.FromArgb(255, 249, 144)
         lblPassword.ForeColor = Color.FromArgb(255, 249, 144)
         lblLastName.ForeColor = Color.FromArgb(255, 249, 144)
         lblFirstName.ForeColor = Color.FromArgb(255, 249, 144)
@@ -30,6 +31,7 @@
         btnAdd.ForeColor = Color.White
         btnAdd.FillColor2 = Color.FromArgb(94, 148, 255)
 
+        lblID.ForeColor = Color.FromArgb(153, 180, 209)
         lblPassword.ForeColor = Color.FromArgb(153, 180, 209)
         lblLastName.ForeColor = Color.FromArgb(153, 180, 209)
         lblFirstName.ForeColor = Color.FromArgb(153, 180, 209)
@@ -57,5 +59,7 @@
 
     End Sub
 
+    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged, tbID.TextChanged
 
+    End Sub
 End Class
