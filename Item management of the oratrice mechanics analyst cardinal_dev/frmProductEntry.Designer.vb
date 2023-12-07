@@ -48,11 +48,11 @@ Partial Class frmProductEntry
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        lnlPanel = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblprodes = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbProductNameEntry = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductPriceEntry = New Guna.UI2.WinForms.Guna2TextBox()
         tbProductDescriptionEntry = New Guna.UI2.WinForms.Guna2TextBox()
-        btnSave = New Guna.UI2.WinForms.Guna2GradientButton()
+        btnAdd = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         lblStatus = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -104,16 +104,16 @@ Partial Class frmProductEntry
         lblProductPrice.TabIndex = 1
         lblProductPrice.Text = "Product Price :"
         ' 
-        ' lnlPanel
+        ' lblprodes
         ' 
-        lnlPanel.Anchor = AnchorStyles.Left
-        lnlPanel.BackColor = Color.Transparent
-        lnlPanel.ForeColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        lnlPanel.Location = New Point(24, 310)
-        lnlPanel.Name = "lnlPanel"
-        lnlPanel.Size = New Size(114, 17)
-        lnlPanel.TabIndex = 1
-        lnlPanel.Text = "Product Description :"
+        lblprodes.Anchor = AnchorStyles.Left
+        lblprodes.BackColor = Color.Transparent
+        lblprodes.ForeColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        lblprodes.Location = New Point(24, 310)
+        lblprodes.Name = "lblprodes"
+        lblprodes.Size = New Size(114, 17)
+        lblprodes.TabIndex = 1
+        lblprodes.Text = "Product Description :"
         ' 
         ' tbProductNameEntry
         ' 
@@ -180,25 +180,25 @@ Partial Class frmProductEntry
         tbProductDescriptionEntry.Size = New Size(243, 27)
         tbProductDescriptionEntry.TabIndex = 2
         ' 
-        ' btnSave
+        ' btnAdd
         ' 
-        btnSave.Anchor = AnchorStyles.Left
-        btnSave.CustomizableEdges = CustomizableEdges7
-        btnSave.DisabledState.BorderColor = Color.DarkGray
-        btnSave.DisabledState.CustomBorderColor = Color.DarkGray
-        btnSave.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnSave.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnSave.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        btnSave.FillColor = Color.Transparent
-        btnSave.FillColor2 = Color.FromArgb(CByte(70), CByte(162), CByte(227))
-        btnSave.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        btnSave.ForeColor = Color.White
-        btnSave.Location = New Point(70, 504)
-        btnSave.Name = "btnSave"
-        btnSave.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        btnSave.Size = New Size(134, 45)
-        btnSave.TabIndex = 3
-        btnSave.Text = "Save"
+        btnAdd.Anchor = AnchorStyles.Left
+        btnAdd.CustomizableEdges = CustomizableEdges7
+        btnAdd.DisabledState.BorderColor = Color.DarkGray
+        btnAdd.DisabledState.CustomBorderColor = Color.DarkGray
+        btnAdd.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnAdd.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnAdd.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnAdd.FillColor = Color.Transparent
+        btnAdd.FillColor2 = Color.FromArgb(CByte(70), CByte(162), CByte(227))
+        btnAdd.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnAdd.ForeColor = Color.White
+        btnAdd.Location = New Point(70, 504)
+        btnAdd.Name = "btnAdd"
+        btnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        btnAdd.Size = New Size(134, 45)
+        btnAdd.TabIndex = 3
+        btnAdd.Text = "Add"
         ' 
         ' btnEdit
         ' 
@@ -458,7 +458,7 @@ Partial Class frmProductEntry
         Controls.Add(btnEdit)
         Controls.Add(dgvProducts)
         Controls.Add(btnProductIDGenerator)
-        Controls.Add(btnSave)
+        Controls.Add(btnAdd)
         Controls.Add(tbComments)
         Controls.Add(tbProductDescriptionEntry)
         Controls.Add(tbQuantity)
@@ -466,7 +466,7 @@ Partial Class frmProductEntry
         Controls.Add(Guna2TextBox2)
         Controls.Add(tbProductNameEntry)
         Controls.Add(lblComments)
-        Controls.Add(lnlPanel)
+        Controls.Add(lblprodes)
         Controls.Add(lblQuantity)
         Controls.Add(lblProductID)
         Controls.Add(lblProductPrice)
@@ -482,8 +482,8 @@ Partial Class frmProductEntry
     Friend WithEvents lbltestentry As Label
     Friend WithEvents lblProductName As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblProductPrice As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lnlPanel As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents lblprodes As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents btnAdd As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnProductNameEntry As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnProductPriceEntry As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnProductDescriptionEntry As Guna.UI2.WinForms.Guna2TextBox

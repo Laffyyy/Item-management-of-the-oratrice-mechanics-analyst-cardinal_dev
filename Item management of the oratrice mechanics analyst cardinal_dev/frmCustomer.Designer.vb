@@ -47,11 +47,11 @@ Partial Class frmCustomer
         dgvcCompanyName = New DataGridViewTextBoxColumn()
         bnAdd = New Guna.UI2.WinForms.Guna2GradientButton()
         Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        lblFirstName = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblLastName = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        lblfirstname = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblCompanyName = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        tbFirstName = New Guna.UI2.WinForms.Guna2TextBox()
         tbLastName = New Guna.UI2.WinForms.Guna2TextBox()
+        tbFirstName = New Guna.UI2.WinForms.Guna2TextBox()
         tbCompanyName = New Guna.UI2.WinForms.Guna2TextBox()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         lblID = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -82,6 +82,10 @@ Partial Class frmCustomer
         ' 
         ' dgvCustomers
         ' 
+        dgvCustomers.AllowUserToAddRows = False
+        dgvCustomers.AllowUserToDeleteRows = False
+        dgvCustomers.AllowUserToResizeColumns = False
+        dgvCustomers.AllowUserToResizeRows = False
         DataGridViewCellStyle4.BackColor = Color.White
         dgvCustomers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         dgvCustomers.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
@@ -107,9 +111,12 @@ Partial Class frmCustomer
         dgvCustomers.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvCustomers.Location = New Point(319, 104)
         dgvCustomers.Name = "dgvCustomers"
+        dgvCustomers.ReadOnly = True
         dgvCustomers.RowHeadersVisible = False
         dgvCustomers.RowHeadersWidth = 51
         dgvCustomers.RowTemplate.Height = 25
+        dgvCustomers.SelectionMode = DataGridViewSelectionMode.CellSelect
+        dgvCustomers.ShowEditingIcon = False
         dgvCustomers.Size = New Size(451, 315)
         dgvCustomers.TabIndex = 4
         dgvCustomers.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
@@ -125,7 +132,7 @@ Partial Class frmCustomer
         dgvCustomers.ThemeStyle.HeaderStyle.ForeColor = Color.White
         dgvCustomers.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         dgvCustomers.ThemeStyle.HeaderStyle.Height = 17
-        dgvCustomers.ThemeStyle.ReadOnly = False
+        dgvCustomers.ThemeStyle.ReadOnly = True
         dgvCustomers.ThemeStyle.RowsStyle.BackColor = Color.White
         dgvCustomers.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvCustomers.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -140,24 +147,28 @@ Partial Class frmCustomer
         dgvcID.HeaderText = "ID"
         dgvcID.MinimumWidth = 6
         dgvcID.Name = "dgvcID"
+        dgvcID.ReadOnly = True
         ' 
         ' dgvcCustomerFirstName
         ' 
         dgvcCustomerFirstName.HeaderText = "First Name"
         dgvcCustomerFirstName.MinimumWidth = 6
         dgvcCustomerFirstName.Name = "dgvcCustomerFirstName"
+        dgvcCustomerFirstName.ReadOnly = True
         ' 
         ' dgvcCustomerLastName
         ' 
         dgvcCustomerLastName.HeaderText = "Last Name"
         dgvcCustomerLastName.MinimumWidth = 6
         dgvcCustomerLastName.Name = "dgvcCustomerLastName"
+        dgvcCustomerLastName.ReadOnly = True
         ' 
         ' dgvcCompanyName
         ' 
         dgvcCompanyName.HeaderText = "Company Name"
         dgvcCompanyName.MinimumWidth = 6
         dgvcCompanyName.Name = "dgvcCompanyName"
+        dgvcCompanyName.ReadOnly = True
         ' 
         ' bnAdd
         ' 
@@ -189,27 +200,27 @@ Partial Class frmCustomer
         Guna2HtmlLabel2.TabIndex = 9
         Guna2HtmlLabel2.Text = Nothing
         ' 
-        ' lblFirstName
+        ' lblLastName
         ' 
-        lblFirstName.Anchor = AnchorStyles.Left
-        lblFirstName.BackColor = Color.Transparent
-        lblFirstName.ForeColor = SystemColors.ActiveCaption
-        lblFirstName.Location = New Point(50, 110)
-        lblFirstName.Name = "lblFirstName"
-        lblFirstName.Size = New Size(59, 17)
-        lblFirstName.TabIndex = 10
-        lblFirstName.Text = "Last Name"
+        lblLastName.Anchor = AnchorStyles.Left
+        lblLastName.BackColor = Color.Transparent
+        lblLastName.ForeColor = SystemColors.ActiveCaption
+        lblLastName.Location = New Point(50, 110)
+        lblLastName.Name = "lblLastName"
+        lblLastName.Size = New Size(59, 17)
+        lblLastName.TabIndex = 10
+        lblLastName.Text = "Last Name"
         ' 
-        ' Guna2HtmlLabel1
+        ' lblfirstname
         ' 
-        Guna2HtmlLabel1.Anchor = AnchorStyles.Left
-        Guna2HtmlLabel1.BackColor = Color.Transparent
-        Guna2HtmlLabel1.ForeColor = SystemColors.ActiveCaption
-        Guna2HtmlLabel1.Location = New Point(50, 162)
-        Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(60, 17)
-        Guna2HtmlLabel1.TabIndex = 10
-        Guna2HtmlLabel1.Text = "First Name"
+        lblfirstname.Anchor = AnchorStyles.Left
+        lblfirstname.BackColor = Color.Transparent
+        lblfirstname.ForeColor = SystemColors.ActiveCaption
+        lblfirstname.Location = New Point(50, 162)
+        lblfirstname.Name = "lblfirstname"
+        lblfirstname.Size = New Size(60, 17)
+        lblfirstname.TabIndex = 10
+        lblfirstname.Text = "First Name"
         ' 
         ' lblCompanyName
         ' 
@@ -222,36 +233,12 @@ Partial Class frmCustomer
         lblCompanyName.TabIndex = 10
         lblCompanyName.Text = "Company Name"
         ' 
-        ' tbFirstName
-        ' 
-        tbFirstName.Anchor = AnchorStyles.Left
-        tbFirstName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        tbFirstName.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbFirstName.CustomizableEdges = CustomizableEdges19
-        tbFirstName.DefaultText = ""
-        tbFirstName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        tbFirstName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        tbFirstName.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbFirstName.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbFirstName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbFirstName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        tbFirstName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbFirstName.Location = New Point(50, 128)
-        tbFirstName.Margin = New Padding(3, 2, 3, 2)
-        tbFirstName.Name = "tbFirstName"
-        tbFirstName.PasswordChar = ChrW(0)
-        tbFirstName.PlaceholderText = ""
-        tbFirstName.SelectedText = ""
-        tbFirstName.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        tbFirstName.Size = New Size(200, 27)
-        tbFirstName.TabIndex = 12
-        ' 
         ' tbLastName
         ' 
         tbLastName.Anchor = AnchorStyles.Left
         tbLastName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbLastName.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbLastName.CustomizableEdges = CustomizableEdges21
+        tbLastName.CustomizableEdges = CustomizableEdges19
         tbLastName.DefaultText = ""
         tbLastName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbLastName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -260,15 +247,39 @@ Partial Class frmCustomer
         tbLastName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbLastName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbLastName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbLastName.Location = New Point(50, 180)
+        tbLastName.Location = New Point(50, 128)
         tbLastName.Margin = New Padding(3, 2, 3, 2)
         tbLastName.Name = "tbLastName"
         tbLastName.PasswordChar = ChrW(0)
         tbLastName.PlaceholderText = ""
         tbLastName.SelectedText = ""
-        tbLastName.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        tbLastName.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         tbLastName.Size = New Size(200, 27)
-        tbLastName.TabIndex = 13
+        tbLastName.TabIndex = 12
+        ' 
+        ' tbFirstName
+        ' 
+        tbFirstName.Anchor = AnchorStyles.Left
+        tbFirstName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        tbFirstName.AutoCompleteSource = AutoCompleteSource.CustomSource
+        tbFirstName.CustomizableEdges = CustomizableEdges21
+        tbFirstName.DefaultText = ""
+        tbFirstName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbFirstName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbFirstName.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbFirstName.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbFirstName.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbFirstName.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbFirstName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbFirstName.Location = New Point(50, 180)
+        tbFirstName.Margin = New Padding(3, 2, 3, 2)
+        tbFirstName.Name = "tbFirstName"
+        tbFirstName.PasswordChar = ChrW(0)
+        tbFirstName.PlaceholderText = ""
+        tbFirstName.SelectedText = ""
+        tbFirstName.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        tbFirstName.Size = New Size(200, 27)
+        tbFirstName.TabIndex = 13
         ' 
         ' tbCompanyName
         ' 
@@ -354,6 +365,7 @@ Partial Class frmCustomer
         ' 
         ' lblSearch
         ' 
+        lblSearch.Anchor = AnchorStyles.Top
         lblSearch.BackColor = Color.Transparent
         lblSearch.ForeColor = SystemColors.ActiveCaption
         lblSearch.Location = New Point(319, 54)
@@ -369,14 +381,14 @@ Partial Class frmCustomer
         ClientSize = New Size(800, 450)
         Controls.Add(tbSearch)
         Controls.Add(tbCompanyName)
-        Controls.Add(tbLastName)
-        Controls.Add(tbCustomerID)
         Controls.Add(tbFirstName)
+        Controls.Add(tbCustomerID)
+        Controls.Add(tbLastName)
         Controls.Add(lblCompanyName)
         Controls.Add(lblSearch)
         Controls.Add(lblID)
-        Controls.Add(Guna2HtmlLabel1)
-        Controls.Add(lblFirstName)
+        Controls.Add(lblfirstname)
+        Controls.Add(lblLastName)
         Controls.Add(Guna2HtmlLabel2)
         Controls.Add(bnAdd)
         Controls.Add(dgvCustomers)
@@ -396,11 +408,11 @@ Partial Class frmCustomer
     Friend WithEvents dgvcCustomerLastName As DataGridViewTextBoxColumn
     Friend WithEvents dgvcCompanyName As DataGridViewTextBoxColumn
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lblFirstName As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblLastName As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblfirstname As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblCompanyName As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents tbFirstName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbLastName As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbFirstName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbCompanyName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents tbSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblID As Guna.UI2.WinForms.Guna2HtmlLabel

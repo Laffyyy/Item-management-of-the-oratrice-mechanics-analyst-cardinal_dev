@@ -2,16 +2,7 @@
 
     Public Shared Property odermanagementstateEdit As Boolean = False
 
-    Sub New()
 
-        ' This call is required by the designer.
-        InitializeComponent()
-
-
-
-        ' Add any initialization after the InitializeComponent() call.
-
-    End Sub
 
 
 
@@ -26,8 +17,11 @@
         'if on edit mode its ok to go to other form but not log out and close program
         odermanagementstateEdit = True
 
-
-
+        lblOrderID.ForeColor = Color.FromArgb(255, 249, 144)
+        lblCustomerName.ForeColor = Color.FromArgb(255, 249, 144)
+        lblProduct.ForeColor = Color.FromArgb(255, 249, 144)
+        lblQuantity.ForeColor = Color.FromArgb(255, 249, 144)
+        bntSave.Text = "Save"
     End Sub
 
     Private Sub NotEdit()
@@ -35,22 +29,26 @@
         btnEdit.FillColor = Color.FromArgb(94, 148, 255)
         dgvOrderMannagement.DefaultCellStyle.BackColor = Color.FromArgb(90, 163, 216)
         btnEdit.Text = "Edit Order"
+
         btnDelete.Show()
+
         odermanagementstateEdit = False
 
-
+        lblOrderID.ForeColor = Color.FromArgb(153, 180, 209)
+        lblCustomerName.ForeColor = Color.FromArgb(153, 180, 209)
+        lblProduct.ForeColor = Color.FromArgb(153, 180, 209)
+        lblQuantity.ForeColor = Color.FromArgb(153, 180, 209)
+        bntSave.Text = "Add"
 
 
     End Sub
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click, btnGenerateID.Click, Guna2GradientButton1.Click
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If Not odermanagementstateEdit Then
+
             Onedit()
-
-
         Else
+
             NotEdit()
-
-
         End If
 
 
