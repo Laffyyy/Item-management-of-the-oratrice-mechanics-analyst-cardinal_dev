@@ -12,12 +12,12 @@ Public Class frmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "SELECT " &
-                "dcustomerid as 'dgvcID', " &
-                "dcustomerln as 'dgvcCustomerLastName', " &
-                "dcustomerfn as 'dgvcCustomerFirstName', " &
-                "dcompanyname as 'dgvcCompanyName' " &
-                "FROM " &
-                "omac.tblcustomers"
+                    "dcustomerid , " &
+                    "dcustomerln , " &
+                    "dcustomerfn , " &
+                    "dcompanyname  " &
+                    "FROM " &
+                    "omac.tblcustomers"
 
                     Using myAdapter As New MySqlDataAdapter()
                         myAdapter.SelectCommand = myCommand
@@ -25,8 +25,16 @@ Public Class frmCustomer
                         Using myDataSet As New DataSet()
                             myAdapter.Fill(myDataSet, "myData")
 
-                            dgvCustomers.Columns.Clear()
+                            dgvCustomers.Columns("dgvcID").DataPropertyName = "dcustomerid"
+                            dgvCustomers.Columns("dgvcCustomerLastName").DataPropertyName = "dcustomerln"
+                            dgvCustomers.Columns("dgvcCustomerFirstName").DataPropertyName = "dcustomerfn"
+                            dgvCustomers.Columns("dgvcCompanyName").DataPropertyName = "dcompanyname"
+
+
                             dgvCustomers.DataSource = myDataSet.Tables("myData")
+
+
+
                         End Using ' Dispose of DataSet
                     End Using ' Dispose of DataAdapter
                 End Using ' Dispose of MySqlCommand
@@ -36,15 +44,16 @@ Public Class frmCustomer
         End Try
     End Sub
 
+
     Private Sub tbSearch_TextChanged(sender As Object, e As EventArgs) Handles tbSearch.TextChanged
         Try
             Dim dataTable As DataTable = CType(dgvCustomers.DataSource, DataTable)
 
             If dataTable IsNot Nothing Then
-                dataTable.DefaultView.RowFilter = $"[dgvcID] LIKE '%{tbSearch.Text}%' OR " &
-                                             $"[dgvcCustomerFirstName] LIKE '%{tbSearch.Text}%' OR " &
-                                             $"[dgvcCustomerLastName] LIKE '%{tbSearch.Text}%' OR " &
-                                             $"[dgvcCompanyName] LIKE '%{tbSearch.Text}%'"
+                dataTable.DefaultView.RowFilter = $"[dcustomerid] LIKE '%{tbSearch.Text}%' OR " &
+                                             $"[dcustomerln] LIKE '%{tbSearch.Text}%' OR " &
+                                             $"[dcustomerfn] LIKE '%{tbSearch.Text}%' OR " &
+                                             $"[dcompanyname] LIKE '%{tbSearch.Text}%'"
             End If
         Catch ex As Exception
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
