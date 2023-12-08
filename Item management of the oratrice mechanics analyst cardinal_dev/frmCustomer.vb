@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Windows
+Imports MySql.Data.MySqlClient
 Public Class frmCustomer
 
     Public Shared Property frmcustomereditmode As Boolean = True
@@ -69,7 +70,7 @@ Public Class frmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "INSERT INTO omac.tblcustomers (dcustomerid, dcustomerfn, dcustomerln, dcompanyname) " &
-                                       "VALUES (@customerID, @firstName, @lastName, @companyName)"
+                                   "VALUES (@customerID, @firstName, @lastName, @companyName)"
 
                     myCommand.Parameters.AddWithValue("@customerID", customerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
@@ -87,6 +88,7 @@ Public Class frmCustomer
         End Try
     End Sub
 
+
     Private Sub UpdateCustomerInDatabase(customerID As String, lastName As String, firstName As String, companyName As String)
         Try
             Using myConnection As MySqlConnection = Common.getDBConnectionX()
@@ -96,23 +98,27 @@ Public Class frmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "UPDATE omac.tblcustomers " &
-                                       "SET dcustomerfn = @firstName, " &
-                                       "    dcustomerln = @lastName, " &
-                                       "    dcompanyname = @companyName " &
-                                       "WHERE dcustomerid = @customerID"
+                                   "SET dcustomerfn = @firstName, " &
+                                   "    dcustomerln = @lastName, " &
+                                   "    dcompanyname = @companyName " &
+                                   "WHERE dcustomerid = @customerID"
 
                     myCommand.Parameters.AddWithValue("@customerID", customerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
                     myCommand.Parameters.AddWithValue("@lastName", lastName)
                     myCommand.Parameters.AddWithValue("@companyName", companyName)
-                    DisplayCustomers()
+
                     myCommand.ExecuteNonQuery()
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
+
+            ' After update, refresh the DataGridView
+            DisplayCustomers()
         Catch ex As Exception
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
     Private Sub clear()
         tbCustomerID.Text = ""
@@ -187,24 +193,26 @@ Public Class frmCustomer
         DisplayCustomers()
     End Sub
 
-    Private Sub dgvCustomers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellContentClick
-        If Not frmcustomereditmode Then
-            If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
-                ' Access the data from the clicked row
-                Dim selectedRow As DataGridViewRow = dgvCustomers.Rows(e.RowIndex)
 
-                ' Assuming you have columns named dgvcID, dgvcCustomerLastName, dgvcCustomerFirstName, dgvcCompanyName
-                Dim customerID As String = selectedRow.Cells("dgvcID").Value.ToString()
-                Dim lastName As String = selectedRow.Cells("dgvcCustomerLastName").Value.ToString()
-                Dim firstName As String = selectedRow.Cells("dgvcCustomerFirstName").Value.ToString()
-                Dim companyName As String = selectedRow.Cells("dgvcCompanyName").Value.ToString()
+    Private Sub dgvCustomers_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellClick
+        If Not frmcustomereditmode AndAlso e.RowIndex >= 0 Then
+            ' Access the data from the clicked row
+            Dim selectedRow As DataGridViewRow = dgvCustomers.Rows(e.RowIndex)
 
-                ' Display the data in textboxes
-                tbCustomerID.Text = customerID
-                tbLastName.Text = lastName
-                tbFirstName.Text = firstName
-                tbCompanyName.Text = companyName
-            End If
+            ' Assuming you have columns named dgvcID, dgvcCustomerLastName, dgvcCustomerFirstName, dgvcCompanyName
+            Dim customerID As String = selectedRow.Cells("dgvcID").Value.ToString()
+            Dim lastName As String = selectedRow.Cells("dgvcCustomerLastName").Value.ToString()
+            Dim firstName As String = selectedRow.Cells("dgvcCustomerFirstName").Value.ToString()
+            Dim companyName As String = selectedRow.Cells("dgvcCompanyName").Value.ToString()
+
+            ' Display the data in textboxes
+            tbCustomerID.Text = customerID
+            tbLastName.Text = lastName
+            tbFirstName.Text = firstName
+            tbCompanyName.Text = companyName
         End If
     End Sub
+
+
+
 End Class
