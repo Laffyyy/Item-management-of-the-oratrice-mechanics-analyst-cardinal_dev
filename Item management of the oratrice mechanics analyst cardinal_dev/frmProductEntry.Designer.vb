@@ -440,12 +440,12 @@ Partial Class frmProductEntry
         ' 
         ' dgvcTotalQuantity
         ' 
-        dgvcTotalQuantity.HeaderText = "TotalQuantity"
+        dgvcTotalQuantity.HeaderText = "Total Quantity"
         dgvcTotalQuantity.Name = "dgvcTotalQuantity"
         ' 
         ' dgvcDelete
         ' 
-        dgvcDelete.HeaderText = "fuction"
+        dgvcDelete.HeaderText = "Function"
         dgvcDelete.Name = "dgvcDelete"
         ' 
         ' frmProductEntry

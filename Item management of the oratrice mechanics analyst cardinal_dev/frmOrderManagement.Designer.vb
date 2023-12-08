@@ -45,13 +45,7 @@ Partial Class frmOrderManagement
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
-        dgvOrderMannagement = New Guna.UI2.WinForms.Guna2DataGridView()
-        dgvcOrderID = New DataGridViewTextBoxColumn()
-        dgvcCustomerName = New DataGridViewTextBoxColumn()
-        dgvcProductName = New DataGridViewTextBoxColumn()
-        dgvcQuantity = New DataGridViewTextBoxColumn()
-        dgvcDateofOrdered = New DataGridViewTextBoxColumn()
-        dgvcStatus = New DataGridViewTextBoxColumn()
+        dgvOrderManagement = New Guna.UI2.WinForms.Guna2DataGridView()
         lblOrderID = New Label()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         tbCustomerName = New Guna.UI2.WinForms.Guna2TextBox()
@@ -64,7 +58,15 @@ Partial Class frmOrderManagement
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         bntSave = New Guna.UI2.WinForms.Guna2GradientButton()
         lblSearch = New Label()
-        CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).BeginInit()
+        dgvcOrderID = New DataGridViewTextBoxColumn()
+        dgvcCustomerID = New DataGridViewTextBoxColumn()
+        dgvcCustomerName = New DataGridViewTextBoxColumn()
+        dgvcProductID = New DataGridViewTextBoxColumn()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        dgvcDateOrdered = New DataGridViewTextBoxColumn()
+        dgvcStatus = New DataGridViewTextBoxColumn()
+        CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnDelete
@@ -107,11 +109,11 @@ Partial Class frmOrderManagement
         btnEdit.TabIndex = 1
         btnEdit.Text = "Edit Order"
         ' 
-        ' dgvOrderMannagement
+        ' dgvOrderManagement
         ' 
         DataGridViewCellStyle1.BackColor = Color.White
-        dgvOrderMannagement.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        dgvOrderMannagement.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        dgvOrderManagement.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvOrderManagement.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -119,10 +121,10 @@ Partial Class frmOrderManagement
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        dgvOrderMannagement.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        dgvOrderMannagement.ColumnHeadersHeight = 40
-        dgvOrderMannagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvOrderMannagement.Columns.AddRange(New DataGridViewColumn() {dgvcOrderID, dgvcCustomerName, dgvcProductName, dgvcQuantity, dgvcDateofOrdered, dgvcStatus})
+        dgvOrderManagement.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        dgvOrderManagement.ColumnHeadersHeight = 40
+        dgvOrderManagement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvOrderManagement.Columns.AddRange(New DataGridViewColumn() {dgvcOrderID, dgvcCustomerID, dgvcCustomerName, dgvcProductID, dgvcProductName, dgvcQuantity, dgvcDateOrdered, dgvcStatus})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -130,71 +132,36 @@ Partial Class frmOrderManagement
         DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
-        dgvOrderMannagement.DefaultCellStyle = DataGridViewCellStyle3
-        dgvOrderMannagement.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvOrderMannagement.Location = New Point(276, 86)
-        dgvOrderMannagement.Name = "dgvOrderMannagement"
-        dgvOrderMannagement.RowHeadersVisible = False
-        dgvOrderMannagement.RowHeadersWidth = 51
-        dgvOrderMannagement.RowTemplate.Height = 25
-        dgvOrderMannagement.Size = New Size(479, 291)
-        dgvOrderMannagement.TabIndex = 6
-        dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
-        dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
-        dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
-        dgvOrderMannagement.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
-        dgvOrderMannagement.ThemeStyle.BackColor = Color.White
-        dgvOrderMannagement.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.ForeColor = Color.White
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvOrderMannagement.ThemeStyle.HeaderStyle.Height = 40
-        dgvOrderMannagement.ThemeStyle.ReadOnly = False
-        dgvOrderMannagement.ThemeStyle.RowsStyle.BackColor = Color.White
-        dgvOrderMannagement.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
-        dgvOrderMannagement.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        dgvOrderMannagement.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        dgvOrderMannagement.ThemeStyle.RowsStyle.Height = 25
-        dgvOrderMannagement.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvOrderMannagement.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
-        ' 
-        ' dgvcOrderID
-        ' 
-        dgvcOrderID.HeaderText = "Order ID"
-        dgvcOrderID.Name = "dgvcOrderID"
-        ' 
-        ' dgvcCustomerName
-        ' 
-        dgvcCustomerName.HeaderText = "Customer Name"
-        dgvcCustomerName.MinimumWidth = 6
-        dgvcCustomerName.Name = "dgvcCustomerName"
-        ' 
-        ' dgvcProductName
-        ' 
-        dgvcProductName.HeaderText = "Product Name"
-        dgvcProductName.MinimumWidth = 6
-        dgvcProductName.Name = "dgvcProductName"
-        ' 
-        ' dgvcQuantity
-        ' 
-        dgvcQuantity.HeaderText = "Quantity"
-        dgvcQuantity.MinimumWidth = 6
-        dgvcQuantity.Name = "dgvcQuantity"
-        ' 
-        ' dgvcDateofOrdered
-        ' 
-        dgvcDateofOrdered.HeaderText = "Date of Ordered"
-        dgvcDateofOrdered.MinimumWidth = 6
-        dgvcDateofOrdered.Name = "dgvcDateofOrdered"
-        ' 
-        ' dgvcStatus
-        ' 
-        dgvcStatus.HeaderText = "Status"
-        dgvcStatus.MinimumWidth = 6
-        dgvcStatus.Name = "dgvcStatus"
+        dgvOrderManagement.DefaultCellStyle = DataGridViewCellStyle3
+        dgvOrderManagement.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvOrderManagement.Location = New Point(276, 86)
+        dgvOrderManagement.Name = "dgvOrderManagement"
+        dgvOrderManagement.RowHeadersVisible = False
+        dgvOrderManagement.RowHeadersWidth = 51
+        dgvOrderManagement.RowTemplate.Height = 25
+        dgvOrderManagement.Size = New Size(479, 291)
+        dgvOrderManagement.TabIndex = 6
+        dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
+        dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
+        dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
+        dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
+        dgvOrderManagement.ThemeStyle.BackColor = Color.White
+        dgvOrderManagement.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvOrderManagement.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
+        dgvOrderManagement.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
+        dgvOrderManagement.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvOrderManagement.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        dgvOrderManagement.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        dgvOrderManagement.ThemeStyle.HeaderStyle.Height = 40
+        dgvOrderManagement.ThemeStyle.ReadOnly = False
+        dgvOrderManagement.ThemeStyle.RowsStyle.BackColor = Color.White
+        dgvOrderManagement.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvOrderManagement.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        dgvOrderManagement.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        dgvOrderManagement.ThemeStyle.RowsStyle.Height = 25
+        dgvOrderManagement.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvOrderManagement.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
         ' lblOrderID
         ' 
@@ -408,6 +375,51 @@ Partial Class frmOrderManagement
         lblSearch.TabIndex = 7
         lblSearch.Text = "Search:"
         ' 
+        ' dgvcOrderID
+        ' 
+        dgvcOrderID.HeaderText = "Order ID"
+        dgvcOrderID.Name = "dgvcOrderID"
+        ' 
+        ' dgvcCustomerID
+        ' 
+        dgvcCustomerID.HeaderText = "Customer ID"
+        dgvcCustomerID.Name = "dgvcCustomerID"
+        ' 
+        ' dgvcCustomerName
+        ' 
+        dgvcCustomerName.HeaderText = "Customer Name"
+        dgvcCustomerName.MinimumWidth = 6
+        dgvcCustomerName.Name = "dgvcCustomerName"
+        ' 
+        ' dgvcProductID
+        ' 
+        dgvcProductID.HeaderText = "Product ID"
+        dgvcProductID.Name = "dgvcProductID"
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.MinimumWidth = 6
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.MinimumWidth = 6
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' dgvcDateOrdered
+        ' 
+        dgvcDateOrdered.HeaderText = "Date Ordered"
+        dgvcDateOrdered.MinimumWidth = 6
+        dgvcDateOrdered.Name = "dgvcDateOrdered"
+        ' 
+        ' dgvcStatus
+        ' 
+        dgvcStatus.HeaderText = "Status"
+        dgvcStatus.MinimumWidth = 6
+        dgvcStatus.Name = "dgvcStatus"
+        ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -424,13 +436,13 @@ Partial Class frmOrderManagement
         Controls.Add(lblCustomerName)
         Controls.Add(lblSearch)
         Controls.Add(lblOrderID)
-        Controls.Add(dgvOrderMannagement)
+        Controls.Add(dgvOrderManagement)
         Controls.Add(btnGenerateID)
         Controls.Add(btnEdit)
         Controls.Add(btnDelete)
         Name = "frmOrderManagement"
         Text = "Order Management"
-        CType(dgvOrderMannagement, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvOrderManagement, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -455,4 +467,8 @@ Partial Class frmOrderManagement
     Friend WithEvents dgvcDateofOrdered As DataGridViewTextBoxColumn
     Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
     Friend WithEvents lblSearch As Label
+    Friend WithEvents dgvcDateOrdered As DataGridViewTextBoxColumn
+    Friend WithEvents dgvOrderManagement As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents dgvcCustomerID As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcProductID As DataGridViewTextBoxColumn
 End Class
