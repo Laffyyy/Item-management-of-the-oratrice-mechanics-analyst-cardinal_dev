@@ -110,6 +110,20 @@ Public Class frmStockAdjustment
 
             myCommand1.ExecuteNonQuery()
 
+            ' Insert into tbllogs
+            Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
+            Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+            Dim location As String = "Stock Adjustment"
+            Dim timestamp As DateTime = DateTime.Now
+
+            Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, ttimestamp) VALUES (@logId, @userId, @location, @timestamp)", myConnection1)
+            logCommand.Parameters.AddWithValue("@logId", logId)
+            logCommand.Parameters.AddWithValue("@userId", userId)
+            logCommand.Parameters.AddWithValue("@location", location)
+            logCommand.Parameters.AddWithValue("@timestamp", timestamp)
+
+            logCommand.ExecuteNonQuery()
+
             DisplayStockAdjustment()
 
         Catch ex As Exception
@@ -119,6 +133,7 @@ Public Class frmStockAdjustment
             myConnection1.Close()
         End Try
     End Sub
+
 
     Private Function GetLatestSum(productId As String) As Integer
         Dim query As String = "SELECT COALESCE(SUM(dquantitychanged), 0) AS latestSum FROM tblStock WHERE dproductid = @productId"

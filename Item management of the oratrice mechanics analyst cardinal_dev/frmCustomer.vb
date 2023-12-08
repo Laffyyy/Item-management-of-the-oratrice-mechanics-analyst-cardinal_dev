@@ -70,7 +70,7 @@ Public Class frmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "INSERT INTO omac.tblcustomers (dcustomerid, dcustomerfn, dcustomerln, dcompanyname) " &
-                                   "VALUES (@customerID, @firstName, @lastName, @companyName)"
+                           "VALUES (@customerID, @firstName, @lastName, @companyName)"
 
                     myCommand.Parameters.AddWithValue("@customerID", customerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
@@ -79,6 +79,13 @@ Public Class frmCustomer
 
                     myCommand.ExecuteNonQuery()
                 End Using ' Dispose of MySqlCommand
+
+                ' Create a string with the new data
+                Dim editedData As String = $"{customerID} || {firstName} || {lastName} || {companyName}"
+
+                ' Insert into tbllogs
+                LogCustomerAction("Add", customerID, editedData)
+
             End Using ' Dispose of MySqlConnection
 
             ' After insertion, refresh the DataGridView
@@ -87,7 +94,6 @@ Public Class frmCustomer
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 
     Private Sub UpdateCustomerInDatabase(customerID As String, lastName As String, firstName As String, companyName As String)
         Try
@@ -98,10 +104,10 @@ Public Class frmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "UPDATE omac.tblcustomers " &
-                                   "SET dcustomerfn = @firstName, " &
-                                   "    dcustomerln = @lastName, " &
-                                   "    dcompanyname = @companyName " &
-                                   "WHERE dcustomerid = @customerID"
+                           "SET dcustomerfn = @firstName, " &
+                           "    dcustomerln = @lastName, " &
+                           "    dcompanyname = @companyName " &
+                           "WHERE dcustomerid = @customerID"
 
                     myCommand.Parameters.AddWithValue("@customerID", customerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
@@ -109,8 +115,15 @@ Public Class frmCustomer
                     myCommand.Parameters.AddWithValue("@companyName", companyName)
 
                     myCommand.ExecuteNonQuery()
+
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
+
+            ' Create a string with the new data
+            Dim editedData As String = $"{customerID} || {firstName} || {lastName} || {companyName}"
+
+            ' Insert into tbllogs
+            LogCustomerAction("Update", customerID, editedData)
 
             ' After update, refresh the DataGridView
             DisplayCustomers()
@@ -118,6 +131,34 @@ Public Class frmCustomer
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
+    Private Sub LogCustomerAction(action As String, customerID As String, editedData As String)
+        Try
+            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+                myConnection.Open()
+
+                Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
+                Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+                Dim location As String = "Customer"
+                Dim timestamp As DateTime = DateTime.Now
+
+                Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)", myConnection)
+                logCommand.Parameters.AddWithValue("@logId", logId)
+                logCommand.Parameters.AddWithValue("@userId", userId)
+                logCommand.Parameters.AddWithValue("@location", location)
+                logCommand.Parameters.AddWithValue("@editedData", editedData)
+                logCommand.Parameters.AddWithValue("@timestamp", timestamp)
+
+                logCommand.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+
 
 
     Private Sub clear()
@@ -187,6 +228,7 @@ Public Class frmCustomer
             InsertCustomer(customerID, lastName, firstName, companyName)
             clear()
         End If
+
     End Sub
 
     Private Sub frmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
