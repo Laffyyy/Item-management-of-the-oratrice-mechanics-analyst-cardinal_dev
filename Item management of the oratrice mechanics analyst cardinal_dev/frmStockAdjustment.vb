@@ -79,6 +79,7 @@ Public Class frmStockAdjustment
             Loop While Not IsStockIdUnique(stockId)
 
             Dim productId As String = tbProductID.Text
+            Dim productName As String = cbProductName.Text ' Assuming you have a ComboBox named cbProductName for product names
             Dim quantityChanged As Integer = Integer.Parse(tbProductQuantity.Text)
             Dim stockChangeDate As DateTime = DateTime.Now
 
@@ -101,6 +102,7 @@ Public Class frmStockAdjustment
                 Exit Sub
             End If
 
+            ' Save stock adjustment
             myCommand1 = New MySqlCommand("INSERT INTO tblStock (dorigin, dstockid, dproductid, dquantitychanged, dstockchangedate) VALUES (@origin, @stockId, @productId, @quantityChanged, @stockChangeDate)", myConnection1)
             myCommand1.Parameters.AddWithValue("@origin", origin)
             myCommand1.Parameters.AddWithValue("@stockId", stockId)
@@ -110,19 +112,11 @@ Public Class frmStockAdjustment
 
             myCommand1.ExecuteNonQuery()
 
+            ' Create edited data string
+            Dim editedData As String = $"{productId} || {productName} || {quantityChanged}"
+
             ' Insert into tbllogs
-            Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
-            Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
-            Dim location As String = "Stock Adjustment"
-            Dim timestamp As DateTime = DateTime.Now
-
-            Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, ttimestamp) VALUES (@logId, @userId, @location, @timestamp)", myConnection1)
-            logCommand.Parameters.AddWithValue("@logId", logId)
-            logCommand.Parameters.AddWithValue("@userId", userId)
-            logCommand.Parameters.AddWithValue("@location", location)
-            logCommand.Parameters.AddWithValue("@timestamp", timestamp)
-
-            logCommand.ExecuteNonQuery()
+            LogStockAction(origin, stockId, editedData)
 
             DisplayStockAdjustment()
 
@@ -133,6 +127,32 @@ Public Class frmStockAdjustment
             myConnection1.Close()
         End Try
     End Sub
+
+
+    Private Sub LogStockAction(origin As String, stockId As String, editedData As String)
+        Try
+            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+                myConnection.Open()
+
+                Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
+                Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+                Dim location As String = "Stock Adjustment"
+                Dim timestamp As DateTime = DateTime.Now
+
+                Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)", myConnection)
+                logCommand.Parameters.AddWithValue("@logId", logId)
+                logCommand.Parameters.AddWithValue("@userId", userId)
+                logCommand.Parameters.AddWithValue("@location", location)
+                logCommand.Parameters.AddWithValue("@editedData", editedData)
+                logCommand.Parameters.AddWithValue("@timestamp", timestamp)
+
+                logCommand.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
 
     Private Function GetLatestSum(productId As String) As Integer

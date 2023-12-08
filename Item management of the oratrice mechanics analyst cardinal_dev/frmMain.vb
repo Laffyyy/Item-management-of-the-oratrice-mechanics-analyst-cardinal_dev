@@ -96,7 +96,7 @@ Public Class frmMain
 
 
     Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -110,7 +110,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
             Activebutton(sender)
             OpenChildrenform(New frmOrderManagement)
@@ -123,7 +123,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -138,7 +138,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAccountAdj_Click(sender As Object, e As EventArgs) Handles btnAccountAdj.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
            Not frmProductEntry.productentryEditmode Then
 
 
@@ -152,7 +152,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
            Not frmProductEntry.productentryEditmode Then
 
 
@@ -166,7 +166,7 @@ Public Class frmMain
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
             If currentChildform IsNot Nothing Then
@@ -199,7 +199,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -220,7 +220,7 @@ Public Class frmMain
         End If
     End Sub
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        If Not frmOrderManagement.odermanagementstateEdit AndAlso
+        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
             If currentChildform IsNot Nothing Then
