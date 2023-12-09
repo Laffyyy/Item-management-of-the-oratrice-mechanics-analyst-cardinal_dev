@@ -7,6 +7,9 @@ Public Class frmMain
     Private leftBorderbtn As Panel
     Private currentChildform As Form
 
+    Private accesspont As Integer = frmLogin.UUserAccessLevel
+
+
 
     Public Sub New()
 
@@ -21,10 +24,32 @@ Public Class frmMain
         Me.Text = String.Empty
         Me.ControlBox = False
         Me.DoubleBuffered = True
+        dissableaccesspoint()
 
 
 
+    End Sub
 
+    Private su
+
+    Private Sub dissableaccesspoint()
+
+        If frmLogin.UUserAccessLevel <> 1 Then
+            btnAccountAdj.TextAlign = HorizontalAlignment.Left
+            btnAccountAdj.ForeColor = Color.FromArgb(128, 153, 180, 209)
+            btnAccountAdj.Enabled = False
+
+
+        End If
+        If frmLogin.UUserAccessLevel = 1 Then
+            btnAccountAdj.Enabled = True
+
+            btnAccountAdj.ForeColor = Color.FromArgb(153, 180, 209)
+            btnAccountAdj.TextAlign = HorizontalAlignment.Center
+
+        End If
+
+        leftBorderbtn.Visible = False
     End Sub
 
     Private Sub Activebutton(senderbtn As Object)
@@ -244,9 +269,10 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+    Private Sub active(sender As Object, e As EventArgs) Handles MyBase.Activated
+        dissableaccesspoint()
 
     End Sub
-
-
 End Class

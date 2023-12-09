@@ -46,6 +46,14 @@ Partial Class frmOrderManagement
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         dgvOrderManagement = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcOrderID = New DataGridViewTextBoxColumn()
+        dgvcCustomerID = New DataGridViewTextBoxColumn()
+        dgvcCustomerName = New DataGridViewTextBoxColumn()
+        dgvcProductID = New DataGridViewTextBoxColumn()
+        dgvcProductName = New DataGridViewTextBoxColumn()
+        dgvcQuantity = New DataGridViewTextBoxColumn()
+        dgvcDateOrdered = New DataGridViewTextBoxColumn()
+        dgvcStatus = New DataGridViewTextBoxColumn()
         lblOrderID = New Label()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         tbCustomerName = New Guna.UI2.WinForms.Guna2TextBox()
@@ -58,14 +66,6 @@ Partial Class frmOrderManagement
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         bntSave = New Guna.UI2.WinForms.Guna2GradientButton()
         lblSearch = New Label()
-        dgvcOrderID = New DataGridViewTextBoxColumn()
-        dgvcCustomerID = New DataGridViewTextBoxColumn()
-        dgvcCustomerName = New DataGridViewTextBoxColumn()
-        dgvcProductID = New DataGridViewTextBoxColumn()
-        dgvcProductName = New DataGridViewTextBoxColumn()
-        dgvcQuantity = New DataGridViewTextBoxColumn()
-        dgvcDateOrdered = New DataGridViewTextBoxColumn()
-        dgvcStatus = New DataGridViewTextBoxColumn()
         CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -162,6 +162,51 @@ Partial Class frmOrderManagement
         dgvOrderManagement.ThemeStyle.RowsStyle.Height = 25
         dgvOrderManagement.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvOrderManagement.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
+        ' 
+        ' dgvcOrderID
+        ' 
+        dgvcOrderID.HeaderText = "Order ID"
+        dgvcOrderID.Name = "dgvcOrderID"
+        ' 
+        ' dgvcCustomerID
+        ' 
+        dgvcCustomerID.HeaderText = "Customer ID"
+        dgvcCustomerID.Name = "dgvcCustomerID"
+        ' 
+        ' dgvcCustomerName
+        ' 
+        dgvcCustomerName.HeaderText = "Customer Name"
+        dgvcCustomerName.MinimumWidth = 6
+        dgvcCustomerName.Name = "dgvcCustomerName"
+        ' 
+        ' dgvcProductID
+        ' 
+        dgvcProductID.HeaderText = "Product ID"
+        dgvcProductID.Name = "dgvcProductID"
+        ' 
+        ' dgvcProductName
+        ' 
+        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.MinimumWidth = 6
+        dgvcProductName.Name = "dgvcProductName"
+        ' 
+        ' dgvcQuantity
+        ' 
+        dgvcQuantity.HeaderText = "Quantity"
+        dgvcQuantity.MinimumWidth = 6
+        dgvcQuantity.Name = "dgvcQuantity"
+        ' 
+        ' dgvcDateOrdered
+        ' 
+        dgvcDateOrdered.HeaderText = "Date Ordered"
+        dgvcDateOrdered.MinimumWidth = 6
+        dgvcDateOrdered.Name = "dgvcDateOrdered"
+        ' 
+        ' dgvcStatus
+        ' 
+        dgvcStatus.HeaderText = "Status"
+        dgvcStatus.MinimumWidth = 6
+        dgvcStatus.Name = "dgvcStatus"
         ' 
         ' lblOrderID
         ' 
@@ -374,51 +419,6 @@ Partial Class frmOrderManagement
         lblSearch.Size = New Size(45, 15)
         lblSearch.TabIndex = 7
         lblSearch.Text = "Search:"
-        ' 
-        ' dgvcOrderID
-        ' 
-        dgvcOrderID.HeaderText = "Order ID"
-        dgvcOrderID.Name = "dgvcOrderID"
-        ' 
-        ' dgvcCustomerID
-        ' 
-        dgvcCustomerID.HeaderText = "Customer ID"
-        dgvcCustomerID.Name = "dgvcCustomerID"
-        ' 
-        ' dgvcCustomerName
-        ' 
-        dgvcCustomerName.HeaderText = "Customer Name"
-        dgvcCustomerName.MinimumWidth = 6
-        dgvcCustomerName.Name = "dgvcCustomerName"
-        ' 
-        ' dgvcProductID
-        ' 
-        dgvcProductID.HeaderText = "Product ID"
-        dgvcProductID.Name = "dgvcProductID"
-        ' 
-        ' dgvcProductName
-        ' 
-        dgvcProductName.HeaderText = "Product Name"
-        dgvcProductName.MinimumWidth = 6
-        dgvcProductName.Name = "dgvcProductName"
-        ' 
-        ' dgvcQuantity
-        ' 
-        dgvcQuantity.HeaderText = "Quantity"
-        dgvcQuantity.MinimumWidth = 6
-        dgvcQuantity.Name = "dgvcQuantity"
-        ' 
-        ' dgvcDateOrdered
-        ' 
-        dgvcDateOrdered.HeaderText = "Date Ordered"
-        dgvcDateOrdered.MinimumWidth = 6
-        dgvcDateOrdered.Name = "dgvcDateOrdered"
-        ' 
-        ' dgvcStatus
-        ' 
-        dgvcStatus.HeaderText = "Status"
-        dgvcStatus.MinimumWidth = 6
-        dgvcStatus.Name = "dgvcStatus"
         ' 
         ' frmOrderManagement
         ' 

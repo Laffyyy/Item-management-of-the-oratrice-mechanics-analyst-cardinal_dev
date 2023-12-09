@@ -23,18 +23,18 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
-        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
         pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         btVisibility = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -76,7 +76,7 @@ Partial Class frmLogin
         pnlLogin.Controls.Add(btLogin)
         pnlLogin.Controls.Add(tbPassword)
         pnlLogin.Controls.Add(tbEmployeeID)
-        pnlLogin.CustomizableEdges = CustomizableEdges21
+        pnlLogin.CustomizableEdges = CustomizableEdges9
         pnlLogin.Dock = DockStyle.Right
         pnlLogin.FillColor = Color.Transparent
         pnlLogin.FillColor2 = Color.Transparent
@@ -85,13 +85,13 @@ Partial Class frmLogin
         pnlLogin.Location = New Point(454, 0)
         pnlLogin.Name = "pnlLogin"
         pnlLogin.Quality = 2
-        pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         pnlLogin.Size = New Size(365, 460)
         pnlLogin.TabIndex = 0
         ' 
         ' btVisibility
         ' 
-        btVisibility.CustomizableEdges = CustomizableEdges13
+        btVisibility.CustomizableEdges = CustomizableEdges1
         btVisibility.DisabledState.BorderColor = Color.DarkGray
         btVisibility.DisabledState.CustomBorderColor = Color.DarkGray
         btVisibility.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -104,7 +104,7 @@ Partial Class frmLogin
         btVisibility.Image = My.Resources.Resources.hide
         btVisibility.Location = New Point(285, 282)
         btVisibility.Name = "btVisibility"
-        btVisibility.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        btVisibility.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         btVisibility.Size = New Size(37, 36)
         btVisibility.TabIndex = 4
         ' 
@@ -134,7 +134,7 @@ Partial Class frmLogin
         ' 
         ' btLogin
         ' 
-        btLogin.CustomizableEdges = CustomizableEdges15
+        btLogin.CustomizableEdges = CustomizableEdges3
         btLogin.DisabledState.BorderColor = Color.DarkGray
         btLogin.DisabledState.CustomBorderColor = Color.DarkGray
         btLogin.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -146,14 +146,14 @@ Partial Class frmLogin
         btLogin.ForeColor = Color.White
         btLogin.Location = New Point(101, 361)
         btLogin.Name = "btLogin"
-        btLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btLogin.Size = New Size(150, 45)
         btLogin.TabIndex = 1
         btLogin.Text = "Login"
         ' 
         ' tbPassword
         ' 
-        tbPassword.CustomizableEdges = CustomizableEdges17
+        tbPassword.CustomizableEdges = CustomizableEdges5
         tbPassword.DefaultText = ""
         tbPassword.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbPassword.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -167,13 +167,13 @@ Partial Class frmLogin
         tbPassword.PasswordChar = "*"c
         tbPassword.PlaceholderText = ""
         tbPassword.SelectedText = ""
-        tbPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        tbPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         tbPassword.Size = New Size(200, 36)
         tbPassword.TabIndex = 0
         ' 
         ' tbEmployeeID
         ' 
-        tbEmployeeID.CustomizableEdges = CustomizableEdges19
+        tbEmployeeID.CustomizableEdges = CustomizableEdges7
         tbEmployeeID.DefaultText = ""
         tbEmployeeID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbEmployeeID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -187,21 +187,21 @@ Partial Class frmLogin
         tbEmployeeID.PasswordChar = ChrW(0)
         tbEmployeeID.PlaceholderText = ""
         tbEmployeeID.SelectedText = ""
-        tbEmployeeID.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        tbEmployeeID.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         tbEmployeeID.Size = New Size(200, 36)
         tbEmployeeID.TabIndex = 0
         ' 
         ' pnldesignlogin
         ' 
         pnldesignlogin.Controls.Add(PictureBox1)
-        pnldesignlogin.CustomizableEdges = CustomizableEdges23
+        pnldesignlogin.CustomizableEdges = CustomizableEdges11
         pnldesignlogin.Dock = DockStyle.Fill
         pnldesignlogin.FillColor2 = Color.Transparent
         pnldesignlogin.FillColor3 = Color.Transparent
         pnldesignlogin.FillColor4 = Color.Transparent
         pnldesignlogin.Location = New Point(0, 0)
         pnldesignlogin.Name = "pnldesignlogin"
-        pnldesignlogin.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        pnldesignlogin.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         pnldesignlogin.Size = New Size(454, 460)
         pnldesignlogin.TabIndex = 1
         ' 

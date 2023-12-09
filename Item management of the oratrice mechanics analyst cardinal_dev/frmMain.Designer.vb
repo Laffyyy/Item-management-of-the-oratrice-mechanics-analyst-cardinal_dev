@@ -156,11 +156,11 @@ Partial Class frmMain
         btnAccountAdj.BackColor = Color.Transparent
         btnAccountAdj.Cursor = Cursors.Hand
         btnAccountAdj.CustomizableEdges = CustomizableEdges5
-        btnAccountAdj.DisabledState.BorderColor = Color.DarkGray
-        btnAccountAdj.DisabledState.CustomBorderColor = Color.DarkGray
-        btnAccountAdj.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnAccountAdj.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnAccountAdj.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnAccountAdj.DisabledState.BorderColor = Color.Transparent
+        btnAccountAdj.DisabledState.CustomBorderColor = Color.Transparent
+        btnAccountAdj.DisabledState.FillColor = Color.Transparent
+        btnAccountAdj.DisabledState.FillColor2 = Color.Transparent
+        btnAccountAdj.DisabledState.ForeColor = SystemColors.InactiveCaption
         btnAccountAdj.FillColor = Color.Transparent
         btnAccountAdj.FillColor2 = Color.Transparent
         btnAccountAdj.FocusedColor = Color.Transparent

@@ -95,7 +95,10 @@ Public Class frmCustomer
         End Try
     End Sub
 
-    Private Sub UpdateCustomerInDatabase(customerID As String, lastName As String, firstName As String, companyName As String)
+
+
+    Private Sub UpdateCustomerInDatabase(oldCustomerID As String, newCustomerID As String, lastName As String, firstName As String, companyName As String)
+        Dim editedData As String = ""
         Try
             Using myConnection As MySqlConnection = Common.getDBConnectionX()
                 myConnection.Open()
@@ -103,27 +106,64 @@ Public Class frmCustomer
                 Using myCommand As New MySqlCommand()
                     myCommand.Connection = myConnection
 
-                    myCommand.CommandText = "UPDATE omac.tblcustomers " &
-                           "SET dcustomerfn = @firstName, " &
-                           "    dcustomerln = @lastName, " &
-                           "    dcompanyname = @companyName " &
-                           "WHERE dcustomerid = @customerID"
+                    Dim updateQuery As String = "UPDATE omac.tblcustomers " &
+                   "SET dcustomerfn = @firstName, " &
+                   "    dcustomerln = @lastName, " &
+                   "    dcompanyname = @companyName "
 
-                    myCommand.Parameters.AddWithValue("@customerID", customerID)
+                    If Not String.IsNullOrEmpty(newCustomerID) Then
+                        updateQuery &= ", dcustomerid = @newCustomerID "
+                        myCommand.Parameters.AddWithValue("@newCustomerID", newCustomerID)
+
+
+                    End If
+
+                    updateQuery &= "WHERE dcustomerid = @oldCustomerID"
+
+                    myCommand.CommandText = updateQuery
+                    myCommand.Parameters.AddWithValue("@oldCustomerID", oldCustomerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
                     myCommand.Parameters.AddWithValue("@lastName", lastName)
                     myCommand.Parameters.AddWithValue("@companyName", companyName)
 
                     myCommand.ExecuteNonQuery()
-
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
 
-            ' Create a string with the new data
-            Dim editedData As String = $"{customerID} || {firstName} || {lastName} || {companyName}"
+            'Create a string with the new data
+            editedData = $"Old: {oldCustomerID} || {oldfirsName} || {oldlastname} || {oldcompany} || ---- New: {newCustomerID} || {firstName} || {lastName} || {companyName}"
+
+            'If oldCustomerID = newCustomerID Then
+            '    editedData = editedData + $"CustomerID: Retain {newCustomerID}||"
+            'End If
+            'If oldCustomerID <> newCustomerID Then
+            '    editedData = editedData + $"CustomerID: Old: {oldCustomerID} New: {newCustomerID} "
+            'End If
+
+            'If oldfirsName = firstName Then
+            '    editedData = editedData + $"firstName: Retain {firstName}||"
+            'End If
+            'If oldfirsName <> firstName Then
+            '    editedData = editedData + $"FirstName: Old: {oldfirsName} New: {firstName}|| "
+            'End If
+
+            'If oldlastname = lastName Then
+            '    editedData = editedData + $"lastname: Retain: {lastName}||"
+            'End If
+            'If oldlastname <> firstName Then
+            '    editedData = editedData + $"lastname: Old: {oldlastname} New: {lastName}|| "
+            'End If
+
+            'If oldcompany = companyName Then
+            '    editedData = editedData + $"Comapny: Retained {companyName}||"
+            'End If
+            'If oldcompany <> companyName Then
+            '    editedData = editedData + $"Comapny: Old: {oldcompany} New: {companyName}|| "
+            'End If
+
 
             ' Insert into tbllogs
-            LogCustomerAction("Update", customerID, editedData)
+            LogCustomerAction("Update", oldCustomerID, editedData)
 
             ' After update, refresh the DataGridView
             DisplayCustomers()
@@ -131,6 +171,14 @@ Public Class frmCustomer
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
+
+
+
+
+
+
 
 
     Private Sub LogCustomerAction(action As String, customerID As String, editedData As String)
@@ -184,6 +232,9 @@ Public Class frmCustomer
         lblLastName.ForeColor = Color.FromArgb(255, 249, 144)
         lblfirstname.ForeColor = Color.FromArgb(255, 249, 144)
         lblCompanyName.ForeColor = Color.FromArgb(255, 249, 144)
+
+
+
     End Sub
 
     Private Sub notOnEdit()
@@ -218,7 +269,7 @@ Public Class frmCustomer
 
         If Not frmcustomereditmode Then
             'edit fuction here
-            UpdateCustomerInDatabase(customerID, lastName, firstName, companyName)
+            UpdateCustomerInDatabase(oldID, customerID, lastName, firstName, companyName)
             DisplayCustomers()
             clear()
             notOnEdit()
@@ -235,7 +286,10 @@ Public Class frmCustomer
         DisplayCustomers()
     End Sub
 
-
+    Private oldID As String
+    Private oldlastname As String
+    Private oldfirsName As String
+    Private oldcompany As String
     Private Sub dgvCustomers_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellClick
         If Not frmcustomereditmode AndAlso e.RowIndex >= 0 Then
             ' Access the data from the clicked row
@@ -252,6 +306,11 @@ Public Class frmCustomer
             tbLastName.Text = lastName
             tbFirstName.Text = firstName
             tbCompanyName.Text = companyName
+
+            oldID = customerID
+            oldlastname = lastName
+            oldfirsName = firstName
+            oldcompany = companyName
         End If
     End Sub
 

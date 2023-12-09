@@ -64,6 +64,7 @@ Partial Class frmProductEntry
         lblComments = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbComments = New Guna.UI2.WinForms.Guna2TextBox()
         dgvProducts = New Guna.UI2.WinForms.Guna2DataGridView()
+        dgvcID = New DataGridViewTextBoxColumn()
         dgvcProductName = New DataGridViewTextBoxColumn()
         dgvcPrice = New DataGridViewTextBoxColumn()
         dgvcdescription = New DataGridViewTextBoxColumn()
@@ -380,7 +381,7 @@ Partial Class frmProductEntry
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity, dgvcDelete})
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity, dgvcDelete})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -418,9 +419,14 @@ Partial Class frmProductEntry
         dgvProducts.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvProducts.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         ' 
+        ' dgvcID
+        ' 
+        dgvcID.HeaderText = "Product ID"
+        dgvcID.Name = "dgvcID"
+        ' 
         ' dgvcProductName
         ' 
-        dgvcProductName.HeaderText = "Product Name"
+        dgvcProductName.HeaderText = "Name"
         dgvcProductName.Name = "dgvcProductName"
         ' 
         ' dgvcPrice
@@ -502,6 +508,7 @@ Partial Class frmProductEntry
     Friend WithEvents lblComments As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents tbComments As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgvProducts As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents dgvcID As DataGridViewTextBoxColumn
     Friend WithEvents dgvcProductName As DataGridViewTextBoxColumn
     Friend WithEvents dgvcPrice As DataGridViewTextBoxColumn
     Friend WithEvents dgvcdescription As DataGridViewTextBoxColumn

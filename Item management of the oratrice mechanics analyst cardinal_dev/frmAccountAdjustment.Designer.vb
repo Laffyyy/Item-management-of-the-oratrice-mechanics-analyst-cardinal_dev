@@ -41,13 +41,14 @@ Partial Class frmAccountAdjustment
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         dgvUserInfo = New Guna.UI2.WinForms.Guna2DataGridView()
         dgvcID = New DataGridViewTextBoxColumn()
-        dgvcName = New DataGridViewTextBoxColumn()
+        dgvcFirstName = New DataGridViewTextBoxColumn()
+        dgvcLastName = New DataGridViewTextBoxColumn()
         dgvcPassword = New DataGridViewTextBoxColumn()
-        Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
+        dgvcAccesslvl = New DataGridViewTextBoxColumn()
+        tbFirstname = New Guna.UI2.WinForms.Guna2TextBox()
+        tbLastname = New Guna.UI2.WinForms.Guna2TextBox()
+        tbPassword = New Guna.UI2.WinForms.Guna2TextBox()
         lblID = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        comboxAccesslevel = New Guna.UI2.WinForms.Guna2ComboBox()
         btnAdd = New Guna.UI2.WinForms.Guna2GradientButton()
         lblFirstName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblLastName = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -55,14 +56,20 @@ Partial Class frmAccountAdjustment
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         lblrole = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbID = New Guna.UI2.WinForms.Guna2TextBox()
+        cmbAccessLevel = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvUserInfo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' dgvUserInfo
         ' 
+        dgvUserInfo.AllowUserToAddRows = False
+        dgvUserInfo.AllowUserToDeleteRows = False
+        dgvUserInfo.AllowUserToResizeColumns = False
+        dgvUserInfo.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = Color.White
         dgvUserInfo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         dgvUserInfo.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        dgvUserInfo.CausesValidation = False
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -73,7 +80,7 @@ Partial Class frmAccountAdjustment
         dgvUserInfo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvUserInfo.ColumnHeadersHeight = 17
         dgvUserInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvUserInfo.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcName, dgvcPassword})
+        dgvUserInfo.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcFirstName, dgvcLastName, dgvcPassword, dgvcAccesslvl})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -85,6 +92,7 @@ Partial Class frmAccountAdjustment
         dgvUserInfo.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
         dgvUserInfo.Location = New Point(275, 92)
         dgvUserInfo.Name = "dgvUserInfo"
+        dgvUserInfo.ReadOnly = True
         dgvUserInfo.RowHeadersVisible = False
         dgvUserInfo.RowTemplate.Height = 25
         dgvUserInfo.Size = New Size(489, 334)
@@ -102,7 +110,7 @@ Partial Class frmAccountAdjustment
         dgvUserInfo.ThemeStyle.HeaderStyle.ForeColor = Color.White
         dgvUserInfo.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         dgvUserInfo.ThemeStyle.HeaderStyle.Height = 17
-        dgvUserInfo.ThemeStyle.ReadOnly = False
+        dgvUserInfo.ThemeStyle.ReadOnly = True
         dgvUserInfo.ThemeStyle.RowsStyle.BackColor = Color.White
         dgvUserInfo.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvUserInfo.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -115,79 +123,94 @@ Partial Class frmAccountAdjustment
         ' 
         dgvcID.HeaderText = "ID"
         dgvcID.Name = "dgvcID"
+        dgvcID.ReadOnly = True
         ' 
-        ' dgvcName
+        ' dgvcFirstName
         ' 
-        dgvcName.HeaderText = "Name"
-        dgvcName.Name = "dgvcName"
+        dgvcFirstName.HeaderText = "FirstName"
+        dgvcFirstName.Name = "dgvcFirstName"
+        dgvcFirstName.ReadOnly = True
+        ' 
+        ' dgvcLastName
+        ' 
+        dgvcLastName.HeaderText = "LastName"
+        dgvcLastName.Name = "dgvcLastName"
+        dgvcLastName.ReadOnly = True
         ' 
         ' dgvcPassword
         ' 
         dgvcPassword.HeaderText = "Password"
         dgvcPassword.Name = "dgvcPassword"
+        dgvcPassword.ReadOnly = True
         ' 
-        ' Guna2TextBox1
+        ' dgvcAccesslvl
         ' 
-        Guna2TextBox1.Anchor = AnchorStyles.Left
-        Guna2TextBox1.CustomizableEdges = CustomizableEdges1
-        Guna2TextBox1.DefaultText = ""
-        Guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Location = New Point(23, 180)
-        Guna2TextBox1.Name = "Guna2TextBox1"
-        Guna2TextBox1.PasswordChar = ChrW(0)
-        Guna2TextBox1.PlaceholderText = ""
-        Guna2TextBox1.SelectedText = ""
-        Guna2TextBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Guna2TextBox1.Size = New Size(200, 27)
-        Guna2TextBox1.TabIndex = 1
+        dgvcAccesslvl.HeaderText = "Accesslvl"
+        dgvcAccesslvl.Name = "dgvcAccesslvl"
+        dgvcAccesslvl.ReadOnly = True
         ' 
-        ' Guna2TextBox2
+        ' tbFirstname
         ' 
-        Guna2TextBox2.Anchor = AnchorStyles.Left
-        Guna2TextBox2.CustomizableEdges = CustomizableEdges3
-        Guna2TextBox2.DefaultText = ""
-        Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Location = New Point(23, 126)
-        Guna2TextBox2.Name = "Guna2TextBox2"
-        Guna2TextBox2.PasswordChar = ChrW(0)
-        Guna2TextBox2.PlaceholderText = ""
-        Guna2TextBox2.SelectedText = ""
-        Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2TextBox2.Size = New Size(200, 27)
-        Guna2TextBox2.TabIndex = 2
+        tbFirstname.Anchor = AnchorStyles.Left
+        tbFirstname.CustomizableEdges = CustomizableEdges1
+        tbFirstname.DefaultText = ""
+        tbFirstname.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbFirstname.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbFirstname.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbFirstname.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbFirstname.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbFirstname.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbFirstname.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbFirstname.Location = New Point(23, 180)
+        tbFirstname.Name = "tbFirstname"
+        tbFirstname.PasswordChar = ChrW(0)
+        tbFirstname.PlaceholderText = ""
+        tbFirstname.SelectedText = ""
+        tbFirstname.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        tbFirstname.Size = New Size(200, 27)
+        tbFirstname.TabIndex = 1
         ' 
-        ' Guna2TextBox3
+        ' tbLastname
         ' 
-        Guna2TextBox3.Anchor = AnchorStyles.Left
-        Guna2TextBox3.CustomizableEdges = CustomizableEdges5
-        Guna2TextBox3.DefaultText = ""
-        Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.Location = New Point(23, 233)
-        Guna2TextBox3.Name = "Guna2TextBox3"
-        Guna2TextBox3.PasswordChar = ChrW(0)
-        Guna2TextBox3.PlaceholderText = ""
-        Guna2TextBox3.SelectedText = ""
-        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        Guna2TextBox3.Size = New Size(200, 26)
-        Guna2TextBox3.TabIndex = 2
+        tbLastname.Anchor = AnchorStyles.Left
+        tbLastname.CustomizableEdges = CustomizableEdges3
+        tbLastname.DefaultText = ""
+        tbLastname.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbLastname.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbLastname.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbLastname.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbLastname.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbLastname.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbLastname.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbLastname.Location = New Point(23, 126)
+        tbLastname.Name = "tbLastname"
+        tbLastname.PasswordChar = ChrW(0)
+        tbLastname.PlaceholderText = ""
+        tbLastname.SelectedText = ""
+        tbLastname.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        tbLastname.Size = New Size(200, 27)
+        tbLastname.TabIndex = 2
+        ' 
+        ' tbPassword
+        ' 
+        tbPassword.Anchor = AnchorStyles.Left
+        tbPassword.CustomizableEdges = CustomizableEdges5
+        tbPassword.DefaultText = ""
+        tbPassword.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbPassword.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbPassword.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbPassword.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbPassword.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbPassword.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbPassword.Location = New Point(23, 233)
+        tbPassword.Name = "tbPassword"
+        tbPassword.PasswordChar = ChrW(0)
+        tbPassword.PlaceholderText = ""
+        tbPassword.SelectedText = ""
+        tbPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        tbPassword.Size = New Size(200, 26)
+        tbPassword.TabIndex = 2
         ' 
         ' lblID
         ' 
@@ -200,28 +223,10 @@ Partial Class frmAccountAdjustment
         lblID.TabIndex = 3
         lblID.Text = "ID:"
         ' 
-        ' comboxAccesslevel
-        ' 
-        comboxAccesslevel.Anchor = AnchorStyles.Left
-        comboxAccesslevel.BackColor = Color.Transparent
-        comboxAccesslevel.CustomizableEdges = CustomizableEdges7
-        comboxAccesslevel.DrawMode = DrawMode.OwnerDrawFixed
-        comboxAccesslevel.DropDownStyle = ComboBoxStyle.DropDownList
-        comboxAccesslevel.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        comboxAccesslevel.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        comboxAccesslevel.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        comboxAccesslevel.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        comboxAccesslevel.ItemHeight = 30
-        comboxAccesslevel.Location = New Point(23, 312)
-        comboxAccesslevel.Name = "comboxAccesslevel"
-        comboxAccesslevel.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        comboxAccesslevel.Size = New Size(200, 36)
-        comboxAccesslevel.TabIndex = 4
-        ' 
         ' btnAdd
         ' 
         btnAdd.Anchor = AnchorStyles.Left
-        btnAdd.CustomizableEdges = CustomizableEdges9
+        btnAdd.CustomizableEdges = CustomizableEdges7
         btnAdd.DisabledState.BorderColor = Color.DarkGray
         btnAdd.DisabledState.CustomBorderColor = Color.DarkGray
         btnAdd.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -234,7 +239,7 @@ Partial Class frmAccountAdjustment
         btnAdd.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnAdd.Location = New Point(33, 361)
         btnAdd.Name = "btnAdd"
-        btnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges10
+        btnAdd.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         btnAdd.Size = New Size(180, 45)
         btnAdd.TabIndex = 5
         btnAdd.Text = "Add"
@@ -274,7 +279,7 @@ Partial Class frmAccountAdjustment
         ' 
         ' btnEdit
         ' 
-        btnEdit.CustomizableEdges = CustomizableEdges11
+        btnEdit.CustomizableEdges = CustomizableEdges9
         btnEdit.DisabledState.BorderColor = Color.DarkGray
         btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
         btnEdit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -285,7 +290,7 @@ Partial Class frmAccountAdjustment
         btnEdit.ForeColor = Color.White
         btnEdit.Location = New Point(275, 48)
         btnEdit.Name = "btnEdit"
-        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         btnEdit.Size = New Size(73, 38)
         btnEdit.TabIndex = 7
         btnEdit.Text = "Edit Account"
@@ -304,7 +309,7 @@ Partial Class frmAccountAdjustment
         ' tbID
         ' 
         tbID.Anchor = AnchorStyles.Left
-        tbID.CustomizableEdges = CustomizableEdges13
+        tbID.CustomizableEdges = CustomizableEdges11
         tbID.DefaultText = ""
         tbID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         tbID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -318,27 +323,46 @@ Partial Class frmAccountAdjustment
         tbID.PasswordChar = ChrW(0)
         tbID.PlaceholderText = ""
         tbID.SelectedText = ""
-        tbID.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        tbID.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         tbID.Size = New Size(200, 27)
         tbID.TabIndex = 1
+        ' 
+        ' cmbAccessLevel
+        ' 
+        cmbAccessLevel.Anchor = AnchorStyles.Left
+        cmbAccessLevel.BackColor = Color.Transparent
+        cmbAccessLevel.CustomizableEdges = CustomizableEdges13
+        cmbAccessLevel.DrawMode = DrawMode.OwnerDrawFixed
+        cmbAccessLevel.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbAccessLevel.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbAccessLevel.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbAccessLevel.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cmbAccessLevel.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cmbAccessLevel.ItemHeight = 30
+        cmbAccessLevel.Items.AddRange(New Object() {"Admin", "Manager", "Employee"})
+        cmbAccessLevel.Location = New Point(23, 314)
+        cmbAccessLevel.Name = "cmbAccessLevel"
+        cmbAccessLevel.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        cmbAccessLevel.Size = New Size(200, 36)
+        cmbAccessLevel.TabIndex = 8
         ' 
         ' frmAccountAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(cmbAccessLevel)
         Controls.Add(btnEdit)
         Controls.Add(lblPassword)
         Controls.Add(lblLastName)
         Controls.Add(lblrole)
         Controls.Add(lblFirstName)
         Controls.Add(btnAdd)
-        Controls.Add(comboxAccesslevel)
         Controls.Add(lblID)
-        Controls.Add(Guna2TextBox3)
-        Controls.Add(Guna2TextBox2)
+        Controls.Add(tbPassword)
+        Controls.Add(tbLastname)
         Controls.Add(tbID)
-        Controls.Add(Guna2TextBox1)
+        Controls.Add(tbFirstname)
         Controls.Add(dgvUserInfo)
         Name = "frmAccountAdjustment"
         Text = "Account Adjustment"
@@ -348,14 +372,11 @@ Partial Class frmAccountAdjustment
     End Sub
 
     Friend WithEvents dgvUserInfo As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents dgvcID As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcName As DataGridViewTextBoxColumn
-    Friend WithEvents dgvcPassword As DataGridViewTextBoxColumn
-    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbFirstname As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbLastname As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbPassword As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblID As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents comboxAccesslevel As Guna.UI2.WinForms.Guna2ComboBox
+
     Friend WithEvents btnAdd As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents lblFirstName As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblLastName As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -363,4 +384,10 @@ Partial Class frmAccountAdjustment
     Friend WithEvents btnEdit As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents lblrole As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents tbID As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents dgvcID As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcFirstName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcLastName As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcPassword As DataGridViewTextBoxColumn
+    Friend WithEvents dgvcAccesslvl As DataGridViewTextBoxColumn
+    Friend WithEvents cmbAccessLevel As Guna.UI2.WinForms.Guna2ComboBox
 End Class

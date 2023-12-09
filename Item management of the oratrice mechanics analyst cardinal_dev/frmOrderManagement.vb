@@ -56,7 +56,7 @@ Public Class frmOrderManagement
         btnEdit.FillColor = Color.FromArgb(153, 180, 209)
         'remove left
         btnEdit.Text = "EDIT MODE"
-        dgvOrderMannagement.DefaultCellStyle.BackColor = Color.FromArgb(153, 180, 209)
+
         btnDelete.Hide()
         'if on edit mode its ok to go to other form but not log out and close program
         ordermanagementstateEdit = True
@@ -95,10 +95,11 @@ Public Class frmOrderManagement
             NotEdit()
         End If
 
-
-
     End Sub
 
+    Private Sub bntSave_Click(sender As Object, e As EventArgs) Handles bntSave.Click
+
+    End Sub
 
     'Private Sub btnNeworders_Click(sender As Object, e As EventArgs) Handles btnNeworders.Click
     '    If Not frmOrderManagement.ordermanagementstateEdit Then
@@ -129,4 +130,6 @@ Public Class frmOrderManagement
     Private Sub dgvOrderManagement_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellContentClick, dgvOrderManagement.CellContentClick
 
     End Sub
+
+
 End Class

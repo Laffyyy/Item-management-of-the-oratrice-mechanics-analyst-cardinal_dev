@@ -365,7 +365,6 @@ Partial Class frmCustomer
         ' 
         ' lblSearch
         ' 
-        lblSearch.Anchor = AnchorStyles.Top
         lblSearch.BackColor = Color.Transparent
         lblSearch.ForeColor = SystemColors.ActiveCaption
         lblSearch.Location = New Point(319, 54)
