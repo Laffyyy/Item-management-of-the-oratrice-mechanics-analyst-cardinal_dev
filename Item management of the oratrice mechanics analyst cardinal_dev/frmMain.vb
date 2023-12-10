@@ -30,7 +30,7 @@ Public Class frmMain
 
     End Sub
 
-    Private su
+
 
     Private Sub dissableaccesspoint()
 
@@ -49,7 +49,7 @@ Public Class frmMain
 
         End If
 
-        leftBorderbtn.Visible = False
+
     End Sub
 
     Private Sub Activebutton(senderbtn As Object)
@@ -245,18 +245,13 @@ Public Class frmMain
         End If
     End Sub
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
-            Not frmProductEntry.productentryEditmode Then
 
-            If currentChildform IsNot Nothing Then
+        If currentChildform IsNot Nothing Then
                 currentChildform.Close()
             End If
             Reset()
 
-        Else
 
-            MessageBox.Show("Exit edit mode")
-        End If
 
         Me.Hide()
         frmLogin.Show()

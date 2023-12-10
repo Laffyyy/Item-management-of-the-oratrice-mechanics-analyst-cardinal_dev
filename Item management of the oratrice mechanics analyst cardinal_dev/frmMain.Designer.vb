@@ -93,7 +93,7 @@ Partial Class frmMain
         pnlMainPanel.Location = New Point(0, 0)
         pnlMainPanel.Name = "pnlMainPanel"
         pnlMainPanel.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        pnlMainPanel.Size = New Size(135, 627)
+        pnlMainPanel.Size = New Size(135, 666)
         pnlMainPanel.TabIndex = 0
         ' 
         ' Guna2CustomGradientPanel2
@@ -141,7 +141,7 @@ Partial Class frmMain
         btnLogout.FocusedColor = Color.Transparent
         btnLogout.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
         btnLogout.ForeColor = SystemColors.ActiveCaption
-        btnLogout.Location = New Point(0, 582)
+        btnLogout.Location = New Point(0, 621)
         btnLogout.Name = "btnLogout"
         btnLogout.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         btnLogout.Size = New Size(73, 45)
@@ -166,7 +166,7 @@ Partial Class frmMain
         btnAccountAdj.FocusedColor = Color.Transparent
         btnAccountAdj.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point)
         btnAccountAdj.ForeColor = SystemColors.ActiveCaption
-        btnAccountAdj.Location = New Point(0, 519)
+        btnAccountAdj.Location = New Point(0, 558)
         btnAccountAdj.Name = "btnAccountAdj"
         btnAccountAdj.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnAccountAdj.Size = New Size(135, 45)
@@ -284,7 +284,7 @@ Partial Class frmMain
         pnlHeader.Location = New Point(135, 0)
         pnlHeader.Name = "pnlHeader"
         pnlHeader.ShadowDecoration.CustomizableEdges = CustomizableEdges24
-        pnlHeader.Size = New Size(829, 66)
+        pnlHeader.Size = New Size(845, 66)
         pnlHeader.TabIndex = 1
         ' 
         ' btnMinimize
@@ -303,7 +303,7 @@ Partial Class frmMain
         btnMinimize.ForeColor = Color.White
         btnMinimize.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnMinimize.Image = CType(resources.GetObject("btnMinimize.Image"), Image)
-        btnMinimize.Location = New Point(707, 0)
+        btnMinimize.Location = New Point(723, 0)
         btnMinimize.Name = "btnMinimize"
         btnMinimize.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         btnMinimize.Size = New Size(33, 36)
@@ -325,7 +325,7 @@ Partial Class frmMain
         btnMaximize.ForeColor = Color.White
         btnMaximize.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnMaximize.Image = CType(resources.GetObject("btnMaximize.Image"), Image)
-        btnMaximize.Location = New Point(746, 0)
+        btnMaximize.Location = New Point(762, 0)
         btnMaximize.Name = "btnMaximize"
         btnMaximize.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         btnMaximize.Size = New Size(39, 36)
@@ -348,7 +348,7 @@ Partial Class frmMain
         btnClose.ForeColor = Color.White
         btnClose.GradientMode = Drawing2D.LinearGradientMode.Vertical
         btnClose.Image = CType(resources.GetObject("btnClose.Image"), Image)
-        btnClose.Location = New Point(791, 0)
+        btnClose.Location = New Point(807, 0)
         btnClose.Name = "btnClose"
         btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         btnClose.Size = New Size(38, 36)
@@ -371,7 +371,7 @@ Partial Class frmMain
         pnlDesktop.Dock = DockStyle.Fill
         pnlDesktop.Location = New Point(135, 66)
         pnlDesktop.Name = "pnlDesktop"
-        pnlDesktop.Size = New Size(829, 561)
+        pnlDesktop.Size = New Size(845, 600)
         pnlDesktop.TabIndex = 2
         ' 
         ' imgLogomain
@@ -380,25 +380,30 @@ Partial Class frmMain
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
         imgLogomain.Location = New Point(319, 94)
         imgLogomain.Name = "imgLogomain"
-        imgLogomain.Size = New Size(199, 330)
+        imgLogomain.Size = New Size(215, 369)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
         ' 
         ' frmMain
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        AutoScaleMode = AutoScaleMode.Font
+        AutoScaleMode = AutoScaleMode.None
         AutoSize = True
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
-        ClientSize = New Size(964, 627)
+        ClientSize = New Size(980, 666)
+        ControlBox = False
         Controls.Add(pnlDesktop)
         Controls.Add(pnlHeader)
         Controls.Add(pnlMainPanel)
-        DoubleBuffered = True
+        FormBorderStyle = FormBorderStyle.None
+        MaximizeBox = False
+        MinimizeBox = False
         MinimumSize = New Size(980, 666)
         Name = "frmMain"
+        ShowIcon = False
+        ShowInTaskbar = False
         StartPosition = FormStartPosition.CenterScreen
+        TransparencyKey = Color.DimGray
         pnlMainPanel.ResumeLayout(False)
         Guna2CustomGradientPanel2.ResumeLayout(False)
         CType(imgLogo, ComponentModel.ISupportInitialize).EndInit()

@@ -73,7 +73,7 @@ Public Class frmAccountAdjustment
 
 
 
-    Private Sub InsertNewuser(ByVal customerID As String, ByVal lastName As String, ByVal firstName As String, ByVal Password As String, ByVal role As Int16)
+    Private Sub InsertNewuser(ByVal userID As String, ByVal lastName As String, ByVal firstName As String, ByVal Password As String, ByVal role As Int16)
         Try
             Using myConnection As MySqlConnection = Common.getDBConnectionX()
                 myConnection.Open()
@@ -86,7 +86,7 @@ Public Class frmAccountAdjustment
                         VALUES ('@id', '@firstname', '@lastname', '@password', '@access');
 "
 
-                    myCommand.Parameters.AddWithValue("@id", customerID)
+                    myCommand.Parameters.AddWithValue("@id", userID)
                     myCommand.Parameters.AddWithValue("@firstname", firstName)
                     myCommand.Parameters.AddWithValue("@lastName", lastName)
                     myCommand.Parameters.AddWithValue("@password", Password)
@@ -111,6 +111,7 @@ Public Class frmAccountAdjustment
     End Sub
 
     Private Sub InsertUserInfo(newUserID As String, firstName As String, lastName As String, password As String, accessLevel As Integer)
+        Dim editedData As String = ""
         Try
             Using myConnection As MySqlConnection = Common.getDBConnectionX()
                 myConnection.Open()
@@ -133,7 +134,11 @@ Public Class frmAccountAdjustment
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
 
-            MessageBox.Show("User information inserted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ' Create a string with the new data
+            editedData = $"ADDED:{newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
+
+            ' Insert into tbllogs
+            LogAccountAdjustment("ADD", editedData)
 
             ' After insertion, refresh the DataGridView
             DisplayAccounts()
@@ -143,8 +148,68 @@ Public Class frmAccountAdjustment
     End Sub
 
 
+    Private Sub UpdateUserInDatabase(oldUserID As String, newUserID As String, firstName As String, lastName As String, password As String)
+        Dim editedData As String = ""
+        Try
+            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+                myConnection.Open()
+
+                Using myCommand As New MySqlCommand()
+                    myCommand.Connection = myConnection
+
+                    Dim updateQuery As String = "UPDATE omac.tblusers " &
+                "SET demployeefn = @firstName, " &
+                "    demployeeln = @lastName, " &
+                "    dpassword = @password, " &
+                "    daccesslvl = @role "
+
+                    If Not String.IsNullOrEmpty(newUserID) Then
+                        updateQuery &= ", duid = @newUserID "
+                        myCommand.Parameters.AddWithValue("@newUserID", newUserID)
+                    End If
+
+                    updateQuery &= "WHERE duid = @oldUserID"
+
+                    myCommand.CommandText = updateQuery
+                    myCommand.Parameters.AddWithValue("@oldUserID", oldUserID)
+                    myCommand.Parameters.AddWithValue("@firstName", firstName)
+                    myCommand.Parameters.AddWithValue("@lastName", lastName)
+                    myCommand.Parameters.AddWithValue("@password", password)
+                    myCommand.Parameters.AddWithValue("@role", MapRoleToIndex(cmbAccessLevel.SelectedItem.ToString()))
+
+                    myCommand.ExecuteNonQuery()
+                End Using ' Dispose of MySqlCommand
+            End Using ' Dispose of MySqlConnection
 
 
+
+            ' Create a string with the new data
+            editedData = $"Old: {oldID} || {oldfirstname} || {oldlastname} || {oldpass} || {oldrole} || ---- New: {newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
+
+            ' Insert into tbllogs
+            LogAccountAdjustment("Update", editedData)
+
+            ' After update, refresh the DataGridView
+            DisplayAccounts()
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function MapIndexToRole(index As Integer) As String
+        ' Map index to the corresponding role string
+        Select Case index
+            Case 1
+                Return "Admin"
+            Case 2
+                Return "Manager"
+            Case 3
+                Return "Employee"
+            Case Else
+                ' Handle other cases or return a default value
+                Return ""
+        End Select
+    End Function
 
 
 
@@ -171,6 +236,24 @@ Public Class frmAccountAdjustment
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
+
+    Private Function MapRoleToIndex(role As String) As Integer
+        ' Map role to index
+        Select Case role.ToLower()
+            Case "admin"
+                Return 1
+            Case "manager"
+                Return 2
+            Case "employee"
+                Return 3
+            Case Else
+                ' Handle other cases or return a default value
+                Return 0
+        End Select
+    End Function
+
 
 
     Private Sub Onedit()
@@ -242,7 +325,8 @@ Public Class frmAccountAdjustment
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            ' edit user
+            UpdateUserInDatabase(oldID, tbID.Text, tbFirstname.Text, tbLastname.Text, tbPassword.Text)
+
         End If
     End Sub
 
@@ -259,6 +343,12 @@ Public Class frmAccountAdjustment
 
     End Sub
 
+    Private oldID As String
+    Private oldfirstname As String
+    Private oldlastname As String
+    Private oldpass As String
+    Private oldrole As String
+
     Private accessLevelMapping As New Dictionary(Of String, Integer) From {
     {"Admin", 1},
     {"Manager", 2},
@@ -270,6 +360,11 @@ Public Class frmAccountAdjustment
             ' Get the selected row
             Dim selectedRow As DataGridViewRow = dgvUserInfo.SelectedRows(0)
 
+            'for oldID
+            oldID = selectedRow.Cells("dgvcID").Value.ToString()
+            oldfirstname = selectedRow.Cells("dgvcFirstname").Value.ToString()
+            oldlastname = selectedRow.Cells("dgvcLastName").Value.ToString()
+            oldpass = selectedRow.Cells("dgvcPassword").Value.ToString()
             ' Populate TextBoxes
             tbID.Text = selectedRow.Cells("dgvcID").Value.ToString()
             tbFirstname.Text = selectedRow.Cells("dgvcFirstname").Value.ToString()
@@ -281,7 +376,7 @@ Public Class frmAccountAdjustment
             Dim roleName As String = accessLevelMapping.FirstOrDefault(Function(pair) pair.Value = accessLevel).Key
             cmbAccessLevel.SelectedItem = roleName
 
-
+            oldrole = roleName
         End If
 
     End Sub

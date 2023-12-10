@@ -5,7 +5,16 @@ Public Class frmLogin
 
     Public Shared Property UserIDusing As String
 
+    Public Sub New()
 
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.ControlBox = False
+
+
+    End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
@@ -17,32 +26,9 @@ Public Class frmLogin
 
     End Sub
 
-    Private visisibility As Boolean = False
 
-    Private Sub visibilityison()
-        tbPassword.PasswordChar = ""
-        tbPassword.BackgroundImage = My.Resources.visible
-        tbPassword.Invalidate()
 
-    End Sub
 
-    Private Sub visibilityisoff()
-        tbPassword.PasswordChar = "*"
-        tbPassword.BackgroundImage = My.Resources.hide
-
-        tbPassword.Invalidate()
-
-    End Sub
-
-    Private Sub btVisibility_Click(sender As Object, e As EventArgs) Handles btVisibility.Click
-        If visisibility Then
-            visibilityison()
-        Else
-            visibilityisoff()
-        End If
-
-        visisibility = Not visisibility
-    End Sub
 
     'Private Sub pbvisible_Click(sender As Object, e As EventArgs) Handles pbvisible.Click
     '    If visisibility Then
@@ -120,5 +106,15 @@ Public Class frmLogin
         Return False
     End Function
 
+    Private Sub Guna2ImageCheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
+        If chkShowPass.Checked = True Then
+            tbPassword.PasswordChar = ""
+        Else
+            tbPassword.PasswordChar = "*"
+        End If
+    End Sub
 
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Application.Exit()
+    End Sub
 End Class
