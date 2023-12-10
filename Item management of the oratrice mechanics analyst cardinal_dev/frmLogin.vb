@@ -56,7 +56,6 @@ Public Class frmLogin
             ' Add code to open the main application form or perform other actions
             tbEmployeeID.Text = ""
             tbPassword.Text = ""
-
         Else
             ' Failed login
             MessageBox.Show("Invalid Username or Password")
@@ -64,7 +63,7 @@ Public Class frmLogin
     End Sub
 
     Public Shared Property UUserAccessLevel As Integer
-
+    Public Shared Property UUserFirstName As String
     ' Public property to access the user access level
     Public Shared ReadOnly Property UserAccessLevel As Integer
         Get
@@ -79,7 +78,7 @@ Public Class frmLogin
                 connection.Open()
 
                 ' SQL query to retrieve user information
-                Dim query As String = "SELECT COUNT(*), MAX(daccesslvl) FROM omac.tblusers WHERE BINARY duid = @username AND BINARY dpassword = @password"
+                Dim query As String = "SELECT COUNT(*), MAX(daccesslvl), MAX(demployeefn) FROM omac.tblusers WHERE BINARY duid = @username AND BINARY dpassword = @password"
                 Using command As New MySqlCommand(query, connection)
                     command.Parameters.AddWithValue("@username", username)
                     command.Parameters.AddWithValue("@password", password)
@@ -90,8 +89,18 @@ Public Class frmLogin
                             Dim count As Integer = Convert.ToInt32(reader(0))
                             UUserAccessLevel = If(reader.IsDBNull(1), 0, Convert.ToInt32(reader(1)))
 
-                            ' If count is 1 or more, credentials are valid
-                            Return count > 0
+                            ' Check if there is a matching row
+                            If count > 0 Then
+                                ' Retrieve the first name
+                                If Not reader.IsDBNull(2) Then
+                                    Dim firstName As String = reader.GetString(2)
+                                    ' You can use the firstName variable as needed
+                                    UUserFirstName = firstName
+                                End If
+
+                                ' Credentials are valid
+                                Return True
+                            End If
                         End If
                     End Using
                 End Using
@@ -105,6 +114,7 @@ Public Class frmLogin
         UUserAccessLevel = 0
         Return False
     End Function
+
 
     Private Sub Guna2ImageCheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
         If chkShowPass.Checked = True Then

@@ -25,6 +25,9 @@ Partial Class frmLogin
         Dim lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -34,10 +37,8 @@ Partial Class frmLogin
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        btnClose = New Guna.UI2.WinForms.Guna2GradientButton()
         chkShowPass = New Guna.UI2.WinForms.Guna2ImageCheckBox()
         Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblUser = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -46,7 +47,6 @@ Partial Class frmLogin
         tbEmployeeID = New Guna.UI2.WinForms.Guna2TextBox()
         pnldesignlogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         PictureBox1 = New PictureBox()
-        btnClose = New Guna.UI2.WinForms.Guna2GradientButton()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         pnlLogin.SuspendLayout()
         pnldesignlogin.SuspendLayout()
@@ -91,6 +91,29 @@ Partial Class frmLogin
         pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges11
         pnlLogin.Size = New Size(365, 460)
         pnlLogin.TabIndex = 0
+        ' 
+        ' btnClose
+        ' 
+        btnClose.Anchor = AnchorStyles.Right
+        btnClose.BackColor = Color.Transparent
+        btnClose.BorderColor = Color.Transparent
+        btnClose.CustomizableEdges = CustomizableEdges1
+        btnClose.DisabledState.BorderColor = Color.DarkGray
+        btnClose.DisabledState.CustomBorderColor = Color.DarkGray
+        btnClose.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnClose.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnClose.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnClose.FillColor = Color.Transparent
+        btnClose.FillColor2 = Color.Transparent
+        btnClose.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnClose.ForeColor = Color.White
+        btnClose.GradientMode = Drawing2D.LinearGradientMode.Vertical
+        btnClose.Image = CType(resources.GetObject("btnClose.Image"), Image)
+        btnClose.Location = New Point(327, 0)
+        btnClose.Name = "btnClose"
+        btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        btnClose.Size = New Size(38, 36)
+        btnClose.TabIndex = 2
         ' 
         ' chkShowPass
         ' 
@@ -213,31 +236,9 @@ Partial Class frmLogin
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' btnClose
-        ' 
-        btnClose.Anchor = AnchorStyles.Right
-        btnClose.BackColor = Color.Transparent
-        btnClose.BorderColor = Color.Transparent
-        btnClose.CustomizableEdges = CustomizableEdges1
-        btnClose.DisabledState.BorderColor = Color.DarkGray
-        btnClose.DisabledState.CustomBorderColor = Color.DarkGray
-        btnClose.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnClose.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        btnClose.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        btnClose.FillColor = Color.Transparent
-        btnClose.FillColor2 = Color.Transparent
-        btnClose.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        btnClose.ForeColor = Color.White
-        btnClose.GradientMode = Drawing2D.LinearGradientMode.Vertical
-        btnClose.Image = CType(resources.GetObject("btnClose.Image"), Image)
-        btnClose.Location = New Point(327, 0)
-        btnClose.Name = "btnClose"
-        btnClose.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        btnClose.Size = New Size(38, 36)
-        btnClose.TabIndex = 2
-        ' 
         ' frmLogin
         ' 
+        AcceptButton = btLogin
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))

@@ -247,9 +247,9 @@ Public Class frmMain
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
 
         If currentChildform IsNot Nothing Then
-                currentChildform.Close()
-            End If
-            Reset()
+            currentChildform.Close()
+        End If
+        Reset()
 
 
 
@@ -268,6 +268,12 @@ Public Class frmMain
 
     Private Sub active(sender As Object, e As EventArgs) Handles MyBase.Activated
         dissableaccesspoint()
+        lblWelcome.Text = "Wecome ," + frmLogin.UUserFirstName
+
+    End Sub
+
+
+    Private Sub loadform(sender As Object, e As EventArgs)
 
     End Sub
 End Class

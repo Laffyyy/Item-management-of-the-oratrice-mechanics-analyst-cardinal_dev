@@ -62,6 +62,7 @@ Partial Class frmMain
         btnClose = New Guna.UI2.WinForms.Guna2GradientButton()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         pnlDesktop = New Panel()
+        lblWelcome = New Guna.UI2.WinForms.Guna2HtmlLabel()
         imgLogomain = New PictureBox()
         pnlMainPanel.SuspendLayout()
         Guna2CustomGradientPanel2.SuspendLayout()
@@ -171,7 +172,7 @@ Partial Class frmMain
         btnAccountAdj.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         btnAccountAdj.Size = New Size(135, 45)
         btnAccountAdj.TabIndex = 2
-        btnAccountAdj.Text = "Account Adjustment"
+        btnAccountAdj.Text = "Accounts"
         btnAccountAdj.UseTransparentBackground = True
         ' 
         ' btnCustomer
@@ -367,6 +368,7 @@ Partial Class frmMain
         ' 
         ' pnlDesktop
         ' 
+        pnlDesktop.Controls.Add(lblWelcome)
         pnlDesktop.Controls.Add(imgLogomain)
         pnlDesktop.Dock = DockStyle.Fill
         pnlDesktop.Location = New Point(135, 66)
@@ -374,13 +376,25 @@ Partial Class frmMain
         pnlDesktop.Size = New Size(845, 600)
         pnlDesktop.TabIndex = 2
         ' 
+        ' lblWelcome
+        ' 
+        lblWelcome.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        lblWelcome.BackColor = Color.Transparent
+        lblWelcome.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        lblWelcome.ForeColor = SystemColors.ActiveCaption
+        lblWelcome.Location = New Point(328, 259)
+        lblWelcome.Name = "lblWelcome"
+        lblWelcome.Size = New Size(117, 34)
+        lblWelcome.TabIndex = 3
+        lblWelcome.Text = "Welcome ,"
+        ' 
         ' imgLogomain
         ' 
         imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
-        imgLogomain.Location = New Point(319, 94)
+        imgLogomain.Location = New Point(328, 94)
         imgLogomain.Name = "imgLogomain"
-        imgLogomain.Size = New Size(215, 369)
+        imgLogomain.Size = New Size(198, 159)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
@@ -391,25 +405,23 @@ Partial Class frmMain
         AutoSize = True
         BackColor = Color.FromArgb(CByte(34), CByte(44), CByte(79))
         ClientSize = New Size(980, 666)
-        ControlBox = False
         Controls.Add(pnlDesktop)
         Controls.Add(pnlHeader)
         Controls.Add(pnlMainPanel)
         FormBorderStyle = FormBorderStyle.None
+        HelpButton = True
         MaximizeBox = False
-        MinimizeBox = False
+        MdiChildrenMinimizedAnchorBottom = False
         MinimumSize = New Size(980, 666)
         Name = "frmMain"
-        ShowIcon = False
-        ShowInTaskbar = False
         StartPosition = FormStartPosition.CenterScreen
-        TransparencyKey = Color.DimGray
         pnlMainPanel.ResumeLayout(False)
         Guna2CustomGradientPanel2.ResumeLayout(False)
         CType(imgLogo, ComponentModel.ISupportInitialize).EndInit()
         pnlHeader.ResumeLayout(False)
         pnlHeader.PerformLayout()
         pnlDesktop.ResumeLayout(False)
+        pnlDesktop.PerformLayout()
         CType(imgLogomain, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
@@ -432,4 +444,5 @@ Partial Class frmMain
     Friend WithEvents btnLogout As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnAccountAdj As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents btnCustomer As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents lblWelcome As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class
