@@ -35,6 +35,8 @@ Partial Class frmStockAdjustment
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         tbProductQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         dgvstockad = New Guna.UI2.WinForms.Guna2DataGridView()
         dgvcOrigin = New DataGridViewTextBoxColumn()
@@ -53,6 +55,7 @@ Partial Class frmStockAdjustment
         Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         btnReplenish = New Guna.UI2.WinForms.Guna2GradientButton()
         tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
+        btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -295,11 +298,31 @@ Partial Class frmStockAdjustment
         tbProductID.Size = New Size(200, 27)
         tbProductID.TabIndex = 13
         ' 
+        ' btnExport
+        ' 
+        btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnExport.CustomizableEdges = CustomizableEdges11
+        btnExport.DisabledState.BorderColor = Color.DarkGray
+        btnExport.DisabledState.CustomBorderColor = Color.DarkGray
+        btnExport.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnExport.FillColor2 = Color.Empty
+        btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnExport.ForeColor = Color.White
+        btnExport.Location = New Point(274, 371)
+        btnExport.Name = "btnExport"
+        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        btnExport.Size = New Size(79, 26)
+        btnExport.TabIndex = 14
+        btnExport.Text = "Export"
+        ' 
         ' frmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(btnExport)
         Controls.Add(tbProductID)
         Controls.Add(btnReplenish)
         Controls.Add(lblQuantity)
@@ -341,4 +364,5 @@ Partial Class frmStockAdjustment
     Friend WithEvents dgvcOrigin As DataGridViewTextBoxColumn
     Friend WithEvents dgvcStockID As DataGridViewTextBoxColumn
     Friend WithEvents dgvcProductID As DataGridViewTextBoxColumn
+    Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
 End Class

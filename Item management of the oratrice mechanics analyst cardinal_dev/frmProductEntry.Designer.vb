@@ -45,6 +45,8 @@ Partial Class frmProductEntry
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -71,6 +73,7 @@ Partial Class frmProductEntry
         dgvcStatus = New DataGridViewTextBoxColumn()
         dgvcTotalQuantity = New DataGridViewTextBoxColumn()
         dgvcDelete = New DataGridViewButtonColumn()
+        btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -454,11 +457,31 @@ Partial Class frmProductEntry
         dgvcDelete.HeaderText = "Function"
         dgvcDelete.Name = "dgvcDelete"
         ' 
+        ' btnExport
+        ' 
+        btnExport.Anchor = AnchorStyles.Left
+        btnExport.CustomizableEdges = CustomizableEdges21
+        btnExport.DisabledState.BorderColor = Color.DarkGray
+        btnExport.DisabledState.CustomBorderColor = Color.DarkGray
+        btnExport.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnExport.FillColor2 = Color.Empty
+        btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnExport.ForeColor = Color.White
+        btnExport.Location = New Point(351, 457)
+        btnExport.Name = "btnExport"
+        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        btnExport.Size = New Size(79, 26)
+        btnExport.TabIndex = 12
+        btnExport.Text = "Export"
+        ' 
         ' frmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(964, 561)
+        Controls.Add(btnExport)
         Controls.Add(Guna2ComboBox1)
         Controls.Add(lblStatus)
         Controls.Add(btnEdit)
@@ -515,4 +538,5 @@ Partial Class frmProductEntry
     Friend WithEvents dgvcStatus As DataGridViewTextBoxColumn
     Friend WithEvents dgvcTotalQuantity As DataGridViewTextBoxColumn
     Friend WithEvents dgvcDelete As DataGridViewButtonColumn
+    Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
 End Class

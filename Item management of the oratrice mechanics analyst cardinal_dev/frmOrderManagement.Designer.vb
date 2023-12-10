@@ -43,6 +43,8 @@ Partial Class frmOrderManagement
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         dgvOrderManagement = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -66,6 +68,7 @@ Partial Class frmOrderManagement
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         bntSave = New Guna.UI2.WinForms.Guna2GradientButton()
         lblSearch = New Label()
+        btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -420,11 +423,31 @@ Partial Class frmOrderManagement
         lblSearch.TabIndex = 7
         lblSearch.Text = "Search:"
         ' 
+        ' btnExport
+        ' 
+        btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        btnExport.CustomizableEdges = CustomizableEdges19
+        btnExport.DisabledState.BorderColor = Color.DarkGray
+        btnExport.DisabledState.CustomBorderColor = Color.DarkGray
+        btnExport.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnExport.FillColor2 = Color.Empty
+        btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnExport.ForeColor = Color.White
+        btnExport.Location = New Point(276, 383)
+        btnExport.Name = "btnExport"
+        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        btnExport.Size = New Size(79, 26)
+        btnExport.TabIndex = 11
+        btnExport.Text = "Export"
+        ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(btnExport)
         Controls.Add(bntSave)
         Controls.Add(Guna2TextBox3)
         Controls.Add(Guna2TextBox2)
@@ -471,4 +494,5 @@ Partial Class frmOrderManagement
     Friend WithEvents dgvOrderManagement As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents dgvcCustomerID As DataGridViewTextBoxColumn
     Friend WithEvents dgvcProductID As DataGridViewTextBoxColumn
+    Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
 End Class

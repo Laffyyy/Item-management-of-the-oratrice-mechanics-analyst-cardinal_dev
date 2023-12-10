@@ -39,6 +39,8 @@ Partial Class frmAccountAdjustment
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         dgvUserInfo = New Guna.UI2.WinForms.Guna2DataGridView()
         dgvcID = New DataGridViewTextBoxColumn()
         dgvcFirstName = New DataGridViewTextBoxColumn()
@@ -57,6 +59,7 @@ Partial Class frmAccountAdjustment
         lblrole = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbID = New Guna.UI2.WinForms.Guna2TextBox()
         cmbAccessLevel = New Guna.UI2.WinForms.Guna2ComboBox()
+        btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvUserInfo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -95,7 +98,7 @@ Partial Class frmAccountAdjustment
         dgvUserInfo.ReadOnly = True
         dgvUserInfo.RowHeadersVisible = False
         dgvUserInfo.RowTemplate.Height = 25
-        dgvUserInfo.Size = New Size(489, 334)
+        dgvUserInfo.Size = New Size(488, 314)
         dgvUserInfo.TabIndex = 0
         dgvUserInfo.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvUserInfo.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -346,11 +349,31 @@ Partial Class frmAccountAdjustment
         cmbAccessLevel.Size = New Size(200, 36)
         cmbAccessLevel.TabIndex = 8
         ' 
+        ' btnExport
+        ' 
+        btnExport.Anchor = AnchorStyles.Left
+        btnExport.CustomizableEdges = CustomizableEdges15
+        btnExport.DisabledState.BorderColor = Color.DarkGray
+        btnExport.DisabledState.CustomBorderColor = Color.DarkGray
+        btnExport.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnExport.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnExport.FillColor2 = Color.Empty
+        btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnExport.ForeColor = Color.White
+        btnExport.Location = New Point(275, 423)
+        btnExport.Name = "btnExport"
+        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        btnExport.Size = New Size(79, 26)
+        btnExport.TabIndex = 12
+        btnExport.Text = "Export"
+        ' 
         ' frmAccountAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(btnExport)
         Controls.Add(cmbAccessLevel)
         Controls.Add(btnEdit)
         Controls.Add(lblPassword)
@@ -390,4 +413,5 @@ Partial Class frmAccountAdjustment
     Friend WithEvents dgvcPassword As DataGridViewTextBoxColumn
     Friend WithEvents dgvcAccesslvl As DataGridViewTextBoxColumn
     Friend WithEvents cmbAccessLevel As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
 End Class
