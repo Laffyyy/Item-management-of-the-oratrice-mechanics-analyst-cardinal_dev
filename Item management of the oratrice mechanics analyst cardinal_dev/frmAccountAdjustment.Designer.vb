@@ -351,7 +351,7 @@ Partial Class frmAccountAdjustment
         ' 
         ' btnExport
         ' 
-        btnExport.Anchor = AnchorStyles.Left
+        btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnExport.CustomizableEdges = CustomizableEdges15
         btnExport.DisabledState.BorderColor = Color.DarkGray
         btnExport.DisabledState.CustomBorderColor = Color.DarkGray
