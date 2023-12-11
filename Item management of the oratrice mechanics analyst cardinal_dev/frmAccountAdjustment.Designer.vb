@@ -93,12 +93,12 @@ Partial Class frmAccountAdjustment
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvUserInfo.DefaultCellStyle = DataGridViewCellStyle3
         dgvUserInfo.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvUserInfo.Location = New Point(275, 92)
+        dgvUserInfo.Location = New Point(272, 70)
         dgvUserInfo.Name = "dgvUserInfo"
         dgvUserInfo.ReadOnly = True
         dgvUserInfo.RowHeadersVisible = False
         dgvUserInfo.RowTemplate.Height = 25
-        dgvUserInfo.Size = New Size(488, 314)
+        dgvUserInfo.Size = New Size(488, 304)
         dgvUserInfo.TabIndex = 0
         dgvUserInfo.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
         dgvUserInfo.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -291,7 +291,7 @@ Partial Class frmAccountAdjustment
         btnEdit.FillColor2 = Color.Transparent
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
-        btnEdit.Location = New Point(275, 48)
+        btnEdit.Location = New Point(272, 26)
         btnEdit.Name = "btnEdit"
         btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         btnEdit.Size = New Size(73, 38)
@@ -361,7 +361,7 @@ Partial Class frmAccountAdjustment
         btnExport.FillColor2 = Color.Empty
         btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnExport.ForeColor = Color.White
-        btnExport.Location = New Point(275, 412)
+        btnExport.Location = New Point(272, 380)
         btnExport.Name = "btnExport"
         btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         btnExport.Size = New Size(108, 26)

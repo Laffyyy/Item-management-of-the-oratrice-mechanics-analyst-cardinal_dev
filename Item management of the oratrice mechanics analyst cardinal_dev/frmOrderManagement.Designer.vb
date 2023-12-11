@@ -124,7 +124,7 @@ Partial Class frmOrderManagement
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = Color.White
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.SelectionForeColor = Color.White
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         dgvOrderManagement.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvOrderManagement.ColumnHeadersHeight = 40
@@ -138,7 +138,7 @@ Partial Class frmOrderManagement
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(71), CByte(69), CByte(94))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvOrderManagement.DefaultCellStyle = DataGridViewCellStyle3
-        dgvOrderManagement.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvOrderManagement.GridColor = Color.White
         dgvOrderManagement.Location = New Point(276, 86)
         dgvOrderManagement.Name = "dgvOrderManagement"
         dgvOrderManagement.RowHeadersVisible = False
@@ -152,7 +152,7 @@ Partial Class frmOrderManagement
         dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
         dgvOrderManagement.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
         dgvOrderManagement.ThemeStyle.BackColor = Color.White
-        dgvOrderManagement.ThemeStyle.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
+        dgvOrderManagement.ThemeStyle.GridColor = Color.White
         dgvOrderManagement.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(100), CByte(88), CByte(255))
         dgvOrderManagement.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
         dgvOrderManagement.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)

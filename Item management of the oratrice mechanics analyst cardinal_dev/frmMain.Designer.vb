@@ -26,7 +26,7 @@ Partial Class frmMain
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -252,6 +252,7 @@ Partial Class frmMain
         btnProductEntry.Animated = True
         btnProductEntry.BackColor = Color.Transparent
         btnProductEntry.BorderColor = Color.Transparent
+        btnProductEntry.CausesValidation = False
         btnProductEntry.Cursor = Cursors.Hand
         btnProductEntry.CustomizableEdges = CustomizableEdges13
         btnProductEntry.DisabledState.BorderColor = Color.DarkGray
@@ -382,7 +383,7 @@ Partial Class frmMain
         lblWelcome.BackColor = Color.Transparent
         lblWelcome.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point)
         lblWelcome.ForeColor = SystemColors.ActiveCaption
-        lblWelcome.Location = New Point(328, 259)
+        lblWelcome.Location = New Point(345, 366)
         lblWelcome.Name = "lblWelcome"
         lblWelcome.Size = New Size(117, 34)
         lblWelcome.TabIndex = 3
@@ -399,7 +400,7 @@ Partial Class frmMain
         imgLogomain.TabIndex = 2
         imgLogomain.TabStop = False
         ' 
-        ' frmMain
+        ' FrmMain
         ' 
         AutoScaleMode = AutoScaleMode.None
         AutoSize = True
@@ -413,7 +414,7 @@ Partial Class frmMain
         MaximizeBox = False
         MdiChildrenMinimizedAnchorBottom = False
         MinimumSize = New Size(980, 666)
-        Name = "frmMain"
+        Name = "FrmMain"
         StartPosition = FormStartPosition.CenterScreen
         pnlMainPanel.ResumeLayout(False)
         Guna2CustomGradientPanel2.ResumeLayout(False)

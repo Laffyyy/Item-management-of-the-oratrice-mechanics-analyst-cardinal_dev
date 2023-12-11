@@ -515,6 +515,9 @@ Public Class FrmOrderManagement
         lblCustomerID.ForeColor = Color.FromArgb(255, 249, 144)
         lblQuantity.ForeColor = Color.FromArgb(255, 249, 144)
         btnSave.Text = "Save"
+
+
+
     End Sub
 
 
@@ -522,7 +525,7 @@ Public Class FrmOrderManagement
     Private Sub NotEdit()
         btnEdit.ForeColor = Color.White
         btnEdit.FillColor = Color.FromArgb(94, 148, 255)
-        dgvOrderManagement.DefaultCellStyle.BackColor = Color.FromArgb(90, 163, 216)
+
         btnEdit.Text = "Edit Order"
 
         btnDelete.Show()
@@ -534,6 +537,7 @@ Public Class FrmOrderManagement
         lblCustomerID.ForeColor = Color.FromArgb(153, 180, 209)
         lblQuantity.ForeColor = Color.FromArgb(153, 180, 209)
         btnSave.Text = "Add"
+
 
 
     End Sub
@@ -624,10 +628,26 @@ Public Class FrmOrderManagement
 
 
 
-    Private Sub DgvOrderManagement_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellContentClick, dgvOrderManagement.CellContentClick
 
+
+
+
+
+    Private Sub cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellClick
+        If OrdermanagementstateEdit Then
+            If dgvOrderManagement.SelectedRows.Count > 0 Then
+                ' Get the selected row
+                Dim selectedRow As DataGridViewRow = dgvOrderManagement.SelectedRows(0)
+
+                ' Update textboxes with data from the selected row
+                Dim seletedIDrow As String = selectedRow.Cells("dgvcOrderID").Value.ToString()
+                tbCustomerName.Text = selectedRow.Cells("dgvcCustomerName").Value.ToString()
+                tbCustomerID.Text = selectedRow.Cells("dgvcCustomerID").Value.ToString()
+                tbProductName.Text = selectedRow.Cells("dgvcProductName").Value.ToString()
+                tbProductID.Text = selectedRow.Cells("dgvcProductID").Value.ToString()
+                tbQuantity.Text = selectedRow.Cells("dgvcQuantity").Value.ToString()
+            End If
+
+        End If
     End Sub
-
-
-
 End Class

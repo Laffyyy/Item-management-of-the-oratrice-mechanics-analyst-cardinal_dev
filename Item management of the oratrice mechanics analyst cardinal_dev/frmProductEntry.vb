@@ -229,12 +229,36 @@ Public Class FrmProductEntry
 
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If SaveProductEntry(tbProductNameEntry.Text, Convert.ToSingle(tbProductPriceEntry.Text), Convert.ToInt32(tbQuantity.Text), tbProductDescriptionEntry.Text, cbStatus.SelectedItem.ToString(), tbComments.Text) Then
-            ' Successful insertion, perform any additional actions
-            DisplayProducts()
-        Else
-            ' Insertion failed, handle accordingly
-        End If
+
+        'If SaveProductEntry(tbProductNameEntry.Text, Convert.ToSingle(tbProductPriceEntry.Text), Convert.ToInt32(tbQuantity.Text), tbProductDescriptionEntry.Text, cbStatus.SelectedItem.ToString(), tbComments.Text) Then
+        '    ' Successful insertion, perform any additional actions
+        '    DisplayProducts()
+        'Else
+        '    ' Insertion failed, handle accordingly
+        'End If
+
+        Try
+            ' Validate and convert input values
+            Dim productPrice As Single
+            Dim quantity As Integer
+
+            If Single.TryParse(tbProductPriceEntry.Text, productPrice) AndAlso Integer.TryParse(tbQuantity.Text, quantity) Then
+                ' Conversion successful, proceed with saving the data
+                If SaveProductEntry(tbProductNameEntry.Text, productPrice, quantity, tbProductDescriptionEntry.Text, cbStatus.SelectedItem.ToString(), tbComments.Text) Then
+                    ' The data was successfully saved
+                    DisplayProducts()
+
+                Else
+                    ' Handle the case where saving failed
+                End If
+            Else
+                ' Handle the case where input values are not in a valid numeric format
+                MessageBox.Show("Invalid input format. Please enter valid numeric values for Price and Quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            ' Handle other exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 

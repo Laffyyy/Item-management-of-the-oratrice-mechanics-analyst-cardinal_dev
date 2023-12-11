@@ -209,13 +209,15 @@ Partial Class frmProductEntry
         ' 
         ' btnEdit
         ' 
+        btnEdit.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnEdit.CustomizableEdges = CustomizableEdges9
         btnEdit.DisabledState.BorderColor = Color.DarkGray
         btnEdit.DisabledState.CustomBorderColor = Color.DarkGray
         btnEdit.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnEdit.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnEdit.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        btnEdit.FillColor2 = Color.Transparent
+        btnEdit.FillColor = Color.Transparent
+        btnEdit.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
         btnEdit.Location = New Point(871, 29)

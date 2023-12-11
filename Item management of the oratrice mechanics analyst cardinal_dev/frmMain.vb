@@ -31,6 +31,10 @@ Public Class FrmMain
 
     End Sub
 
+    Private Sub Hardresetbuttons()
+        btnProductEntry.ForeColor = Color.FromArgb(153, 180, 209)
+        btnAccountAdj.ForeColor = Color.FromArgb(153, 180, 209)
+    End Sub
 
 
     Private Sub Disableaccesspoint()
@@ -248,7 +252,8 @@ Public Class FrmMain
         Me.Hide()
         frmLogin.Show()
         WindowState = FormWindowState.Normal
-        frmLogin.UserIDusing = ""
+        FrmLogin.UserIDusing = ""
+        Hardresetbuttons()
     End Sub
 
     Private Sub BtnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click

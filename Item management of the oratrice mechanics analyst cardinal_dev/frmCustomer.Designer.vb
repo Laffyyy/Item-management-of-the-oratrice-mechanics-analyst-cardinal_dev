@@ -76,10 +76,10 @@ Partial Class frmCustomer
         btnEdit.FillColor2 = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
-        btnEdit.Location = New Point(677, 73)
+        btnEdit.Location = New Point(696, 40)
         btnEdit.Name = "btnEdit"
         btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        btnEdit.Size = New Size(93, 26)
+        btnEdit.Size = New Size(81, 26)
         btnEdit.TabIndex = 3
         btnEdit.Text = "Edit"
         ' 
@@ -112,7 +112,7 @@ Partial Class frmCustomer
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         dgvCustomers.DefaultCellStyle = DataGridViewCellStyle3
         dgvCustomers.GridColor = Color.FromArgb(CByte(231), CByte(229), CByte(255))
-        dgvCustomers.Location = New Point(319, 104)
+        dgvCustomers.Location = New Point(326, 71)
         dgvCustomers.Name = "dgvCustomers"
         dgvCustomers.ReadOnly = True
         dgvCustomers.RowHeadersVisible = False
@@ -321,7 +321,7 @@ Partial Class frmCustomer
         tbSearch.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbSearch.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbSearch.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbSearch.Location = New Point(319, 72)
+        tbSearch.Location = New Point(326, 39)
         tbSearch.Margin = New Padding(3, 2, 3, 2)
         tbSearch.Name = "tbSearch"
         tbSearch.PasswordChar = ChrW(0)
@@ -370,7 +370,7 @@ Partial Class frmCustomer
         ' 
         lblSearch.BackColor = Color.Transparent
         lblSearch.ForeColor = SystemColors.ActiveCaption
-        lblSearch.Location = New Point(319, 54)
+        lblSearch.Location = New Point(326, 21)
         lblSearch.Name = "lblSearch"
         lblSearch.Size = New Size(41, 17)
         lblSearch.TabIndex = 10
@@ -388,7 +388,7 @@ Partial Class frmCustomer
         btnExport.FillColor2 = Color.Empty
         btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnExport.ForeColor = Color.White
-        btnExport.Location = New Point(319, 420)
+        btnExport.Location = New Point(326, 387)
         btnExport.Name = "btnExport"
         btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         btnExport.Size = New Size(79, 26)
