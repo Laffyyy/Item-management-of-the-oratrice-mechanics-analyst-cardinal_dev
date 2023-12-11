@@ -77,6 +77,7 @@ Partial Class frmProductEntry
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         lblSearch = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        dgvcComments = New DataGridViewTextBoxColumn()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -389,7 +390,7 @@ Partial Class frmProductEntry
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity})
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity, dgvcComments})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -509,6 +510,12 @@ Partial Class frmProductEntry
         lblSearch.TabIndex = 16
         lblSearch.Text = "Search:"
         ' 
+        ' dgvcComments
+        ' 
+        dgvcComments.HeaderText = "Comments"
+        dgvcComments.Name = "dgvcComments"
+        dgvcComments.Visible = False
+        ' 
         ' FrmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -579,4 +586,5 @@ Partial Class frmProductEntry
     Friend WithEvents cbStatus As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents tbSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblSearch As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents dgvcComments As DataGridViewTextBoxColumn
 End Class

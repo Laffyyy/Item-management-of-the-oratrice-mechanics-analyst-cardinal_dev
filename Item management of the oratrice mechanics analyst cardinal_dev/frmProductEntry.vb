@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports Guna.UI2.WinForms.Suite
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports MySql.Data.MySqlClient
 Public Class FrmProductEntry
 
@@ -123,6 +125,45 @@ Public Class FrmProductEntry
     End Function
 
 
+    Private Sub UpdateProductInDatabase(productId As String, productName As String, productPrice As Single, description As String, status As String, comments As String)
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Using myCommand As New MySqlCommand()
+                    myCommand.Connection = myConnection
+
+                    myCommand.CommandText = "UPDATE omac.tblproducts " &
+                                        "SET dproductname = @productName, " &
+                                        "    dprice = @productPrice, " &
+                                        "    dtxtdescription = @description, " &
+                                        "    dstatus = @status, " &
+                                        "    dcomments = @comments " &
+                                        "WHERE dproductid = @productId"
+
+                    myCommand.Parameters.AddWithValue("@productId", productId)
+                    myCommand.Parameters.AddWithValue("@productName", productName)
+                    myCommand.Parameters.AddWithValue("@productPrice", productPrice)
+                    myCommand.Parameters.AddWithValue("@description", description)
+                    myCommand.Parameters.AddWithValue("@status", status)
+                    myCommand.Parameters.AddWithValue("@comments", comments)
+
+                    myCommand.ExecuteNonQuery()
+                End Using ' Dispose of MySqlCommand
+            End Using ' Dispose of MySqlConnection
+            Dim editedData As String = $"Old: {oldProductname} || {oldprice} || {oldProductdes}|| {oldstatus} || {oldcomment} ||---- " &
+                                   $"New: {productName} || {productPrice} || {description} || {status}||{comments}"
+            ' Display a success message or perform any other post-update actions
+            MessageBox.Show("Product updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ' Optionally, you can refresh the data or perform other actions
+            ' RefreshProductData()
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
 
     Private Sub DisplayProducts()
         Try
@@ -135,6 +176,7 @@ Public Class FrmProductEntry
                     "tbp.dproductname AS dgvcProductName, " &
                     "tbp.dprice AS dgvcPrice, " &
                     "tbp.dtxtdescription AS dgvcdescription, " &
+                    "tbp.dcomments AS pubcomments, " &
                     "tbp.dstatus AS dgvcStatus, " &
                     "COALESCE(SUM(tbs.dquantitychanged), 0) AS dgvcTotalQuantity " &
                     "FROM " &
@@ -156,6 +198,7 @@ Public Class FrmProductEntry
                             dgvProducts.Columns("dgvcdescription").DataPropertyName = "dgvcdescription"
                             dgvProducts.Columns("dgvcStatus").DataPropertyName = "dgvcStatus"
                             dgvProducts.Columns("dgvcTotalQuantity").DataPropertyName = "dgvcTotalQuantity"
+                            dgvProducts.Columns("dgvcComments").DataPropertyName = "pubcomments"
 
                             dgvProducts.DataSource = myDataSet.Tables("myData")
                         End Using ' Dispose of DataSet
@@ -181,6 +224,7 @@ Public Class FrmProductEntry
         ProductentryEditmode = True
 
         tbQuantity.Enabled = False
+        tbProductID.Enabled = False
 
         btnAdd.Text = "Save"
         lblProductName.ForeColor = Color.FromArgb(255, 249, 144)
@@ -200,6 +244,7 @@ Public Class FrmProductEntry
         ProductentryEditmode = False
 
         tbQuantity.Enabled = True
+        tbProductID.Enabled = True
 
         btnAdd.Text = "Add"
 
@@ -236,29 +281,41 @@ Public Class FrmProductEntry
         'Else
         '    ' Insertion failed, handle accordingly
         'End If
+        If Not ProductentryEditmode Then
 
-        Try
-            ' Validate and convert input values
-            Dim productPrice As Single
-            Dim quantity As Integer
 
-            If Single.TryParse(tbProductPriceEntry.Text, productPrice) AndAlso Integer.TryParse(tbQuantity.Text, quantity) Then
-                ' Conversion successful, proceed with saving the data
-                If SaveProductEntry(tbProductNameEntry.Text, productPrice, quantity, tbProductDescriptionEntry.Text, cbStatus.SelectedItem.ToString(), tbComments.Text) Then
-                    ' The data was successfully saved
-                    DisplayProducts()
+            Try
+                ' Validate and convert input values
+                Dim productPrice As Single
+                Dim quantity As Integer
+
+                If Single.TryParse(tbProductPriceEntry.Text, productPrice) AndAlso Integer.TryParse(tbQuantity.Text, quantity) Then
+
+
+                    If SaveProductEntry(tbProductNameEntry.Text, productPrice, quantity, tbProductDescriptionEntry.Text, cbStatus.SelectedItem.ToString(), tbComments.Text) Then
+                        ' The data was successfully saved
+                        DisplayProducts()
+
+                    Else
+                        ' Handle the case where saving failed
+                    End If
+
+
 
                 Else
-                    ' Handle the case where saving failed
+                    ' Handle the case where input values are not in a valid numeric format
+                    MessageBox.Show("Invalid input format. Please enter valid numeric values for Price and Quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-            Else
-                ' Handle the case where input values are not in a valid numeric format
-                MessageBox.Show("Invalid input format. Please enter valid numeric values for Price and Quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As Exception
-            ' Handle other exceptions
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+
+            Catch ex As Exception
+                ' Handle other exceptions
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Else
+            ' edit mode
+            UpdateProductInDatabase(tbProductID.Text, tbProductNameEntry.Text, tbProductPriceEntry.Text, tbProductDescriptionEntry.Text, cbStatus.Text, tbComments.Text)
+            DisplayProducts()
+        End If
     End Sub
 
 
@@ -353,5 +410,45 @@ Public Class FrmProductEntry
                 writer.WriteLine(line)
             Next
         End Using
+    End Sub
+
+    Private oldProductname As String
+    Private oldprice As Single
+    Private oldstatus As String
+    Private oldProductdes As String
+    Private oldcomment As String
+
+
+    Private Sub cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellClick
+        If ProductentryEditmode Then
+            If dgvProducts.SelectedRows.Count > 0 Then
+                ' Get the selected row
+                Dim selectedRow As DataGridViewRow = dgvProducts.SelectedRows(0)
+
+                ' Update textboxes with data from the selected row
+                Dim seletedIDrow As String = selectedRow.Cells("dgvcID").Value.ToString()
+
+                oldProductname = selectedRow.Cells("dgvcProductName").Value.ToString()
+                oldstatus = selectedRow.Cells("dgvcStatus").Value.ToString()
+                oldProductdes = selectedRow.Cells("dgvcdescription").Value.ToString()
+                oldcomment = selectedRow.Cells("dgvcComments").Value.ToString()
+                oldprice = selectedRow.Cells("dgvcPrice").Value
+
+
+
+                tbProductID.Text = selectedRow.Cells("dgvcID").Value.ToString()
+                tbProductNameEntry.Text = selectedRow.Cells("dgvcProductName").Value.ToString()
+                cbStatus.Text = selectedRow.Cells("dgvcStatus").Value.ToString()
+                tbProductDescriptionEntry.Text = selectedRow.Cells("dgvcdescription").Value.ToString()
+                tbComments.Text = selectedRow.Cells("dgvcComments").Value.ToString()
+                tbProductPriceEntry.Text = selectedRow.Cells("dgvcPrice").Value
+                tbQuantity.Text = selectedRow.Cells("dgvcTotalQuantity").Value
+
+
+
+
+            End If
+
+        End If
     End Sub
 End Class

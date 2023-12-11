@@ -68,9 +68,9 @@ Partial Class frmOrderManagement
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         tbCustomerID = New Guna.UI2.WinForms.Guna2TextBox()
         lblCustomerID = New Label()
-        tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         lblProductID = New Label()
         lbOrderID = New Label()
+        cmbProductID = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -426,30 +426,6 @@ Partial Class frmOrderManagement
         lblCustomerID.TabIndex = 12
         lblCustomerID.Text = "Customer ID:"
         ' 
-        ' tbProductID
-        ' 
-        tbProductID.Anchor = AnchorStyles.Left
-        tbProductID.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        tbProductID.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbProductID.CustomizableEdges = CustomizableEdges19
-        tbProductID.DefaultText = ""
-        tbProductID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        tbProductID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        tbProductID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbProductID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductID.Location = New Point(19, 264)
-        tbProductID.Margin = New Padding(3, 2, 3, 2)
-        tbProductID.Name = "tbProductID"
-        tbProductID.PasswordChar = ChrW(0)
-        tbProductID.PlaceholderText = ""
-        tbProductID.SelectedText = ""
-        tbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        tbProductID.Size = New Size(214, 27)
-        tbProductID.TabIndex = 15
-        ' 
         ' lblProductID
         ' 
         lblProductID.Anchor = AnchorStyles.Left
@@ -471,13 +447,31 @@ Partial Class frmOrderManagement
         lbOrderID.Size = New Size(0, 15)
         lbOrderID.TabIndex = 16
         ' 
+        ' cmbProductID
+        ' 
+        cmbProductID.Anchor = AnchorStyles.Left
+        cmbProductID.BackColor = Color.Transparent
+        cmbProductID.CustomizableEdges = CustomizableEdges19
+        cmbProductID.DrawMode = DrawMode.OwnerDrawFixed
+        cmbProductID.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbProductID.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbProductID.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cmbProductID.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cmbProductID.ItemHeight = 30
+        cmbProductID.Location = New Point(19, 265)
+        cmbProductID.Name = "cmbProductID"
+        cmbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        cmbProductID.Size = New Size(214, 36)
+        cmbProductID.TabIndex = 17
+        ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(cmbProductID)
         Controls.Add(lbOrderID)
-        Controls.Add(tbProductID)
         Controls.Add(lblProductID)
         Controls.Add(tbCustomerID)
         Controls.Add(lblCustomerID)
@@ -534,8 +528,8 @@ Partial Class frmOrderManagement
     Friend WithEvents Guna2TextBox4 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblProductID As Label
     Friend WithEvents tbProductName As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents tbQuantity As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lbOrderID As Label
+    Friend WithEvents cmbProductID As Guna.UI2.WinForms.Guna2ComboBox
 End Class
