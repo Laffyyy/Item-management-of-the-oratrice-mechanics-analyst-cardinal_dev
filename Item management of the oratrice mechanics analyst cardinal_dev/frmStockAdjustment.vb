@@ -2,7 +2,7 @@
 
 Public Class frmStockAdjustment
 
-    Public Shared Property replenishorexhaust As Boolean = False ' false = replenish, true = exhaust
+    Public Shared Property Replenishorexhaust As Boolean = False ' false = replenish, true = exhaust
 
     Private Sub DisplayStockAdjustment()
         Try
@@ -254,17 +254,17 @@ Public Class frmStockAdjustment
         End Try
     End Sub
 
-    Private Sub replenish()
+    Private Sub Replenish()
         replenishorexhaust = False
         btnReplenish.Text = "Replenish"
     End Sub
 
-    Private Sub exhaust()
+    Private Sub Exhaust()
         replenishorexhaust = True
         btnReplenish.Text = "Exhaust"
     End Sub
 
-    Private Sub btnReplenish_Click(sender As Object, e As EventArgs) Handles btnReplenish.Click
+    Private Sub BtnReplenish_Click(sender As Object, e As EventArgs) Handles btnReplenish.Click
         If replenishorexhaust Then
             replenish()
         Else
@@ -272,7 +272,7 @@ Public Class frmStockAdjustment
         End If
     End Sub
 
-    Private Sub dgvstockad_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvstockad.CellContentClick
+    Private Sub Dgvstockad_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvstockad.CellContentClick
 
     End Sub
 
@@ -280,18 +280,18 @@ Public Class frmStockAdjustment
         SaveStock()
     End Sub
 
-    Private Sub frmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayStockAdjustment()
         DisplayProductName()
         replenish()
 
     End Sub
 
-    Private Sub tbProductID_TextChanged(sender As Object, e As EventArgs)
+    Private Sub TbProductID_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub cbProductName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductName.SelectedIndexChanged
+    Private Sub CbProductName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductName.SelectedIndexChanged
         DisplayProductID()
     End Sub
 

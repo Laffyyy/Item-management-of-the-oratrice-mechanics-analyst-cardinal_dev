@@ -17,14 +17,15 @@ Public Class frmMain
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        leftBorderbtn = New Panel()
-        leftBorderbtn.Size = New Size()
+        leftBorderbtn = New Panel With {
+            .Size = New Size()
+        }
         pnlMainPanel.Controls.Add(leftBorderbtn)
 
         Me.Text = String.Empty
         Me.ControlBox = False
         Me.DoubleBuffered = True
-        dissableaccesspoint()
+        Disableaccesspoint()
 
 
 
@@ -32,7 +33,7 @@ Public Class frmMain
 
 
 
-    Private Sub dissableaccesspoint()
+    Private Sub Disableaccesspoint()
 
         If frmLogin.UUserAccessLevel <> 1 Then
             btnAccountAdj.TextAlign = HorizontalAlignment.Left
@@ -81,9 +82,7 @@ Public Class frmMain
 
     Public Sub OpenChildrenform(childform As Form)
         'open 1 only form
-        If currentChildform IsNot Nothing Then
-            currentChildform.Close()
-        End If
+        currentChildform?.Close()
         currentChildform = childform
         childform.TopLevel = False
         childform.FormBorderStyle = FormBorderStyle.None
@@ -113,15 +112,15 @@ Public Class frmMain
 
     End Sub
 
-    Public Sub pubreset()
+    Public Sub Pubreset()
         DisableButton()
         leftBorderbtn.Visible = False
     End Sub
 
 
 
-    Private Sub btnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnProductEntry_Click(sender As Object, e As EventArgs) Handles btnProductEntry.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -134,8 +133,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub btnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnOrderMannage_Click(sender As Object, e As EventArgs) Handles btnOrderMannage.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
             Activebutton(sender)
             OpenChildrenform(New frmOrderManagement)
@@ -147,8 +146,8 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnStockAdjustment_Click(sender As Object, e As EventArgs) Handles btnStockAdjustment.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -162,8 +161,8 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnAccountAdj_Click(sender As Object, e As EventArgs) Handles btnAccountAdj.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnAccountAdj_Click(sender As Object, e As EventArgs) Handles btnAccountAdj.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
            Not frmProductEntry.productentryEditmode Then
 
 
@@ -176,8 +175,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub btnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
            Not frmProductEntry.productentryEditmode Then
 
 
@@ -191,12 +190,10 @@ Public Class frmMain
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles imgLogo.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
-            If currentChildform IsNot Nothing Then
-                currentChildform.Close()
-            End If
+            currentChildform?.Close()
             Reset()
 
         Else
@@ -209,12 +206,12 @@ Public Class frmMain
 
 
 
-    Private Sub pnlHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles pnlHeader.MouseDown
+    Private Sub PnlHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles pnlHeader.MouseDown
         ReleaseCapture()
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 
-    Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+    Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         If WindowState = FormWindowState.Maximized Then
             FormBorderStyle = FormBorderStyle.None
         Else
@@ -223,8 +220,8 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        If Not frmOrderManagement.ordermanagementstateEdit AndAlso
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
             Not frmProductEntry.productentryEditmode Then
 
 
@@ -237,18 +234,16 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub btnMaximize_Click(sender As Object, e As EventArgs) Handles btnMaximize.Click
+    Private Sub BtnMaximize_Click(sender As Object, e As EventArgs) Handles btnMaximize.Click
         If WindowState = FormWindowState.Normal Then
             WindowState = FormWindowState.Maximized
         Else
             WindowState = FormWindowState.Normal
         End If
     End Sub
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+    Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
 
-        If currentChildform IsNot Nothing Then
-            currentChildform.Close()
-        End If
+        currentChildform?.Close()
         Reset()
 
 
@@ -259,21 +254,25 @@ Public Class frmMain
         frmLogin.UserIDusing = ""
     End Sub
 
-    Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
+    Private Sub BtnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
         WindowState = FormWindowState.Minimized
 
     End Sub
 
 
 
-    Private Sub active(sender As Object, e As EventArgs) Handles MyBase.Activated
-        dissableaccesspoint()
-        lblWelcome.Text = "Wecome ," + frmLogin.UUserFirstName
+    Private Sub Active(sender As Object, e As EventArgs) Handles MyBase.Activated
+        Disableaccesspoint()
+        lblWelcome.Text = "Welcome, " + frmLogin.UUserFirstName
 
     End Sub
 
 
-    Private Sub loadform(sender As Object, e As EventArgs)
+    Private Sub Loadform(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub LblWelcome_Click(sender As Object, e As EventArgs) Handles lblWelcome.Click
 
     End Sub
 End Class

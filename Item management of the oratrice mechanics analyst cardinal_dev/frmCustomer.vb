@@ -1,14 +1,14 @@
 ﻿Imports System.Windows
 Imports MySql.Data.MySqlClient
-Public Class frmCustomer
+Public Class FrmCustomer
 
-    Public Shared Property frmcustomereditmode As Boolean = True
+    Public Shared Property Frmcustomereditmode As Boolean = True
 
 
 
     Private Sub DisplayCustomers()
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 Using myCommand As New MySqlCommand()
                     myCommand.Connection = myConnection
 
@@ -46,7 +46,7 @@ Public Class frmCustomer
     End Sub
 
 
-    Private Sub tbSearch_TextChanged(sender As Object, e As EventArgs) Handles tbSearch.TextChanged
+    Private Sub TbSearch_TextChanged(sender As Object, e As EventArgs) Handles tbSearch.TextChanged
         Try
             Dim dataTable As DataTable = CType(dgvCustomers.DataSource, DataTable)
 
@@ -63,7 +63,7 @@ Public Class frmCustomer
 
     Private Sub InsertCustomer(ByVal customerID As String, ByVal lastName As String, ByVal firstName As String, ByVal companyName As String)
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Using myCommand As New MySqlCommand()
@@ -98,9 +98,8 @@ Public Class frmCustomer
 
 
     Private Sub UpdateCustomerInDatabase(oldCustomerID As String, newCustomerID As String, lastName As String, firstName As String, companyName As String)
-        Dim editedData As String = ""
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Using myCommand As New MySqlCommand()
@@ -131,35 +130,7 @@ Public Class frmCustomer
             End Using ' Dispose of MySqlConnection
 
             'Create a string with the new data
-            editedData = $"Old: {oldCustomerID} || {oldfirsName} || {oldlastname} || {oldcompany} || ---- New: {newCustomerID} || {firstName} || {lastName} || {companyName}"
-
-            'If oldCustomerID = newCustomerID Then
-            '    editedData = editedData + $"CustomerID: Retain {newCustomerID}||"
-            'End If
-            'If oldCustomerID <> newCustomerID Then
-            '    editedData = editedData + $"CustomerID: Old: {oldCustomerID} New: {newCustomerID} "
-            'End If
-
-            'If oldfirsName = firstName Then
-            '    editedData = editedData + $"firstName: Retain {firstName}||"
-            'End If
-            'If oldfirsName <> firstName Then
-            '    editedData = editedData + $"FirstName: Old: {oldfirsName} New: {firstName}|| "
-            'End If
-
-            'If oldlastname = lastName Then
-            '    editedData = editedData + $"lastname: Retain: {lastName}||"
-            'End If
-            'If oldlastname <> firstName Then
-            '    editedData = editedData + $"lastname: Old: {oldlastname} New: {lastName}|| "
-            'End If
-
-            'If oldcompany = companyName Then
-            '    editedData = editedData + $"Comapny: Retained {companyName}||"
-            'End If
-            'If oldcompany <> companyName Then
-            '    editedData = editedData + $"Comapny: Old: {oldcompany} New: {companyName}|| "
-            'End If
+            Dim editedData As String = $"Old: {oldCustomerID} || {oldfirsName} || {oldlastname} || {oldcompany} || ---- New: {newCustomerID} || {firstName} || {lastName} || {companyName}"
 
 
             ' Insert into tbllogs
@@ -183,7 +154,7 @@ Public Class frmCustomer
 
     Private Sub LogCustomerAction(action As String, customerID As String, editedData As String)
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
@@ -209,7 +180,7 @@ Public Class frmCustomer
 
 
 
-    Private Sub clear()
+    Private Sub Clear()
         tbCustomerID.Text = ""
         tbLastName.Text = ""
         tbFirstName.Text = ""
@@ -220,13 +191,13 @@ Public Class frmCustomer
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
         btnEdit.FillColor = Color.FromArgb(153, 180, 209)
         btnEdit.Text = "EDIT MODE"
-        frmcustomereditmode = False
+        Frmcustomereditmode = False
 
 
 
-        bnAdd.Text = "Save"
-        bnAdd.ForeColor = Color.FromArgb(255, 249, 144)
-        bnAdd.FillColor2 = Color.FromArgb(153, 180, 209)
+        btnAdd.Text = "Save"
+        btnAdd.ForeColor = Color.FromArgb(255, 249, 144)
+        btnAdd.FillColor2 = Color.FromArgb(153, 180, 209)
 
         lblID.ForeColor = Color.FromArgb(255, 249, 144)
         lblLastName.ForeColor = Color.FromArgb(255, 249, 144)
@@ -237,15 +208,15 @@ Public Class frmCustomer
 
     End Sub
 
-    Private Sub notOnEdit()
+    Private Sub NotOnEdit()
         btnEdit.FillColor2 = Color.FromArgb(94, 148, 255)
         btnEdit.ForeColor = Color.White
         btnEdit.Text = "Edit"
-        frmcustomereditmode = True
+        Frmcustomereditmode = True
 
-        bnAdd.Text = "Add"
-        bnAdd.FillColor2 = Color.FromArgb(94, 148, 255)
-        bnAdd.ForeColor = Color.White
+        btnAdd.Text = "Add"
+        btnAdd.FillColor2 = Color.FromArgb(94, 148, 255)
+        btnAdd.ForeColor = Color.White
 
         lblID.ForeColor = Color.FromArgb(153, 180, 209)
         lblLastName.ForeColor = Color.FromArgb(153, 180, 209)
@@ -253,36 +224,38 @@ Public Class frmCustomer
         lblCompanyName.ForeColor = Color.FromArgb(153, 180, 209)
     End Sub
 
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If frmcustomereditmode Then
+    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If Frmcustomereditmode Then
             OnEdit()
         Else
-            notOnEdit()
+            NotOnEdit()
         End If
     End Sub
 
-    Private Sub bnAdd_Click(sender As Object, e As EventArgs) Handles bnAdd.Click
-        Dim customerID As String = tbCustomerID.Text
-        Dim lastName As String = tbLastName.Text
-        Dim firstName As String = tbFirstName.Text
-        Dim companyName As String = tbCompanyName.Text
+    Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim customerID = tbCustomerID.Text
+        Dim lastName = tbLastName.Text
+        Dim firstName = tbFirstName.Text
+        Dim companyName = tbCompanyName.Text
 
-        If Not frmcustomereditmode Then
+        If Not Frmcustomereditmode Then
             'edit fuction here
             UpdateCustomerInDatabase(oldID, customerID, lastName, firstName, companyName)
             DisplayCustomers()
-            clear()
-            notOnEdit()
+            Clear()
+            NotOnEdit()
+
         Else
             'adding fuction here 
 
             InsertCustomer(customerID, lastName, firstName, companyName)
-            clear()
+            Clear()
+            MessageBox.Show("Magic")
         End If
 
     End Sub
 
-    Private Sub frmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayCustomers()
     End Sub
 
@@ -290,8 +263,8 @@ Public Class frmCustomer
     Private oldlastname As String
     Private oldfirsName As String
     Private oldcompany As String
-    Private Sub dgvCustomers_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellClick
-        If Not frmcustomereditmode AndAlso e.RowIndex >= 0 Then
+    Private Sub DgvCustomers_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellClick
+        If Not Frmcustomereditmode AndAlso e.RowIndex >= 0 Then
             ' Access the data from the clicked row
             Dim selectedRow As DataGridViewRow = dgvCustomers.Rows(e.RowIndex)
 

@@ -1,5 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class frmNewOrders
+Public Class FrmNewOrders
 
     Private selectedCustomerID As String ' Class-level variable to store selected customer ID
     Private myDataSet As New DataSet ' Class-level variable to store the dataset
@@ -55,7 +55,7 @@ Public Class frmNewOrders
     End Sub
 
 
-    Private Sub tbCustomerName_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerName.TextChanged
+    Private Sub TbCustomerName_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerName.TextChanged
         ' Call the method to dynamically display customer names based on the search text
         DisplayCustomerNames(tbCustomerName.Text.Trim)
     End Sub
@@ -91,7 +91,7 @@ Public Class frmNewOrders
         End Try
     End Sub
 
-    Private Sub cbProductName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductName.SelectedIndexChanged
+    Private Sub CbProductName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductName.SelectedIndexChanged
         ' Store the selected product ID in the class-level variable
         If cbProductName.SelectedIndex <> -1 Then
             selectedProductID = cbProductName.SelectedValue.ToString()
@@ -167,7 +167,7 @@ Public Class frmNewOrders
     End Sub
 
 
-    Private Sub bttnOrder_Click(sender As Object, e As EventArgs) Handles bttnOrder.Click
+    Private Sub BttnOrder_Click(sender As Object, e As EventArgs) Handles bttnOrder.Click
         SaveOrder()
     End Sub
 
@@ -175,11 +175,11 @@ Public Class frmNewOrders
 
     End Sub
 
-    Private Sub frmNewOrders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmNewOrders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayProductName()
     End Sub
 
-    Private Sub dgvNewOrders_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvNewOrders.CellContentClick
+    Private Sub DgvNewOrders_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvNewOrders.CellContentClick
 
     End Sub
 

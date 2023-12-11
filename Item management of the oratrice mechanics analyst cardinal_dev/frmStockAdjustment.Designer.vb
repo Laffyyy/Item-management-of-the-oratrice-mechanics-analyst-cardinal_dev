@@ -343,7 +343,9 @@ Partial Class frmStockAdjustment
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgvstockad As Guna.UI2.WinForms.Guna2DataGridView
+#Disable Warning BC40004 ' Member conflicts with member in the base type and should be declared 'Shadows'
     Friend WithEvents ProductName As DataGridViewTextBoxColumn
+#Enable Warning BC40004 ' Member conflicts with member in the base type and should be declared 'Shadows'
     Friend WithEvents DateofRestock As DataGridViewTextBoxColumn
     Friend WithEvents Quantity As DataGridViewTextBoxColumn
     Friend WithEvents Guna2GradientButton1 As Guna.UI2.WinForms.Guna2GradientButton
