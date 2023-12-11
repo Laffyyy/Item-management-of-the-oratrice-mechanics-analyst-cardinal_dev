@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports Guna.UI2.WinForms
 
-Public Class frmMain
+Public Class FrmMain
 
     Private currentbtn As Guna.UI2.WinForms.Guna2GradientButton
     Private leftBorderbtn As Panel
@@ -34,24 +34,17 @@ Public Class frmMain
 
 
     Private Sub Disableaccesspoint()
-
-        If frmLogin.UUserAccessLevel <> 1 Then
+        If FrmLogin.UUserAccessLevel = 2 OrElse FrmLogin.UUserAccessLevel = 3 Then
+            btnAccountAdj.ForeColor = Color.FromArgb(0, 0, 0)
             btnAccountAdj.TextAlign = HorizontalAlignment.Left
-            btnAccountAdj.ForeColor = Color.FromArgb(128, 153, 180, 209)
-            btnAccountAdj.Enabled = False
-
-
+            btnAccountAdj.BackColor = Color.FromArgb(200, 200, 200)
         End If
-        If frmLogin.UUserAccessLevel = 1 Then
-            btnAccountAdj.Enabled = True
-
-            btnAccountAdj.ForeColor = Color.FromArgb(153, 180, 209)
-            btnAccountAdj.TextAlign = HorizontalAlignment.Center
-
-        End If
-
-
     End Sub
+
+
+
+
+
 
     Private Sub Activebutton(senderbtn As Object)
         'costomizing the button here
@@ -163,17 +156,21 @@ Public Class frmMain
 
     Private Sub BtnAccountAdj_Click(sender As Object, e As EventArgs) Handles btnAccountAdj.Click
         If Not frmOrderManagement.OrdermanagementstateEdit AndAlso
-           Not frmProductEntry.productentryEditmode Then
+       Not FrmProductEntry.ProductentryEditmode Then
 
-
-            Activebutton(sender)
-            OpenChildrenform(New frmAccountAdjustment)
-
+            If FrmLogin.UUserAccessLevel = 2 OrElse FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Activebutton(sender)
+                OpenChildrenform(New frmAccountAdjustment)
+            End If
         Else
-
             MessageBox.Show("Exit edit mode")
         End If
     End Sub
+
+
 
     Private Sub BtnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomer.Click
         If Not frmOrderManagement.OrdermanagementstateEdit AndAlso

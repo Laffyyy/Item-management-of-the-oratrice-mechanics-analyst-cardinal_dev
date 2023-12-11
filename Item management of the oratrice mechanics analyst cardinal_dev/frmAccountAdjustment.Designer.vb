@@ -361,12 +361,12 @@ Partial Class frmAccountAdjustment
         btnExport.FillColor2 = Color.Empty
         btnExport.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnExport.ForeColor = Color.White
-        btnExport.Location = New Point(275, 423)
+        btnExport.Location = New Point(275, 412)
         btnExport.Name = "btnExport"
         btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        btnExport.Size = New Size(79, 26)
+        btnExport.Size = New Size(108, 26)
         btnExport.TabIndex = 12
-        btnExport.Text = "Export"
+        btnExport.Text = "Export Logs"
         ' 
         ' frmAccountAdjustment
         ' 

@@ -1,8 +1,31 @@
-﻿Imports System.Windows
+﻿Imports System.IO
+Imports System.Windows
 Imports MySql.Data.MySqlClient
 Public Class FrmCustomer
 
     Public Shared Property Frmcustomereditmode As Boolean = True
+
+    Private Sub HandleException(ex As Exception)
+        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
+
+    Private Sub ExportDataGridViewToCSV(dataGridView As DataGridView, filePath As String)
+        Try
+            Using writer As New StreamWriter(filePath)
+                ' Write the column headers to the CSV file
+                Dim headerLine As String = String.Join(",", dataGridView.Columns.Cast(Of DataGridViewColumn).Select(Function(column) column.HeaderText))
+                writer.WriteLine(headerLine)
+
+                ' Write each row of data to the CSV file
+                For Each row As DataGridViewRow In dataGridView.Rows
+                    Dim dataLine As String = String.Join(",", row.Cells.Cast(Of DataGridViewCell).Select(Function(cell) cell.Value.ToString()))
+                    writer.WriteLine(dataLine)
+                Next
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
 
 
 
@@ -81,10 +104,7 @@ Public Class FrmCustomer
                 End Using ' Dispose of MySqlCommand
 
                 ' Create a string with the new data
-                Dim editedData As String = $"{customerID} || {firstName} || {lastName} || {companyName}"
 
-                ' Insert into tbllogs
-                LogCustomerAction("Add", customerID, editedData)
 
             End Using ' Dispose of MySqlConnection
 
@@ -224,13 +244,7 @@ Public Class FrmCustomer
         lblCompanyName.ForeColor = Color.FromArgb(153, 180, 209)
     End Sub
 
-    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If Frmcustomereditmode Then
-            OnEdit()
-        Else
-            NotOnEdit()
-        End If
-    End Sub
+
 
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim customerID = tbCustomerID.Text
@@ -250,13 +264,79 @@ Public Class FrmCustomer
 
             InsertCustomer(customerID, lastName, firstName, companyName)
             Clear()
-            MessageBox.Show("Magic")
+
         End If
 
     End Sub
 
+    Private Sub CheckUserAccessLevel()
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Dim checkCommand As New MySqlCommand("SELECT daccesslvl FROM omac.tblusers WHERE duid = @userId", myConnection)
+                checkCommand.Parameters.AddWithValue("@userId", FrmLogin.UserIDusing)
+
+                Dim accessLevel As String = Convert.ToString(checkCommand.ExecuteScalar())
+
+                If accessLevel = "3" Then
+                    btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnEdit.BackColor = Color.FromArgb(200, 200, 200)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred while checking user access level: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If Frmcustomereditmode Then
+            ' Check access level
+            If FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                OnEdit()
+            End If
+        Else
+            NotOnEdit()
+        End If
+    End Sub
     Private Sub FrmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayCustomers()
+        CheckUserAccessLevel()
+    End Sub
+
+
+
+    Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso Not FrmProductEntry.ProductentryEditmode Then
+            If FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Try
+                    ' Show a SaveFileDialog to specify the path for the CSV file
+                    Using saveDialog As New SaveFileDialog()
+                        saveDialog.Filter = "CSV files (*.csv)|*.csv"
+                        saveDialog.Title = "Export to CSV"
+                        If saveDialog.ShowDialog() = DialogResult.OK Then
+                            ' Get the file path chosen by the user
+                            Dim filePath As String = saveDialog.FileName
+
+                            ' Export the DataGridView data to the CSV file
+                            ExportDataGridViewToCSV(dgvCustomers, filePath)
+
+                            MessageBox.Show("Data exported successfully!", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    End Using
+                Catch ex As Exception
+                    HandleException(ex)
+                End Try
+            End If
+        Else
+            MessageBox.Show("Exit edit mode")
+        End If
     End Sub
 
     Private oldID As String
@@ -286,7 +366,6 @@ Public Class FrmCustomer
             oldcompany = companyName
         End If
     End Sub
-
 
 
 End Class

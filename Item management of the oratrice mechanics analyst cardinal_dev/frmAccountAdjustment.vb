@@ -1,15 +1,35 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Public Class frmAccountAdjustment
 
-    Public Shared Property frmaccountadjustmentedit As Boolean = False
+    Public Shared Property Frmaccountadjustmentedit As Boolean = False
 
+    Private Sub HandleException(ex As Exception)
+        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
 
+    Private Sub ExportDataTableToCSV(dataTable As DataTable, filePath As String)
+        Try
+            Using writer As New StreamWriter(filePath)
+                ' Write the column headers to the CSV file
+                Dim headerLine As String = String.Join(",", dataTable.Columns.Cast(Of DataColumn).Select(Function(column) column.ColumnName))
+                writer.WriteLine(headerLine)
 
+                ' Write each row of data to the CSV file
+                For Each row As DataRow In dataTable.Rows
+                    Dim dataLine As String = String.Join(",", row.ItemArray.Select(Function(cell) cell.ToString()))
+                    writer.WriteLine(dataLine)
+                Next
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
 
 
     Private Sub DisplayAccounts()
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 Using myCommand As New MySqlCommand()
                     myCommand.Connection = myConnection
 
@@ -46,7 +66,7 @@ Public Class frmAccountAdjustment
         End Try
     End Sub
 
-    Private Sub dgvUserInfo_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvUserInfo.CellFormatting
+    Private Sub DgvUserInfo_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvUserInfo.CellFormatting
         If e.ColumnIndex = dgvUserInfo.Columns("dgvcAccesslvl").Index AndAlso e.Value IsNot Nothing Then
             ' Attempt to convert the value to an integer using a safer method
             Dim accessLevel As Integer
@@ -75,7 +95,7 @@ Public Class frmAccountAdjustment
 
     Private Sub InsertNewuser(ByVal userID As String, ByVal lastName As String, ByVal firstName As String, ByVal Password As String, ByVal role As Int16)
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Using myCommand As New MySqlCommand()
@@ -111,9 +131,8 @@ Public Class frmAccountAdjustment
     End Sub
 
     Private Sub InsertUserInfo(newUserID As String, firstName As String, lastName As String, password As String, accessLevel As Integer)
-        Dim editedData As String = ""
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Using myCommand As New MySqlCommand()
@@ -135,7 +154,7 @@ Public Class frmAccountAdjustment
             End Using ' Dispose of MySqlConnection
 
             ' Create a string with the new data
-            editedData = $"ADDED:{newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
+            Dim editedData As String = $"ADDED:{newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
 
             ' Insert into tbllogs
             LogAccountAdjustment("ADD", editedData)
@@ -149,9 +168,8 @@ Public Class frmAccountAdjustment
 
 
     Private Sub UpdateUserInDatabase(oldUserID As String, newUserID As String, firstName As String, lastName As String, password As String)
-        Dim editedData As String = ""
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Using myCommand As New MySqlCommand()
@@ -184,7 +202,7 @@ Public Class frmAccountAdjustment
 
 
             ' Create a string with the new data
-            editedData = $"Old: {oldID} || {oldfirstname} || {oldlastname} || {oldpass} || {oldrole} || ---- New: {newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
+            Dim editedData As String = $"Old: {oldID} || {oldfirstname} || {oldlastname} || {oldpass} || {oldrole} || ---- New: {newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
 
             ' Insert into tbllogs
             LogAccountAdjustment("Update", editedData)
@@ -275,8 +293,8 @@ Public Class frmAccountAdjustment
 
     End Sub
 
-    Private Sub notEdit()
-        frmaccountadjustmentedit = False
+    Private Sub NotEdit()
+        Frmaccountadjustmentedit = False
         btnEdit.ForeColor = Color.White
         btnEdit.FillColor = Color.FromArgb(94, 148, 255)
         btnEdit.Text = "Edit Account"
@@ -296,7 +314,7 @@ Public Class frmAccountAdjustment
     End Sub
 
 
-    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If frmaccountadjustmentedit Then
             notEdit()
 
@@ -306,7 +324,7 @@ Public Class frmAccountAdjustment
         End If
     End Sub
 
-    Private Sub add(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Private Sub Add(sender As Object, e As EventArgs) Handles btnAdd.Click
         If Not frmaccountadjustmentedit Then
             ' add user
             Try
@@ -335,7 +353,7 @@ Public Class frmAccountAdjustment
 
     End Sub
 
-    Private Sub frmAccountAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmAccountAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayAccounts()
     End Sub
 
@@ -354,7 +372,7 @@ Public Class frmAccountAdjustment
     {"Manager", 2},
     {"Employee", 3}
 }
-    Private Sub cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUserInfo.CellClick
+    Private Sub Cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUserInfo.CellClick
         If frmaccountadjustmentedit AndAlso e.RowIndex >= 0 Then
             ' Access the data from the clicked row
             ' Get the selected row
@@ -381,5 +399,35 @@ Public Class frmAccountAdjustment
 
     End Sub
 
+    Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        Try
+            ' Fetch the data from the database and store it in a DataTable
+            Dim dataTable As New DataTable()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                Using myCommand As New MySqlCommand("SELECT * FROM omac.tbllogs", myConnection)
+                    Using myAdapter As New MySqlDataAdapter(myCommand)
+                        myAdapter.Fill(dataTable)
+                    End Using
+                End Using
+            End Using
+
+            ' Show a SaveFileDialog to specify the path for the CSV file
+            Using saveDialog As New SaveFileDialog()
+                saveDialog.Filter = "CSV files (*.csv)|*.csv"
+                saveDialog.Title = "Export to CSV"
+                If saveDialog.ShowDialog() = DialogResult.OK Then
+                    ' Get the file path chosen by the user
+                    Dim filePath As String = saveDialog.FileName
+
+                    ' Export the DataTable data to the CSV file
+                    ExportDataTableToCSV(dataTable, filePath)
+
+                    MessageBox.Show("Data exported successfully!", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
 
 End Class

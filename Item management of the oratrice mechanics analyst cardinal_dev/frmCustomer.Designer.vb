@@ -416,7 +416,7 @@ Partial Class frmCustomer
         Controls.Add(dgvCustomers)
         Controls.Add(btnEdit)
         Name = "frmCustomer"
-        Text = "frmCustomer"
+        Text = "Customer"
         CType(dgvCustomers, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

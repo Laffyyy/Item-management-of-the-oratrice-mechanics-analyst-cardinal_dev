@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 
-Public Class frmLogin
+Public Class FrmLogin
 
     Public Shared Property UserIDusing As String
 
@@ -22,7 +22,7 @@ Public Class frmLogin
 
 
 
-    Private Sub pnlLogin_Paint(sender As Object, e As PaintEventArgs) Handles pnlLogin.Paint
+    Private Sub PnlLogin_Paint(sender As Object, e As PaintEventArgs) Handles pnlLogin.Paint
 
     End Sub
 
@@ -41,7 +41,7 @@ Public Class frmLogin
 
     'End Sub
 
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btLogin.Click
+    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles btLogin.Click
         ' Get the username and password from the textboxes
         Dim username As String = tbEmployeeID.Text
         Dim password As String = tbPassword.Text
@@ -50,7 +50,7 @@ Public Class frmLogin
         If ValidateCredentials(username, password) Then
             ' Successful login
             MessageBox.Show("Login Successful")
-            frmMain.Show()
+            FrmMain.Show()
             Me.Hide()
             UserIDusing = username
             ' Add code to open the main application form or perform other actions
@@ -74,7 +74,7 @@ Public Class frmLogin
     Private Function ValidateCredentials(username As String, password As String) As Boolean
         Try
             ' Create a connection using the Common method
-            Using connection As MySqlConnection = Common.getDBConnectionX()
+            Using connection As MySqlConnection = Common.GetDBConnectionX()
                 connection.Open()
 
                 ' SQL query to retrieve user information
@@ -124,7 +124,7 @@ Public Class frmLogin
         End If
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Application.Exit()
     End Sub
 End Class

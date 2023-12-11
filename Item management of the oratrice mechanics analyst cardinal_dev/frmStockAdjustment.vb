@@ -1,12 +1,34 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 
 Public Class frmStockAdjustment
 
     Public Shared Property Replenishorexhaust As Boolean = False ' false = replenish, true = exhaust
 
+    Private Sub HandleException(ex As Exception)
+        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
+
+    Private Sub ExportStockAdjustmentToCSV(dataGridView As DataGridView, filePath As String)
+        Try
+            Using writer As New StreamWriter(filePath)
+                ' Write the column headers to the CSV file
+                Dim headerLine As String = String.Join(",", dataGridView.Columns.Cast(Of DataGridViewColumn).Select(Function(column) column.HeaderText))
+                writer.WriteLine(headerLine)
+
+                ' Write each row of data to the CSV file
+                For Each row As DataGridViewRow In dataGridView.Rows
+                    Dim dataLine As String = String.Join(",", row.Cells.Cast(Of DataGridViewCell)().Select(Function(cell) If(cell.Value IsNot Nothing, cell.Value.ToString(), "")))
+                    writer.WriteLine(dataLine)
+                Next
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
     Private Sub DisplayStockAdjustment()
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 Using myCommand As New MySqlCommand()
                     myCommand.Connection = myConnection
 
@@ -43,7 +65,7 @@ Public Class frmStockAdjustment
     End Sub
 
     Private Function IsStockIdUnique(stockId As String) As Boolean
-        Dim myConnection As MySqlConnection = Common.getDBConnectionX()
+        Dim myConnection As MySqlConnection = Common.GetDBConnectionX()
         Dim isUnique As Boolean = True
 
         Try
@@ -68,7 +90,7 @@ Public Class frmStockAdjustment
         Dim myConnection1 As MySqlConnection
         Dim myCommand1 As MySqlCommand
 
-        myConnection1 = Common.getDBConnectionX()
+        myConnection1 = Common.GetDBConnectionX()
 
         Try
             myConnection1.Open()
@@ -102,6 +124,7 @@ Public Class frmStockAdjustment
                 Exit Sub
             End If
 
+
             ' Save stock adjustment
             myCommand1 = New MySqlCommand("INSERT INTO tblStock (dorigin, dstockid, dproductid, dquantitychanged, dstockchangedate) VALUES (@origin, @stockId, @productId, @quantityChanged, @stockChangeDate)", myConnection1)
             myCommand1.Parameters.AddWithValue("@origin", origin)
@@ -131,7 +154,7 @@ Public Class frmStockAdjustment
 
     Private Sub LogStockAction(origin As String, stockId As String, editedData As String)
         Try
-            Using myConnection As MySqlConnection = Common.getDBConnectionX()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
                 Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
@@ -158,7 +181,7 @@ Public Class frmStockAdjustment
     Private Function GetLatestSum(productId As String) As Integer
         Dim query As String = "SELECT COALESCE(SUM(dquantitychanged), 0) AS latestSum FROM tblStock WHERE dproductid = @productId"
 
-        Using myConnection As MySqlConnection = Common.getDBConnectionX()
+        Using myConnection As MySqlConnection = Common.GetDBConnectionX()
             myConnection.Open()
 
             Using command As New MySqlCommand(query, myConnection)
@@ -192,7 +215,7 @@ Public Class frmStockAdjustment
         Dim myAdapter2 As New MySqlDataAdapter
         Dim myDataSet2 As New DataSet
 
-        myConnection1 = Common.getDBConnectionX()
+        myConnection1 = Common.GetDBConnectionX()
 
         Try
             myConnection1.Open()
@@ -222,7 +245,7 @@ Public Class frmStockAdjustment
         Dim myAdapter2 As New MySqlDataAdapter
         Dim myDataSet2 As New DataSet
 
-        myConnection1 = Common.getDBConnectionX()
+        myConnection1 = Common.GetDBConnectionX()
 
         Try
             myConnection1.Open()
@@ -255,20 +278,20 @@ Public Class frmStockAdjustment
     End Sub
 
     Private Sub Replenish()
-        replenishorexhaust = False
+        Replenishorexhaust = False
         btnReplenish.Text = "Replenish"
     End Sub
 
     Private Sub Exhaust()
-        replenishorexhaust = True
+        Replenishorexhaust = True
         btnReplenish.Text = "Exhaust"
     End Sub
 
     Private Sub BtnReplenish_Click(sender As Object, e As EventArgs) Handles btnReplenish.Click
-        If replenishorexhaust Then
-            replenish()
+        If Replenishorexhaust Then
+            Replenish()
         Else
-            exhaust()
+            Exhaust()
         End If
     End Sub
 
@@ -283,8 +306,7 @@ Public Class frmStockAdjustment
     Private Sub FrmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayStockAdjustment()
         DisplayProductName()
-        replenish()
-
+        Replenish()
     End Sub
 
     Private Sub TbProductID_TextChanged(sender As Object, e As EventArgs)
@@ -295,5 +317,24 @@ Public Class frmStockAdjustment
         DisplayProductID()
     End Sub
 
+    Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        Try
+            ' Show a SaveFileDialog to specify the path for the CSV file
+            Using saveDialog As New SaveFileDialog()
+                saveDialog.Filter = "CSV files (*.csv)|*.csv"
+                saveDialog.Title = "Export to CSV"
+                If saveDialog.ShowDialog() = DialogResult.OK Then
+                    ' Get the file path chosen by the user
+                    Dim filePath As String = saveDialog.FileName
 
+                    ' Export the DataGridView data to the CSV file
+                    ExportStockAdjustmentToCSV(dgvstockad, filePath)
+
+                    MessageBox.Show("Data exported successfully!", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
 End Class

@@ -1,4 +1,5 @@
-﻿Imports System.Windows
+﻿Imports System.IO
+Imports System.Windows
 Imports MySql.Data.MySqlClient
 
 Public Class FrmOrderManagement
@@ -7,80 +8,131 @@ Public Class FrmOrderManagement
 
 
     Private Sub HandleException(ex As Exception)
+        ' Log the exception for debugging purposes
+        ' Consider using a logging library for better flexibility
+        Console.WriteLine($"An error occurred: {ex.Message}")
         MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
+    Private Sub ExportDataGridViewToCSV(dataGridView As DataGridView, filePath As String)
+        Try
+            Using writer As New StreamWriter(filePath)
+                ' Write the column headers to the CSV file
+                Dim headerLine As String = String.Join(",", dataGridView.Columns.Cast(Of DataGridViewColumn).Select(Function(column) column.HeaderText))
+                writer.WriteLine(headerLine)
+
+                ' Write each row of data to the CSV file
+                For Each row As DataGridViewRow In dataGridView.Rows
+                    Dim dataLine As String = String.Join(",", row.Cells.Cast(Of DataGridViewCell)().Select(Function(cell) If(cell.Value IsNot Nothing, cell.Value.ToString(), "")))
+                    writer.WriteLine(dataLine)
+                Next
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
             If OrdermanagementstateEdit Then
                 ' If in edit mode, update the existing order
-                ' Implement the update logic here if needed
+                Dim orderID As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcOrderID").Value.ToString()
+                Dim customerID As String = tbCustomerID.Text
+                Dim productID As String = tbProductID.Text
+                Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
+                Dim status As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcStatus").Value.ToString()
+
+                Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                    myConnection.Open()
+                    UpdateOrder(orderID, customerID, productID, quantityOrdered, status, myConnection)
+                    DisplayOrders()
+                    ResetTextBoxes()
+                End Using
+
+                NotEdit()
             Else
-                ' If in add mode, insert a new order
+                ' If not in edit mode, insert a new order
                 Dim orderID As String = GenerateUniqueOrderID()
                 Dim customerID As String = tbCustomerID.Text
                 Dim productID As String = tbProductID.Text
                 Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
                 Dim status As String = "Queued"
 
-                ' Insert into tblorders
-                InsertOrder(orderID, customerID, productID, quantityOrdered, status)
-
-                ' Refresh the DataGridView after insertion
-                DisplayOrders()
+                Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                    myConnection.Open()
+                    InsertOrder(orderID, customerID, productID, quantityOrdered, status, myConnection)
+                    DisplayOrders()
+                    ResetTextBoxes()
+                End Using
             End If
         Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            HandleException(ex)
         End Try
     End Sub
 
-    Private Sub InsertOrder(orderID As String, customerID As String, productID As String, quantityOrdered As Integer, status As String)
+
+
+    Private Sub UpdateOrder(orderID As String, customerID As String, productID As String, quantityOrdered As Integer, status As String, connection As MySqlConnection)
+        ' Implement the update logic here if needed
+        ' You can use a similar approach as in the InsertOrder method
+        ' to update the order in tblorders and log the action in tbllogs
+        ' ...
+    End Sub
+
+    Private Sub ResetTextBoxes()
+        ' Reset and unlock textboxes
+        tbCustomerID.Text = String.Empty
+        tbCustomerName.Text = String.Empty
+        tbProductID.Text = String.Empty
+        tbProductName.Text = String.Empty
+        tbQuantity.Text = String.Empty
+
+        tbCustomerID.Enabled = True
+        tbCustomerName.Enabled = True
+        tbProductID.Enabled = True
+        tbProductName.Enabled = True
+        tbQuantity.Enabled = True
+    End Sub
+
+
+    Private Sub InsertOrder(orderID As String, customerID As String, productID As String, quantityOrdered As Integer, status As String, connection As MySqlConnection)
         Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
+            ' Generate the dateOrdered here
+            Dim dateOrdered As DateTime = DateTime.Now
 
-                ' Generate the dateOrdered here
-                Dim dateOrdered As DateTime = DateTime.Now
+            Dim insertCommand As New MySqlCommand("INSERT INTO omac.tblorders (dorderid, dcustomerid, dproductid, dquantityordered, ddateordered, dstatus) VALUES (@orderID, @customerID, @productID, @quantityOrdered, @dateOrdered, @status)", connection)
+            insertCommand.Parameters.AddWithValue("@orderID", orderID)
+            insertCommand.Parameters.AddWithValue("@customerID", customerID)
+            insertCommand.Parameters.AddWithValue("@productID", productID)
+            insertCommand.Parameters.AddWithValue("@quantityOrdered", quantityOrdered)
+            insertCommand.Parameters.AddWithValue("@dateOrdered", dateOrdered)
+            insertCommand.Parameters.AddWithValue("@status", status)
 
-                Dim insertCommand As New MySqlCommand("INSERT INTO omac.tblorders (dorderid, dcustomerid, dproductid, dquantityordered, ddateordered, dstatus) VALUES (@orderID, @customerID, @productID, @quantityOrdered, @dateOrdered, @status)", myConnection)
-                insertCommand.Parameters.AddWithValue("@orderID", orderID)
-                insertCommand.Parameters.AddWithValue("@customerID", customerID)
-                insertCommand.Parameters.AddWithValue("@productID", productID)
-                insertCommand.Parameters.AddWithValue("@quantityOrdered", quantityOrdered)
-                insertCommand.Parameters.AddWithValue("@dateOrdered", dateOrdered)
-                insertCommand.Parameters.AddWithValue("@status", status)
+            insertCommand.ExecuteNonQuery()
 
-                insertCommand.ExecuteNonQuery()
-
-                ' Log the action in tbllogs
-                Dim editedData As String = $"{orderID} || {customerID} || {productID} || {quantityOrdered} || {dateOrdered} || {status}"
-                LogCustomerAction("Add Order", customerID, editedData)
-            End Using
+            ' Log the action in tbllogs
+            Dim editedData As String = $"{orderID} || {customerID} || {productID} || {quantityOrdered} || {dateOrdered} || {status}"
+            LogCustomerAction("Add Order", customerID, editedData, connection)
         Catch ex As Exception
             MessageBox.Show($"An error occurred during order insertion: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
 
-    Private Sub LogCustomerAction(action As String, customerID As String, editedData As String)
+    Private Sub LogCustomerAction(action As String, customerID As String, editedData As String, connection As MySqlConnection)
         Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
+            Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
+            Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+            Dim location As String = "Order"
+            Dim timestamp As DateTime = DateTime.Now
 
-                Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
-                Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
-                Dim location As String = "Order"
-                Dim timestamp As DateTime = DateTime.Now
+            Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)", connection)
+            logCommand.Parameters.AddWithValue("@logId", logId)
+            logCommand.Parameters.AddWithValue("@userId", userId)
+            logCommand.Parameters.AddWithValue("@location", location)
+            logCommand.Parameters.AddWithValue("@editedData", editedData)
+            logCommand.Parameters.AddWithValue("@timestamp", timestamp)
 
-                Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)", myConnection)
-                logCommand.Parameters.AddWithValue("@logId", logId)
-                logCommand.Parameters.AddWithValue("@userId", userId)
-                logCommand.Parameters.AddWithValue("@location", location)
-                logCommand.Parameters.AddWithValue("@editedData", editedData)
-                logCommand.Parameters.AddWithValue("@timestamp", timestamp)
-
-                logCommand.ExecuteNonQuery()
-            End Using
+            logCommand.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show($"An error occurred during log insertion: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -98,6 +150,9 @@ Public Class FrmOrderManagement
                             Return $"[{column.ColumnName}] LIKE '%{tbSearch.Text}%'"
                         ElseIf column.DataType Is GetType(Integer) Then
                             Return $"Convert([{column.ColumnName}], 'System.String') LIKE '%{tbSearch.Text}%'"
+                        ElseIf column.DataType Is GetType(DateTime) Then
+                            ' Allow searching by date in the format dd/MM/yyyy hh:mmtt
+                            Return $"Convert([{column.ColumnName}], 'System.String') LIKE '%{tbSearch.Text}%'"
                         Else
                             Return String.Empty
                         End If
@@ -111,15 +166,51 @@ Public Class FrmOrderManagement
     End Sub
 
 
+    Private Sub DgvOrderManagement_CellClick(sender As Object, e As DataGridViewCellEventArgs)
+        Try
+            If Not OrdermanagementstateEdit Then
+                ' If not in edit mode, toggle between "Queued" and "Delivered" for the "Status" column
+                If e.RowIndex >= 0 AndAlso e.ColumnIndex = dgvOrderManagement.Columns("dgvcStatus").Index Then
+                    Dim currentValue = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcStatus").Value.ToString
+
+                    If currentValue = "Queued" Then
+                        dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcStatus").Value = "Delivered"
+                    ElseIf currentValue = "Delivered" Then
+                        dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcStatus").Value = "Queued"
+                    End If
+                End If
+            Else
+                ' If in edit mode, populate textboxes with data from the clicked row
+                If e.RowIndex >= 0 Then
+                    tbCustomerID.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcCustomerID").Value.ToString
+                    tbCustomerName.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcCustomerName").Value.ToString
+                    tbProductID.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcProductID").Value.ToString
+                    tbProductName.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcProductName").Value.ToString
+                    tbQuantity.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcQuantity").Value.ToString
+
+                    ' Lock textboxes
+                    tbCustomerID.Enabled = False
+                    tbCustomerName.Enabled = False
+                    tbProductID.Enabled = False
+                    tbProductName.Enabled = False
+                    tbQuantity.Enabled = False
+                End If
+            End If
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
+
     Private Sub DisplayOrders()
         Try
             Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
                 Using myCommand As New MySqlCommand()
                     myCommand.Connection = myConnection
                     myCommand.CommandText = "SELECT " &
                     "tbo.dorderid AS 'Order ID', " &
                     "tbc.dcustomerid AS 'Customer ID', " &
-                    "CONCAT(tbc.dcustomerln, ', ', tbc.dcustomerfn) AS 'Customer Name', " &
+                    "CONCAT(tbc.dcustomerfn, ' ', tbc.dcustomerln) AS 'Customer Name', " & ' Updated line
                     "tbo.dproductid AS 'Product ID', " &
                     "tbp.dproductname AS 'Product Name', " &
                     "tbo.dquantityordered AS 'Quantity Ordered', " &
@@ -129,6 +220,7 @@ Public Class FrmOrderManagement
                     "omac.tblorders AS tbo " &
                     "INNER JOIN omac.tblcustomers AS tbc ON tbc.dcustomerid = tbo.dcustomerid " &
                     "INNER JOIN omac.tblproducts AS tbp ON tbp.dproductid = tbo.dproductid"
+
 
                     Using myAdapter As New MySqlDataAdapter()
                         myAdapter.SelectCommand = myCommand
@@ -144,9 +236,121 @@ Public Class FrmOrderManagement
                             dgvOrderManagement.Columns("dgvcQuantity").DataPropertyName = "Quantity Ordered"
                             dgvOrderManagement.Columns("dgvcDateOrdered").DataPropertyName = "Date Ordered"
                             dgvOrderManagement.Columns("dgvcStatus").DataPropertyName = "Status"
-
                             dgvOrderManagement.DataSource = myDataSet.Tables("myData")
                         End Using
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
+
+
+
+
+    Private Sub LoadCustomerNames()
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+                Dim query As String = "SELECT CONCAT(tbc.dcustomerfn, ' ', tbc.dcustomerln) AS 'CustomerName' FROM omac.tblcustomers tbc"
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    Using reader As MySqlDataReader = myCommand.ExecuteReader()
+                        While reader.Read()
+                            tbCustomerName.AutoCompleteCustomSource.Add(reader("CustomerName").ToString())
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
+
+    Private Sub TbCustomerName_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerName.TextChanged
+        tbCustomerName.Text = tbCustomerName.Text.Trim()
+        If tbCustomerName.AutoCompleteCustomSource.Contains(tbCustomerName.Text) Then
+            ' Suggestion selected, fill the textbox
+            FetchCustomerID(tbCustomerName.Text)
+        End If
+    End Sub
+
+
+    Private Sub TbCustomerID_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerID.TextChanged
+        Try
+            ' Use the FetchCustomerName method to get the corresponding customer name
+            Dim customerName As String = FetchNameByID("tblcustomers", "dcustomerid", "CONCAT(dcustomerfn, ' ', dcustomerln)", tbCustomerID.Text)
+            tbCustomerName.Text = customerName
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
+
+    ' Add TextChanged event for tbProductName
+
+    Private Sub TbProductName_TextChanged(sender As Object, e As EventArgs) Handles tbProductName.TextChanged
+        tbProductName.Text = tbProductName.Text.Trim()
+        If tbProductName.AutoCompleteCustomSource.Contains(tbProductName.Text) Then
+            ' Suggestion selected, fill the textbox
+            FetchProductID(tbProductName.Text)
+        End If
+    End Sub
+
+    ' Add TextChanged event for tbProductID
+    Private Sub TbProductID_TextChanged(sender As Object, e As EventArgs) Handles tbProductID.TextChanged
+        Try
+            ' Use the FetchProductName method to get the corresponding product name
+            Dim productName As String = FetchNameByID("tblproducts", "dproductid", "dproductname", tbProductID.Text)
+            tbProductName.Text = productName
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+    End Sub
+
+    ' Common method to fetch names by ID
+    Private Function FetchNameByID(tableName As String, idColumn As String, nameColumn As String, id As String) As String
+        Dim result As String = ""
+
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Dim query As String = $"SELECT {nameColumn} FROM omac.{tableName} WHERE {idColumn} = @id"
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    myCommand.Parameters.AddWithValue("@id", id)
+
+                    Dim name As Object = myCommand.ExecuteScalar()
+
+                    If name IsNot Nothing Then
+                        result = name.ToString()
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            HandleException(ex)
+        End Try
+
+        Return result
+    End Function
+
+
+
+
+
+
+
+    Private Sub LoadProductNames()
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Dim query As String = "SELECT dproductname FROM omac.tblproducts"
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    Using reader As MySqlDataReader = myCommand.ExecuteReader()
+                        While reader.Read()
+                            tbProductName.AutoCompleteCustomSource.Add(reader("dproductname").ToString())
+                        End While
                     End Using
                 End Using
             End Using
@@ -158,195 +362,106 @@ Public Class FrmOrderManagement
 
 
 
-    Private Sub TbCustomerName_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerName.TextChanged
-        AutoFillCustomerName(tbCustomerName.Text)
-        FetchCustomerID(tbCustomerName.Text)
-    End Sub
+
 
     Private Sub FetchCustomerID(customerName As String)
-        Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
-
-                Dim query As String = "SELECT dcustomerid FROM omac.tblcustomers tc WHERE CONCAT(tc.dcustomerln, ', ', tc.dcustomerfn) = @customerName"
-                Using myCommand As New MySqlCommand(query, myConnection)
-                    myCommand.Parameters.AddWithValue("@customerName", customerName)
-
-                    Dim customerID As Object = myCommand.ExecuteScalar()
-
-                    If customerID IsNot Nothing Then
-                        tbCustomerID.Text = customerID.ToString()
-                    Else
-                        tbCustomerID.Text = String.Empty
-                    End If
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-
-    Private Sub TbProductName_TextChanged(sender As Object, e As EventArgs) Handles tbProductName.TextChanged
-        AutoFillProductName(tbProductName.Text)
-        FetchProductID(tbProductName.Text)
+        tbCustomerID.Text = FetchIDByName("tblcustomers", "CONCAT(dcustomerfn, ' ', dcustomerln)", "dcustomerid", customerName)
     End Sub
 
     Private Sub FetchProductID(productName As String)
+        tbProductID.Text = FetchIDByName("tblproducts", "dproductname", "dproductid", productName)
+    End Sub
+
+
+
+
+
+    Private Function FetchIDByName(tableName As String, nameColumn As String, idColumn As String, name As String) As String
+        Dim result As String = ""
+
         Try
             Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
 
-                Dim query As String = "SELECT dproductid FROM omac.tblproducts WHERE dproductname = @productName"
+                Dim query As String = $"SELECT {idColumn} FROM omac.{tableName} WHERE {nameColumn} = @name"
                 Using myCommand As New MySqlCommand(query, myConnection)
-                    myCommand.Parameters.AddWithValue("@productName", productName)
+                    myCommand.Parameters.AddWithValue("@name", name)
 
-                    Dim productID As Object = myCommand.ExecuteScalar()
+                    Dim id As Object = myCommand.ExecuteScalar()
 
-                    If productID IsNot Nothing Then
-                        tbProductID.Text = productID.ToString()
-                    Else
-                        tbProductID.Text = String.Empty
+                    If id IsNot Nothing Then
+                        result = id.ToString()
                     End If
                 End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            HandleException(ex)
         End Try
-    End Sub
+
+        Return result
+    End Function
 
 
-    Private Sub AutoFillCustomerName(searchText As String)
-        Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
 
-                Dim query As String = "SELECT CONCAT(tc.dcustomerln, ', ', tc.dcustomerfn) AS customer_name FROM tblcustomers tc WHERE CONCAT(tc.dcustomerln, ', ', tc.dcustomerfn) LIKE @searchText"
-                Using myCommand As New MySqlCommand(query, myConnection)
-                    myCommand.Parameters.AddWithValue("@searchText", "%" & searchText & "%")
-
-                    Using myAdapter As New MySqlDataAdapter(myCommand)
-                        Using myDataSet As New DataSet()
-                            myAdapter.Fill(myDataSet, "Customers")
-
-                            If myDataSet.Tables("Customers").Rows.Count > 0 Then
-                                ' Autofill textbox and provide a dropdown list
-                                Dim autoComplete As New AutoCompleteStringCollection()
-                                For Each row As DataRow In myDataSet.Tables("Customers").Rows
-                                    autoComplete.Add(row("customer_name").ToString())
-                                Next
-                                tbCustomerName.AutoCompleteCustomSource = autoComplete
-                                tbCustomerName.AutoCompleteMode = AutoCompleteMode.Suggest
-                                tbCustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource
-                            Else
-                                tbCustomerName.AutoCompleteCustomSource = Nothing
-                            End If
-                        End Using
-                    End Using
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub AutoFillProductName(searchText As String)
-        Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
-
-                Dim query As String = "SELECT dproductname FROM tblproducts WHERE dproductname LIKE @searchText"
-                Using myCommand As New MySqlCommand(query, myConnection)
-                    myCommand.Parameters.AddWithValue("@searchText", "%" & searchText & "%")
-
-                    Using myAdapter As New MySqlDataAdapter(myCommand)
-                        Using myDataSet As New DataSet()
-                            myAdapter.Fill(myDataSet, "Products")
-
-                            If myDataSet.Tables("Products").Rows.Count > 0 Then
-                                ' Autofill textbox and provide a dropdown list
-                                Dim autoComplete As New AutoCompleteStringCollection()
-                                For Each row As DataRow In myDataSet.Tables("Products").Rows
-                                    autoComplete.Add(row("dproductname").ToString())
-                                Next
-                                tbProductName.AutoCompleteCustomSource = autoComplete
-                                tbProductName.AutoCompleteMode = AutoCompleteMode.Suggest
-                                tbProductName.AutoCompleteSource = AutoCompleteSource.CustomSource
-                            Else
-                                tbProductName.AutoCompleteCustomSource = Nothing
-                            End If
-                        End Using
-                    End Using
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
 
 
 
     Private Function GenerateUniqueOrderID() As String
-        Dim charsAndNumbers As String = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         Dim orderID As String = ""
-
         Try
             Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                 myConnection.Open()
-
-                Dim checkCommand As New MySqlCommand("SELECT MAX(CAST(SUBSTRING(dorderid, 1, 10) AS UNSIGNED)) FROM omac.tblorders", myConnection)
-
-                Dim maxOrderNumber As Object = checkCommand.ExecuteScalar()
-
-                If maxOrderNumber Is DBNull.Value Then
-                    maxOrderNumber = 0
-                End If
-
-                Dim maxOrderNumberInt As Integer = Convert.ToInt32(maxOrderNumber)
-
-                ' Increment the maximum order number
-                maxOrderNumberInt += 1
-
-                ' Convert the number to base 36 (A-Z and 0-9)
-                Do While maxOrderNumberInt > 0
-                    Dim remainder As Integer = maxOrderNumberInt Mod 36
-                    orderID = charsAndNumbers(remainder) & orderID
-                    maxOrderNumberInt \= 36
-                Loop
-
-                ' Ensure the order ID is 10 characters long
-                orderID = orderID.PadLeft(10, "0"c)
-
-                ' Check uniqueness
-                Dim isUnique As Boolean = IsOrderIDUnique(orderID, checkCommand)
-
-                ' If not unique, recursively call the function to generate a new one
-                If Not isUnique Then
-                    orderID = GenerateUniqueOrderID()
-                End If
+                Dim query As String = "SELECT MAX(CAST(SUBSTRING(dorderid, 1, 15) AS UNSIGNED)) FROM omac.tblorders"
+                Using getMaxOrderCommand As New MySqlCommand(query, myConnection)
+                    Dim maxOrderNumber As Object = getMaxOrderCommand.ExecuteScalar()
+                    Dim maxOrderNumberInt As Integer = If(maxOrderNumber Is DBNull.Value, 0, Convert.ToInt32(maxOrderNumber))
+                    maxOrderNumberInt += 1
+                    orderID = maxOrderNumberInt.ToString().PadLeft(15, "0"c)
+                    If Not IsOrderIDUnique(orderID, myConnection) Then
+                        orderID = GenerateUniqueOrderID()
+                    End If
+                End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show($"An error occurred during order ID generation: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            HandleException(ex)
         End Try
-
         Return orderID
     End Function
 
-    Private Function IsOrderIDUnique(orderID As String, checkCommand As MySqlCommand) As Boolean
+
+
+    Private Function GetAlphanumericOrderID(orderNumber As Integer) As String
+        Dim letters As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        Dim result As String = ""
+
+        While orderNumber > 0
+            Dim remainder As Integer = (orderNumber - 1) Mod 26
+            result = letters(remainder) & result
+            orderNumber = (orderNumber - 1) \ 26
+        End While
+
+        Return result.PadLeft(10, "0"c)
+    End Function
+
+
+
+    Private Function IsOrderIDUnique(orderID As String, connection As MySqlConnection) As Boolean
         Dim isUnique As Boolean = True
-        checkCommand.Parameters.Clear()
-        checkCommand.Parameters.AddWithValue("@orderID", orderID)
-
         Try
-            Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
-            isUnique = (count = 0)
+            Dim query As String = "SELECT COUNT(*) FROM omac.tblorders WHERE dorderid = @orderID"
+            Using checkCommand As New MySqlCommand(query, connection)
+                checkCommand.Parameters.AddWithValue("@orderID", orderID)
+                Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
+                isUnique = (count = 0)
+            End Using
         Catch ex As Exception
-            MessageBox.Show($"An error occurred during order ID uniqueness check: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            HandleException(ex)
         End Try
-
         Return isUnique
     End Function
+
+
 
 
 
@@ -388,19 +503,12 @@ Public Class FrmOrderManagement
 
 
 
-
-
-
-
-
-
     Private Sub Onedit()
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
         btnEdit.FillColor = Color.FromArgb(153, 180, 209)
         btnEdit.Text = "EDIT MODE"
         btnDelete.Hide()
         OrdermanagementstateEdit = True
-        lblOrderID.ForeColor = Color.FromArgb(255, 249, 144)
         lblProductName.ForeColor = Color.FromArgb(255, 249, 144)
         lblProductID.ForeColor = Color.FromArgb(255, 249, 144)
         lblCustomerName.ForeColor = Color.FromArgb(255, 249, 144)
@@ -420,8 +528,6 @@ Public Class FrmOrderManagement
         btnDelete.Show()
 
         OrdermanagementstateEdit = False
-
-        lblOrderID.ForeColor = Color.FromArgb(153, 180, 209)
         lblProductName.ForeColor = Color.FromArgb(153, 180, 209)
         lblProductID.ForeColor = Color.FromArgb(153, 180, 209)
         lblCustomerName.ForeColor = Color.FromArgb(153, 180, 209)
@@ -431,16 +537,8 @@ Public Class FrmOrderManagement
 
 
     End Sub
-    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        If Not OrdermanagementstateEdit Then
 
-            Onedit()
-        Else
 
-            NotEdit()
-        End If
-
-    End Sub
 
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
@@ -451,13 +549,85 @@ Public Class FrmOrderManagement
 
     End Sub
 
+    Private Sub CheckUserAccessLevel()
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Dim checkCommand As New MySqlCommand("SELECT daccesslvl FROM omac.tblusers WHERE duid = @userId", myConnection)
+                checkCommand.Parameters.AddWithValue("@userId", FrmLogin.UserIDusing)
+
+                Dim accessLevel As String = Convert.ToString(checkCommand.ExecuteScalar())
+
+                If accessLevel = "3" Then
+
+                    ' Change the color of the buttons to indicate disabled state
+                    btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnEdit.BackColor = Color.FromArgb(200, 200, 200)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred while checking user access level: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+    Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        If Not frmOrderManagement.OrdermanagementstateEdit AndAlso Not FrmProductEntry.ProductentryEditmode Then
+            If FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Try
+                    ' Show a SaveFileDialog to specify the path for the CSV file
+                    Using saveDialog As New SaveFileDialog()
+                        saveDialog.Filter = "CSV files (*.csv)|*.csv"
+                        saveDialog.Title = "Export to CSV"
+                        If saveDialog.ShowDialog() = DialogResult.OK Then
+                            ' Get the file path chosen by the user
+                            Dim filePath As String = saveDialog.FileName
+
+                            ' Export the DataGridView data to the CSV file
+                            ExportDataGridViewToCSV(dgvOrderManagement, filePath)
+
+                            MessageBox.Show("Data exported successfully!", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    End Using
+                Catch ex As Exception
+                    HandleException(ex)
+                End Try
+            End If
+        Else
+            MessageBox.Show("Exit edit mode")
+        End If
+    End Sub
+    Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If Not OrdermanagementstateEdit Then
+            ' Check access level
+            If FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Onedit()
+            End If
+        Else
+            NotEdit()
+        End If
+    End Sub
+
     Private Sub FrmOrderManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayOrders()
+        LoadCustomerNames()
+        LoadProductNames()
+        CheckUserAccessLevel()
     End Sub
+
+
 
     Private Sub DgvOrderManagement_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellContentClick, dgvOrderManagement.CellContentClick
 
     End Sub
+
 
 
 End Class

@@ -47,6 +47,8 @@ Partial Class frmProductEntry
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -58,9 +60,9 @@ Partial Class frmProductEntry
         btnEdit = New Guna.UI2.WinForms.Guna2GradientButton()
         lblStatus = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductID = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
+        tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         btnProductIDGenerator = New Guna.UI2.WinForms.Guna2GradientButton()
-        Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        cbStatus = New Guna.UI2.WinForms.Guna2ComboBox()
         lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
         tbQuantity = New Guna.UI2.WinForms.Guna2TextBox()
         lblComments = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -72,8 +74,9 @@ Partial Class frmProductEntry
         dgvcdescription = New DataGridViewTextBoxColumn()
         dgvcStatus = New DataGridViewTextBoxColumn()
         dgvcTotalQuantity = New DataGridViewTextBoxColumn()
-        dgvcDelete = New DataGridViewButtonColumn()
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
+        tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
+        lblSearch = New Guna.UI2.WinForms.Guna2HtmlLabel()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -215,7 +218,7 @@ Partial Class frmProductEntry
         btnEdit.FillColor2 = Color.Transparent
         btnEdit.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         btnEdit.ForeColor = Color.White
-        btnEdit.Location = New Point(351, 29)
+        btnEdit.Location = New Point(871, 29)
         btnEdit.Name = "btnEdit"
         btnEdit.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         btnEdit.Size = New Size(69, 34)
@@ -244,26 +247,26 @@ Partial Class frmProductEntry
         lblProductID.TabIndex = 1
         lblProductID.Text = "Product ID:"
         ' 
-        ' Guna2TextBox2
+        ' tbProductID
         ' 
-        Guna2TextBox2.Anchor = AnchorStyles.Left
-        Guna2TextBox2.CustomizableEdges = CustomizableEdges11
-        Guna2TextBox2.DefaultText = ""
-        Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Location = New Point(24, 108)
-        Guna2TextBox2.Name = "Guna2TextBox2"
-        Guna2TextBox2.PasswordChar = ChrW(0)
-        Guna2TextBox2.PlaceholderText = ""
-        Guna2TextBox2.SelectedText = ""
-        Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges12
-        Guna2TextBox2.Size = New Size(157, 27)
-        Guna2TextBox2.TabIndex = 2
+        tbProductID.Anchor = AnchorStyles.Left
+        tbProductID.CustomizableEdges = CustomizableEdges11
+        tbProductID.DefaultText = ""
+        tbProductID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbProductID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbProductID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbProductID.Location = New Point(24, 108)
+        tbProductID.Name = "tbProductID"
+        tbProductID.PasswordChar = ChrW(0)
+        tbProductID.PlaceholderText = ""
+        tbProductID.SelectedText = ""
+        tbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        tbProductID.Size = New Size(157, 27)
+        tbProductID.TabIndex = 2
         ' 
         ' btnProductIDGenerator
         ' 
@@ -285,23 +288,23 @@ Partial Class frmProductEntry
         btnProductIDGenerator.TabIndex = 3
         btnProductIDGenerator.Text = "Generate"
         ' 
-        ' Guna2ComboBox1
+        ' cbStatus
         ' 
-        Guna2ComboBox1.Anchor = AnchorStyles.Left
-        Guna2ComboBox1.BackColor = Color.Transparent
-        Guna2ComboBox1.CustomizableEdges = CustomizableEdges15
-        Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
-        Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox1.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox1.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
-        Guna2ComboBox1.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        Guna2ComboBox1.ItemHeight = 30
-        Guna2ComboBox1.Location = New Point(24, 268)
-        Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges16
-        Guna2ComboBox1.Size = New Size(157, 36)
-        Guna2ComboBox1.TabIndex = 9
+        cbStatus.Anchor = AnchorStyles.Left
+        cbStatus.BackColor = Color.Transparent
+        cbStatus.CustomizableEdges = CustomizableEdges15
+        cbStatus.DrawMode = DrawMode.OwnerDrawFixed
+        cbStatus.DropDownStyle = ComboBoxStyle.DropDownList
+        cbStatus.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbStatus.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cbStatus.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cbStatus.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cbStatus.ItemHeight = 30
+        cbStatus.Location = New Point(24, 268)
+        cbStatus.Name = "cbStatus"
+        cbStatus.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        cbStatus.Size = New Size(157, 36)
+        cbStatus.TabIndex = 9
         ' 
         ' lblQuantity
         ' 
@@ -384,7 +387,7 @@ Partial Class frmProductEntry
         dgvProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvProducts.ColumnHeadersHeight = 20
         dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity, dgvcDelete})
+        dgvProducts.Columns.AddRange(New DataGridViewColumn() {dgvcID, dgvcProductName, dgvcPrice, dgvcdescription, dgvcStatus, dgvcTotalQuantity})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.White
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -452,11 +455,6 @@ Partial Class frmProductEntry
         dgvcTotalQuantity.HeaderText = "Total Quantity"
         dgvcTotalQuantity.Name = "dgvcTotalQuantity"
         ' 
-        ' dgvcDelete
-        ' 
-        dgvcDelete.HeaderText = "Function"
-        dgvcDelete.Name = "dgvcDelete"
-        ' 
         ' btnExport
         ' 
         btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
@@ -476,13 +474,48 @@ Partial Class frmProductEntry
         btnExport.TabIndex = 12
         btnExport.Text = "Export"
         ' 
-        ' frmProductEntry
+        ' tbSearch
+        ' 
+        tbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        tbSearch.AutoCompleteSource = AutoCompleteSource.CustomSource
+        tbSearch.CustomizableEdges = CustomizableEdges23
+        tbSearch.DefaultText = ""
+        tbSearch.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        tbSearch.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        tbSearch.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        tbSearch.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbSearch.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        tbSearch.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        tbSearch.Location = New Point(351, 37)
+        tbSearch.Margin = New Padding(3, 2, 3, 2)
+        tbSearch.Name = "tbSearch"
+        tbSearch.PasswordChar = ChrW(0)
+        tbSearch.PlaceholderText = ""
+        tbSearch.SelectedText = ""
+        tbSearch.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        tbSearch.Size = New Size(172, 27)
+        tbSearch.TabIndex = 17
+        ' 
+        ' lblSearch
+        ' 
+        lblSearch.BackColor = Color.Transparent
+        lblSearch.ForeColor = SystemColors.ActiveCaption
+        lblSearch.Location = New Point(351, 19)
+        lblSearch.Name = "lblSearch"
+        lblSearch.Size = New Size(41, 17)
+        lblSearch.TabIndex = 16
+        lblSearch.Text = "Search:"
+        ' 
+        ' FrmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(964, 561)
+        Controls.Add(tbSearch)
+        Controls.Add(lblSearch)
         Controls.Add(btnExport)
-        Controls.Add(Guna2ComboBox1)
+        Controls.Add(cbStatus)
         Controls.Add(lblStatus)
         Controls.Add(btnEdit)
         Controls.Add(dgvProducts)
@@ -492,7 +525,7 @@ Partial Class frmProductEntry
         Controls.Add(tbProductDescriptionEntry)
         Controls.Add(tbQuantity)
         Controls.Add(tbProductPriceEntry)
-        Controls.Add(Guna2TextBox2)
+        Controls.Add(tbProductID)
         Controls.Add(tbProductNameEntry)
         Controls.Add(lblComments)
         Controls.Add(lblprodes)
@@ -501,7 +534,7 @@ Partial Class frmProductEntry
         Controls.Add(lblProductPrice)
         Controls.Add(lblProductName)
         Controls.Add(lbltestentry)
-        Name = "frmProductEntry"
+        Name = "FrmProductEntry"
         Text = "Product Entry"
         CType(dgvProducts, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -539,4 +572,9 @@ Partial Class frmProductEntry
     Friend WithEvents dgvcTotalQuantity As DataGridViewTextBoxColumn
     Friend WithEvents dgvcDelete As DataGridViewButtonColumn
     Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents tbStatus As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents cbStatus As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents tbSearch As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents lblSearch As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

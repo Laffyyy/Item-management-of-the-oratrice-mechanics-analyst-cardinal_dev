@@ -70,6 +70,7 @@ Partial Class frmOrderManagement
         lblCustomerID = New Label()
         tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         lblProductID = New Label()
+        lbOrderID = New Label()
         CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -235,6 +236,7 @@ Partial Class frmOrderManagement
         ' 
         ' tbCustomerName
         ' 
+        tbCustomerName.AcceptsTab = True
         tbCustomerName.Anchor = AnchorStyles.Left
         tbCustomerName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbCustomerName.AutoCompleteSource = AutoCompleteSource.CustomSource
@@ -270,6 +272,7 @@ Partial Class frmOrderManagement
         ' 
         ' tbProductName
         ' 
+        tbProductName.AcceptsTab = True
         tbProductName.Anchor = AnchorStyles.Left
         tbProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         tbProductName.AutoCompleteSource = AutoCompleteSource.CustomSource
@@ -458,11 +461,22 @@ Partial Class frmOrderManagement
         lblProductID.TabIndex = 14
         lblProductID.Text = "Product ID:"
         ' 
+        ' lbOrderID
+        ' 
+        lbOrderID.Anchor = AnchorStyles.Left
+        lbOrderID.AutoSize = True
+        lbOrderID.ForeColor = SystemColors.ActiveCaption
+        lbOrderID.Location = New Point(19, 53)
+        lbOrderID.Name = "lbOrderID"
+        lbOrderID.Size = New Size(0, 15)
+        lbOrderID.TabIndex = 16
+        ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(lbOrderID)
         Controls.Add(tbProductID)
         Controls.Add(lblProductID)
         Controls.Add(tbCustomerID)
@@ -523,4 +537,5 @@ Partial Class frmOrderManagement
     Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents tbQuantity As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents lbOrderID As Label
 End Class
