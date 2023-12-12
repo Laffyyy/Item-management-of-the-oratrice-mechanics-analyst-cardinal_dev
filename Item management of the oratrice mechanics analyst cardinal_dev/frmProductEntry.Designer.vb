@@ -74,10 +74,10 @@ Partial Class frmProductEntry
         dgvcdescription = New DataGridViewTextBoxColumn()
         dgvcStatus = New DataGridViewTextBoxColumn()
         dgvcTotalQuantity = New DataGridViewTextBoxColumn()
+        dgvcComments = New DataGridViewTextBoxColumn()
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         lblSearch = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        dgvcComments = New DataGridViewTextBoxColumn()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -458,6 +458,12 @@ Partial Class frmProductEntry
         dgvcTotalQuantity.HeaderText = "Total Quantity"
         dgvcTotalQuantity.Name = "dgvcTotalQuantity"
         ' 
+        ' dgvcComments
+        ' 
+        dgvcComments.HeaderText = "Comments"
+        dgvcComments.Name = "dgvcComments"
+        dgvcComments.Visible = False
+        ' 
         ' btnExport
         ' 
         btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
@@ -510,12 +516,6 @@ Partial Class frmProductEntry
         lblSearch.TabIndex = 16
         lblSearch.Text = "Search:"
         ' 
-        ' dgvcComments
-        ' 
-        dgvcComments.HeaderText = "Comments"
-        dgvcComments.Name = "dgvcComments"
-        dgvcComments.Visible = False
-        ' 
         ' FrmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -543,6 +543,7 @@ Partial Class frmProductEntry
         Controls.Add(lblProductPrice)
         Controls.Add(lblProductName)
         Controls.Add(lbltestentry)
+        KeyPreview = True
         Name = "FrmProductEntry"
         Text = "Product Entry"
         CType(dgvProducts, ComponentModel.ISupportInitialize).EndInit()

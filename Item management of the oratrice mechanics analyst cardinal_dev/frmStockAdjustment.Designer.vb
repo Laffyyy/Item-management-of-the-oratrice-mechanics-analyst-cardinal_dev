@@ -332,6 +332,7 @@ Partial Class frmStockAdjustment
         Controls.Add(Guna2GradientButton1)
         Controls.Add(dgvstockad)
         Controls.Add(tbProductQuantity)
+        KeyPreview = True
         Name = "frmStockAdjustment"
         Text = "Stock Adjustment"
         CType(dgvstockad, ComponentModel.ISupportInitialize).EndInit()

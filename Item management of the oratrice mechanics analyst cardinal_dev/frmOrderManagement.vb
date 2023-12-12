@@ -34,38 +34,37 @@ Public Class FrmOrderManagement
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
-            If OrdermanagementstateEdit Then
-                ' If in edit mode, update the existing order
-                Dim orderID As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcOrderID").Value.ToString()
-                Dim customerID As String = tbCustomerID.Text
-                Dim productID As String = cmbProductID.Text
-                Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
-                Dim status As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcStatus").Value.ToString()
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
 
+                If OrdermanagementstateEdit Then
+                    ' If in edit mode, update the existing order
+                    Dim orderID As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcOrderID").Value.ToString()
+                    Dim customerID As String = tbCustomerID.Text
+                    Dim productID As String = cmbProductID.Text
+                    Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
+                    Dim status As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcStatus").Value.ToString()
 
-                UpdateOrderInDatabase(oldCustomerID, oldProductID, oldQuantityOrdered,
+                    UpdateOrderInDatabase(oldCustomerID, oldProductID, oldQuantityOrdered,
                                       customerID, productID, quantityOrdered)
 
-                DisplayOrders()
+                    DisplayOrders()
                     ResetTextBoxes()
 
-
                     NotEdit()
-            Else
-                ' If not in edit mode, insert a new order
-                Dim orderID As String = GenerateUniqueOrderID()
-                Dim customerID As String = tbCustomerID.Text
-                Dim productID As String = cmbProductID.Text
-                Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
-                Dim status As String = "Queued"
+                Else
+                    ' If not in edit mode, insert a new order
+                    Dim orderID As String = GenerateUniqueOrderID(myConnection) ' Pass the database connection here
+                    Dim customerID As String = tbCustomerID.Text
+                    Dim productID As String = cmbProductID.Text
+                    Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
+                    Dim status As String = "Queued"
 
-                Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                    myConnection.Open()
                     InsertOrder(orderID, customerID, productID, quantityOrdered, status, myConnection)
                     DisplayOrders()
                     ResetTextBoxes()
-                End Using
-            End If
+                End If
+            End Using
         Catch ex As Exception
             HandleException(ex)
         End Try
@@ -73,12 +72,6 @@ Public Class FrmOrderManagement
 
 
 
-    Private Sub UpdateOrder(orderID As String, customerID As String, productID As String, quantityOrdered As Integer, status As String, connection As MySqlConnection)
-        ' Implement the update logic here if needed
-        ' You can use a similar approach as in the InsertOrder method
-        ' to update the order in tblorders and log the action in tbllogs
-        ' ...
-    End Sub
 
     Private Sub ResetTextBoxes()
         ' Reset and unlock textboxes
@@ -102,11 +95,13 @@ Public Class FrmOrderManagement
         Try
             myConnection.Open()
 
-            Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblStock WHERE dstockid = @stockId", myConnection)
-            checkCommand.Parameters.AddWithValue("@stockId", stockId)
+            Dim checkCommandText As String = "SELECT COUNT(*) FROM tblStock WHERE dstockid = @stockId"
+            Using checkCommand As New MySqlCommand(checkCommandText, myConnection)
+                checkCommand.Parameters.AddWithValue("@stockId", stockId)
 
-            Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
-            isUnique = (count = 0)
+                Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
+                isUnique = (count = 0)
+            End Using
 
         Catch ex As Exception
             MsgBox(Err.Description)
@@ -117,20 +112,33 @@ Public Class FrmOrderManagement
         Return isUnique
     End Function
 
+
+
     Private Sub InsertOrder(orderID As String, customerID As String, productID As String, quantityOrdered As Integer, status As String, connection As MySqlConnection)
         Try
             ' Generate the dateOrdered here
             Dim dateOrdered As DateTime = DateTime.Now
 
-            Dim insertCommand As New MySqlCommand("INSERT INTO omac.tblorders (dorderid, dcustomerid, dproductid, dquantityordered, ddateordered, dstatus) VALUES (@orderID, @customerID, @productID, @quantityOrdered, @dateOrdered, @status)", connection)
-            insertCommand.Parameters.AddWithValue("@orderID", orderID)
-            insertCommand.Parameters.AddWithValue("@customerID", customerID)
-            insertCommand.Parameters.AddWithValue("@productID", productID)
-            insertCommand.Parameters.AddWithValue("@quantityOrdered", quantityOrdered)
-            insertCommand.Parameters.AddWithValue("@dateOrdered", dateOrdered)
-            insertCommand.Parameters.AddWithValue("@status", status)
+            ' Check stock levels
+            If Not IsStockSufficient(productID, quantityOrdered, connection) Then
+                MessageBox.Show("Invalid Order. Not enough stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return ' Exit the method if stock is not sufficient
+            End If
 
-            insertCommand.ExecuteNonQuery()
+            ' Continue with order insertion
+            Dim insertCommandText As String = "INSERT INTO omac.tblorders (dorderid, dcustomerid, dproductid, dquantityordered, ddateordered, dstatus) " &
+            "VALUES (@orderID, @customerID, @productID, @quantityOrdered, @dateOrdered, @status)"
+
+            Using insertCommand As New MySqlCommand(insertCommandText, connection)
+                insertCommand.Parameters.AddWithValue("@orderID", orderID)
+                insertCommand.Parameters.AddWithValue("@customerID", customerID)
+                insertCommand.Parameters.AddWithValue("@productID", productID)
+                insertCommand.Parameters.AddWithValue("@quantityOrdered", quantityOrdered)
+                insertCommand.Parameters.AddWithValue("@dateOrdered", dateOrdered)
+                insertCommand.Parameters.AddWithValue("@status", status)
+
+                insertCommand.ExecuteNonQuery()
+            End Using
 
             Dim stockId As String
 
@@ -138,24 +146,26 @@ Public Class FrmOrderManagement
                 stockId = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
             Loop While Not IsStockIdUnique(stockId)
 
-            Dim origin As String = "Orders Managment"
+            Dim origin As String = "Order Management"
             Dim productIdStock As String = productID
             Dim quantityChanged As Integer = quantityOrdered * -1
             Dim stockChangeDate As DateTime = DateTime.Now
 
-            ' Insert data into tblStock
-            insertCommand.CommandText = "INSERT INTO tblStock (dorigin, dstockid, dproductid, dquantitychanged, dstockchangedate) " &
-                                    "VALUES (@origin, @stockId, @productIdStock, @quantityChanged, @stockChangeDate)"
+            ' Continue with stock update
+            insertCommandText = "INSERT INTO tblStock (dorigin, dstockid, dproductid, dquantitychanged, dstockchangedate) " &
+            "VALUES (@origin, @stockId, @productIdStock, @quantityChanged, @stockChangeDate)"
 
-            insertCommand.Parameters.AddWithValue("@origin", origin)
-            insertCommand.Parameters.AddWithValue("@stockId", stockId)
-            insertCommand.Parameters.AddWithValue("@productIdStock", productIdStock)
-            insertCommand.Parameters.AddWithValue("@quantityChanged", quantityChanged)
-            insertCommand.Parameters.AddWithValue("@stockChangeDate", stockChangeDate)
+            Using insertCommand As New MySqlCommand(insertCommandText, connection)
+                insertCommand.Parameters.AddWithValue("@origin", origin)
+                insertCommand.Parameters.AddWithValue("@stockId", stockId)
+                insertCommand.Parameters.AddWithValue("@productIdStock", productIdStock)
+                insertCommand.Parameters.AddWithValue("@quantityChanged", quantityChanged)
+                insertCommand.Parameters.AddWithValue("@stockChangeDate", stockChangeDate)
 
-            insertCommand.ExecuteNonQuery()
+                insertCommand.ExecuteNonQuery()
+            End Using
 
-            ' Log the action in tbllogs
+            ' Continue with log insertion
             Dim editedData As String = $"{orderID} || {customerID} || {productID} || {quantityOrdered} || {dateOrdered} || {status}"
             LogCustomerAction("Add Order", customerID, editedData, connection)
         Catch ex As Exception
@@ -164,25 +174,55 @@ Public Class FrmOrderManagement
     End Sub
 
 
+    Private Function IsStockSufficient(productID As String, quantityOrdered As Integer, connection As MySqlConnection) As Boolean
+        Try
+            Dim selectCommand As New MySqlCommand("SELECT dproductid, SUM(dquantitychanged) FROM omac.tblstock WHERE dproductid = @productId GROUP BY dproductid", connection)
+            selectCommand.Parameters.AddWithValue("@productId", productID)
+
+            Using reader As MySqlDataReader = selectCommand.ExecuteReader()
+                If reader.Read() Then
+                    Dim currentStock As Integer = reader.GetInt32(1)
+                    If currentStock + quantityOrdered < 0 Then
+                        ' Not enough stock
+                        Return False
+                    End If
+                End If
+            End Using
+
+            Return True ' Stock is sufficient
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred while checking stock levels: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False ' Assume stock is not sufficient in case of an error
+        End Try
+    End Function
+
+
+
     Private Sub LogCustomerAction(action As String, customerID As String, editedData As String, connection As MySqlConnection)
         Try
+            ' Continue with log insertion using parameterized query
             Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
-            Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+            Dim userId As String = FrmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
             Dim location As String = "Order"
             Dim timestamp As DateTime = DateTime.Now
 
-            Dim logCommand As New MySqlCommand("INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)", connection)
-            logCommand.Parameters.AddWithValue("@logId", logId)
-            logCommand.Parameters.AddWithValue("@userId", userId)
-            logCommand.Parameters.AddWithValue("@location", location)
-            logCommand.Parameters.AddWithValue("@editedData", editedData)
-            logCommand.Parameters.AddWithValue("@timestamp", timestamp)
+            Dim logCommandText As String = "INSERT INTO tbllogs (dlogid, duid, dlocation, dedit, ttimestamp) VALUES (@logId, @userId, @location, @editedData, @timestamp)"
+            Using logCommand As New MySqlCommand(logCommandText, connection)
+                logCommand.Parameters.AddWithValue("@logId", logId)
+                logCommand.Parameters.AddWithValue("@userId", userId)
+                logCommand.Parameters.AddWithValue("@location", location)
+                logCommand.Parameters.AddWithValue("@editedData", editedData)
+                logCommand.Parameters.AddWithValue("@timestamp", timestamp)
 
-            logCommand.ExecuteNonQuery()
+                logCommand.ExecuteNonQuery()
+            End Using
+
         Catch ex As Exception
             MessageBox.Show($"An error occurred during log insertion: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
 
     Private Sub TbSearch_TextChanged(sender As Object, e As EventArgs) Handles tbSearch.TextChanged
         Try
@@ -294,8 +334,6 @@ Public Class FrmOrderManagement
     End Sub
 
 
-
-
     Private Sub LoadCustomerNames()
         Try
             Using myConnection As MySqlConnection = Common.GetDBConnectionX()
@@ -333,7 +371,6 @@ Public Class FrmOrderManagement
         End Try
     End Sub
 
-    ' Add TextChanged event for tbProductName
 
     Private Sub TbProductName_TextChanged(sender As Object, e As EventArgs) Handles tbProductName.TextChanged
         tbProductName.Text = tbProductName.Text.Trim()
@@ -344,18 +381,6 @@ Public Class FrmOrderManagement
         End If
     End Sub
 
-    ' Add TextChanged event for tbProductID
-    'Private Sub TbProductID_TextChanged(sender As Object, e As EventArgs) Handles tbProductID.TextChanged
-    '    Try
-    '        ' Use the FetchProductName method to get the corresponding product name
-    '        Dim productName As String = FetchNameByID("tblproducts", "dproductid", "dproductname", tbProductID.Text)
-    '        tbProductName.Text = productName
-    '    Catch ex As Exception
-    '        HandleException(ex)
-    '    End Try
-    'End Sub
-
-    ' Common method to fetch names by ID
     Private Function FetchNameByID(tableName As String, idColumn As String, nameColumn As String, id As String) As String
         Dim result As String = ""
 
@@ -454,21 +479,18 @@ Public Class FrmOrderManagement
 
 
 
-    Private Function GenerateUniqueOrderID() As String
+    Private Function GenerateUniqueOrderID(connection As MySqlConnection) As String
         Dim orderID As String = ""
         Try
-            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
-                myConnection.Open()
-                Dim query As String = "SELECT MAX(CAST(SUBSTRING(dorderid, 1, 15) AS UNSIGNED)) FROM omac.tblorders"
-                Using getMaxOrderCommand As New MySqlCommand(query, myConnection)
-                    Dim maxOrderNumber As Object = getMaxOrderCommand.ExecuteScalar()
-                    Dim maxOrderNumberInt As Integer = If(maxOrderNumber Is DBNull.Value, 0, Convert.ToInt32(maxOrderNumber))
-                    maxOrderNumberInt += 1
-                    orderID = maxOrderNumberInt.ToString().PadLeft(15, "0"c)
-                    If Not IsOrderIDUnique(orderID, myConnection) Then
-                        orderID = GenerateUniqueOrderID()
-                    End If
-                End Using
+            Dim query As String = "SELECT MAX(CAST(SUBSTRING(dorderid, 1, 15) AS UNSIGNED)) FROM omac.tblorders"
+            Using getMaxOrderCommand As New MySqlCommand(query, connection)
+                Dim maxOrderNumber As Object = getMaxOrderCommand.ExecuteScalar()
+                Dim maxOrderNumberInt As Integer = If(maxOrderNumber Is DBNull.Value, 0, Convert.ToInt32(maxOrderNumber))
+                maxOrderNumberInt += 1
+                orderID = maxOrderNumberInt.ToString().PadLeft(15, "0"c)
+                If Not IsOrderIDUnique(orderID, connection) Then
+                    orderID = GenerateUniqueOrderID(connection)
+                End If
             End Using
         Catch ex As Exception
             HandleException(ex)
@@ -589,12 +611,12 @@ Public Class FrmOrderManagement
 
     End Sub
 
-    Private Sub deletemode()
+    Private Sub Deletemode()
         btnSave.Enabled = False
         btnEdit.Enabled = False
     End Sub
 
-    Private Sub notdeletemode()
+    Private Sub Notdeletemode()
         btnSave.Enabled = True
         btnEdit.Enabled = True
 
@@ -607,14 +629,17 @@ Public Class FrmOrderManagement
 
             ' Check if OrderID is provided
             If Not String.IsNullOrEmpty(orderID) Then
-                ' Replace the sample query with your actual SQL DELETE query
-                Dim deleteQuery As String = $"DELETE FROM omac.tblorders WHERE dorderid = '{orderID}'"
+                ' Use parameterized query to avoid SQL injection
+                Dim deleteQuery As String = "DELETE FROM omac.tblorders WHERE dorderid = @orderID"
 
                 ' Perform deletion in the database
                 Using myConnection As MySqlConnection = Common.GetDBConnectionX()
                     myConnection.Open()
 
                     Using myCommand As New MySqlCommand(deleteQuery, myConnection)
+                        ' Add parameters to the query
+                        myCommand.Parameters.AddWithValue("@orderID", orderID)
+
                         ' Execute the DELETE query
                         myCommand.ExecuteNonQuery()
                     End Using
@@ -631,6 +656,7 @@ Public Class FrmOrderManagement
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
@@ -652,7 +678,6 @@ Public Class FrmOrderManagement
                 Dim accessLevel As String = Convert.ToString(checkCommand.ExecuteScalar())
 
                 If accessLevel = "3" Then
-
                     ' Change the color of the buttons to indicate disabled state
                     btnExport.BackColor = Color.FromArgb(200, 200, 200)
                     btnEdit.BackColor = Color.FromArgb(200, 200, 200)
@@ -662,6 +687,7 @@ Public Class FrmOrderManagement
             MessageBox.Show($"An error occurred while checking user access level: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 
     Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
@@ -751,12 +777,10 @@ Public Class FrmOrderManagement
                     myCommand.Connection = myConnection
 
                     Dim updateQuery As String = "UPDATE omac.tblorders " &
-                            "SET dcustomerid = @newCustomerID, " &
-                            "    dproductid = @newProductID, " &
-                            "    dquantityordered = @newQuantityOrdered " &
-                            "WHERE dcustomerid = @oldCustomerID"
-
-
+                        "SET dcustomerid = @newCustomerID, " &
+                        "    dproductid = @newProductID, " &
+                        "    dquantityordered = @newQuantityOrdered " &
+                        "WHERE dcustomerid = @oldCustomerID"
 
                     myCommand.CommandText = updateQuery
                     myCommand.Parameters.AddWithValue("@oldCustomerID", oldCustomerID)
@@ -764,17 +788,13 @@ Public Class FrmOrderManagement
                     myCommand.Parameters.AddWithValue("@newProductID", newProductID)
                     myCommand.Parameters.AddWithValue("@newQuantityOrdered", newQuantityOrdered)
 
-
-
                     myCommand.ExecuteNonQuery()
-
-                    'plan minus the old and new and add it in the data base
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
 
             ' Create a string with the new data
             Dim editedData As String = $"Old: {oldCustomerID} || {oldProductID} || {oldQuantityOrdered}|| ---- " &
-                                   $"New: {newCustomerID} || {newProductID} || {newQuantityOrdered}"
+                               $"New: {newCustomerID} || {newProductID} || {newQuantityOrdered}"
 
             ' Insert into tbllogs
             LogCustomerAction("Update", oldCustomerID, editedData)
@@ -786,12 +806,13 @@ Public Class FrmOrderManagement
         End Try
     End Sub
 
+
     Private oldCustomerID As String
     Private oldProductID As String
     Private oldQuantityOrdered As Integer
 
 
-    Private Sub cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellClick
+    Private Sub Cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellClick
         If OrdermanagementstateEdit Then
             If dgvOrderManagement.SelectedRows.Count > 0 Then
                 ' Get the selected row

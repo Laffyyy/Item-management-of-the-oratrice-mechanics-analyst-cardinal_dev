@@ -22,7 +22,8 @@ Public Class FrmProductEntry
             myConnection.Open()
 
             Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblProducts WHERE dproductid = @productId", myConnection)
-            checkCommand.Parameters.AddWithValue("@productId", productId)
+            checkCommand.Parameters.Add("@productId", MySqlDbType.VarChar).Value = productId
+
 
             Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
             isUnique = (count = 0)
@@ -44,7 +45,8 @@ Public Class FrmProductEntry
             myConnection.Open()
 
             Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblStock WHERE dstockid = @stockId", myConnection)
-            checkCommand.Parameters.AddWithValue("@stockId", stockId)
+            checkCommand.Parameters.Add("@stockId", MySqlDbType.VarChar).Value = stockId
+
 
             Dim count As Integer = Convert.ToInt32(checkCommand.ExecuteScalar())
             isUnique = (count = 0)
@@ -78,14 +80,15 @@ Public Class FrmProductEntry
 
                     ' Insert data into tblProducts
                     myCommand.CommandText = "INSERT INTO omac.tblproducts (dproductid, dproductname, dprice, dtxtdescription, dstatus, dcomments) " &
-                               "VALUES (@productId, @productName, @productPrice, @description, @status, @comments)"
+                        "VALUES (@productId, @productName, @productPrice, @description, @status, @comments)"
 
-                    myCommand.Parameters.AddWithValue("@productId", productId)
-                    myCommand.Parameters.AddWithValue("@productName", productName)
-                    myCommand.Parameters.AddWithValue("@productPrice", productPrice)
-                    myCommand.Parameters.AddWithValue("@description", description)
-                    myCommand.Parameters.AddWithValue("@status", status)
-                    myCommand.Parameters.AddWithValue("@comments", comments)
+                    myCommand.Parameters.Add("@productId", MySqlDbType.VarChar).Value = productId
+                    myCommand.Parameters.Add("@productName", MySqlDbType.VarChar).Value = productName
+                    myCommand.Parameters.Add("@productPrice", MySqlDbType.Float).Value = productPrice
+                    myCommand.Parameters.Add("@description", MySqlDbType.VarChar).Value = description
+                    myCommand.Parameters.Add("@status", MySqlDbType.VarChar).Value = status
+                    myCommand.Parameters.Add("@comments", MySqlDbType.VarChar).Value = comments
+
 
                     myCommand.ExecuteNonQuery()
 
@@ -134,19 +137,20 @@ Public Class FrmProductEntry
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "UPDATE omac.tblproducts " &
-                                        "SET dproductname = @productName, " &
-                                        "    dprice = @productPrice, " &
-                                        "    dtxtdescription = @description, " &
-                                        "    dstatus = @status, " &
-                                        "    dcomments = @comments " &
-                                        "WHERE dproductid = @productId"
+                     "SET dproductname = @productName, " &
+                     "    dprice = @productPrice, " &
+                     "    dtxtdescription = @description, " &
+                     "    dstatus = @status, " &
+                     "    dcomments = @comments " &
+                     "WHERE dproductid = @productId"
 
-                    myCommand.Parameters.AddWithValue("@productId", productId)
-                    myCommand.Parameters.AddWithValue("@productName", productName)
-                    myCommand.Parameters.AddWithValue("@productPrice", productPrice)
-                    myCommand.Parameters.AddWithValue("@description", description)
-                    myCommand.Parameters.AddWithValue("@status", status)
-                    myCommand.Parameters.AddWithValue("@comments", comments)
+                    myCommand.Parameters.Add("@productId", MySqlDbType.VarChar).Value = productId
+                    myCommand.Parameters.Add("@productName", MySqlDbType.VarChar).Value = productName
+                    myCommand.Parameters.Add("@productPrice", MySqlDbType.Float).Value = productPrice
+                    myCommand.Parameters.Add("@description", MySqlDbType.VarChar).Value = description
+                    myCommand.Parameters.Add("@status", MySqlDbType.VarChar).Value = status
+                    myCommand.Parameters.Add("@comments", MySqlDbType.VarChar).Value = comments
+
 
                     myCommand.ExecuteNonQuery()
                 End Using ' Dispose of MySqlCommand
@@ -172,19 +176,19 @@ Public Class FrmProductEntry
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "SELECT " &
-                    "tbp.dproductid AS dgvcID, " &
-                    "tbp.dproductname AS dgvcProductName, " &
-                    "tbp.dprice AS dgvcPrice, " &
-                    "tbp.dtxtdescription AS dgvcdescription, " &
-                    "tbp.dcomments AS pubcomments, " &
-                    "tbp.dstatus AS dgvcStatus, " &
-                    "COALESCE(SUM(tbs.dquantitychanged), 0) AS dgvcTotalQuantity " &
-                    "FROM " &
-                    "omac.tblproducts tbp " &
-                    "LEFT JOIN " &  ' Use LEFT JOIN to include products without stock entries
-                    "tblstock tbs ON tbs.dproductid = tbp.dproductid " &
-                    "GROUP BY " &
-                    "tbp.dproductid, tbp.dproductname, tbp.dprice, tbp.dtxtdescription, tbp.dstatus"
+                "tbp.dproductid AS dgvcID, " &
+                "tbp.dproductname AS dgvcProductName, " &
+                "tbp.dprice AS dgvcPrice, " &
+                "tbp.dtxtdescription AS dgvcdescription, " &
+                "tbp.dcomments AS pubcomments, " &
+                "tbp.dstatus AS dgvcStatus, " &
+                "COALESCE(SUM(tbs.dquantitychanged), 0) AS dgvcTotalQuantity " &
+                "FROM " &
+                "omac.tblproducts tbp " &
+                "LEFT JOIN " &
+                "tblstock tbs ON tbs.dproductid = tbp.dproductid " &
+                "GROUP BY " &
+                "tbp.dproductid, tbp.dproductname, tbp.dprice, tbp.dtxtdescription, tbp.dstatus"
 
                     Using myAdapter As New MySqlDataAdapter()
                         myAdapter.SelectCommand = myCommand
@@ -203,6 +207,7 @@ Public Class FrmProductEntry
                             dgvProducts.DataSource = myDataSet.Tables("myData")
                         End Using ' Dispose of DataSet
                     End Using ' Dispose of DataAdapter
+
                 End Using ' Dispose of MySqlCommand
             End Using ' Dispose of MySqlConnection
         Catch ex As Exception
@@ -419,7 +424,7 @@ Public Class FrmProductEntry
     Private oldcomment As String
 
 
-    Private Sub cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellClick
+    Private Sub Cellclick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellClick
         If ProductentryEditmode Then
             If dgvProducts.SelectedRows.Count > 0 Then
                 ' Get the selected row

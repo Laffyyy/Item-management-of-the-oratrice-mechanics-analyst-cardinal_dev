@@ -102,13 +102,12 @@ Public Class frmAccountAdjustment
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "INSERT INTO `omac`.`tblusers` 
-                       (`duid`, `demployeefn`, `demployeeln`, `dpassword`, `daccesslvl`) 
-                        VALUES ('@id', '@firstname', '@lastname', '@password', '@access');
-"
+                   (`duid`, `demployeefn`, `demployeeln`, `dpassword`, `daccesslvl`) 
+                    VALUES (@id, @firstname, @lastname, @password, @access);"
 
                     myCommand.Parameters.AddWithValue("@id", userID)
                     myCommand.Parameters.AddWithValue("@firstname", firstName)
-                    myCommand.Parameters.AddWithValue("@lastName", lastName)
+                    myCommand.Parameters.AddWithValue("@lastname", lastName)
                     myCommand.Parameters.AddWithValue("@password", Password)
                     myCommand.Parameters.AddWithValue("@access", role)
 
@@ -116,7 +115,7 @@ Public Class frmAccountAdjustment
                 End Using ' Dispose of MySqlCommand
 
                 ' Create a string with the new data
-                Dim editedData As String = $""
+                Dim editedData As String = $"ADDED:{userID} || {firstName} || {lastName} || {Password} || {role}"
 
                 ' Insert into tbllogs
                 LogAccountAdjustment("Add", editedData)
@@ -154,7 +153,7 @@ Public Class frmAccountAdjustment
             End Using ' Dispose of MySqlConnection
 
             ' Create a string with the new data
-            Dim editedData As String = $"ADDED:{newUserID} || {firstName} || {lastName} || {password} || {cmbAccessLevel.SelectedItem}"
+            Dim editedData As String = $"ADDED:{newUserID} || {firstName} || {lastName} || {password} || {accessLevel}"
 
             ' Insert into tbllogs
             LogAccountAdjustment("ADD", editedData)

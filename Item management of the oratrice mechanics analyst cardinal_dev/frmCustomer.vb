@@ -93,8 +93,9 @@ Public Class FrmCustomer
                     myCommand.Connection = myConnection
 
                     myCommand.CommandText = "INSERT INTO omac.tblcustomers (dcustomerid, dcustomerfn, dcustomerln, dcompanyname) " &
-                           "VALUES (@customerID, @firstName, @lastName, @companyName)"
+                       "VALUES (@customerID, @firstName, @lastName, @companyName)"
 
+                    ' Use parameters to prevent SQL injection
                     myCommand.Parameters.AddWithValue("@customerID", customerID)
                     myCommand.Parameters.AddWithValue("@firstName", firstName)
                     myCommand.Parameters.AddWithValue("@lastName", lastName)
@@ -102,10 +103,6 @@ Public Class FrmCustomer
 
                     myCommand.ExecuteNonQuery()
                 End Using ' Dispose of MySqlCommand
-
-                ' Create a string with the new data
-
-
             End Using ' Dispose of MySqlConnection
 
             ' After insertion, refresh the DataGridView
@@ -133,8 +130,6 @@ Public Class FrmCustomer
                     If Not String.IsNullOrEmpty(newCustomerID) Then
                         updateQuery &= ", dcustomerid = @newCustomerID "
                         myCommand.Parameters.AddWithValue("@newCustomerID", newCustomerID)
-
-
                     End If
 
                     updateQuery &= "WHERE dcustomerid = @oldCustomerID"
@@ -151,7 +146,6 @@ Public Class FrmCustomer
 
             'Create a string with the new data
             Dim editedData As String = $"Old: {oldCustomerID} || {oldfirsName} || {oldlastname} || {oldcompany} || ---- New: {newCustomerID} || {firstName} || {lastName} || {companyName}"
-
 
             ' Insert into tbllogs
             LogCustomerAction("Update", oldCustomerID, editedData)

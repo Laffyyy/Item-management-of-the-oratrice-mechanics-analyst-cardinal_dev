@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
 
-Public Class frmStockAdjustment
+Public Class FrmStockAdjustment
 
     Public Shared Property Replenishorexhaust As Boolean = False ' false = replenish, true = exhaust
 
@@ -158,7 +158,7 @@ Public Class frmStockAdjustment
                 myConnection.Open()
 
                 Dim logId As String = Guid.NewGuid().ToString().Substring(0, 20).ToUpper()
-                Dim userId As String = frmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
+                Dim userId As String = FrmLogin.UserIDusing ' Assuming that you have a Public Shared Property UserIDusing in frmLogin
                 Dim location As String = "Stock Adjustment"
                 Dim timestamp As DateTime = DateTime.Now
 

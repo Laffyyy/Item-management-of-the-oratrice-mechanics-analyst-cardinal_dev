@@ -1,45 +1,24 @@
 ﻿Imports MySql.Data.MySqlClient
 
-
 Public Class FrmLogin
-
     Public Shared Property UserIDusing As String
+    Public Shared Property UUserAccessLevel As Integer
+    Public Shared Property UUserFirstName As String
 
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
-
         ' Add any initialization after the InitializeComponent() call.
         Me.ControlBox = False
-
-
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
     End Sub
 
-
-
     Private Sub PnlLogin_Paint(sender As Object, e As PaintEventArgs) Handles pnlLogin.Paint
 
     End Sub
-
-
-
-
-
-    'Private Sub pbvisible_Click(sender As Object, e As EventArgs) Handles pbvisible.Click
-    '    If visisibility Then
-    '        visibilityison()
-    '    Else
-    '        visibilityisoff()
-    '    End If
-
-    '    visisibility = Not visisibility
-
-    'End Sub
 
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles btLogin.Click
         ' Get the username and password from the textboxes
@@ -62,8 +41,6 @@ Public Class FrmLogin
         End If
     End Sub
 
-    Public Shared Property UUserAccessLevel As Integer
-    Public Shared Property UUserFirstName As String
     ' Public property to access the user access level
     Public Shared ReadOnly Property UserAccessLevel As Integer
         Get
@@ -114,7 +91,6 @@ Public Class FrmLogin
         UUserAccessLevel = 0
         Return False
     End Function
-
 
     Private Sub Guna2ImageCheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
         If chkShowPass.Checked = True Then
