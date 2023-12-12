@@ -252,6 +252,7 @@ Partial Class frmCustomer
         tbLastName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbLastName.Location = New Point(50, 132)
         tbLastName.Margin = New Padding(3, 2, 3, 2)
+        tbLastName.MaxLength = 20
         tbLastName.Name = "tbLastName"
         tbLastName.PasswordChar = ChrW(0)
         tbLastName.PlaceholderText = ""
@@ -276,6 +277,7 @@ Partial Class frmCustomer
         tbFirstName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbFirstName.Location = New Point(50, 184)
         tbFirstName.Margin = New Padding(3, 2, 3, 2)
+        tbFirstName.MaxLength = 20
         tbFirstName.Name = "tbFirstName"
         tbFirstName.PasswordChar = ChrW(0)
         tbFirstName.PlaceholderText = ""
@@ -300,6 +302,7 @@ Partial Class frmCustomer
         tbCompanyName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbCompanyName.Location = New Point(50, 237)
         tbCompanyName.Margin = New Padding(3, 2, 3, 2)
+        tbCompanyName.MaxLength = 20
         tbCompanyName.Name = "tbCompanyName"
         tbCompanyName.PasswordChar = ChrW(0)
         tbCompanyName.PlaceholderText = ""
@@ -358,6 +361,7 @@ Partial Class frmCustomer
         tbCustomerID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbCustomerID.Location = New Point(50, 62)
         tbCustomerID.Margin = New Padding(3, 2, 3, 2)
+        tbCustomerID.MaxLength = 30
         tbCustomerID.Name = "tbCustomerID"
         tbCustomerID.PasswordChar = ChrW(0)
         tbCustomerID.PlaceholderText = ""

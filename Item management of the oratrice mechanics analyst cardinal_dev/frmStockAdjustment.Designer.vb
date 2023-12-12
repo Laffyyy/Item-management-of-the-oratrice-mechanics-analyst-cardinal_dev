@@ -72,6 +72,7 @@ Partial Class frmStockAdjustment
         tbProductQuantity.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductQuantity.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductQuantity.Location = New Point(32, 270)
+        tbProductQuantity.MaxLength = 10
         tbProductQuantity.Name = "tbProductQuantity"
         tbProductQuantity.PasswordChar = ChrW(0)
         tbProductQuantity.PlaceholderText = ""

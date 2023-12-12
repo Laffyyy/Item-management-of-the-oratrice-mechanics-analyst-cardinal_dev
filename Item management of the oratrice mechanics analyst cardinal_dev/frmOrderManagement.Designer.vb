@@ -251,6 +251,7 @@ Partial Class frmOrderManagement
         tbCustomerName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbCustomerName.Location = New Point(19, 100)
         tbCustomerName.Margin = New Padding(3, 2, 3, 2)
+        tbCustomerName.MaxLength = 25
         tbCustomerName.Name = "tbCustomerName"
         tbCustomerName.PasswordChar = ChrW(0)
         tbCustomerName.PlaceholderText = ""
@@ -287,6 +288,7 @@ Partial Class frmOrderManagement
         tbProductName.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductName.Location = New Point(19, 211)
         tbProductName.Margin = New Padding(3, 2, 3, 2)
+        tbProductName.MaxLength = 10
         tbProductName.Name = "tbProductName"
         tbProductName.PasswordChar = ChrW(0)
         tbProductName.PlaceholderText = ""
@@ -333,6 +335,7 @@ Partial Class frmOrderManagement
         tbQuantity.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbQuantity.Location = New Point(19, 321)
         tbQuantity.Margin = New Padding(3, 2, 3, 2)
+        tbQuantity.MaxLength = 10
         tbQuantity.Name = "tbQuantity"
         tbQuantity.PasswordChar = ChrW(0)
         tbQuantity.PlaceholderText = ""

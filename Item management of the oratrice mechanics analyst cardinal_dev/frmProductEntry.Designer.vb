@@ -139,7 +139,7 @@ Partial Class frmProductEntry
         tbProductNameEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductNameEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductNameEntry.Location = New Point(24, 50)
-        tbProductNameEntry.MaxLength = 100
+        tbProductNameEntry.MaxLength = 25
         tbProductNameEntry.Name = "tbProductNameEntry"
         tbProductNameEntry.PasswordChar = ChrW(0)
         tbProductNameEntry.PlaceholderText = ""
@@ -183,6 +183,7 @@ Partial Class frmProductEntry
         tbProductDescriptionEntry.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductDescriptionEntry.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductDescriptionEntry.Location = New Point(24, 328)
+        tbProductDescriptionEntry.MaxLength = 50
         tbProductDescriptionEntry.Name = "tbProductDescriptionEntry"
         tbProductDescriptionEntry.PasswordChar = ChrW(0)
         tbProductDescriptionEntry.PlaceholderText = ""
@@ -266,6 +267,7 @@ Partial Class frmProductEntry
         tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbProductID.Location = New Point(24, 108)
+        tbProductID.MaxLength = 15
         tbProductID.Name = "tbProductID"
         tbProductID.PasswordChar = ChrW(0)
         tbProductID.PlaceholderText = ""

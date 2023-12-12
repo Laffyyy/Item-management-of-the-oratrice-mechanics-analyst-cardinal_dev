@@ -213,6 +213,7 @@ Partial Class frmLogin
         tbPassword.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbPassword.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbPassword.Location = New Point(79, 282)
+        tbPassword.MaxLength = 15
         tbPassword.Name = "tbPassword"
         tbPassword.PasswordChar = "*"c
         tbPassword.PlaceholderText = ""
@@ -233,6 +234,7 @@ Partial Class frmLogin
         tbEmployeeID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
         tbEmployeeID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         tbEmployeeID.Location = New Point(79, 208)
+        tbEmployeeID.MaxLength = 15
         tbEmployeeID.Name = "tbEmployeeID"
         tbEmployeeID.PasswordChar = ChrW(0)
         tbEmployeeID.PlaceholderText = ""
