@@ -34,6 +34,7 @@ Public Class FrmMain
     Private Sub Hardresetbuttons()
         btnProductEntry.ForeColor = Color.FromArgb(153, 180, 209)
         btnAccountAdj.ForeColor = Color.FromArgb(153, 180, 209)
+        btnAccountAdj.TextAlign = HorizontalAlignment.Center
     End Sub
 
 

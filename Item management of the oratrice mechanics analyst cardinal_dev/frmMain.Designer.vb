@@ -383,7 +383,7 @@ Partial Class frmMain
         lblWelcome.BackColor = Color.Transparent
         lblWelcome.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point)
         lblWelcome.ForeColor = SystemColors.ActiveCaption
-        lblWelcome.Location = New Point(325, 54)
+        lblWelcome.Location = New Point(283, 259)
         lblWelcome.Name = "lblWelcome"
         lblWelcome.Size = New Size(117, 34)
         lblWelcome.TabIndex = 3

@@ -625,7 +625,7 @@ Public Class FrmOrderManagement
 
     Private Sub Onedit()
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
-        btnEdit.FillColor = Color.FromArgb(153, 180, 209)
+        btnEdit.FillColor2 = Color.FromArgb(153, 180, 209)
         btnEdit.Text = "EDIT MODE"
         btnDelete.Hide()
         OrdermanagementstateEdit = True
@@ -647,7 +647,7 @@ Public Class FrmOrderManagement
 
     Private Sub NotEdit()
         btnEdit.ForeColor = Color.White
-        btnEdit.FillColor = Color.FromArgb(94, 148, 255)
+        btnEdit.FillColor2 = Color.FromArgb(94, 148, 255)
 
         btnEdit.Text = "Edit Order"
 
@@ -942,5 +942,31 @@ Public Class FrmOrderManagement
         Return result
     End Function
 
+    Private lastHoveredRowIndex As Integer = -1
+
+    Private Sub mouseenter(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellMouseEnter
+        If OrdermanagementstateEdit Then
+
+            ' Check if the mouse entered a valid row
+            If e.RowIndex >= 0 Then
+                ' Set the background color for the hovered row
+                dgvOrderManagement.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(105, 179, 230)
+                lastHoveredRowIndex = e.RowIndex
+            End If
+        End If
+
+    End Sub
+
+    Private Sub mopuseleave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrderManagement.CellMouseLeave
+        If OrdermanagementstateEdit Then
+            ' Check if the mouse left a valid row
+            If e.RowIndex >= 0 Then
+                ' Reset the background color for the previously hovered row
+                dgvOrderManagement.Rows(e.RowIndex).DefaultCellStyle.BackColor = dgvOrderManagement.DefaultCellStyle.BackColor
+                lastHoveredRowIndex = -1
+            End If
+        End If
+
+    End Sub
 
 End Class

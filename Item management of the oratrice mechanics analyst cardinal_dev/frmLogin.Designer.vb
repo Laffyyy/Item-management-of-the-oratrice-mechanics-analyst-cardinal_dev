@@ -25,8 +25,8 @@ Partial Class frmLogin
         Dim lblHeader As Guna.UI2.WinForms.Guna2HtmlLabel
         Dim CustomizableEdges10 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(FrmLogin))
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -38,8 +38,10 @@ Partial Class frmLogin
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         pnlLogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        imgLogomain = New PictureBox()
         btnClose = New Guna.UI2.WinForms.Guna2GradientButton()
         chkShowPass = New Guna.UI2.WinForms.Guna2ImageCheckBox()
+        lblForgotpassword = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblUser = New Guna.UI2.WinForms.Guna2HtmlLabel()
         btLogin = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -47,8 +49,10 @@ Partial Class frmLogin
         tbEmployeeID = New Guna.UI2.WinForms.Guna2TextBox()
         pnldesignlogin = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         PictureBox1 = New PictureBox()
+        Guna2HtmlToolTip1 = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         lblHeader = New Guna.UI2.WinForms.Guna2HtmlLabel()
         pnlLogin.SuspendLayout()
+        CType(imgLogomain, ComponentModel.ISupportInitialize).BeginInit()
         pnldesignlogin.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -71,9 +75,11 @@ Partial Class frmLogin
         ' pnlLogin
         ' 
         pnlLogin.BackgroundImageLayout = ImageLayout.None
+        pnlLogin.Controls.Add(imgLogomain)
         pnlLogin.Controls.Add(btnClose)
         pnlLogin.Controls.Add(chkShowPass)
         pnlLogin.Controls.Add(lblHeader)
+        pnlLogin.Controls.Add(lblForgotpassword)
         pnlLogin.Controls.Add(Guna2HtmlLabel1)
         pnlLogin.Controls.Add(lblUser)
         pnlLogin.Controls.Add(btLogin)
@@ -91,6 +97,18 @@ Partial Class frmLogin
         pnlLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges11
         pnlLogin.Size = New Size(365, 460)
         pnlLogin.TabIndex = 0
+        ' 
+        ' imgLogomain
+        ' 
+        imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        imgLogomain.BackColor = Color.Transparent
+        imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
+        imgLogomain.Location = New Point(92, 35)
+        imgLogomain.Name = "imgLogomain"
+        imgLogomain.Size = New Size(187, 146)
+        imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
+        imgLogomain.TabIndex = 8
+        imgLogomain.TabStop = False
         ' 
         ' btnClose
         ' 
@@ -126,6 +144,19 @@ Partial Class frmLogin
         chkShowPass.ShadowDecoration.CustomizableEdges = CustomizableEdges3
         chkShowPass.Size = New Size(25, 36)
         chkShowPass.TabIndex = 7
+        ' 
+        ' lblForgotpassword
+        ' 
+        lblForgotpassword.BackColor = Color.Transparent
+        lblForgotpassword.ForeColor = Color.FromArgb(CByte(70), CByte(162), CByte(227))
+        lblForgotpassword.Location = New Point(79, 323)
+        lblForgotpassword.Margin = New Padding(3, 2, 3, 2)
+        lblForgotpassword.Name = "lblForgotpassword"
+        lblForgotpassword.Size = New Size(91, 17)
+        lblForgotpassword.TabIndex = 3
+        lblForgotpassword.Text = "Forgot Password"
+        lblForgotpassword.TextAlignment = ContentAlignment.MiddleCenter
+        Guna2HtmlToolTip1.SetToolTip(lblForgotpassword, "Contact The Admin")
         ' 
         ' Guna2HtmlLabel1
         ' 
@@ -236,7 +267,15 @@ Partial Class frmLogin
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' frmLogin
+        ' Guna2HtmlToolTip1
+        ' 
+        Guna2HtmlToolTip1.AllowLinksHandling = True
+        Guna2HtmlToolTip1.BackColor = Color.FromArgb(CByte(20), CByte(49), CByte(105))
+        Guna2HtmlToolTip1.BorderColor = Color.Transparent
+        Guna2HtmlToolTip1.ForeColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2HtmlToolTip1.MaximumSize = New Size(0, 0)
+        ' 
+        ' FrmLogin
         ' 
         AcceptButton = btLogin
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -249,13 +288,14 @@ Partial Class frmLogin
         FormBorderStyle = FormBorderStyle.None
         MaximizeBox = False
         MinimizeBox = False
-        Name = "frmLogin"
+        Name = "FrmLogin"
         ShowIcon = False
         ShowInTaskbar = False
         StartPosition = FormStartPosition.CenterScreen
         Text = "frmLogin"
         pnlLogin.ResumeLayout(False)
         pnlLogin.PerformLayout()
+        CType(imgLogomain, ComponentModel.ISupportInitialize).EndInit()
         pnldesignlogin.ResumeLayout(False)
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -272,4 +312,7 @@ Partial Class frmLogin
     Friend WithEvents lblUser As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents chkShowPass As Guna.UI2.WinForms.Guna2ImageCheckBox
     Friend WithEvents btnClose As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents imgLogomain As PictureBox
+    Friend WithEvents lblForgotpassword As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlToolTip1 As Guna.UI2.WinForms.Guna2HtmlToolTip
 End Class

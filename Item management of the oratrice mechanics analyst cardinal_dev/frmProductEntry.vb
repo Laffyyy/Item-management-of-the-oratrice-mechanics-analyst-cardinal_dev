@@ -223,7 +223,7 @@ Public Class FrmProductEntry
 
     Private Sub Onedit()
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
-        btnEdit.FillColor = Color.FromArgb(153, 180, 209)
+        btnEdit.FillColor2 = Color.FromArgb(153, 180, 209)
         btnEdit.Text = "EDIT MODE"
 
         ProductentryEditmode = True
@@ -243,7 +243,7 @@ Public Class FrmProductEntry
 
     Private Sub NotOnedit()
         btnEdit.ForeColor = Color.White
-        btnEdit.FillColor = Color.FromArgb(94, 148, 255)
+        btnEdit.FillColor2 = Color.FromArgb(94, 148, 255)
         btnEdit.Text = "Edit product"
 
         ProductentryEditmode = False
@@ -508,5 +508,31 @@ Public Class FrmProductEntry
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         DisplayProducts()
+    End Sub
+
+    Private lastHoveredRowIndex As Integer = -1
+
+    Private Sub mouseenter(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellMouseEnter
+        If ProductentryEditmode Then
+            ' Check if the mouse entered a valid row
+            If e.RowIndex >= 0 Then
+                ' Set the background color for the hovered row
+                dgvProducts.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(105, 179, 230)
+                lastHoveredRowIndex = e.RowIndex
+            End If
+        End If
+
+    End Sub
+
+    Private Sub mopuseleave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellMouseLeave
+        If ProductentryEditmode Then
+            ' Check if the mouse left a valid row
+            If e.RowIndex >= 0 Then
+                ' Reset the background color for the previously hovered row
+                dgvProducts.Rows(e.RowIndex).DefaultCellStyle.BackColor = dgvProducts.DefaultCellStyle.BackColor
+                lastHoveredRowIndex = -1
+            End If
+        End If
+
     End Sub
 End Class

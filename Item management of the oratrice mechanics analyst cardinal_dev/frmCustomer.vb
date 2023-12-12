@@ -203,7 +203,7 @@ Public Class FrmCustomer
 
     Private Sub OnEdit()
         btnEdit.ForeColor = Color.FromArgb(255, 249, 144)
-        btnEdit.FillColor = Color.FromArgb(153, 180, 209)
+        btnEdit.FillColor2 = Color.FromArgb(153, 180, 209)
         btnEdit.Text = "EDIT MODE"
         Frmcustomereditmode = False
 
@@ -365,5 +365,31 @@ Public Class FrmCustomer
         End If
     End Sub
 
+    Private lastHoveredRowIndex As Integer = -1
+
+    Private Sub mouseenter(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellMouseEnter
+        If Not Frmcustomereditmode Then
+
+            ' Check if the mouse entered a valid row
+            If e.RowIndex >= 0 Then
+                ' Set the background color for the hovered row
+                dgvCustomers.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(105, 179, 230)
+                lastHoveredRowIndex = e.RowIndex
+            End If
+        End If
+
+    End Sub
+
+    Private Sub mopuseleave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomers.CellMouseLeave
+        If Not Frmcustomereditmode Then
+            ' Check if the mouse left a valid row
+            If e.RowIndex >= 0 Then
+                ' Reset the background color for the previously hovered row
+                dgvCustomers.Rows(e.RowIndex).DefaultCellStyle.BackColor = dgvCustomers.DefaultCellStyle.BackColor
+                lastHoveredRowIndex = -1
+            End If
+        End If
+
+    End Sub
 
 End Class
