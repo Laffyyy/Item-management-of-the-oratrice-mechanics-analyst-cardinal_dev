@@ -3,10 +3,37 @@ Imports MySql.Data.MySqlClient
 
 Public Class FrmStockAdjustment
 
+
+
+
     Public Shared Property Replenishorexhaust As Boolean = False ' false = replenish, true = exhaust
 
     Private Sub HandleException(ex As Exception)
         MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
+
+
+
+
+    Private Sub CheckUserAccessLevel()
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                Dim checkCommand As New MySqlCommand("SELECT daccesslvl FROM omac.tblusers WHERE duid = @userId", myConnection)
+                checkCommand.Parameters.AddWithValue("@userId", FrmLogin.UserIDusing)
+
+                Dim accessLevel As String = Convert.ToString(checkCommand.ExecuteScalar())
+
+                If accessLevel = "3" Then
+                    btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnExport.FillColor = Color.Transparent
+
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred while checking user access level: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub ExportStockAdjustmentToCSV(dataGridView As DataGridView, filePath As String)
@@ -100,7 +127,7 @@ Public Class FrmStockAdjustment
                 stockId = Guid.NewGuid().ToString().Substring(0, 15).ToUpper()
             Loop While Not IsStockIdUnique(stockId)
 
-            Dim productId As String = tbProductID.Text
+            Dim productId As String = cmbProductID.Text
             Dim productName As String = cbProductName.Text ' Assuming you have a ComboBox named cbProductName for product names
             Dim quantityChanged As Integer = Integer.Parse(tbProductQuantity.Text)
             Dim stockChangeDate As DateTime = DateTime.Now
@@ -265,9 +292,9 @@ Public Class FrmStockAdjustment
 
             ' Display the result in the TextBox
             If productIdResult IsNot Nothing Then
-                tbProductID.Text = productIdResult.ToString()
+                cmbProductID.Text = productIdResult.ToString()
             Else
-                tbProductID.Text = "Product ID not found" ' or any default value
+                cmbProductID.Text = "Product ID not found" ' or any default value
             End If
 
         Catch ex As Exception
@@ -300,13 +327,22 @@ Public Class FrmStockAdjustment
     End Sub
 
     Private Sub Guna2GradientButton1_Click(sender As Object, e As EventArgs) Handles Guna2GradientButton1.Click
-        SaveStock()
+
+        If IsQuantityChangeValid(cmbProductID.Text, tbProductQuantity.Text) Then
+
+            SaveStock()
+        Else
+            MessageBox.Show("insufficient stocks")
+        End If
     End Sub
 
     Private Sub FrmStockAdjustment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayStockAdjustment()
         DisplayProductName()
         Replenish()
+
+
+        CheckUserAccessLevel()
     End Sub
 
     Private Sub TbProductID_TextChanged(sender As Object, e As EventArgs)
@@ -337,4 +373,84 @@ Public Class FrmStockAdjustment
             HandleException(ex)
         End Try
     End Sub
+
+    Private Sub comboboxclick(sender As Object, e As EventArgs) Handles cbProductName.Click
+        FillProductIdComboBox(cbProductName.Text)
+    End Sub
+
+    Private Sub FillProductIdComboBox(productName As String)
+        Try
+            ' Fetch product IDs from the database based on the product name
+            Dim productIds As List(Of String) = GetProductIdsFromDatabase(productName)
+
+            ' Bind the product IDs to the ComboBox
+            cmbProductId.DataSource = productIds
+        Catch ex As Exception
+            ' Handle exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function GetProductIdsFromDatabase(productName As String) As List(Of String)
+        Dim result As New List(Of String)
+
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                ' Replace "YourTableName" with the actual name of the table
+                ' Replace "ProductNameColumn" and "ProductIdColumn" with the actual column names
+                Dim query As String = $"SELECT DISTINCT dproductid FROM tblproducts WHERE dproductname = @productName"
+
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    myCommand.Parameters.AddWithValue("@productName", productName)
+
+                    Using reader As MySqlDataReader = myCommand.ExecuteReader()
+                        While reader.Read()
+                            ' Add each product ID to the list
+                            result.Add(reader("dproductid").ToString())
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return result
+    End Function
+
+    Public Function IsQuantityChangeValid(productID As String, userInput As Integer) As Boolean
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                ' Calculate the sum of dquantitychange for the given productID
+                Dim query As String = "SELECT SUM(dquantitychanged) FROM tblstock WHERE dproductID = @productID"
+
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    myCommand.Parameters.AddWithValue("@productID", productID)
+
+                    ' ExecuteScalar returns the sum as an Object
+                    Dim sumResult As Object = myCommand.ExecuteScalar()
+
+                    ' Convert the sum to an integer
+                    Dim currentQuantity As Integer = If(sumResult IsNot DBNull.Value, Convert.ToInt32(sumResult), 0)
+
+                    ' Check if the user input is valid
+                    If currentQuantity + userInput >= 0 Then
+                        Return True ' User input is valid
+                    Else
+                        Return False ' User input is invalid
+
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False ' Assume invalid if an error occurs
+        End Try
+    End Function
 End Class

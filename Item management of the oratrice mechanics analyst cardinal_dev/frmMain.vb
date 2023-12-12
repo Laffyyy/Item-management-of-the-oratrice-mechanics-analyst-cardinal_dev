@@ -39,9 +39,9 @@ Public Class FrmMain
 
     Private Sub Disableaccesspoint()
         If FrmLogin.UUserAccessLevel = 2 OrElse FrmLogin.UUserAccessLevel = 3 Then
-            btnAccountAdj.ForeColor = Color.FromArgb(0, 0, 0)
+            btnAccountAdj.ForeColor = Color.FromArgb(200, 200, 200)
             btnAccountAdj.TextAlign = HorizontalAlignment.Left
-            btnAccountAdj.BackColor = Color.FromArgb(200, 200, 200)
+            btnAccountAdj.BackColor = Color.FromArgb(34, 44, 79)
         End If
     End Sub
 

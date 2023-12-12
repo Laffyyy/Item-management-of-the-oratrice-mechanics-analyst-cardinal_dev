@@ -49,6 +49,8 @@ Partial Class frmProductEntry
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         lbltestentry = New Label()
         lblProductName = New Guna.UI2.WinForms.Guna2HtmlLabel()
         lblProductPrice = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -78,6 +80,7 @@ Partial Class frmProductEntry
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
         tbSearch = New Guna.UI2.WinForms.Guna2TextBox()
         lblSearch = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        btnDelete = New Guna.UI2.WinForms.Guna2GradientButton()
         CType(dgvProducts, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -516,11 +519,32 @@ Partial Class frmProductEntry
         lblSearch.TabIndex = 16
         lblSearch.Text = "Search:"
         ' 
+        ' btnDelete
+        ' 
+        btnDelete.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        btnDelete.CustomizableEdges = CustomizableEdges25
+        btnDelete.DisabledState.BorderColor = Color.DarkGray
+        btnDelete.DisabledState.CustomBorderColor = Color.DarkGray
+        btnDelete.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnDelete.DisabledState.FillColor2 = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        btnDelete.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        btnDelete.FillColor = Color.Transparent
+        btnDelete.FillColor2 = Color.FromArgb(CByte(255), CByte(249), CByte(144))
+        btnDelete.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        btnDelete.ForeColor = Color.White
+        btnDelete.Location = New Point(871, 449)
+        btnDelete.Name = "btnDelete"
+        btnDelete.ShadowDecoration.CustomizableEdges = CustomizableEdges26
+        btnDelete.Size = New Size(67, 34)
+        btnDelete.TabIndex = 18
+        btnDelete.Text = "Delete Order"
+        ' 
         ' FrmProductEntry
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(964, 561)
+        Controls.Add(btnDelete)
         Controls.Add(tbSearch)
         Controls.Add(lblSearch)
         Controls.Add(btnExport)
@@ -588,4 +612,5 @@ Partial Class frmProductEntry
     Friend WithEvents tbSearch As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblSearch As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents dgvcComments As DataGridViewTextBoxColumn
+    Friend WithEvents btnDelete As Guna.UI2.WinForms.Guna2GradientButton
 End Class

@@ -40,7 +40,7 @@ Public Class FrmOrderManagement
                 If OrdermanagementstateEdit Then
                     ' If in edit mode, update the existing order
                     Dim orderID As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcOrderID").Value.ToString()
-                    Dim customerID As String = tbCustomerID.Text
+                    Dim customerID As String = cmbCustomerId.Text
                     Dim productID As String = cmbProductID.Text
                     Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
                     Dim status As String = dgvOrderManagement.SelectedRows(0).Cells("dgvcStatus").Value.ToString()
@@ -53,17 +53,24 @@ Public Class FrmOrderManagement
 
                     NotEdit()
                 Else
-                    ' If not in edit mode, insert a new order
-                    Dim orderID As String = GenerateUniqueOrderID(myConnection) ' Pass the database connection here
-                    Dim customerID As String = tbCustomerID.Text
-                    Dim productID As String = cmbProductID.Text
-                    Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
-                    Dim status As String = "Queued"
+                    If FrmStockAdjustment.IsQuantityChangeValid(cmbProductID.Text, Convert.ToInt32(tbQuantity.Text) * -1) Then
+                        ' If not in edit mode, insert a new order
+                        Dim orderID As String = GenerateUniqueOrderID(myConnection) ' Pass the database connection here
+                        Dim customerID As String = cmbCustomerId.Text
+                        Dim productID As String = cmbProductID.Text
+                        Dim quantityOrdered As Integer = Convert.ToInt32(tbQuantity.Text)
+                        Dim status As String = "Queued"
 
-                    InsertOrder(orderID, customerID, productID, quantityOrdered, status, myConnection)
-                    DisplayOrders()
-                    ResetTextBoxes()
+                        InsertOrder(orderID, customerID, productID, quantityOrdered, status, myConnection)
+                        DisplayOrders()
+                        ResetTextBoxes()
+                    Else
+
+                        MessageBox.Show("insufficient stocks")
+                    End If
+
                 End If
+
             End Using
         Catch ex As Exception
             HandleException(ex)
@@ -75,13 +82,13 @@ Public Class FrmOrderManagement
 
     Private Sub ResetTextBoxes()
         ' Reset and unlock textboxes
-        tbCustomerID.Text = String.Empty
+        cmbCustomerId.Text = String.Empty
         tbCustomerName.Text = String.Empty
         cmbProductID.Text = String.Empty
         tbProductName.Text = String.Empty
         tbQuantity.Text = String.Empty
 
-        tbCustomerID.Enabled = True
+        cmbCustomerId.Enabled = True
         tbCustomerName.Enabled = True
         cmbProductID.Enabled = True
         tbProductName.Enabled = True
@@ -268,14 +275,14 @@ Public Class FrmOrderManagement
             Else
                 ' If in edit mode, populate textboxes with data from the clicked row
                 If e.RowIndex >= 0 Then
-                    tbCustomerID.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcCustomerID").Value.ToString
+                    cmbCustomerId.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcCustomerID").Value.ToString
                     tbCustomerName.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcCustomerName").Value.ToString
                     cmbProductID.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcProductID").Value.ToString
                     tbProductName.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcProductName").Value.ToString
                     tbQuantity.Text = dgvOrderManagement.Rows(e.RowIndex).Cells("dgvcQuantity").Value.ToString
 
                     ' Lock textboxes
-                    tbCustomerID.Enabled = False
+                    cmbCustomerId.Enabled = False
                     tbCustomerName.Enabled = False
                     cmbProductID.Enabled = False
                     tbProductName.Enabled = False
@@ -356,20 +363,64 @@ Public Class FrmOrderManagement
         tbCustomerName.Text = tbCustomerName.Text.Trim()
         If tbCustomerName.AutoCompleteCustomSource.Contains(tbCustomerName.Text) Then
             ' Suggestion selected, fill the textbox
-            FetchCustomerID(tbCustomerName.Text)
+            'FetchCustomerID(tbCustomerName.Text)
+            FillCustomerIdComboBox(tbCustomerName.Text)
         End If
     End Sub
 
-
-    Private Sub TbCustomerID_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerID.TextChanged
+    Private Sub FillCustomerIdComboBox(customerName As String)
         Try
-            ' Use the FetchCustomerName method to get the corresponding customer name
-            Dim customerName As String = FetchNameByID("tblcustomers", "dcustomerid", "CONCAT(dcustomerfn, ' ', dcustomerln)", tbCustomerID.Text)
-            tbCustomerName.Text = customerName
+            ' Fetch customer IDs from the database based on the customer name
+            Dim customerIds As List(Of String) = GetCustomerIdsFromDatabase(customerName)
+
+            ' Bind the customer IDs to the ComboBox
+            cmbCustomerId.DataSource = customerIds
         Catch ex As Exception
-            HandleException(ex)
+            ' Handle exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Function GetCustomerIdsFromDatabase(customerName As String) As List(Of String)
+        Dim result As New List(Of String)
+
+        Try
+            Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                myConnection.Open()
+
+                ' Replace "YourTableName" with the actual name of the table
+                ' Replace "CustomerNameColumn" and "CustomerIdColumn" with the actual column names
+                Dim query As String = $"SELECT DISTINCT dcustomerid FROM tblcustomers WHERE CONCAT(dcustomerfn, ' ', dcustomerln) = @customerName"
+
+                Using myCommand As New MySqlCommand(query, myConnection)
+                    myCommand.Parameters.AddWithValue("@customerName", customerName)
+
+                    Using reader As MySqlDataReader = myCommand.ExecuteReader()
+                        While reader.Read()
+                            ' Add each customer ID to the list
+                            result.Add(reader("dcustomerid").ToString())
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return result
+    End Function
+
+
+    'Private Sub TbCustomerID_TextChanged(sender As Object, e As EventArgs) Handles tbCustomerID.TextChanged
+    '    Try
+    '        ' Use the FetchCustomerName method to get the corresponding customer name
+    '        Dim customerName As String = FetchNameByID("tblcustomers", "dcustomerid", "CONCAT(dcustomerfn, ' ', dcustomerln)", tbCustomerID.Text)
+    '        tbCustomerName.Text = customerName
+    '    Catch ex As Exception
+    '        HandleException(ex)
+    '    End Try
+    'End Sub
 
 
     Private Sub TbProductName_TextChanged(sender As Object, e As EventArgs) Handles tbProductName.TextChanged
@@ -436,9 +487,9 @@ Public Class FrmOrderManagement
 
 
 
-    Private Sub FetchCustomerID(customerName As String)
-        tbCustomerID.Text = FetchIDByName("tblcustomers", "CONCAT(dcustomerfn, ' ', dcustomerln)", "dcustomerid", customerName)
-    End Sub
+    'Private Sub FetchCustomerID(customerName As String)
+    '    tbCustomerID.Text = FetchIDByName("tblcustomers", "CONCAT(dcustomerfn, ' ', dcustomerln)", "dcustomerid", customerName)
+    'End Sub
 
     'Private Sub FetchProductID(productName As String)
     '    tbProductID.Text = FetchIDByName("tblproducts", "dproductname", "dproductid", productName)
@@ -544,10 +595,10 @@ Public Class FrmOrderManagement
         Return GetProductIDByName(productName)
     End Function
 
-    Private Sub SearchCustomerByName(customerName As String)
-        Dim customerID As String = GetCustomerIDByName(customerName)
-        tbCustomerID.Text = customerID
-    End Sub
+    'Private Sub SearchCustomerByName(customerName As String)
+    '    Dim customerID As String = GetCustomerIDByName(customerName)
+    '    tbCustomerID.Text = customerID
+    'End Sub
 
     'Private Sub SearchProductByName(productName As String)
     '    Dim productID As String = GetProductIDByName(productName)
@@ -578,6 +629,9 @@ Public Class FrmOrderManagement
         btnEdit.Text = "EDIT MODE"
         btnDelete.Hide()
         OrdermanagementstateEdit = True
+
+
+
         lblProductName.ForeColor = Color.FromArgb(255, 249, 144)
         lblProductID.ForeColor = Color.FromArgb(255, 249, 144)
         lblCustomerName.ForeColor = Color.FromArgb(255, 249, 144)
@@ -600,6 +654,8 @@ Public Class FrmOrderManagement
         btnDelete.Show()
         cmbProductID.Text = ""
         OrdermanagementstateEdit = False
+
+
         lblProductName.ForeColor = Color.FromArgb(153, 180, 209)
         lblProductID.ForeColor = Color.FromArgb(153, 180, 209)
         lblCustomerName.ForeColor = Color.FromArgb(153, 180, 209)
@@ -680,7 +736,11 @@ Public Class FrmOrderManagement
                 If accessLevel = "3" Then
                     ' Change the color of the buttons to indicate disabled state
                     btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnExport.FillColor = Color.Transparent
                     btnEdit.BackColor = Color.FromArgb(200, 200, 200)
+                    btnEdit.FillColor2 = Color.Transparent
+                    btnDelete.BackColor = Color.FromArgb(200, 200, 200)
+                    btnDelete.FillColor2 = Color.Transparent
                 End If
             End Using
         Catch ex As Exception
@@ -826,7 +886,7 @@ Public Class FrmOrderManagement
 
 
                 tbCustomerName.Text = selectedRow.Cells("dgvcCustomerName").Value.ToString()
-                tbCustomerID.Text = selectedRow.Cells("dgvcCustomerID").Value.ToString()
+                cmbProductID.Text = selectedRow.Cells("dgvcCustomerID").Value.ToString()
                 tbProductName.Text = selectedRow.Cells("dgvcProductName").Value.ToString()
                 cmbProductID.Text = selectedRow.Cells("dgvcProductID").Value.ToString()
                 tbQuantity.Text = selectedRow.Cells("dgvcQuantity").Value
@@ -881,8 +941,6 @@ Public Class FrmOrderManagement
 
         Return result
     End Function
-
-
 
 
 End Class

@@ -66,11 +66,11 @@ Partial Class frmOrderManagement
         btnSave = New Guna.UI2.WinForms.Guna2GradientButton()
         lblSearch = New Label()
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
-        tbCustomerID = New Guna.UI2.WinForms.Guna2TextBox()
         lblCustomerID = New Label()
         lblProductID = New Label()
         lbOrderID = New Label()
         cmbProductID = New Guna.UI2.WinForms.Guna2ComboBox()
+        cmbCustomerId = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvOrderManagement, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -391,30 +391,6 @@ Partial Class frmOrderManagement
         btnExport.TabIndex = 11
         btnExport.Text = "Export"
         ' 
-        ' tbCustomerID
-        ' 
-        tbCustomerID.Anchor = AnchorStyles.Left
-        tbCustomerID.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        tbCustomerID.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbCustomerID.CustomizableEdges = CustomizableEdges17
-        tbCustomerID.DefaultText = ""
-        tbCustomerID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        tbCustomerID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        tbCustomerID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbCustomerID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbCustomerID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbCustomerID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        tbCustomerID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbCustomerID.Location = New Point(19, 152)
-        tbCustomerID.Margin = New Padding(3, 2, 3, 2)
-        tbCustomerID.Name = "tbCustomerID"
-        tbCustomerID.PasswordChar = ChrW(0)
-        tbCustomerID.PlaceholderText = ""
-        tbCustomerID.SelectedText = ""
-        tbCustomerID.ShadowDecoration.CustomizableEdges = CustomizableEdges18
-        tbCustomerID.Size = New Size(214, 27)
-        tbCustomerID.TabIndex = 13
-        ' 
         ' lblCustomerID
         ' 
         lblCustomerID.Anchor = AnchorStyles.Left
@@ -451,7 +427,7 @@ Partial Class frmOrderManagement
         ' 
         cmbProductID.Anchor = AnchorStyles.Left
         cmbProductID.BackColor = Color.Transparent
-        cmbProductID.CustomizableEdges = CustomizableEdges19
+        cmbProductID.CustomizableEdges = CustomizableEdges17
         cmbProductID.DrawMode = DrawMode.OwnerDrawFixed
         cmbProductID.DropDownStyle = ComboBoxStyle.DropDownList
         cmbProductID.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
@@ -461,19 +437,37 @@ Partial Class frmOrderManagement
         cmbProductID.ItemHeight = 30
         cmbProductID.Location = New Point(19, 265)
         cmbProductID.Name = "cmbProductID"
-        cmbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        cmbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         cmbProductID.Size = New Size(214, 36)
         cmbProductID.TabIndex = 17
+        ' 
+        ' cmbCustomerId
+        ' 
+        cmbCustomerId.Anchor = AnchorStyles.Left
+        cmbCustomerId.BackColor = Color.Transparent
+        cmbCustomerId.CustomizableEdges = CustomizableEdges19
+        cmbCustomerId.DrawMode = DrawMode.OwnerDrawFixed
+        cmbCustomerId.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbCustomerId.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbCustomerId.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbCustomerId.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cmbCustomerId.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cmbCustomerId.ItemHeight = 30
+        cmbCustomerId.Location = New Point(19, 153)
+        cmbCustomerId.Name = "cmbCustomerId"
+        cmbCustomerId.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        cmbCustomerId.Size = New Size(214, 36)
+        cmbCustomerId.TabIndex = 18
         ' 
         ' frmOrderManagement
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(cmbCustomerId)
         Controls.Add(cmbProductID)
         Controls.Add(lbOrderID)
         Controls.Add(lblProductID)
-        Controls.Add(tbCustomerID)
         Controls.Add(lblCustomerID)
         Controls.Add(btnExport)
         Controls.Add(btnSave)
@@ -523,7 +517,6 @@ Partial Class frmOrderManagement
     Friend WithEvents tbOrderID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblProductName As Label
-    Friend WithEvents tbCustomerID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblCustomerID As Label
     Friend WithEvents Guna2TextBox4 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblProductID As Label
@@ -532,4 +525,5 @@ Partial Class frmOrderManagement
     Friend WithEvents tbQuantity As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lbOrderID As Label
     Friend WithEvents cmbProductID As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents cmbCustomerId As Guna.UI2.WinForms.Guna2ComboBox
 End Class

@@ -54,8 +54,8 @@ Partial Class frmStockAdjustment
         lblQuantity = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Amountmodification = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         btnReplenish = New Guna.UI2.WinForms.Guna2GradientButton()
-        tbProductID = New Guna.UI2.WinForms.Guna2TextBox()
         btnExport = New Guna.UI2.WinForms.Guna2GradientButton()
+        cmbProductID = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(dgvstockad, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -274,34 +274,10 @@ Partial Class frmStockAdjustment
         btnReplenish.TabIndex = 6
         btnReplenish.Text = "Replenish"
         ' 
-        ' tbProductID
-        ' 
-        tbProductID.Anchor = AnchorStyles.Left
-        tbProductID.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        tbProductID.AutoCompleteSource = AutoCompleteSource.CustomSource
-        tbProductID.CustomizableEdges = CustomizableEdges9
-        tbProductID.DefaultText = ""
-        tbProductID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        tbProductID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        tbProductID.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbProductID.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        tbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductID.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        tbProductID.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        tbProductID.Location = New Point(32, 147)
-        tbProductID.Margin = New Padding(3, 2, 3, 2)
-        tbProductID.Name = "tbProductID"
-        tbProductID.PasswordChar = ChrW(0)
-        tbProductID.PlaceholderText = ""
-        tbProductID.SelectedText = ""
-        tbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges10
-        tbProductID.Size = New Size(200, 27)
-        tbProductID.TabIndex = 13
-        ' 
         ' btnExport
         ' 
         btnExport.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        btnExport.CustomizableEdges = CustomizableEdges11
+        btnExport.CustomizableEdges = CustomizableEdges9
         btnExport.DisabledState.BorderColor = Color.DarkGray
         btnExport.DisabledState.CustomBorderColor = Color.DarkGray
         btnExport.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -312,18 +288,36 @@ Partial Class frmStockAdjustment
         btnExport.ForeColor = Color.White
         btnExport.Location = New Point(274, 371)
         btnExport.Name = "btnExport"
-        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        btnExport.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         btnExport.Size = New Size(79, 26)
         btnExport.TabIndex = 14
         btnExport.Text = "Export"
         ' 
-        ' frmStockAdjustment
+        ' cmbProductID
+        ' 
+        cmbProductID.Anchor = AnchorStyles.Left
+        cmbProductID.BackColor = Color.Transparent
+        cmbProductID.CustomizableEdges = CustomizableEdges11
+        cmbProductID.DrawMode = DrawMode.OwnerDrawFixed
+        cmbProductID.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbProductID.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbProductID.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        cmbProductID.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        cmbProductID.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        cmbProductID.ItemHeight = 30
+        cmbProductID.Location = New Point(32, 148)
+        cmbProductID.Name = "cmbProductID"
+        cmbProductID.ShadowDecoration.CustomizableEdges = CustomizableEdges12
+        cmbProductID.Size = New Size(201, 36)
+        cmbProductID.TabIndex = 15
+        ' 
+        ' FrmStockAdjustment
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(cmbProductID)
         Controls.Add(btnExport)
-        Controls.Add(tbProductID)
         Controls.Add(btnReplenish)
         Controls.Add(lblQuantity)
         Controls.Add(lblProductID)
@@ -333,7 +327,7 @@ Partial Class frmStockAdjustment
         Controls.Add(dgvstockad)
         Controls.Add(tbProductQuantity)
         KeyPreview = True
-        Name = "frmStockAdjustment"
+        Name = "FrmStockAdjustment"
         Text = "Stock Adjustment"
         CType(dgvstockad, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -363,9 +357,9 @@ Partial Class frmStockAdjustment
     Friend WithEvents dgvcQuantity As DataGridViewTextBoxColumn
     Friend WithEvents dgvcChange As DataGridViewTextBoxColumn
     Friend WithEvents dgvcFinalQuantity As DataGridViewTextBoxColumn
-    Friend WithEvents tbProductID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents dgvcOrigin As DataGridViewTextBoxColumn
     Friend WithEvents dgvcStockID As DataGridViewTextBoxColumn
     Friend WithEvents dgvcProductID As DataGridViewTextBoxColumn
     Friend WithEvents btnExport As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents cmbProductID As Guna.UI2.WinForms.Guna2ComboBox
 End Class

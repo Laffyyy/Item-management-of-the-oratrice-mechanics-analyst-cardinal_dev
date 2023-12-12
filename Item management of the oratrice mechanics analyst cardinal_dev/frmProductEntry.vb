@@ -337,7 +337,11 @@ Public Class FrmProductEntry
 
                 If accessLevel = "3" Then
                     btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnExport.FillColor = Color.Transparent
                     btnEdit.BackColor = Color.FromArgb(200, 200, 200)
+                    btnEdit.FillColor2 = Color.Transparent
+                    btnDelete.BackColor = Color.FromArgb(200, 200, 200)
+                    btnDelete.FillColor2 = Color.Transparent
                 End If
             End Using
         Catch ex As Exception
@@ -455,5 +459,54 @@ Public Class FrmProductEntry
             End If
 
         End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If Not ProductentryEditmode Then
+            If FrmLogin.UUserAccessLevel = 3 Then
+                ' Display message box for access denied
+                MessageBox.Show("Access Denied. Insufficient Privileges", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                DeleteOrderRow()
+            End If
+        Else
+            NotOnedit()
+        End If
+    End Sub
+
+    Private Sub DeleteOrderRow()
+        Try
+            ' Ask user for OrderID using InputBox
+            Dim productID As String = InputBox("Enter ProductID to delete:", "Delete Order", "")
+
+            ' Check if OrderID is provided
+            If Not String.IsNullOrEmpty(productID) Then
+                ' Use parameterized query to avoid SQL injection
+                Dim deleteQuery As String = "DELETE FROM tblproducts WHERE dproductid = @productid"
+
+                ' Perform deletion in the database
+                Using myConnection As MySqlConnection = Common.GetDBConnectionX()
+                    myConnection.Open()
+
+                    Using myCommand As New MySqlCommand(deleteQuery, myConnection)
+                        ' Add parameters to the query
+                        myCommand.Parameters.AddWithValue("productid", productID)
+
+                        ' Execute the DELETE query
+                        myCommand.ExecuteNonQuery()
+                    End Using
+                End Using
+
+                ' Display success message
+                MessageBox.Show($"Order with OrderID {productID} deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                ' Display a message if OrderID is not provided
+                MessageBox.Show("OrderID cannot be empty. Deletion canceled.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            ' Display an error message if an exception occurs
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        DisplayProducts()
     End Sub
 End Class

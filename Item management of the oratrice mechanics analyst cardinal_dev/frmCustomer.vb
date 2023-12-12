@@ -275,7 +275,9 @@ Public Class FrmCustomer
 
                 If accessLevel = "3" Then
                     btnExport.BackColor = Color.FromArgb(200, 200, 200)
+                    btnExport.FillColor = Color.Transparent
                     btnEdit.BackColor = Color.FromArgb(200, 200, 200)
+                    btnEdit.FillColor2 = Color.Transparent
                 End If
             End Using
         Catch ex As Exception
@@ -299,6 +301,8 @@ Public Class FrmCustomer
     Private Sub FrmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayCustomers()
         CheckUserAccessLevel()
+
+
     End Sub
 
 

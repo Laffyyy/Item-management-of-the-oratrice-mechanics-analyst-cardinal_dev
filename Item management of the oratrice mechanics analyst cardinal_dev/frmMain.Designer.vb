@@ -383,7 +383,7 @@ Partial Class frmMain
         lblWelcome.BackColor = Color.Transparent
         lblWelcome.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point)
         lblWelcome.ForeColor = SystemColors.ActiveCaption
-        lblWelcome.Location = New Point(345, 366)
+        lblWelcome.Location = New Point(325, 54)
         lblWelcome.Name = "lblWelcome"
         lblWelcome.Size = New Size(117, 34)
         lblWelcome.TabIndex = 3
@@ -393,7 +393,7 @@ Partial Class frmMain
         ' 
         imgLogomain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         imgLogomain.Image = CType(resources.GetObject("imgLogomain.Image"), Image)
-        imgLogomain.Location = New Point(328, 94)
+        imgLogomain.Location = New Point(325, 94)
         imgLogomain.Name = "imgLogomain"
         imgLogomain.Size = New Size(198, 159)
         imgLogomain.SizeMode = PictureBoxSizeMode.Zoom
